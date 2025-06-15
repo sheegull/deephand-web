@@ -8,11 +8,10 @@ export default defineConfig({
   output: 'static',
   build: {
     inlineStylesheets: 'auto',
-    assets: 'assets',
+    format: 'directory',
   },
   vite: {
     build: {
-      cssCodeSplit: true,
       rollupOptions: {
         output: {
           manualChunks: {
@@ -28,7 +27,5 @@ export default defineConfig({
     },
   },
   compressHTML: true,
-  experimental: {
-    contentCollectionCache: true,
-  },
+  // Clean configuration for Astro 5.9.3 - all experimental features removed
 });

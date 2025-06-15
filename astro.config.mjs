@@ -8,5 +8,27 @@ export default defineConfig({
   output: 'static',
   build: {
     inlineStylesheets: 'auto',
+    assets: 'assets',
+  },
+  vite: {
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
+            ui: ['lucide-react', '@radix-ui/react-slot', 'class-variance-authority'],
+          },
+        },
+      },
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-hook-form', 'lucide-react'],
+    },
+  },
+  compressHTML: true,
+  experimental: {
+    contentCollectionCache: true,
   },
 });

@@ -1,5 +1,6 @@
 ---
 import { Container, Button } from '@/components/common';
+import { ContactModal } from '@/components/islands/ContactModal';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 ---
 
@@ -32,12 +33,7 @@ import { ArrowRight, MessageCircle } from 'lucide-react';
           </a>
         </Button>
         
-        <Button variant="outline" size="lg" class="border-gray-300 text-white hover:bg-white hover:text-gray-900 transform hover:-translate-y-1 transition-all" asChild>
-          <a href="#contact" class="flex items-center gap-2">
-            <MessageCircle class="w-5 h-5" />
-            <span>お問い合わせ</span>
-          </a>
-        </Button>
+        <ContactModal client:load />
       </div>
       
       <!-- Contact Information -->

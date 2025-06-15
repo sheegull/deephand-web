@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Container } from '@/components/common';
+import { DataRequestForm } from '@/components/islands/DataRequestForm';
+import '@/styles/app.css';
+---
+
+<BaseLayout 
+  title="データリクエスト - DeepHand"
+  description="AI・ロボティクスプロジェクト向けのデータアノテーション依頼フォーム。専門知識を持つアノテーターが高品質なラベリングを提供します。"
+>
+  <main class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <section class="bg-white shadow-sm">
+      <Container class="py-8">
+        <div class="text-center">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            データアノテーション依頼
+          </h1>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            プロジェクトの詳細をお聞かせください。最適なアノテーション戦略をご提案いたします。
+          </p>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Form Section -->
+    <section class="py-12">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <DataRequestForm client:load />
+        </div>
+      </Container>
+    </section>
+  </main>
+</BaseLayout>

@@ -12,6 +12,9 @@ export default defineConfig({
     format: 'directory',
   },
   vite: {
+    css: {
+      postcss: './postcss.config.js',
+    },
     build: {
       rollupOptions: {
         output: {
@@ -28,5 +31,4 @@ export default defineConfig({
     },
   },
   compressHTML: true,
-  // Clean configuration for Astro 5.9.3 - all experimental features removed
 });

@@ -1,0 +1,89 @@
+---
+import { Container, Card, CardHeader, CardTitle, CardDescription } from '@/components/common';
+import { Brain, Award, TrendingUp, Shield } from 'lucide-react';
+
+const features = [
+  {
+    icon: 'Brain',
+    title: 'AI・ロボティクス専門性',
+    description: '人工知能・ロボティクス分野における深い専門知識'
+  },
+  {
+    icon: 'Award',
+    title: '高品質基準',
+    description: '多段階品質管理プロセスによる99%以上の精度'
+  },
+  {
+    icon: 'TrendingUp',
+    title: 'スケーラブルソリューション',
+    description: 'プロトタイプから本格運用まで対応可能なデータアノテーション'
+  },
+  {
+    icon: 'Shield',
+    title: 'データセキュリティ',
+    description: '機密データに対するエンタープライズ級セキュリティと機密保持'
+  }
+];
+---
+
+<section class="section-padding bg-white">
+  <Container>
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        DeepHandを選ぶ理由
+      </h2>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        私たちが選ばれ続ける4つの理由
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {features.map((feature, index) => (
+        <Card class="text-center group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-gradient-to-br from-white to-gray-50/50 border-0 shadow-md">
+          <CardHeader class="pb-2">
+            <!-- Icon -->
+            <div class="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary-light/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-primary/20 group-hover:to-primary-light/30 transition-colors">
+              {feature.icon === 'Brain' && <Brain class="w-8 h-8 text-primary" />}
+              {feature.icon === 'Award' && <Award class="w-8 h-8 text-primary" />}
+              {feature.icon === 'TrendingUp' && <TrendingUp class="w-8 h-8 text-primary" />}
+              {feature.icon === 'Shield' && <Shield class="w-8 h-8 text-primary" />}
+            </div>
+            
+            <!-- Title -->
+            <CardTitle class="text-lg mb-4 group-hover:text-primary transition-colors">
+              {feature.title}
+            </CardTitle>
+            
+            <!-- Description -->
+            <CardDescription class="text-sm leading-relaxed">
+              {feature.description}
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      ))}
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="mt-20 text-center">
+      <p class="text-gray-600 mb-8">信頼される企業・研究機関との実績</p>
+      
+      <!-- Partner Logos Placeholder -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
+        <div class="h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+          <span class="text-gray-500 text-sm font-medium">大学A</span>
+        </div>
+        <div class="h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+          <span class="text-gray-500 text-sm font-medium">企業B</span>
+        </div>
+        <div class="h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+          <span class="text-gray-500 text-sm font-medium">研究所C</span>
+        </div>
+        <div class="h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+          <span class="text-gray-500 text-sm font-medium">スタートアップD</span>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

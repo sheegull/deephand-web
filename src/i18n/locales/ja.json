@@ -1,0 +1,170 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "services": "サービス",
+    "about": "会社概要",
+    "contact": "お問い合わせ",
+    "requestData": "データ依頼"
+  },
+  "hero": {
+    "title": "AI・ロボティクス向け",
+    "subtitle": "高精度データアノテーション",
+    "description": "専門知識を持つアノテーターが、あなたのAI・ロボティクスプロジェクトに最適なデータアノテーションを提供します。",
+    "cta": {
+      "primary": "データを依頼する",
+      "secondary": "サービス詳細"
+    }
+  },
+  "services": {
+    "title": "私たちのサービス",
+    "subtitle": "AI・ロボティクス分野に特化した包括的なデータアノテーション",
+    "imageAnnotation": {
+      "title": "画像アノテーション",
+      "description": "コンピュータビジョン・ロボティクス向け高精度画像アノテーション",
+      "features": [
+        "物体検出",
+        "セマンティックセグメンテーション", 
+        "姿勢推定",
+        "OCR"
+      ]
+    },
+    "videoLabeling": {
+      "title": "動画ラベリング", 
+      "description": "モーション解析・追跡向けフレームバイフレーム動画アノテーション",
+      "features": [
+        "物体追跡",
+        "行動認識",
+        "時系列セグメンテーション"
+      ]
+    },
+    "sensorData": {
+      "title": "センサーデータ処理",
+      "description": "IoT・ロボティクス向けセンサーデータ構造化アノテーション",
+      "features": [
+        "時系列解析",
+        "異常検知", 
+        "パターン認識"
+      ]
+    },
+    "textNlp": {
+      "title": "テキスト・NLP",
+      "description": "自然言語処理・テキストアノテーションサービス",
+      "features": [
+        "固有表現抽出",
+        "感情分析",
+        "テキスト分類"
+      ]
+    }
+  },
+  "process": {
+    "title": "私たちのプロセス",
+    "subtitle": "シンプルで効果的な3ステップ",
+    "steps": {
+      "analysis": {
+        "title": "データ要件分析",
+        "description": "お客様のデータとアノテーション要件を分析し、最適な戦略を策定します"
+      },
+      "annotation": {
+        "title": "プロフェッショナルアノテーション",
+        "description": "AI・ロボティクス領域の専門知識を持つアノテーターが高品質なラベリングを実施"
+      },
+      "delivery": {
+        "title": "品質保証・納品",
+        "description": "多段階品質チェックで精度を確保し、セキュアに納品いたします"
+      }
+    }
+  },
+  "features": {
+    "title": "DeepHandを選ぶ理由",
+    "expertise": {
+      "title": "AI・ロボティクス専門性",
+      "description": "人工知能・ロボティクス分野における深い専門知識"
+    },
+    "quality": {
+      "title": "高品質基準",
+      "description": "多段階品質管理プロセスによる99%以上の精度"
+    },
+    "scalability": {
+      "title": "スケーラブルソリューション",
+      "description": "プロトタイプから本格運用まで対応可能なデータアノテーション"
+    },
+    "security": {
+      "title": "データセキュリティ",
+      "description": "機密データに対するエンタープライズ級セキュリティと機密保持"
+    }
+  },
+  "cta": {
+    "title": "プロジェクトを始めましょう",
+    "description": "あなたのAI・ロボティクスプロジェクトを次のレベルへ",
+    "requestData": "データを依頼する",
+    "getInTouch": "お問い合わせ"
+  },
+  "footer": {
+    "company": "DeepHand",
+    "description": "AI・ロボティクス特化データアノテーションサービス",
+    "links": {
+      "about": "会社概要",
+      "services": "サービス",
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約"
+    },
+    "copyright": "© 2024 DeepHand. All rights reserved."
+  },
+  "form": {
+    "labels": {
+      "companyName": "会社名",
+      "contactPerson": "担当者名",
+      "email": "メールアドレス",
+      "phone": "電話番号",
+      "projectTitle": "プロジェクトタイトル",
+      "dataType": "データタイプ",
+      "dataDescription": "データ概要",
+      "annotationRequirements": "アノテーション要件",
+      "dataVolume": "データ量",
+      "timeline": "希望納期",
+      "budget": "予算",
+      "additionalNotes": "追加情報",
+      "privacyConsent": "プライバシーポリシーに同意する",
+      "communicationPreference": "連絡方法"
+    },
+    "placeholders": {
+      "companyName": "株式会社サンプル",
+      "contactPerson": "山田太郎",
+      "email": "email@example.com",
+      "phone": "03-1234-5678",
+      "projectTitle": "自動運転システム開発プロジェクト",
+      "dataDescription": "データの概要をご記入ください",
+      "annotationRequirements": "必要なアノテーション作業の詳細",
+      "dataVolume": "10,000枚",
+      "timeline": "2ヶ月",
+      "budget": "100万円",
+      "additionalNotes": "その他ご要望があればお聞かせください"
+    },
+    "options": {
+      "dataTypes": {
+        "image": "画像データ",
+        "video": "動画データ",
+        "text": "テキストデータ",
+        "audio": "音声データ",
+        "sensor": "センサーデータ",
+        "other": "その他"
+      },
+      "communication": {
+        "email": "メール",
+        "phone": "電話",
+        "both": "両方"
+      }
+    },
+    "buttons": {
+      "next": "次へ",
+      "previous": "戻る",
+      "submit": "送信",
+      "submitting": "送信中..."
+    },
+    "validation": {
+      "required": "この項目は必須です",
+      "email": "有効なメールアドレスを入力してください",
+      "minLength": "{{min}}文字以上で入力してください"
+    }
+  }
+}

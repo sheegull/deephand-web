@@ -1,0 +1,98 @@
+---
+import { Container } from '@/components/common';
+import { Search, Users, CheckCircle } from 'lucide-react';
+
+const steps = [
+  {
+    step: 1,
+    icon: 'Search',
+    title: 'データ要件分析',
+    description: 'お客様のデータとアノテーション要件を分析し、最適な戦略を策定します'
+  },
+  {
+    step: 2,
+    icon: 'Users',
+    title: 'プロフェッショナルアノテーション',
+    description: 'AI・ロボティクス領域の専門知識を持つアノテーターが高品質なラベリングを実施'
+  },
+  {
+    step: 3,
+    icon: 'CheckCircle',
+    title: '品質保証・納品',
+    description: '多段階品質チェックで精度を確保し、セキュアに納品いたします'
+  }
+];
+---
+
+<section class="section-padding bg-gray-50">
+  <Container>
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        私たちのプロセス
+      </h2>
+      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+        シンプルで効果的な3ステップ
+      </p>
+    </div>
+
+    <!-- Process Steps -->
+    <div class="relative">
+      <!-- Connection Line -->
+      <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-primary to-primary-dark transform -translate-y-1/2 z-0"></div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+        {steps.map((step, index) => (
+          <div class="text-center group">
+            <!-- Step Number & Icon -->
+            <div class="relative mb-6">
+              <div class="w-20 h-20 bg-white border-4 border-primary rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                {step.icon === 'Search' && <Search class="w-8 h-8 text-primary" />}
+                {step.icon === 'Users' && <Users class="w-8 h-8 text-primary" />}
+                {step.icon === 'CheckCircle' && <CheckCircle class="w-8 h-8 text-primary" />}
+              </div>
+              <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-primary to-primary-dark text-white rounded-full flex items-center justify-center text-sm font-bold">
+                {step.step}
+              </div>
+            </div>
+            
+            <!-- Content -->
+            <h3 class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-primary transition-colors">
+              {step.title}
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Quality Metrics -->
+    <div class="mt-20 bg-white rounded-2xl p-8 shadow-lg">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-2">品質へのこだわり</h3>
+        <p class="text-gray-600">業界最高水準の品質管理</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gradient mb-1">99.5%</div>
+          <div class="text-sm text-gray-600">精度</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gradient mb-1">3段階</div>
+          <div class="text-sm text-gray-600">品質チェック</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gradient mb-1">ISO27001</div>
+          <div class="text-sm text-gray-600">セキュリティ</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gradient mb-1">24/7</div>
+          <div class="text-sm text-gray-600">サポート</div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

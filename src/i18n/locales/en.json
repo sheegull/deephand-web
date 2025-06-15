@@ -1,0 +1,170 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services", 
+    "about": "About",
+    "contact": "Contact",
+    "requestData": "Request Data"
+  },
+  "hero": {
+    "title": "High-Precision Data Annotation",
+    "subtitle": "for AI & Robotics",
+    "description": "Expert annotators with specialized knowledge provide optimal data annotation for your AI and robotics projects.",
+    "cta": {
+      "primary": "Request Data",
+      "secondary": "Learn More"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive data annotation specialized for AI and robotics",
+    "imageAnnotation": {
+      "title": "Image Annotation",
+      "description": "High-precision annotation for computer vision and robotics applications",
+      "features": [
+        "Object Detection",
+        "Semantic Segmentation",
+        "Pose Estimation", 
+        "OCR"
+      ]
+    },
+    "videoLabeling": {
+      "title": "Video Labeling",
+      "description": "Frame-by-frame video annotation for motion analysis and tracking",
+      "features": [
+        "Object Tracking",
+        "Action Recognition",
+        "Temporal Segmentation"
+      ]
+    },
+    "sensorData": {
+      "title": "Sensor Data Processing",
+      "description": "Structured annotation for IoT and robotics sensor data",
+      "features": [
+        "Time Series Analysis",
+        "Anomaly Detection",
+        "Pattern Recognition"
+      ]
+    },
+    "textNlp": {
+      "title": "Text & NLP",
+      "description": "Natural language processing and text annotation services",
+      "features": [
+        "Named Entity Recognition",
+        "Sentiment Analysis", 
+        "Text Classification"
+      ]
+    }
+  },
+  "process": {
+    "title": "Our Process",
+    "subtitle": "Simple and effective 3-step approach",
+    "steps": {
+      "analysis": {
+        "title": "Data Requirements Analysis",
+        "description": "We analyze your data and annotation requirements to create an optimal strategy"
+      },
+      "annotation": {
+        "title": "Professional Annotation", 
+        "description": "Expert annotators with AI/robotics domain knowledge perform high-quality labeling"
+      },
+      "delivery": {
+        "title": "Quality Assurance & Delivery",
+        "description": "Multi-stage quality checks ensure accuracy before secure delivery"
+      }
+    }
+  },
+  "features": {
+    "title": "Why Choose DeepHand",
+    "expertise": {
+      "title": "AI/Robotics Expertise",
+      "description": "Deep domain knowledge in artificial intelligence and robotics applications"
+    },
+    "quality": {
+      "title": "High Quality Standards", 
+      "description": "99%+ accuracy with multi-stage quality control processes"
+    },
+    "scalability": {
+      "title": "Scalable Solutions",
+      "description": "From prototype to production-scale data annotation services"
+    },
+    "security": {
+      "title": "Data Security",
+      "description": "Enterprise-grade security and confidentiality for your sensitive data"
+    }
+  },
+  "cta": {
+    "title": "Let's Start Your Project", 
+    "description": "Take your AI and robotics project to the next level",
+    "requestData": "Request Data",
+    "getInTouch": "Get in Touch"
+  },
+  "footer": {
+    "company": "DeepHand",
+    "description": "AI & Robotics Specialized Data Annotation Service",
+    "links": {
+      "about": "About",
+      "services": "Services", 
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": "© 2024 DeepHand. All rights reserved."
+  },
+  "form": {
+    "labels": {
+      "companyName": "Company Name",
+      "contactPerson": "Contact Person",
+      "email": "Email Address", 
+      "phone": "Phone Number",
+      "projectTitle": "Project Title",
+      "dataType": "Data Type",
+      "dataDescription": "Data Description",
+      "annotationRequirements": "Annotation Requirements",
+      "dataVolume": "Data Volume",
+      "timeline": "Timeline",
+      "budget": "Budget",
+      "additionalNotes": "Additional Notes",
+      "privacyConsent": "I agree to the Privacy Policy",
+      "communicationPreference": "Communication Preference"
+    },
+    "placeholders": {
+      "companyName": "Your Company Inc.",
+      "contactPerson": "John Doe",
+      "email": "email@example.com",
+      "phone": "+1-234-567-8900",
+      "projectTitle": "Autonomous Vehicle Development Project",
+      "dataDescription": "Please describe your data",
+      "annotationRequirements": "Details of required annotation work",
+      "dataVolume": "10,000 images", 
+      "timeline": "2 months",
+      "budget": "$10,000",
+      "additionalNotes": "Any additional requirements"
+    },
+    "options": {
+      "dataTypes": {
+        "image": "Image Data",
+        "video": "Video Data",
+        "text": "Text Data",
+        "audio": "Audio Data",
+        "sensor": "Sensor Data",
+        "other": "Other"
+      },
+      "communication": {
+        "email": "Email",
+        "phone": "Phone", 
+        "both": "Both"
+      }
+    },
+    "buttons": {
+      "next": "Next",
+      "previous": "Previous",
+      "submit": "Submit",
+      "submitting": "Submitting..."
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email address",
+      "minLength": "Please enter at least {{min}} characters"
+    }
+  }
+}

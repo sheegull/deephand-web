@@ -1,0 +1,31 @@
+# Cloudflare Pages Configuration for DeepHand
+name = "deephand-web"
+compatibility_date = "2024-12-15"
+
+# Pages Configuration
+[env.production]
+name = "deephand-web-production"
+route = "deephand.ai/*"
+
+[env.production.vars]
+NODE_ENV = "production"
+PUBLIC_SITE_URL = "https://deephand.ai"
+
+# Development Environment
+[env.development] 
+name = "deephand-web-development"
+
+[env.development.vars]
+NODE_ENV = "development"
+PUBLIC_SITE_URL = "http://localhost:4321"
+
+# Build Configuration
+[build]
+command = "pnpm build"
+cwd = ""
+watch_dir = "src"
+
+[build.upload]
+format = "service-worker"
+dir = "dist"
+main = "./dist/_worker.js"

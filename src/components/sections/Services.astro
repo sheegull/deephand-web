@@ -45,18 +45,18 @@ const services = [
     <!-- Services Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {services.map((service, index) => (
-        <Card class="group hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-l-4 border-l-primary/20 hover:border-l-primary">
+        <Card className="group hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-l-4 border-l-primary/20 hover:border-l-primary">
           <CardHeader>
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-xl flex items-center justify-center group-hover:from-primary/20 group-hover:to-primary-light/20 transition-colors">
-                {service.icon === 'Image' && <Image class="w-6 h-6 text-primary" />}
-                {service.icon === 'Video' && <Video class="w-6 h-6 text-primary" />}
-                {service.icon === 'Activity' && <Activity class="w-6 h-6 text-primary" />}
-                {service.icon === 'FileText' && <FileText class="w-6 h-6 text-primary" />}
+                {service.icon === 'Image' && <Image className="w-6 h-6 text-primary" />}
+                {service.icon === 'Video' && <Video className="w-6 h-6 text-primary" />}
+                {service.icon === 'Activity' && <Activity className="w-6 h-6 text-primary" />}
+                {service.icon === 'FileText' && <FileText className="w-6 h-6 text-primary" />}
               </div>
-              <CardTitle class="group-hover:text-primary transition-colors">{service.title}</CardTitle>
+              <CardTitle className="group-hover:text-primary transition-colors">{service.title}</CardTitle>
             </div>
-            <CardDescription class="text-base leading-relaxed">
+            <CardDescription className="text-base leading-relaxed">
               {service.description}
             </CardDescription>
           </CardHeader>

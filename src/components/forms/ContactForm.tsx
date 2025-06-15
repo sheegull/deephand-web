@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/common';
 import { contactFormSchema, type ContactFormData } from '@/lib/validationSchemas';
 import { Send, CheckCircle } from 'lucide-react';
 
 export function ContactForm() {
-  const { t } = useTranslation();
+  // 静的テキスト使用（i18nextエラー回避）
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -22,16 +21,29 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-    
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log('Contact form submitted:', data);
-      
-      setIsSubmitted(true);
-      reset();
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        console.log('Contact form submitted successfully:', result);
+        setIsSubmitted(true);
+        reset();
+      } else {
+        console.error('Form submission failed:', result);
+        alert('送信に失敗しました。しばらくしてから再度お試しください。');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
+      alert('送信に失敗しました。しばらくしてから再度お試しください。');
     } finally {
       setIsSubmitting(false);
     }
@@ -41,17 +53,11 @@ export function ContactForm() {
     return (
       <div className="text-center p-8 bg-green-50 rounded-xl border border-green-200">
         <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-green-800 mb-2">
-          送信完了
-        </h3>
+        <h3 className="text-xl font-semibold text-green-800 mb-2">送信完了</h3>
         <p className="text-green-700">
           お問い合わせありがとうございます。24時間以内にご返信いたします。
         </p>
-        <Button 
-          variant="outline" 
-          onClick={() => setIsSubmitted(false)}
-          className="mt-4"
-        >
+        <Button variant="outline" onClick={() => setIsSubmitted(false)} className="mt-4">
           新しいお問い合わせ
         </Button>
       </div>
@@ -59,7 +65,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-gray-900">
       {/* Name */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -70,11 +76,9 @@ export function ContactForm() {
           type="text"
           id="name"
           placeholder="山田太郎"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
         />
-        {errors.name && (
-          <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-        )}
+        {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
       </div>
 
       {/* Email */}
@@ -87,11 +91,9 @@ export function ContactForm() {
           type="email"
           id="email"
           placeholder="email@example.com"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
         />
-        {errors.email && (
-          <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
       </div>
 
       {/* Company */}
@@ -104,7 +106,7 @@ export function ContactForm() {
           type="text"
           id="company"
           placeholder="株式会社サンプル"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
         />
       </div>
 
@@ -118,11 +120,9 @@ export function ContactForm() {
           type="text"
           id="subject"
           placeholder="お問い合わせの件名"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
         />
-        {errors.subject && (
-          <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
-        )}
+        {errors.subject && <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>}
       </div>
 
       {/* Message */}
@@ -135,11 +135,9 @@ export function ContactForm() {
           id="message"
           rows={5}
           placeholder="お問い合わせ内容をご記入ください"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none text-gray-900 bg-white"
         />
-        {errors.message && (
-          <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-        )}
+        {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>}
       </div>
 
       {/* Privacy Consent */}
@@ -150,7 +148,7 @@ export function ContactForm() {
           id="privacyConsent"
           className="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2"
         />
-        <label htmlFor="privacyConsent" className="text-sm text-gray-700">
+        <label htmlFor="privacyConsent" className="text-sm text-gray-900">
           <span className="text-red-500">*</span> プライバシーポリシーに同意します
         </label>
       </div>
@@ -159,12 +157,7 @@ export function ContactForm() {
       )}
 
       {/* Submit Button */}
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full"
-        size="lg"
-      >
+      <Button type="submit" disabled={isSubmitting} className="w-full" size="lg">
         {isSubmitting ? (
           <>
             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />

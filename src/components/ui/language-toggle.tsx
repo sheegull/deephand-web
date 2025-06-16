@@ -9,7 +9,7 @@ interface LanguageToggleProps {
 export const LanguageToggle = ({ 
   currentLanguage = 'ja', 
   onLanguageChange 
-}: LanguageToggleProps): JSX.Element => {
+}: LanguageToggleProps) => {
   const handleToggle = () => {
     const newLanguage = currentLanguage === 'ja' ? 'en' : 'ja';
     if (onLanguageChange) {

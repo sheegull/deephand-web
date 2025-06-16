@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/common';
+import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
 
 export function LanguageSwitcher() {

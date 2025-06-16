@@ -10,9 +10,9 @@ import {
   FadeIn,
   SlideUp,
   ScaleIn,
-  type AnimationVariants,
   type TransitionConfig,
 } from '../animation-components';
+import type { Variants } from 'framer-motion';
 
 // Mock framer-motion
 vi.mock('framer-motion', () => ({
@@ -268,7 +268,7 @@ describe('Animation Components', () => {
   describe('Animation Variants', () => {
     it('should create proper animation variants', () => {
       // This would test the variants configuration
-      const variants: AnimationVariants = {
+      const variants: Variants = {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
         exit: { opacity: 0, y: -20 },

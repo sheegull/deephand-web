@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { currentDataRequestFormSchema } from '@/lib/validationSchemas';
 import { sendDataRequestEmail, validateEmailConfig } from '@/lib/email';
 import type { CurrentDataRequestFormData } from '@/lib/validationSchemas';
+import { logError, logInfo } from '@/lib/error-handling';
 
 // Enable server-side rendering for this endpoint
 // export const prerender = false;
@@ -41,7 +42,11 @@ export const POST: APIRoute = async ({ request }) => {
       }
       body = JSON.parse(text);
     } catch (jsonError) {
-      console.error('JSON parsing error:', jsonError);
+      logError('JSON parsing error in data request form', {
+        operation: 'data_request_parse',
+        timestamp: Date.now(),
+        url: '/api/request'
+      });
       return new Response(
         JSON.stringify({
           success: false,
@@ -75,7 +80,11 @@ export const POST: APIRoute = async ({ request }) => {
     // Validate email configuration
     const emailConfig = validateEmailConfig();
     if (!emailConfig.isValid) {
-      console.error('Email configuration errors:', emailConfig.errors);
+      logError('Email configuration invalid for data request', {
+        operation: 'data_request_email_config',
+        timestamp: Date.now(),
+        url: '/api/request'
+      });
       return new Response(
         JSON.stringify({
           success: false,
@@ -94,7 +103,11 @@ export const POST: APIRoute = async ({ request }) => {
     const emailResult = await sendDataRequestEmail(result.data);
 
     if (!emailResult.success) {
-      console.error('Email sending failed:', emailResult.error);
+      logError('Data request email sending failed', {
+        operation: 'data_request_email_send',
+        timestamp: Date.now(),
+        url: '/api/request'
+      });
       return new Response(
         JSON.stringify({
           success: false,
@@ -111,12 +124,10 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Log successful submission (without sensitive data)
     const requestId = `DR-${Date.now()}`;
-    console.log('Data request submitted successfully:', {
-      emailId: emailResult.emailId,
-      requestId,
-      organization: result.data.organization,
-      dataType: result.data.dataType,
-      timestamp: new Date().toISOString(),
+    logInfo('Data request submitted successfully', {
+      operation: 'data_request_success',
+      timestamp: Date.now(),
+      url: '/api/request'
     });
 
     return new Response(
@@ -135,7 +146,11 @@ export const POST: APIRoute = async ({ request }) => {
       }
     );
   } catch (error) {
-    console.error('Data request error:', error);
+    logError('Unexpected error in data request', {
+      operation: 'data_request_exception',
+      timestamp: Date.now(),
+      url: '/api/request'
+    });
 
     return new Response(
       JSON.stringify({

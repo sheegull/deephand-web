@@ -1,6 +1,5 @@
 import * as React from "react";
-
-const cn = (...inputs: any[]) => inputs.filter(Boolean).join(" ");
+import { cn } from "@/lib/utils";
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onCheckedChange?: (checked: boolean) => void;

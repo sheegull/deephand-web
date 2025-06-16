@@ -64,7 +64,10 @@ describe('Motion Configuration', () => {
         configurable: true,
       });
 
-      const capabilities = getDeviceCapabilities();
+      // Remove getBattery to ensure synchronous behavior
+      delete (navigator as any).getBattery;
+
+      const capabilities = getDeviceCapabilities() as DeviceCapabilities;
 
       expect(capabilities.isMobile).toBe(true);
       expect(capabilities.supportsAdvancedAnimations).toBe(false);
@@ -77,14 +80,17 @@ describe('Motion Configuration', () => {
         configurable: true,
       });
 
-      const capabilities = getDeviceCapabilities();
+      // Remove getBattery to ensure synchronous behavior
+      delete (navigator as any).getBattery;
+
+      const capabilities = getDeviceCapabilities() as DeviceCapabilities;
 
       expect(capabilities.isMobile).toBe(false);
       expect(capabilities.supportsAdvancedAnimations).toBe(true);
       expect(capabilities.particleCount).toBeGreaterThan(100);
     });
 
-    it('should detect low-power mode', () => {
+    it('should detect low-power mode', async () => {
       // Mock battery API
       Object.defineProperty(navigator, 'getBattery', {
         value: () =>
@@ -97,9 +103,8 @@ describe('Motion Configuration', () => {
         configurable: true,
       });
 
-      return getDeviceCapabilities().then(capabilities => {
-        expect(capabilities.lowPowerMode).toBe(true);
-      });
+      const capabilities = await getDeviceCapabilities() as DeviceCapabilities;
+      expect(capabilities.lowPowerMode).toBe(true);
     });
   });
 

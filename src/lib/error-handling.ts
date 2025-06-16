@@ -32,6 +32,9 @@ export interface ErrorBoundaryState {
   retryCount: number;
 }
 
+// Global logger instance
+let globalLogger: ReturnType<typeof createErrorLogger> | null = null;
+
 // Error logger implementation
 export function createErrorLogger() {
   const logs: ErrorLog[] = [];
@@ -48,17 +51,22 @@ export function createErrorLogger() {
 
       logs.push(errorLog);
 
-      // Log to console based on level
-      switch (level) {
-        case 'error':
-          console.error(`[${errorLog.id}] ${message}`, context);
-          break;
-        case 'warn':
-          console.warn(`[${errorLog.id}] ${message}`, context);
-          break;
-        case 'info':
-          console.info(`[${errorLog.id}] ${message}`, context);
-          break;
+      // Only log to console in development or if explicitly enabled
+      const isDev = typeof process !== 'undefined' && process.env.NODE_ENV === 'development';
+      const enableLogging = typeof process !== 'undefined' && process.env.ENABLE_CONSOLE_LOGGING === 'true';
+
+      if (isDev || enableLogging) {
+        switch (level) {
+          case 'error':
+            console.error(`[${errorLog.id}] ${message}`, context);
+            break;
+          case 'warn':
+            console.warn(`[${errorLog.id}] ${message}`, context);
+            break;
+          case 'info':
+            console.info(`[${errorLog.id}] ${message}`, context);
+            break;
+        }
       }
 
       return errorLog;
@@ -79,6 +87,49 @@ export function createErrorLogger() {
     getLogs: () => [...logs],
     clearLogs: () => logs.splice(0, logs.length),
   };
+}
+
+// Singleton logger functions for easy use throughout the app
+export function logError(message: string, context: Partial<ErrorContext> = {}): ErrorLog {
+  if (!globalLogger) {
+    globalLogger = createErrorLogger();
+  }
+  
+  const fullContext: ErrorContext = {
+    operation: 'unknown',
+    timestamp: Date.now(),
+    ...context
+  };
+  
+  return globalLogger.log('error', message, fullContext);
+}
+
+export function logWarn(message: string, context: Partial<ErrorContext> = {}): ErrorLog {
+  if (!globalLogger) {
+    globalLogger = createErrorLogger();
+  }
+  
+  const fullContext: ErrorContext = {
+    operation: 'unknown',
+    timestamp: Date.now(),
+    ...context
+  };
+  
+  return globalLogger.log('warn', message, fullContext);
+}
+
+export function logInfo(message: string, context: Partial<ErrorContext> = {}): ErrorLog {
+  if (!globalLogger) {
+    globalLogger = createErrorLogger();
+  }
+  
+  const fullContext: ErrorContext = {
+    operation: 'unknown',
+    timestamp: Date.now(),
+    ...context
+  };
+  
+  return globalLogger.log('info', message, fullContext);
 }
 
 // API error handling

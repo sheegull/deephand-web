@@ -4,7 +4,12 @@ export const contactFormSchema = z.object({
   name: z.string().min(1, 'この項目は必須です').min(2, '2文字以上で入力してください'),
   email: z.string().min(1, 'この項目は必須です').email('有効なメールアドレスを入力してください'),
   organization: z.string().optional(),
+  company: z.string().optional(),
+  subject: z.string().min(1, 'この項目は必須です').min(2, '2文字以上で入力してください'),
   message: z.string().min(1, 'この項目は必須です').min(10, '10文字以上で入力してください'),
+  privacyConsent: z.boolean().refine(val => val === true, {
+    message: 'プライバシーポリシーに同意してください',
+  }),
 });
 
 export const dataRequestStep1Schema = z.object({

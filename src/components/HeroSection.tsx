@@ -7,6 +7,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { t, getCurrentLanguage, setCurrentLanguage } from "../lib/i18n";
 import { LanguageToggle } from "./ui/language-toggle";
+import { logError, logInfo } from "../lib/error-handling";
 
 interface HeroSectionProps {
   onRequestClick?: () => void;
@@ -20,7 +21,7 @@ export const HeroSection = ({
   onNavClick,
   onLogoClick,
   isLoading = false,
-}: HeroSectionProps): JSX.Element => {
+}: HeroSectionProps) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<"idle" | "success" | "error">("idle");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,8 +46,6 @@ export const HeroSection = ({
     };
 
     try {
-      console.log('📨 Sending contact form data:', data);
-      
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -55,45 +54,34 @@ export const HeroSection = ({
         body: JSON.stringify(data),
       });
 
-      console.log('📡 Response status:', response.status, response.statusText);
-      console.log('📡 Response headers:', Object.fromEntries(response.headers.entries()));
-      
       // レスポンステキストを先に取得して確認
       const responseText = await response.text();
-      console.log('📄 Raw response text:', responseText);
       
       let result;
       try {
         result = JSON.parse(responseText);
-        console.log('✅ Parsed JSON result:', result);
       } catch (parseError) {
-        console.error('❌ JSON parse error:', parseError);
-        console.error('❌ Response text that failed to parse:', responseText);
         setSubmitStatus("error");
         return;
       }
       
       // 詳細な条件チェック
-      console.log('🔍 Checking conditions:');
-      console.log('  - response.ok:', response.ok);
-      console.log('  - result.success:', result.success);
-      console.log('  - result:', result);
       
       if (response.ok && result && result.success === true) {
-        console.log('✅ Form submission successful!');
         setSubmitStatus("success");
         e.currentTarget.reset();
       } else {
-        console.error('❌ Form submission failed based on conditions:', {
-          responseOk: response.ok,
-          resultExists: !!result,
-          resultSuccess: result?.success,
-          fullResult: result
+        logError('Contact form submission failed', {
+          operation: 'contact_form_submit',
+          timestamp: Date.now()
         });
         setSubmitStatus("error");
       }
     } catch (error) {
-      console.error('❌ Contact form submission failed with exception:', error);
+      logError('Contact form submission exception', {
+        operation: 'contact_form_exception',
+        timestamp: Date.now()
+      });
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -256,7 +244,7 @@ export const HeroSection = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              {t('hero.title').split('\n').map((line, index) => (
+              {t('hero.title').split('\n').map((line: string, index: number) => (
                 <motion.span 
                   key={index} 
                   className="block"

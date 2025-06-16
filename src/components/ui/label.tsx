@@ -1,6 +1,5 @@
 import * as React from "react";
-
-const cn = (...inputs: any[]) => inputs.filter(Boolean).join(" ");
+import { cn } from "@/lib/utils";
 
 const Label = React.forwardRef<
   HTMLLabelElement,

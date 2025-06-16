@@ -7,6 +7,7 @@ import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Checkbox } from './ui/checkbox';
 import { t } from '../lib/i18n';
+import { logError } from '../lib/error-handling';
 
 interface RequestDataPageProps {
   onLogoClick?: () => void;
@@ -16,7 +17,7 @@ interface RequestDataPageProps {
 export const RequestDataPage = ({
   onLogoClick,
   onFooterClick,
-}: RequestDataPageProps): JSX.Element => {
+}: RequestDataPageProps) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
   const [showValidation, setShowValidation] = React.useState(false);
@@ -36,13 +37,14 @@ export const RequestDataPage = ({
     const background = (form.querySelector('[name="backgroundPurpose"]') as HTMLTextAreaElement)
       ?.value;
 
-    const isValid =
+    const isValid = Boolean(
       name &&
       name.length >= 2 &&
       email &&
       email.includes('@') &&
       background &&
-      background.length >= 10;
+      background.length >= 10
+    );
 
     setStep1Valid(isValid);
     return isValid;
@@ -106,7 +108,10 @@ export const RequestDataPage = ({
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Data request form submission failed:', error);
+      logError('Data request form submission failed', {
+        operation: 'data_request_form_exception',
+        timestamp: Date.now()
+      });
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

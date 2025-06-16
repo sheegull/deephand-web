@@ -223,25 +223,28 @@ export function getEnvironmentStatus(): string {
   }
 }
 
-// Utility function to log environment validation results
+// Utility function to log environment validation results (development only)
 export function logEnvironmentValidation(): void {
   const config = validateEnvironmentVariables();
 
-  console.log(`🔧 Environment: ${config.environment}`);
+  // Only log in development environment
+  if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+    console.log(`🔧 Environment: ${config.environment}`);
 
-  if (config.errors.length > 0) {
-    console.error('❌ Configuration Errors:');
-    config.errors.forEach(error => console.error(`  - ${error}`));
-  }
+    if (config.errors.length > 0) {
+      console.error('❌ Configuration Errors:');
+      config.errors.forEach(error => console.error(`  - ${error}`));
+    }
 
-  if (config.warnings.length > 0) {
-    console.warn('⚠️  Configuration Warnings:');
-    config.warnings.forEach(warning => console.warn(`  - ${warning}`));
-  }
+    if (config.warnings.length > 0) {
+      console.warn('⚠️  Configuration Warnings:');
+      config.warnings.forEach(warning => console.warn(`  - ${warning}`));
+    }
 
-  if (config.isValid) {
-    console.log('✅ Environment configuration is valid');
-  } else {
-    console.error('❌ Environment configuration has errors');
+    if (config.isValid) {
+      console.log('✅ Environment configuration is valid');
+    } else {
+      console.error('❌ Environment configuration has errors');
+    }
   }
 }

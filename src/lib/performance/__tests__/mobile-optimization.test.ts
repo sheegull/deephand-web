@@ -301,7 +301,7 @@ describe('Mobile Optimization', () => {
     it('should optimize images for mobile devices', () => {
       const config = {
         devicePixelRatio: 2,
-        networkSpeed: 'slow',
+        networkSpeed: 'slow' as const,
         responsiveImages: true,
         modernFormats: true,
         qualityOptimization: true,
@@ -318,7 +318,7 @@ describe('Mobile Optimization', () => {
     it('should adapt to network conditions', () => {
       const slowConfig = {
         devicePixelRatio: 2,
-        networkSpeed: 'slow',
+        networkSpeed: 'slow' as const,
         responsiveImages: true,
         modernFormats: true,
         qualityOptimization: true,
@@ -326,7 +326,7 @@ describe('Mobile Optimization', () => {
 
       const fastConfig = {
         devicePixelRatio: 2,
-        networkSpeed: 'fast',
+        networkSpeed: 'fast' as const,
         responsiveImages: true,
         modernFormats: true,
         qualityOptimization: true,
@@ -342,7 +342,7 @@ describe('Mobile Optimization', () => {
     it('should handle high DPI displays', () => {
       const config = {
         devicePixelRatio: 3, // High DPI
-        networkSpeed: 'fast',
+        networkSpeed: 'fast' as const,
         responsiveImages: true,
         modernFormats: true,
         qualityOptimization: true,

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@/components/common';
+import { Button } from '@/components/ui/button';
 import { contactFormSchema, type ContactFormData } from '@/lib/validationSchemas';
 import { Send, CheckCircle } from 'lucide-react';
+import { logError, logInfo } from '@/lib/error-handling';
 
 export function ContactForm() {
   // 静的テキスト使用（i18nextエラー回避）
@@ -34,15 +35,24 @@ export function ContactForm() {
       const result = await response.json();
 
       if (response.ok && result.success) {
-        console.log('Contact form submitted successfully:', result);
+        logInfo('Contact form submitted successfully', {
+          operation: 'contact_form_component_success',
+          timestamp: Date.now()
+        });
         setIsSubmitted(true);
         reset();
       } else {
-        console.error('Form submission failed:', result);
+        logError('Contact form submission failed', {
+          operation: 'contact_form_component_error',
+          timestamp: Date.now()
+        });
         alert('送信に失敗しました。しばらくしてから再度お試しください。');
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      logError('Contact form exception', {
+        operation: 'contact_form_component_exception',
+        timestamp: Date.now()
+      });
       alert('送信に失敗しました。しばらくしてから再度お試しください。');
     } finally {
       setIsSubmitting(false);

@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { contactFormSchema } from '@/lib/validationSchemas';
 import { sendContactEmail, validateEmailConfig } from '@/lib/email';
+import { logError, logInfo } from '@/lib/error-handling';
 
 // Enable server-side rendering for this endpoint
 // export const prerender = false;
@@ -40,7 +41,11 @@ export const POST: APIRoute = async ({ request }) => {
       }
       body = JSON.parse(text);
     } catch (jsonError) {
-      console.error('JSON parsing error:', jsonError);
+      logError('JSON parsing error in contact form', {
+        operation: 'contact_form_parse',
+        timestamp: Date.now(),
+        url: '/api/contact'
+      });
       return new Response(
         JSON.stringify({
           success: false,
@@ -74,7 +79,11 @@ export const POST: APIRoute = async ({ request }) => {
     // Validate email configuration
     const emailConfig = validateEmailConfig();
     if (!emailConfig.isValid) {
-      console.error('Email configuration errors:', emailConfig.errors);
+      logError('Email configuration invalid for contact form', {
+        operation: 'contact_form_email_config',
+        timestamp: Date.now(),
+        url: '/api/contact'
+      });
       return new Response(
         JSON.stringify({
           success: false,
@@ -93,7 +102,11 @@ export const POST: APIRoute = async ({ request }) => {
     const emailResult = await sendContactEmail(result.data);
 
     if (!emailResult.success) {
-      console.error('Email sending failed:', emailResult.error);
+      logError('Contact email sending failed', {
+        operation: 'contact_form_email_send',
+        timestamp: Date.now(),
+        url: '/api/contact'
+      });
       return new Response(
         JSON.stringify({
           success: false,
@@ -109,10 +122,10 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Log successful submission (without sensitive data)
-    console.log('Contact form submitted successfully:', {
-      emailId: emailResult.emailId,
-      senderEmail: result.data.email,
-      timestamp: new Date().toISOString(),
+    logInfo('Contact form submitted successfully', {
+      operation: 'contact_form_success',
+      timestamp: Date.now(),
+      url: '/api/contact'
     });
 
     return new Response(
@@ -129,7 +142,11 @@ export const POST: APIRoute = async ({ request }) => {
       }
     );
   } catch (error) {
-    console.error('Contact form error:', error);
+    logError('Unexpected error in contact form', {
+      operation: 'contact_form_exception',
+      timestamp: Date.now(),
+      url: '/api/contact'
+    });
 
     return new Response(
       JSON.stringify({

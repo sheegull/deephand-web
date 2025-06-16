@@ -27,6 +27,7 @@ export const HeroSection = ({
   const [submitStatus, setSubmitStatus] = React.useState<"idle" | "success" | "error">("idle");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClient, setIsClient] = React.useState(false);
+  const [validationErrors, setValidationErrors] = React.useState<string[]>([]);
   
   // Hydration-safe client detection
   React.useEffect(() => {
@@ -56,6 +57,7 @@ export const HeroSection = ({
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setValidationErrors([]);
     
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -64,6 +66,26 @@ export const HeroSection = ({
       email: formData.get('email'),
       message: formData.get('message'),
     };
+    
+    // 最低限のバリデーション
+    const errors: string[] = [];
+    if (!data.name || (data.name as string).trim().length === 0) {
+      errors.push('お名前を入力してください');
+    }
+    if (!data.email || (data.email as string).trim().length === 0) {
+      errors.push('メールアドレスを入力してください');
+    } else if (!(data.email as string).includes('@')) {
+      errors.push('有効なメールアドレスを入力してください');
+    }
+    if (!data.message || (data.message as string).trim().length === 0) {
+      errors.push('メッセージを入力してください');
+    }
+    
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -90,6 +112,25 @@ export const HeroSection = ({
         return;
       }
       
+      // 🔍 DEBUG: レスポンス詳細ログ
+      console.log('🔍 [CONTACT FORM DEBUG] Response details:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+        headers: Object.fromEntries(response.headers.entries()),
+        url: response.url
+      });
+      
+      console.log('🔍 [CONTACT FORM DEBUG] Parsed result:', {
+        result,
+        resultType: typeof result,
+        resultSuccess: result?.success,
+        resultSuccessType: typeof result?.success,
+        resultEmailId: result?.emailId,
+        resultMessage: result?.message,
+        resultErrors: result?.errors
+      });
+      
       // 改善された成功判定：主要機能（問い合わせ送信）の成功を優先
       // 1. HTTP 200 レスポンス = サーバーが正常に処理完了
       // 2. result.success !== false = 明示的な失敗でない
@@ -99,7 +140,18 @@ export const HeroSection = ({
          (result.success !== false && result.emailId) ||
          response.status === 200);
       
+      // 🔍 DEBUG: 成功判定の詳細ログ
+      console.log('🔍 [CONTACT FORM DEBUG] Success logic evaluation:', {
+        'response.ok': response.ok,
+        'result.success === true': result.success === true,
+        'result.success !== false': result.success !== false,
+        'result.emailId exists': !!result.emailId,
+        'response.status === 200': response.status === 200,
+        'Final isMainFunctionSuccessful': isMainFunctionSuccessful
+      });
+      
       if (isMainFunctionSuccessful) {
+        console.log('✅ [CONTACT FORM DEBUG] Setting status to SUCCESS');
         setSubmitStatus("success");
         e.currentTarget.reset();
         
@@ -110,6 +162,7 @@ export const HeroSection = ({
           emailId: result?.emailId
         });
       } else {
+        console.log('❌ [CONTACT FORM DEBUG] Setting status to ERROR');
         // 真のエラー（バリデーション失敗、ネットワークエラー等）のみエラー表示
         logError('Contact form submission failed', {
           operation: 'contact_form_submit',
@@ -162,7 +215,7 @@ export const HeroSection = ({
       />
       
       {/* Navigation Bar */}
-      <header className="fixed top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-20 bg-[#1e1e1e]/90 backdrop-blur-sm">
+      <header className="fixed top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-20">
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavigation('/')}>
@@ -351,7 +404,7 @@ export const HeroSection = ({
                   <Input
                     name="name"
                     placeholder={t('contact.placeholder.name')}
-                    required
+                    minLength={1}
                     className="h-12 !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
                   />
                 </div>
@@ -375,7 +428,6 @@ export const HeroSection = ({
                     name="email"
                     type="email"
                     placeholder={t('contact.placeholder.email')}
-                    required
                     className="h-12 !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
                   />
                 </div>
@@ -388,7 +440,7 @@ export const HeroSection = ({
                   <Textarea
                     name="message"
                     placeholder={t('contact.placeholder.message')}
-                    required
+                    minLength={1}
                     className="h-[80px] !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base resize-none focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
                   />
                 </div>
@@ -411,6 +463,19 @@ export const HeroSection = ({
                   <p className="text-red-500 text-sm text-center font-alliance font-light">
                     {t('contact.error')}
                   </p>
+                )}
+                {validationErrors.length > 0 && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                    <p className="text-red-800 text-sm font-medium mb-2">入力に問題があります：</p>
+                    <ul className="text-red-700 text-sm space-y-1">
+                      {validationErrors.map((error, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-red-500 mr-2">•</span>
+                          {error}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </form>
             </CardContent>

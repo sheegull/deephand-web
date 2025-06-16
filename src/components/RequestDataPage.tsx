@@ -24,6 +24,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
   const [currentStep, setCurrentStep] = React.useState(1);
   const [step1Valid, setStep1Valid] = React.useState(false);
   const [isClient, setIsClient] = React.useState(false);
+  const [validationErrors, setValidationErrors] = React.useState<string[]>([]);
   const totalSteps = 2;
 
   // Hydration-safe client detection
@@ -38,7 +39,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     }
   };
 
-  // Validation for step 1
+  // Validation for step 1 - 最低限のバリデーション
   const validateStep1 = () => {
     const form = document.querySelector('form') as HTMLFormElement;
     if (!form) return false;
@@ -50,11 +51,11 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
 
     const isValid = Boolean(
       name &&
-        name.length >= 2 &&
+        name.length >= 1 &&
         email &&
         email.includes('@') &&
         background &&
-        background.length >= 10
+        background.length >= 1
     );
 
     setStep1Valid(isValid);
@@ -77,15 +78,55 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setShowValidation(true);
+    setValidationErrors([]);
 
-    // Validate data types selection
+    const formData = new FormData(e.currentTarget);
+    
+    // バリデーション
+    const errors: string[] = [];
+    
+    // Step 1のバリデーション
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const backgroundPurpose = formData.get('backgroundPurpose') as string;
+    
+    if (!name || name.trim().length === 0) {
+      errors.push('お名前を入力してください');
+    }
+    if (!email || email.trim().length === 0) {
+      errors.push('メールアドレスを入力してください');
+    } else if (!email.includes('@')) {
+      errors.push('有効なメールアドレスを入力してください');
+    }
+    if (!backgroundPurpose || backgroundPurpose.trim().length === 0) {
+      errors.push('背景・目的を入力してください');
+    }
+    
+    // Step 2のバリデーション
     if (selectedDataTypes.length === 0) {
-      setSubmitStatus('error');
+      errors.push('データタイプを選択してください');
+    }
+    
+    const dataVolume = formData.get('dataVolume') as string;
+    const deadline = formData.get('deadline') as string;
+    const budget = formData.get('budget') as string;
+    
+    if (!dataVolume || dataVolume.trim().length === 0) {
+      errors.push('データ量を入力してください');
+    }
+    if (!deadline || deadline.trim().length === 0) {
+      errors.push('希望納期を入力してください');
+    }
+    if (!budget || budget.trim().length === 0) {
+      errors.push('予算を入力してください');
+    }
+
+    if (errors.length > 0) {
+      setValidationErrors(errors);
       setIsSubmitting(false);
       return;
     }
 
-    const formData = new FormData(e.currentTarget);
     const data = {
       name: formData.get('name'),
       organization: formData.get('organization'),
@@ -126,6 +167,25 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         return;
       }
       
+      // 🔍 DEBUG: レスポンス詳細ログ
+      console.log('🔍 [DATA REQUEST DEBUG] Response details:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+        headers: Object.fromEntries(response.headers.entries()),
+        url: response.url
+      });
+      
+      console.log('🔍 [DATA REQUEST DEBUG] Parsed result:', {
+        result,
+        resultType: typeof result,
+        resultSuccess: result?.success,
+        resultSuccessType: typeof result?.success,
+        resultEmailId: result?.emailId,
+        resultMessage: result?.message,
+        resultErrors: result?.errors
+      });
+      
       // 改善された成功判定：主要機能（データリクエスト送信）の成功を優先
       // 1. HTTP 200 レスポンス = サーバーが正常に処理完了
       // 2. result.success !== false = 明示的な失敗でない
@@ -135,7 +195,18 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
          (result.success !== false && result.emailId) ||
          response.status === 200);
       
+      // 🔍 DEBUG: 成功判定の詳細ログ
+      console.log('🔍 [DATA REQUEST DEBUG] Success logic evaluation:', {
+        'response.ok': response.ok,
+        'result.success === true': result.success === true,
+        'result.success !== false': result.success !== false,
+        'result.emailId exists': !!result.emailId,
+        'response.status === 200': response.status === 200,
+        'Final isMainFunctionSuccessful': isMainFunctionSuccessful
+      });
+      
       if (isMainFunctionSuccessful) {
+        console.log('✅ [DATA REQUEST DEBUG] Setting status to SUCCESS');
         setSubmitStatus('success');
         e.currentTarget.reset();
         setSelectedDataTypes([]);
@@ -149,6 +220,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
           emailId: result?.emailId
         });
       } else {
+        console.log('❌ [DATA REQUEST DEBUG] Setting status to ERROR');
         // 真のエラー（バリデーション失敗、ネットワークエラー等）のみエラー表示
         logError('Data request form submission failed', {
           operation: 'data_request_form_failed',
@@ -276,8 +348,21 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       </div>
 
       {/* Right side with form */}
-      <div className="w-full md:w-1/2 bg-white flex-1">
-        <Card className="border-0 shadow-none h-full rounded-none bg-white">
+      <div className="w-full md:w-1/2 bg-white flex-1 relative">
+        {/* Background MetaBalls for form area */}
+        <div className="absolute inset-0 z-0 opacity-5">
+          <MetaBalls
+            color="#234ad9"
+            cursorBallColor="#234ad9"
+            speed={0.05}
+            ballCount={6}
+            animationSize={15}
+            enableMouseInteraction={false}
+            enableTransparency={true}
+          />
+        </div>
+        
+        <Card className="border-0 shadow-none h-full rounded-none bg-transparent relative z-10">
           <CardContent className="flex flex-col gap-8 p-6 md:p-20">
             {/* Header */}
             <div className="flex flex-col gap-4">
@@ -349,7 +434,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                         id={field.id}
                         name={field.id}
                         placeholder={field.placeholder}
-                        required={field.required}
+                        minLength={field.id === 'email' ? 0 : 1}
                         className="h-12 rounded-md font-sans text-sm"
                       />
                     </div>
@@ -367,7 +452,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       id="backgroundPurpose"
                       name="backgroundPurpose"
                       placeholder={t('request.placeholder.backgroundPurpose')}
-                      required
+                      minLength={1}
                       className="h-[100px] rounded-md font-sans text-sm resize-none"
                     />
                   </div>
@@ -442,7 +527,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       id="dataVolume"
                       name="dataVolume"
                       placeholder={t('request.placeholder.dataVolume')}
-                      required
+                      minLength={1}
                       className="h-[100px] rounded-md font-sans text-sm resize-none"
                     />
                   </div>
@@ -459,7 +544,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       id="deadline"
                       name="deadline"
                       placeholder={t('request.placeholder.deadline')}
-                      required
+                      minLength={1}
                       className="h-[100px] rounded-md font-sans text-sm resize-none"
                     />
                   </div>
@@ -476,7 +561,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       id="budget"
                       name="budget"
                       placeholder={t('request.placeholder.budget')}
-                      required
+                      minLength={1}
                       className="h-[100px] rounded-md font-sans text-sm resize-none"
                     />
                   </div>
@@ -566,6 +651,19 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   <p className="text-red-500 text-sm text-center font-alliance font-light">
                     {t('request.error')}
                   </p>
+                )}
+                {validationErrors.length > 0 && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <p className="text-red-800 text-sm font-medium mb-2">入力に問題があります：</p>
+                    <ul className="text-red-700 text-sm space-y-1">
+                      {validationErrors.map((error, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-red-500 mr-2">•</span>
+                          {error}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </div>
             </form>

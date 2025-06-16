@@ -1,0 +1,26 @@
+{
+  "name": "DeepHand - データアノテーションサービス",
+  "short_name": "DeepHand",
+  "description": "AI・機械学習のためのデータアノテーションサービス",
+  "theme_color": "#234ad9",
+  "background_color": "#1e1e1e",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

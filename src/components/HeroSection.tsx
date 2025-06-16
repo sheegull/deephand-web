@@ -25,12 +25,31 @@ export const HeroSection = ({
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<"idle" | "success" | "error">("idle");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClient, setIsClient] = React.useState(false);
+  
+  // Hydration-safe client detection
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
   
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { scrollYProgress } = useScroll();
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
+  // Client-safe navigation functions
+  const handleNavigation = (url: string) => {
+    if (isClient && typeof window !== 'undefined') {
+      window.location.href = url;
+    }
+  };
+
+  const handleReload = () => {
+    if (isClient && typeof window !== 'undefined') {
+      window.location.reload();
+    }
+  };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,7 +92,7 @@ export const HeroSection = ({
         // バリデーションエラーやその他のエラーをログ
         logError('Contact form submission failed', {
           operation: 'contact_form_submit',
-          timestamp: Date.now(),
+          timestamp: isClient ? Date.now() : 0,
           status: response.status,
           errors: result?.errors || result?.message || 'Unknown error'
         });
@@ -82,7 +101,7 @@ export const HeroSection = ({
     } catch (error) {
       logError('Contact form submission exception', {
         operation: 'contact_form_exception',
-        timestamp: Date.now()
+        timestamp: isClient ? Date.now() : 0
       });
       setSubmitStatus("error");
     } finally {
@@ -110,7 +129,7 @@ export const HeroSection = ({
       <header className="fixed top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-20 bg-[#1e1e1e]">
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.location.href = '/'}>
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavigation('/')}>
             <img className="w-8 h-8 object-cover" alt="Icon" src="/logo.png" />
             <div className="font-alliance font-light text-white text-xl md:text-2xl leading-[28.8px]">
               DeepHand
@@ -152,7 +171,7 @@ export const HeroSection = ({
               currentLanguage={getCurrentLanguage()}
               onLanguageChange={(lang) => {
                 setCurrentLanguage(lang);
-                window.location.reload();
+                handleReload();
               }}
             />
             <motion.div
@@ -174,7 +193,7 @@ export const HeroSection = ({
             >
               <Button
                 onClick={() => {
-                  window.location.href = '/request';
+                  handleNavigation('/request');
                 }}
                 className="w-[120px] md:w-[150px] h-9 md:h-11 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-xs md:text-sm transition-all duration-300 hover:bg-[#234ad9] hover:border-[#234ad9]"
               >
@@ -206,13 +225,13 @@ export const HeroSection = ({
                   currentLanguage={getCurrentLanguage()}
                   onLanguageChange={(lang) => {
                     setCurrentLanguage(lang);
-                    window.location.reload();
+                    handleReload();
                   }}
                 />
               </div>
               <Button
                 onClick={() => {
-                  window.location.href = '/request';
+                  handleNavigation('/request');
                 }}
                 className="w-full h-9 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-sm transition-all duration-300 ease-out hover:bg-[#234ad9] hover:border-[#234ad9] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#234ad9]/25 hover:scale-105 active:scale-95 active:translate-y-0 active:bg-[#1e3eb8] active:border-[#1e3eb8] active:shadow-md"
               >
@@ -262,7 +281,7 @@ export const HeroSection = ({
             </motion.p>
             <Button
               onClick={() => {
-                window.location.href = '/request';
+                handleNavigation('/request');
               }}
               size="lg"
               className="w-40 mx-auto md:mx-0 transition-transform hover:scale-105 hover:-translate-y-1 active:scale-95"

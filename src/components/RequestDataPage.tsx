@@ -23,7 +23,20 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
   const [otherDataType, setOtherDataType] = React.useState('');
   const [currentStep, setCurrentStep] = React.useState(1);
   const [step1Valid, setStep1Valid] = React.useState(false);
+  const [isClient, setIsClient] = React.useState(false);
   const totalSteps = 2;
+
+  // Hydration-safe client detection
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Client-safe navigation functions
+  const handleNavigation = (url: string) => {
+    if (isClient && typeof window !== 'undefined') {
+      window.location.href = url;
+    }
+  };
 
   // Validation for step 1
   const validateStep1 = () => {
@@ -97,18 +110,42 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
+      // レスポンステキストを先に取得して確認
+      const responseText = await response.text();
+      
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (parseError) {
+        logError('Data request form JSON parse failed', {
+          operation: 'data_request_form_parse_error',
+          timestamp: isClient ? Date.now() : 0,
+        });
+        setSubmitStatus('error');
+        return;
+      }
+      
+      // 詳細な条件チェック
+      if (response.ok && result && result.success === true) {
         setSubmitStatus('success');
         e.currentTarget.reset();
         setSelectedDataTypes([]);
         setOtherDataType('');
+        setCurrentStep(1); // Reset to first step
       } else {
+        // バリデーションエラーやその他のエラーをログ
+        logError('Data request form submission failed', {
+          operation: 'data_request_form_failed',
+          timestamp: isClient ? Date.now() : 0,
+          responseStatus: response.status,
+          responseData: result,
+        });
         setSubmitStatus('error');
       }
     } catch (error) {
       logError('Data request form submission failed', {
         operation: 'data_request_form_exception',
-        timestamp: Date.now(),
+        timestamp: isClient ? Date.now() : 0,
       });
       setSubmitStatus('error');
     } finally {
@@ -163,7 +200,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       <div className="hidden md:flex w-full md:w-1/2 min-h-screen relative flex-col">
         <div
           className="flex items-center mt-12 ml-4 md:ml-14 cursor-pointer"
-          onClick={() => (window.location.href = '/')}
+          onClick={() => (handleNavigation('/'))}
         >
           <img className="w-[40px] h-[40px] object-cover" alt="Icon" src="/logo.png" />
           <div className="ml-1 font-alliance font-light text-white text-[32px] leading-[28.8px] whitespace-nowrap">
@@ -214,7 +251,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       {/* Mobile header */}
       <div
         className="flex justify-center items-center md:hidden mt-6 mb-6 cursor-pointer"
-        onClick={() => (window.location.href = '/')}
+        onClick={() => (handleNavigation('/'))}
       >
         <img className="w-[24px] h-[24px] object-cover" src="/logo.png" alt="Icon" />
         <div className="ml-0.5 font-alliance font-light text-white text-[24px] leading-[20px] whitespace-nowrap">

@@ -42,7 +42,7 @@ export function createErrorLogger() {
   return {
     log: (level: 'error' | 'warn' | 'info', message: string, context: ErrorContext): ErrorLog => {
       const errorLog: ErrorLog = {
-        id: generateErrorId(),
+        id: generateLogId(level),
         level,
         message: sanitizeMessage(message),
         context: sanitizeContext(context),
@@ -334,8 +334,13 @@ export function isRetryableError(error: unknown): boolean {
 }
 
 // Utility functions
+function generateLogId(level: 'error' | 'warn' | 'info'): string {
+  const prefix = level === 'error' ? 'err' : level === 'warn' ? 'warn' : 'info';
+  return `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+}
+
 function generateErrorId(): string {
-  return `err_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  return generateLogId('error');
 }
 
 function sanitizeMessage(message: string): string {

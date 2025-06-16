@@ -99,5 +99,34 @@
     "nextButton": "次へ →",
     "prevButton": "← 前へ",
     "otherSpecify": "具体的な内容をご記入ください"
+  },
+  "email": {
+    "admin": {
+      "subject": "お問い合わせ - DeepHand",
+      "title": "新しいお問い合わせ",
+      "subtitle": "管理者様への通知メールです",
+      "contactDetails": "お問い合わせ詳細",
+      "name": "お名前",
+      "email": "メールアドレス",
+      "organization": "ご所属",
+      "timestamp": "送信日時",
+      "messageContent": "お問い合わせ内容",
+      "actionRequired": "対応アクション",
+      "respondWithin24h": "24時間以内にご返信ください",
+      "notEntered": "未入力"
+    },
+    "user": {
+      "subject": "お問い合わせありがとうございます - DeepHand",
+      "title": "お問い合わせありがとうございます",
+      "subtitle": "お問い合わせを受け付けました",
+      "thankYou": "この度は DeepHand にお問い合わせいただき、ありがとうございます",
+      "responseTime": "24時間以内にご返信いたします",
+      "followUp": "お急ぎの場合は、直接お電話でお問い合わせください",
+      "contactInfo": "お問い合わせ情報",
+      "nextSteps": "今後の流れ",
+      "step1": "担当者がお問い合わせ内容を確認いたします",
+      "step2": "詳細な回答を準備いたします", 
+      "step3": "24時間以内にご返信いたします"
+    }
   }
 }

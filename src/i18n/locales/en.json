@@ -99,5 +99,34 @@
     "nextButton": "Next →",
     "prevButton": "← Back",
     "otherSpecify": "Please specify"
+  },
+  "email": {
+    "admin": {
+      "subject": "Contact Inquiry - DeepHand",
+      "title": "New Contact Inquiry",
+      "subtitle": "Administrator notification email",
+      "contactDetails": "Contact Details",
+      "name": "Name",
+      "email": "Email",
+      "organization": "Organization",
+      "timestamp": "Submitted At",
+      "messageContent": "Message Content",
+      "actionRequired": "Action Required",
+      "respondWithin24h": "Respond within 24 hours",
+      "notEntered": "Not provided"
+    },
+    "user": {
+      "subject": "Thank you for your inquiry - DeepHand",
+      "title": "Thank You for Your Inquiry",
+      "subtitle": "We have received your inquiry",
+      "thankYou": "Thank you for contacting DeepHand",
+      "responseTime": "We will respond within 24 hours",
+      "followUp": "If you have any urgent matters, please contact us directly",
+      "contactInfo": "Contact Information",
+      "nextSteps": "Next Steps",
+      "step1": "Our team will review your inquiry",
+      "step2": "We will prepare a detailed response",
+      "step3": "You will receive our reply within 24 hours"
+    }
   }
 }

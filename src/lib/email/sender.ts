@@ -55,8 +55,8 @@ export async function sendContactEmail(data: ContactFormData): Promise<EmailResu
       to: [ENV.TEST_EMAIL_RECIPIENT || ENV.ADMIN_EMAIL],
       replyTo: data.email,
       subject: isJapanese ? 'お問い合わせ - DeepHand' : 'Contact Inquiry - DeepHand',
-      html: generateContactAdminEmailHtml(data),
-      text: generateContactAdminEmailText(data),
+      html: generateContactAdminEmailHtml(data, language),
+      text: generateContactAdminEmailText(data, language),
     });
 
     if (adminEmailResult.error) {
@@ -71,15 +71,17 @@ export async function sendContactEmail(data: ContactFormData): Promise<EmailResu
       from: ENV.NOREPLY_EMAIL,
       to: data.email,
       subject: isJapanese ? 'お問い合わせありがとうございます - DeepHand' : 'Thank you for your inquiry - DeepHand',
-      html: generateContactConfirmationEmailHtml(data),
-      text: generateContactConfirmationEmailText(data),
+      html: generateContactConfirmationEmailHtml(data, language),
+      text: generateContactConfirmationEmailText(data, language),
     });
 
     if (userEmailResult.error) {
       // Admin email sent but user email failed - log warning but don't fail
-      logWarn('User confirmation email failed', {
+      logWarn(`User confirmation email failed: ${userEmailResult.error.message}`, {
         operation: 'contact_email_user_confirmation',
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        userEmail: data.email,
+        errorType: userEmailResult.error.name || 'unknown'
       });
     }
 
@@ -114,8 +116,8 @@ export async function sendDataRequestEmail(data: CurrentDataRequestFormData): Pr
       to: [ENV.TEST_EMAIL_RECIPIENT || ENV.ADMIN_EMAIL],
       replyTo: data.email,
       subject: isJapanese ? 'データリクエスト - DeepHand' : 'Data Request - DeepHand',
-      html: generateDataRequestAdminEmailHtml(data),
-      text: generateDataRequestAdminEmailText(data),
+      html: generateDataRequestAdminEmailHtml(data, language),
+      text: generateDataRequestAdminEmailText(data, language),
     });
 
     if (salesEmailResult.error) {
@@ -130,14 +132,16 @@ export async function sendDataRequestEmail(data: CurrentDataRequestFormData): Pr
       from: ENV.NOREPLY_EMAIL,
       to: data.email,
       subject: isJapanese ? 'データリクエストを受け付けました - DeepHand' : 'Your data request has been received - DeepHand',
-      html: generateDataRequestConfirmationEmailHtml(data),
-      text: generateDataRequestConfirmationEmailText(data),
+      html: generateDataRequestConfirmationEmailHtml(data, language),
+      text: generateDataRequestConfirmationEmailText(data, language),
     });
 
     if (userEmailResult.error) {
-      logWarn('Data request user confirmation email failed', {
+      logWarn(`Data request user confirmation email failed: ${userEmailResult.error.message}`, {
         operation: 'data_request_email_user_confirmation',
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        userEmail: data.email,
+        errorType: userEmailResult.error.name || 'unknown'
       });
     }
 

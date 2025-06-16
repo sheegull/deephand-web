@@ -66,14 +66,16 @@ export const HeroSection = ({
       }
       
       // 詳細な条件チェック
-      
       if (response.ok && result && result.success === true) {
         setSubmitStatus("success");
         e.currentTarget.reset();
       } else {
+        // バリデーションエラーやその他のエラーをログ
         logError('Contact form submission failed', {
           operation: 'contact_form_submit',
-          timestamp: Date.now()
+          timestamp: Date.now(),
+          status: response.status,
+          errors: result?.errors || result?.message || 'Unknown error'
         });
         setSubmitStatus("error");
       }
@@ -174,14 +176,8 @@ export const HeroSection = ({
                 onClick={() => {
                   window.location.href = '/request';
                 }}
-                className="w-[120px] md:w-[150px] h-9 md:h-11 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-xs md:text-sm relative overflow-hidden group transition-all duration-300"
+                className="w-[120px] md:w-[150px] h-9 md:h-11 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-xs md:text-sm transition-all duration-300 hover:bg-[#234ad9] hover:border-[#234ad9]"
               >
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ scale: 0, rotate: 45 }}
-                  whileHover={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                />
                 <span className="relative z-10">{t('nav.getStarted')}</span>
               </Button>
             </motion.div>
@@ -264,42 +260,15 @@ export const HeroSection = ({
             >
               {t('hero.subtitle')}
             </motion.p>
-            <motion.div
-              whileHover={{ 
-                scale: 1.05,
-                y: -3,
-                boxShadow: "0 10px 30px rgba(35, 74, 217, 0.4)"
+            <Button
+              onClick={() => {
+                window.location.href = '/request';
               }}
-              whileTap={{ 
-                scale: 0.95,
-                transition: { duration: 0.1 }
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 300, 
-                damping: 20,
-                duration: 0.8, 
-                delay: 0.8 
-              }}
+              size="lg"
+              className="w-40 mx-auto md:mx-0 transition-transform hover:scale-105 hover:-translate-y-1 active:scale-95"
             >
-              <Button
-                onClick={() => {
-                  window.location.href = '/request';
-                }}
-                size="lg"
-                className="w-40 mx-auto md:mx-0 relative overflow-hidden group"
-              >
-                <motion.div 
-                  className="absolute inset-1 bg-gradient-to-r from-[#1e3eb8] to-[#234ad9] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded"
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  whileHover={{ scale: 0.98, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <span className="relative z-10">{t('hero.requestButton')}</span>
-              </Button>
-            </motion.div>
+              <span className="relative z-10">{t('hero.requestButton')}</span>
+            </Button>
           </motion.div>
 
           {/* Contact Form Card */}
@@ -309,12 +278,12 @@ export const HeroSection = ({
             animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
-            <Card className="w-full md:w-[460px] !bg-[#3A3A3A] rounded-2xl shadow-[0px_0px_40px_#0000004d] border-none backdrop-blur-sm">
+            <Card className="w-full md:w-[460px] !bg-[#2A2A2A] rounded-2xl shadow-[0px_0px_40px_#0000004d] border border-gray-700 backdrop-blur-sm">
             <CardHeader className="px-8 pt-8 pb-4">
               <CardTitle className="font-alliance font-normal text-white text-xl md:text-2xl leading-[28px]">
                 {t('contact.title')}
               </CardTitle>
-              <CardDescription className="font-alliance font-light text-[#aaaaaa] text-sm leading-[18px] whitespace-pre-line">
+              <CardDescription className="font-alliance font-light text-white text-sm leading-[18px] whitespace-pre-line">
                 {t('contact.subtitle')}
               </CardDescription>
             </CardHeader>
@@ -328,7 +297,7 @@ export const HeroSection = ({
                     name="name"
                     placeholder={t('contact.placeholder.name')}
                     required
-                    className="h-12 !bg-[#2A2A2A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-gray-500 focus:!ring-1 focus:!ring-gray-500/20"
+                    className="h-12 !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
                   />
                 </div>
 
@@ -339,7 +308,7 @@ export const HeroSection = ({
                   <Input
                     name="organization"
                     placeholder={t('contact.placeholder.organization')}
-                    className="h-12 !bg-[#2A2A2A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-gray-500 focus:!ring-1 focus:!ring-gray-500/20"
+                    className="h-12 !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
                   />
                 </div>
 
@@ -352,7 +321,7 @@ export const HeroSection = ({
                     type="email"
                     placeholder={t('contact.placeholder.email')}
                     required
-                    className="h-12 !bg-[#2A2A2A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-gray-500 focus:!ring-1 focus:!ring-gray-500/20"
+                    className="h-12 !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
                   />
                 </div>
 
@@ -365,7 +334,7 @@ export const HeroSection = ({
                     name="message"
                     placeholder={t('contact.placeholder.message')}
                     required
-                    className="h-[80px] !bg-[#2A2A2A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base resize-none focus:!border-gray-500 focus:!ring-1 focus:!ring-gray-500/20"
+                    className="h-[80px] !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base resize-none focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
                   />
                 </div>
 

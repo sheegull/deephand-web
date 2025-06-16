@@ -4,18 +4,18 @@ import { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#234ad9] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         primary:
-          'bg-gradient-to-r from-primary to-primary-dark text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0',
+          'bg-[#234ad9] text-white shadow-md hover:bg-[#1e3eb8] hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:bg-[#183099]',
         secondary:
-          'border-2 border-gray-300 bg-transparent text-gray-900 hover:border-primary hover:text-primary',
+          'border-2 border-gray-300 bg-transparent text-gray-900 hover:border-[#234ad9] hover:text-[#234ad9]',
         outline:
-          'border border-primary text-primary bg-transparent hover:bg-primary hover:text-white',
+          'border border-[#234ad9] text-[#234ad9] bg-transparent hover:bg-[#234ad9] hover:text-white',
         ghost: 'text-gray-900 hover:bg-gray-100',
-        link: 'text-primary underline-offset-4 hover:underline',
+        link: 'text-[#234ad9] underline-offset-4 hover:underline',
       },
       size: {
         sm: 'h-9 px-3 text-xs',

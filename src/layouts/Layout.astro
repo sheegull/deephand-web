@@ -18,6 +18,12 @@ const analytics = getAnalyticsProps();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Alliance Font Preload - AllianceNo2 TTF -->
+    <link rel="preload" href="/fonts/AllianceNo2-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/AllianceNo2-Medium.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/AllianceNo2-SemiBold.ttf" as="font" type="font/ttf" crossorigin />
+    
     <title>{title}</title>
     
     <!-- Cloudflare Web Analytics -->
@@ -32,7 +38,13 @@ const analytics = getAnalyticsProps();
 
 <style is:global>
   html {
-    font-family: system-ui, sans-serif;
+    font-family: 'Alliance', system-ui, -apple-system, sans-serif;
+  }
+  body {
+    font-family: 'Alliance', system-ui, -apple-system, sans-serif;
+  }
+  .font-alliance {
+    font-family: 'Alliance', system-ui, -apple-system, sans-serif;
   }
   code {
     font-family:

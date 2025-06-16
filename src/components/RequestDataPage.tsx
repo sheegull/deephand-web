@@ -6,6 +6,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Checkbox } from './ui/checkbox';
+import MetaBalls from './ui/MetaBalls';
 import { t } from '../lib/i18n';
 import { logError } from '../lib/error-handling';
 
@@ -14,10 +15,7 @@ interface RequestDataPageProps {
   onFooterClick?: (element: string) => void;
 }
 
-export const RequestDataPage = ({
-  onLogoClick,
-  onFooterClick,
-}: RequestDataPageProps) => {
+export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageProps) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
   const [showValidation, setShowValidation] = React.useState(false);
@@ -39,11 +37,11 @@ export const RequestDataPage = ({
 
     const isValid = Boolean(
       name &&
-      name.length >= 2 &&
-      email &&
-      email.includes('@') &&
-      background &&
-      background.length >= 10
+        name.length >= 2 &&
+        email &&
+        email.includes('@') &&
+        background &&
+        background.length >= 10
     );
 
     setStep1Valid(isValid);
@@ -110,7 +108,7 @@ export const RequestDataPage = ({
     } catch (error) {
       logError('Data request form submission failed', {
         operation: 'data_request_form_exception',
-        timestamp: Date.now()
+        timestamp: Date.now(),
       });
       setSubmitStatus('error');
     } finally {
@@ -173,8 +171,23 @@ export const RequestDataPage = ({
           </div>
         </div>
 
-        {/* Spacer to push footer to bottom */}
-        <div className="flex-1"></div>
+        {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+        <div className="hidden md:flex flex-1 relative">
+          <div className="absolute inset-0 z-0">
+            <MetaBalls
+              color="#ffffff"
+              cursorBallColor="#ffffff" 
+              speed={0.2}
+              ballCount={12}
+              animationSize={25}
+              enableMouseInteraction={true}
+              enableTransparency={true}
+              hoverSmoothness={0.08}
+              clumpFactor={0.8}
+              cursorBallSize={2.5}
+            />
+          </div>
+        </div>
 
         {/* Footer for desktop */}
         <footer className="mb-8 ml-4 md:ml-14 flex flex-col gap-4">

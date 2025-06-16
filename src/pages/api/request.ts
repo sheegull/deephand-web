@@ -5,7 +5,7 @@ import type { CurrentDataRequestFormData } from '@/lib/validationSchemas';
 import { logError, logInfo } from '@/lib/error-handling';
 
 // Enable server-side rendering for this endpoint
-// export const prerender = false;
+export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {

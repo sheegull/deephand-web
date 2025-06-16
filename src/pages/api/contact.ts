@@ -3,7 +3,7 @@ import { contactFormSchema } from '@/lib/validationSchemas';
 import { sendContactEmail, validateEmailConfig } from '@/lib/email';
 
 // Enable server-side rendering for this endpoint
-export const prerender = false;
+// export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -112,7 +112,6 @@ export const POST: APIRoute = async ({ request }) => {
     console.log('Contact form submitted successfully:', {
       emailId: emailResult.emailId,
       senderEmail: result.data.email,
-      subject: result.data.subject,
       timestamp: new Date().toISOString(),
     });
 

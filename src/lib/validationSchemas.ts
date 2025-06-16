@@ -3,12 +3,8 @@ import { z } from 'zod';
 export const contactFormSchema = z.object({
   name: z.string().min(1, 'この項目は必須です').min(2, '2文字以上で入力してください'),
   email: z.string().min(1, 'この項目は必須です').email('有効なメールアドレスを入力してください'),
-  company: z.string().optional(),
-  subject: z.string().min(1, 'この項目は必須です').min(5, '5文字以上で入力してください'),
+  organization: z.string().optional(),
   message: z.string().min(1, 'この項目は必須です').min(10, '10文字以上で入力してください'),
-  privacyConsent: z.boolean().refine(val => val === true, {
-    message: 'プライバシーポリシーに同意してください',
-  }),
 });
 
 export const dataRequestStep1Schema = z.object({
@@ -36,6 +32,20 @@ export const dataRequestStep3Schema = z.object({
   communicationPreference: z.enum(['email', 'phone', 'both']),
 });
 
+// Simplified schema for current form structure
+export const currentDataRequestFormSchema = z.object({
+  name: z.string().min(1, 'この項目は必須です').min(2, '2文字以上で入力してください'),
+  organization: z.string().optional(),
+  email: z.string().min(1, 'この項目は必須です').email('有効なメールアドレスを入力してください'),
+  backgroundPurpose: z.string().min(1, 'この項目は必須です').min(10, '10文字以上で入力してください'),
+  dataType: z.array(z.string()).min(1, '少なくとも1つのデータ種別を選択してください'),
+  dataDetails: z.string().optional(),
+  dataVolume: z.string().min(1, 'この項目は必須です'),
+  deadline: z.string().min(1, 'この項目は必須です'),
+  budget: z.string().min(1, 'この項目は必須です'),
+  otherRequirements: z.string().optional(),
+});
+
 export const dataRequestFormSchema = dataRequestStep1Schema
   .merge(dataRequestStep2Schema)
   .merge(dataRequestStep3Schema);
@@ -45,3 +55,4 @@ export type DataRequestStep1Data = z.infer<typeof dataRequestStep1Schema>;
 export type DataRequestStep2Data = z.infer<typeof dataRequestStep2Schema>;
 export type DataRequestStep3Data = z.infer<typeof dataRequestStep3Schema>;
 export type DataRequestFormData = z.infer<typeof dataRequestFormSchema>;
+export type CurrentDataRequestFormData = z.infer<typeof currentDataRequestFormSchema>;

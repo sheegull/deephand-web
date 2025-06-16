@@ -3,24 +3,156 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base Styles */
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: transparent;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: transparent;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+
+  /* Light (300) */
+  @font-face {
+    font-family: "Alliance No.2";
+    src: url("/fonts/AllianceFontFamily/AllianceNo2-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* Regular (400) */
+  @font-face {
+    font-family: "Alliance No.2";
+    src: url("/fonts/AllianceFontFamily/AllianceNo2-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* Medium (500) */
+  @font-face {
+    font-family: "Alliance No.2";
+    src: url("/fonts/AllianceFontFamily/AllianceNo2-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* SemiBold (600) */
+  @font-face {
+    font-family: "Alliance No.2";
+    src: url("/fonts/AllianceFontFamily/AllianceNo2-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* Bold (700) */
+  @font-face {
+    font-family: "Alliance No.2";
+    src: url("/fonts/AllianceFontFamily/AllianceNo2-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* ExtraBold (800) */
+  @font-face {
+    font-family: "Alliance No.2";
+    src: url("/fonts/AllianceFontFamily/AllianceNo2-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* Black (900) */
+  @font-face {
+    font-family: "Alliance No.2";
+    src: url("/fonts/AllianceFontFamily/AllianceNo2-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * {
+    @apply border-border;
+  }
+
   html {
-    font-family: Inter, 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+    font-family: "Alliance No.2", Inter, 'Noto Sans JP', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
   }
   
+  * {
+    @apply border-border;
+  }
+
   body {
-    line-height: 1.6;
-    color: theme('colors.gray.900');
-    background-color: white;
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* Component Styles */
 @layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+
   .text-gradient {
-    background: linear-gradient(135deg, theme('colors.primary.DEFAULT') 0%, theme('colors.primary.light') 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, #1e3eb8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -32,7 +164,7 @@
   }
   
   .btn-primary {
-    @apply bg-gradient-to-r from-primary to-primary-dark text-white px-8 py-3 rounded-lg font-semibold no-underline inline-block transition-all duration-300 border-0 cursor-pointer;
+    @apply bg-[#234ad9] text-white hover:bg-[#1e3eb8] active:bg-[#183099] h-[52px] px-8 py-3 rounded-lg font-semibold no-underline inline-flex items-center justify-center transition-all duration-300 border-0 cursor-pointer;
   }
   
   .btn-primary:hover {
@@ -40,11 +172,11 @@
   }
   
   .btn-secondary {
-    @apply bg-transparent text-gray-900 px-8 py-3 border-2 border-gray-300 rounded-lg font-semibold no-underline inline-block transition-all duration-300 cursor-pointer;
+    @apply border-2 border-white bg-transparent hover:bg-white/20 text-white px-8 py-3 rounded-lg font-semibold no-underline inline-flex items-center justify-center transition-all duration-300 cursor-pointer;
   }
   
   .btn-secondary:hover {
-    @apply border-primary text-primary;
+    @apply border-white text-white;
   }
 }
 

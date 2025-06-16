@@ -1,9 +1,10 @@
 import type { APIRoute } from 'astro';
-import { dataRequestFormSchema } from '@/lib/validationSchemas';
+import { currentDataRequestFormSchema } from '@/lib/validationSchemas';
 import { sendDataRequestEmail, validateEmailConfig } from '@/lib/email';
+import type { CurrentDataRequestFormData } from '@/lib/validationSchemas';
 
 // Enable server-side rendering for this endpoint
-export const prerender = false;
+// export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -54,7 +55,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Validate the data
-    const result = dataRequestFormSchema.safeParse(body);
+    const result = currentDataRequestFormSchema.safeParse(body);
 
     if (!result.success) {
       return new Response(
@@ -113,8 +114,7 @@ export const POST: APIRoute = async ({ request }) => {
     console.log('Data request submitted successfully:', {
       emailId: emailResult.emailId,
       requestId,
-      companyName: result.data.companyName,
-      projectTitle: result.data.projectTitle,
+      organization: result.data.organization,
       dataType: result.data.dataType,
       timestamp: new Date().toISOString(),
     });

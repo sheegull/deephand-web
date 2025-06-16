@@ -1,170 +1,89 @@
 {
-  "navigation": {
-    "home": "Home",
-    "services": "Services", 
-    "about": "About",
-    "contact": "Contact",
-    "requestData": "Request Data"
+  "nav": {
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "pricing": "Pricing",
+    "aboutUs": "About us",
+    "getStarted": "Get Started",
+    "login": "Login"
   },
   "hero": {
-    "title": "High-Precision Data Annotation",
-    "subtitle": "for AI & Robotics",
-    "description": "Expert annotators with specialized knowledge provide optimal data annotation for your AI and robotics projects.",
-    "cta": {
-      "primary": "Request Data",
-      "secondary": "Learn More"
+    "title": "Power Robotics\nwith Rich Human Data.",
+    "subtitle": "DeepHand is a team of annotation experts centered on robotics. We deliver high-quality annotated data.",
+    "requestButton": "Request Data"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Fill out the form below to learn more about DeepHand.",
+    "name": "Name",
+    "organization": "Organization",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again.",
+    "placeholder": {
+      "name": "Taro Fuji",
+      "organization": "Robotics Co.",
+      "email": "taro@example.com",
+      "message": "What's up?"
     }
   },
-  "services": {
-    "title": "Our Services",
-    "subtitle": "Comprehensive data annotation specialized for AI and robotics",
-    "imageAnnotation": {
-      "title": "Image Annotation",
-      "description": "High-precision annotation for computer vision and robotics applications",
-      "features": [
-        "Object Detection",
-        "Semantic Segmentation",
-        "Pose Estimation", 
-        "OCR"
-      ]
+  "request": {
+    "title": "Request annotated data for your project",
+    "subtitle": "Tell us a bit about yourself.",
+    "name": "Name",
+    "organization": "Organization",
+    "email": "Email",
+    "backgroundPurpose": "Background and Purpose",
+    "dataType": "Data Type",
+    "dataDetails": "Data Details",
+    "dataVolume": "Data Volume",
+    "deadline": "Deadline",
+    "budget": "Budget",
+    "otherRequirements": "Other Requirements",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "success": "Your request has been submitted successfully!",
+    "error": "Failed to submit request. Please try again.",
+    "dataTypeOptions": {
+      "text": "Text",
+      "image": "Image",
+      "video": "Video",
+      "audio": "Audio",
+      "other": "Other"
     },
-    "videoLabeling": {
-      "title": "Video Labeling",
-      "description": "Frame-by-frame video annotation for motion analysis and tracking",
-      "features": [
-        "Object Tracking",
-        "Action Recognition",
-        "Temporal Segmentation"
-      ]
-    },
-    "sensorData": {
-      "title": "Sensor Data Processing",
-      "description": "Structured annotation for IoT and robotics sensor data",
-      "features": [
-        "Time Series Analysis",
-        "Anomaly Detection",
-        "Pattern Recognition"
-      ]
-    },
-    "textNlp": {
-      "title": "Text & NLP",
-      "description": "Natural language processing and text annotation services",
-      "features": [
-        "Named Entity Recognition",
-        "Sentiment Analysis", 
-        "Text Classification"
-      ]
+    "placeholder": {
+      "name": "Taro Fuji",
+      "organization": "Robotics Co.",
+      "email": "taro@example.com",
+      "backgroundPurpose": "Planning to use for robot training data",
+      "dataDetails": "Please describe specific data details",
+      "dataVolume": "Approximately 10,000 samples",
+      "deadline": "By end of December 2024",
+      "budget": "Around $10,000",
+      "otherRequirements": "Please describe any other requirements"
     }
-  },
-  "process": {
-    "title": "Our Process",
-    "subtitle": "Simple and effective 3-step approach",
-    "steps": {
-      "analysis": {
-        "title": "Data Requirements Analysis",
-        "description": "We analyze your data and annotation requirements to create an optimal strategy"
-      },
-      "annotation": {
-        "title": "Professional Annotation", 
-        "description": "Expert annotators with AI/robotics domain knowledge perform high-quality labeling"
-      },
-      "delivery": {
-        "title": "Quality Assurance & Delivery",
-        "description": "Multi-stage quality checks ensure accuracy before secure delivery"
-      }
-    }
-  },
-  "features": {
-    "title": "Why Choose DeepHand",
-    "expertise": {
-      "title": "AI/Robotics Expertise",
-      "description": "Deep domain knowledge in artificial intelligence and robotics applications"
-    },
-    "quality": {
-      "title": "High Quality Standards", 
-      "description": "99%+ accuracy with multi-stage quality control processes"
-    },
-    "scalability": {
-      "title": "Scalable Solutions",
-      "description": "From prototype to production-scale data annotation services"
-    },
-    "security": {
-      "title": "Data Security",
-      "description": "Enterprise-grade security and confidentiality for your sensitive data"
-    }
-  },
-  "cta": {
-    "title": "Let's Start Your Project", 
-    "description": "Take your AI and robotics project to the next level",
-    "requestData": "Request Data",
-    "getInTouch": "Get in Touch"
   },
   "footer": {
-    "company": "DeepHand",
-    "description": "AI & Robotics Specialized Data Annotation Service",
-    "links": {
-      "about": "About",
-      "services": "Services", 
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service"
-    },
-    "copyright": "© 2024 DeepHand. All rights reserved."
+    "copyright": "© 2025 DeepHand. All Rights Reserved.",
+    "termsOfService": "Terms of service",
+    "privacyPolicy": "Privacy policy"
   },
-  "form": {
-    "labels": {
-      "companyName": "Company Name",
-      "contactPerson": "Contact Person",
-      "email": "Email Address", 
-      "phone": "Phone Number",
-      "projectTitle": "Project Title",
-      "dataType": "Data Type",
-      "dataDescription": "Data Description",
-      "annotationRequirements": "Annotation Requirements",
-      "dataVolume": "Data Volume",
-      "timeline": "Timeline",
-      "budget": "Budget",
-      "additionalNotes": "Additional Notes",
-      "privacyConsent": "I agree to the Privacy Policy",
-      "communicationPreference": "Communication Preference"
-    },
-    "placeholders": {
-      "companyName": "Your Company Inc.",
-      "contactPerson": "John Doe",
-      "email": "email@example.com",
-      "phone": "+1-234-567-8900",
-      "projectTitle": "Autonomous Vehicle Development Project",
-      "dataDescription": "Please describe your data",
-      "annotationRequirements": "Details of required annotation work",
-      "dataVolume": "10,000 images", 
-      "timeline": "2 months",
-      "budget": "$10,000",
-      "additionalNotes": "Any additional requirements"
-    },
-    "options": {
-      "dataTypes": {
-        "image": "Image Data",
-        "video": "Video Data",
-        "text": "Text Data",
-        "audio": "Audio Data",
-        "sensor": "Sensor Data",
-        "other": "Other"
-      },
-      "communication": {
-        "email": "Email",
-        "phone": "Phone", 
-        "both": "Both"
-      }
-    },
-    "buttons": {
-      "next": "Next",
-      "previous": "Previous",
-      "submit": "Submit",
-      "submitting": "Submitting..."
-    },
-    "validation": {
-      "required": "This field is required",
-      "email": "Please enter a valid email address",
-      "minLength": "Please enter at least {{min}} characters"
-    }
+  "validation": {
+    "required": "{{field}} is required",
+    "email": "Invalid email address",
+    "maxLength": "{{field}} must be less than {{max}} characters",
+    "numberOnly": "{{field}} must be a number",
+    "lettersOnly": "{{field}} can only contain letters and spaces",
+    "dataTypeRequired": "Please select at least one data type"
+  },
+  "ui": {
+    "step1": "Basic Information",
+    "step2": "Project Details",
+    "nextButton": "Next →",
+    "prevButton": "← Back",
+    "otherSpecify": "Please specify"
   }
 }

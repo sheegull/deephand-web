@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { RequestDataPage } from '@/components/RequestDataPage';
+import '@/styles/app.css';
+---
+
+<BaseLayout 
+  title="データリクエスト - DeepHand"
+  description="AI・ロボティクスプロジェクト向けのデータアノテーション依頼フォーム。専門知識を持つアノテーターが高品質なラベリングを提供します。"
+>
+  <RequestDataPage 
+    client:load 
+    onLogoClick={() => window.location.href = '/'}
+    onFooterClick={(element) => {
+      if (element === 'terms-of-service') {
+        console.log('Terms of service clicked');
+      } else if (element === 'privacy-policy') {
+        console.log('Privacy policy clicked');
+      }
+    }}
+  />
+</BaseLayout>

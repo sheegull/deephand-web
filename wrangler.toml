@@ -9,10 +9,10 @@ route = "deephand.ai/*"
 
 [env.production.vars]
 NODE_ENV = "production"
-PUBLIC_SITE_URL = "https://deephand.ai"
+PUBLIC_SITE_URL = "https://deephandai.com"
 
 # Development Environment
-[env.development] 
+[env.development]
 name = "deephand-web-development"
 
 [env.development.vars]

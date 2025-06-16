@@ -33,7 +33,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     dataVolume: 0,
     deadline: 0,
     budget: 0,
-    otherRequirements: 0
+    otherRequirements: 0,
   });
   const totalSteps = 2;
 
@@ -122,13 +122,13 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     setFieldErrors({
       name: nameError,
       email: emailError,
-      backgroundPurpose: backgroundError
+      backgroundPurpose: backgroundError,
     });
 
     setTouchedFields({
       name: true,
       email: true,
-      backgroundPurpose: true
+      backgroundPurpose: true,
     });
 
     const isValid = !nameError && !emailError && !backgroundError;
@@ -155,15 +155,15 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     setValidationErrors([]);
 
     const formData = new FormData(e.currentTarget);
-    
+
     // バリデーション
     const errors: string[] = [];
-    
+
     // Step 1のバリデーション（多言語対応）
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const backgroundPurpose = formData.get('backgroundPurpose') as string;
-    
+
     if (!name || name.trim().length === 0) {
       errors.push(t('validation.nameRequired'));
     }
@@ -177,16 +177,16 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     } else if (backgroundPurpose.trim().length < 5) {
       errors.push(t('validation.backgroundTooShort'));
     }
-    
+
     // Step 2のバリデーション（多言語対応）
     if (selectedDataTypes.length === 0) {
       errors.push(t('validation.dataTypeRequired'));
     }
-    
+
     const dataVolume = formData.get('dataVolume') as string;
     const deadline = formData.get('deadline') as string;
     const budget = formData.get('budget') as string;
-    
+
     if (!dataVolume || dataVolume.trim().length === 0) {
       errors.push(t('validation.dataVolumeRequired'));
     }
@@ -230,7 +230,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
 
       // レスポンステキストを先に取得して確認
       const responseText = await response.text();
-      
+
       let result;
       try {
         result = JSON.parse(responseText);
@@ -238,21 +238,21 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         logError('Data request form JSON parse failed', {
           operation: 'data_request_form_parse_error',
           timestamp: isClient ? Date.now() : 0,
-          responseText: responseText.substring(0, 200)
+          responseText: responseText.substring(0, 200),
         });
         setSubmitStatus('error');
         return;
       }
-      
+
       // 🔍 DEBUG: レスポンス詳細ログ
       console.log('🔍 [DATA REQUEST DEBUG] Response details:', {
         status: response.status,
         statusText: response.statusText,
         ok: response.ok,
         headers: Object.fromEntries(response.headers.entries()),
-        url: response.url
+        url: response.url,
       });
-      
+
       console.log('🔍 [DATA REQUEST DEBUG] Parsed result:', {
         result,
         resultType: typeof result,
@@ -260,18 +260,17 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         resultSuccessType: typeof result?.success,
         resultEmailId: result?.emailId,
         resultMessage: result?.message,
-        resultErrors: result?.errors
+        resultErrors: result?.errors,
       });
-      
-      // 改善された成功判定：主要機能（データリクエスト送信）の成功を優先
-      // 1. HTTP 200 レスポンス = サーバーが正常に処理完了
-      // 2. result.success !== false = 明示的な失敗でない
-      // 3. emailId存在 = メール送信成功の証拠
-      const isMainFunctionSuccessful = response.ok && 
-        (result.success === true || 
-         (result.success !== false && result.emailId) ||
-         response.status === 200);
-      
+
+      // 簡結かつ確実な成功判定ロジック
+      // 1. HTTP 200 OK = サーバー処理成功
+      // 2. result.success === true OR emailId存在 = メール送信成功
+      const isMainFunctionSuccessful =
+        response.status === 200 &&
+        response.ok &&
+        (result.success === true || (result.emailId && result.emailId.length > 0));
+
       // 🔍 DEBUG: 成功判定の詳細ログ
       console.log('🔍 [DATA REQUEST DEBUG] Success logic evaluation:', {
         'response.ok': response.ok,
@@ -279,9 +278,9 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         'result.success !== false': result.success !== false,
         'result.emailId exists': !!result.emailId,
         'response.status === 200': response.status === 200,
-        'Final isMainFunctionSuccessful': isMainFunctionSuccessful
+        'Final isMainFunctionSuccessful': isMainFunctionSuccessful,
       });
-      
+
       if (isMainFunctionSuccessful) {
         console.log('✅ [DATA REQUEST DEBUG] Setting status to SUCCESS');
         setSubmitStatus('success');
@@ -297,14 +296,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
           dataVolume: 0,
           deadline: 0,
           budget: 0,
-          otherRequirements: 0
+          otherRequirements: 0,
         });
-        
+
         // 成功ログ
         logError('Data request submitted successfully', {
           operation: 'data_request_success_frontend',
           timestamp: isClient ? Date.now() : 0,
-          emailId: result?.emailId
+          emailId: result?.emailId,
         });
       } else {
         console.log('❌ [DATA REQUEST DEBUG] Setting status to ERROR');
@@ -375,7 +374,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       <div className="hidden md:flex w-full md:w-1/2 min-h-screen relative flex-col">
         <div
           className="flex items-center mt-12 ml-4 md:ml-14 cursor-pointer"
-          onClick={() => (handleNavigation('/'))}
+          onClick={() => handleNavigation('/')}
         >
           <img className="w-[40px] h-[40px] object-cover" alt="Icon" src="/logo.png" />
           <div className="ml-1 font-alliance font-light text-white text-[32px] leading-[28.8px] whitespace-nowrap">
@@ -388,7 +387,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
           <div className="absolute inset-0 z-0">
             <MetaBalls
               color="#ffffff"
-              cursorBallColor="#ffffff" 
+              cursorBallColor="#ffffff"
               speed={0.2}
               ballCount={12}
               animationSize={25}
@@ -426,7 +425,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       {/* Mobile header */}
       <div
         className="flex justify-center items-center md:hidden mt-6 mb-6 cursor-pointer"
-        onClick={() => (handleNavigation('/'))}
+        onClick={() => handleNavigation('/')}
       >
         <img className="w-[24px] h-[24px] object-cover" src="/logo.png" alt="Icon" />
         <div className="ml-0.5 font-alliance font-light text-white text-[24px] leading-[20px] whitespace-nowrap">
@@ -448,7 +447,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
             enableTransparency={true}
           />
         </div>
-        
+
         <Card className="border-0 shadow-none h-full rounded-none bg-transparent relative z-10">
           <CardContent className="flex flex-col gap-8 p-6 md:p-20">
             {/* Header */}
@@ -522,8 +521,8 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                         name={field.id}
                         placeholder={field.placeholder}
                         minLength={field.id === 'email' ? 0 : 1}
-                        onChange={(e) => handleFieldChange(field.id, e.target.value)}
-                        onBlur={(e) => handleFieldBlur(field.id, e.target.value)}
+                        onChange={e => handleFieldChange(field.id, e.target.value)}
+                        onBlur={e => handleFieldBlur(field.id, e.target.value)}
                         className={`h-12 rounded-md font-sans text-sm ${
                           touchedFields[field.id] && fieldErrors[field.id]
                             ? 'border-red-500 focus:ring-red-500'
@@ -557,11 +556,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.backgroundPurpose')}
                       minLength={1}
                       maxLength={1000}
-                      onChange={(e) => {
-                        setFieldLengths(prev => ({...prev, backgroundPurpose: e.target.value.length}));
+                      onChange={e => {
+                        setFieldLengths(prev => ({
+                          ...prev,
+                          backgroundPurpose: e.target.value.length,
+                        }));
                         handleFieldChange('backgroundPurpose', e.target.value);
                       }}
-                      onBlur={(e) => handleFieldBlur('backgroundPurpose', e.target.value)}
+                      onBlur={e => handleFieldBlur('backgroundPurpose', e.target.value)}
                       className={`min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
                         touchedFields.backgroundPurpose && fieldErrors.backgroundPurpose
                           ? 'border-red-500 focus:ring-red-500'
@@ -635,7 +637,9 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       name="dataDetails"
                       placeholder={t('request.placeholder.dataDetails')}
                       maxLength={1000}
-                      onChange={(e) => setFieldLengths(prev => ({...prev, dataDetails: e.target.value.length}))}
+                      onChange={e =>
+                        setFieldLengths(prev => ({ ...prev, dataDetails: e.target.value.length }))
+                      }
                       className="min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
@@ -659,11 +663,11 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.dataVolume')}
                       minLength={1}
                       maxLength={500}
-                      onChange={(e) => {
-                        setFieldLengths(prev => ({...prev, dataVolume: e.target.value.length}));
+                      onChange={e => {
+                        setFieldLengths(prev => ({ ...prev, dataVolume: e.target.value.length }));
                         handleFieldChange('dataVolume', e.target.value);
                       }}
-                      onBlur={(e) => handleFieldBlur('dataVolume', e.target.value)}
+                      onBlur={e => handleFieldBlur('dataVolume', e.target.value)}
                       className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
                         touchedFields.dataVolume && fieldErrors.dataVolume
                           ? 'border-red-500 focus:ring-red-500'
@@ -696,11 +700,11 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.deadline')}
                       minLength={1}
                       maxLength={500}
-                      onChange={(e) => {
-                        setFieldLengths(prev => ({...prev, deadline: e.target.value.length}));
+                      onChange={e => {
+                        setFieldLengths(prev => ({ ...prev, deadline: e.target.value.length }));
                         handleFieldChange('deadline', e.target.value);
                       }}
-                      onBlur={(e) => handleFieldBlur('deadline', e.target.value)}
+                      onBlur={e => handleFieldBlur('deadline', e.target.value)}
                       className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
                         touchedFields.deadline && fieldErrors.deadline
                           ? 'border-red-500 focus:ring-red-500'
@@ -733,11 +737,11 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.budget')}
                       minLength={1}
                       maxLength={500}
-                      onChange={(e) => {
-                        setFieldLengths(prev => ({...prev, budget: e.target.value.length}));
+                      onChange={e => {
+                        setFieldLengths(prev => ({ ...prev, budget: e.target.value.length }));
                         handleFieldChange('budget', e.target.value);
                       }}
-                      onBlur={(e) => handleFieldBlur('budget', e.target.value)}
+                      onBlur={e => handleFieldBlur('budget', e.target.value)}
                       className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
                         touchedFields.budget && fieldErrors.budget
                           ? 'border-red-500 focus:ring-red-500'
@@ -769,7 +773,12 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       name="otherRequirements"
                       placeholder={t('request.placeholder.otherRequirements')}
                       maxLength={1000}
-                      onChange={(e) => setFieldLengths(prev => ({...prev, otherRequirements: e.target.value.length}))}
+                      onChange={e =>
+                        setFieldLengths(prev => ({
+                          ...prev,
+                          otherRequirements: e.target.value.length,
+                        }))
+                      }
                       className="min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
@@ -826,7 +835,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full h-11 bg-[#234ad9] text-white hover:bg-[#1e3eb8] active:bg-[#183099] disabled:bg-gray-300 font-alliance font-medium text-sm rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
+                        className="w-full h-11 bg-[#234ad9] text-white hover:bg-[#1e3eb8] active:bg-[#183099] disabled:bg-gray-300 font-alliance font-medium text-base rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
                       >
                         {isSubmitting ? t('request.submitting') : t('request.submit')}
                       </Button>
@@ -835,27 +844,106 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                 )}
 
                 {submitStatus === 'success' && (
-                  <p className="text-green-600 text-sm text-center font-alliance font-light">
-                    {t('request.success')}
-                  </p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    className="bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-xl p-4 shadow-lg"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center shadow-md">
+                        <svg
+                          className="w-5 h-5 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <p className="text-emerald-700 text-sm font-alliance font-medium">
+                        {t('request.success')}
+                      </p>
+                    </div>
+                  </motion.div>
                 )}
                 {submitStatus === 'error' && (
-                  <p className="text-red-500 text-sm text-center font-alliance font-light">
-                    {t('request.error')}
-                  </p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    className="bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 rounded-xl p-4 shadow-lg"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center shadow-md">
+                        <svg
+                          className="w-5 h-5 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </div>
+                      <p className="text-red-700 text-sm font-alliance font-medium">
+                        {t('request.error')}
+                      </p>
+                    </div>
+                  </motion.div>
                 )}
                 {validationErrors.length > 0 && (
-                  <div className="bg-red-50 border-l-4 border-l-red-500 border border-red-200 rounded-lg p-4 shadow-sm">
-                    <p className="text-red-800 text-sm font-medium mb-3 font-alliance">{t('validation.inputError')}</p>
-                    <ul className="text-red-700 text-sm space-y-2">
-                      {validationErrors.map((error, index) => (
-                        <li key={index} className="flex items-start">
-                          <span className="text-red-500 mr-2 mt-0.5">•</span>
-                          <span className="font-alliance font-light">{error}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 border border-amber-200 rounded-xl p-5 shadow-xl"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                        <svg
+                          className="w-5 h-5 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                          />
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-amber-800 text-sm font-medium mb-3 font-alliance">
+                          {t('validation.inputError')}
+                        </p>
+                        <ul className="space-y-2">
+                          {validationErrors.map((error, index) => (
+                            <motion.li
+                              key={index}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                              className="flex items-start gap-3"
+                            >
+                              <div className="w-1.5 h-1.5 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-amber-700 text-sm font-alliance font-light leading-relaxed">
+                                {error}
+                              </span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
               </div>
             </form>

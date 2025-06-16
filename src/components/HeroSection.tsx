@@ -154,15 +154,11 @@ export const HeroSection = ({
         resultErrors: result?.errors,
       });
 
-      // 改善された成功判定：主要機能（問い合わせ送信）の成功を優先
-      // 1. HTTP 200 レスポンス = サーバーが正常に処理完了
-      // 2. result.success !== false = 明示的な失敗でない
-      // 3. emailId存在 = メール送信成功の証拠
-      const isMainFunctionSuccessful =
-        response.ok &&
-        (result.success === true ||
-          (result.success !== false && result.emailId) ||
-          response.status === 200);
+      // 簡結かつ確実な成功判定ロジック
+      // 1. HTTP 200 OK = サーバー処理成功
+      // 2. result.success === true OR emailId存在 = メール送信成功
+      const isMainFunctionSuccessful = response.status === 200 && response.ok && 
+        (result.success === true || (result.emailId && result.emailId.length > 0));
 
       // 🔍 DEBUG: 成功判定の詳細ログ
       console.log('🔍 [CONTACT FORM DEBUG] Success logic evaluation:', {
@@ -176,18 +172,27 @@ export const HeroSection = ({
 
       if (isMainFunctionSuccessful) {
         console.log('✅ [CONTACT FORM DEBUG] Setting status to SUCCESS');
+        console.log('🎉 [CONTACT FORM DEBUG] SUCCESS confirmed - emailId:', result?.emailId);
         setSubmitStatus('success');
+        setValidationErrors([]); // エラーをクリア
         e.currentTarget.reset();
+        setMessageLength(0); // 文字数リセット
+        setFieldErrors({}); // フィールドエラーリセット
 
         // 成功ログ
-        logError('Contact form submitted successfully', {
+        logInfo('Contact form submitted successfully', {
           operation: 'contact_form_success_frontend',
           timestamp: isClient ? Date.now() : 0,
           emailId: result?.emailId,
         });
       } else {
         console.log('❌ [CONTACT FORM DEBUG] Setting status to ERROR');
-        // 真のエラー（バリデーション失敗、ネットワークエラー等）のみエラー表示
+        console.log('❌ [CONTACT FORM DEBUG] ERROR details:', {
+          status: response.status,
+          ok: response.ok,
+          success: result?.success,
+          emailId: result?.emailId
+        });
         logError('Contact form submission failed', {
           operation: 'contact_form_submit',
           timestamp: isClient ? Date.now() : 0,
@@ -549,29 +554,74 @@ export const HeroSection = ({
                   </Button>
 
                   {submitStatus === 'success' && (
-                    <p className="text-green-400 text-sm text-center font-alliance font-light">
-                      {t('contact.success')}
-                    </p>
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      className="bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full flex items-center justify-center shadow-lg">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p className="text-emerald-300 text-sm font-alliance font-normal">
+                          {t('contact.success')}
+                        </p>
+                      </div>
+                    </motion.div>
                   )}
                   {submitStatus === 'error' && (
-                    <p className="text-red-500 text-sm text-center font-alliance font-light">
-                      {t('contact.error')}
-                    </p>
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      className="bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </div>
+                        <p className="text-red-300 text-sm font-alliance font-normal">
+                          {t('contact.error')}
+                        </p>
+                      </div>
+                    </motion.div>
                   )}
                   {validationErrors.length > 0 && (
-                    <div className="bg-red-950/20 border border-red-800/50 rounded-lg p-4 backdrop-blur-sm">
-                      <p className="text-red-400 text-sm font-medium mb-3 font-alliance">
-                        {t('validation.inputError')}
-                      </p>
-                      <ul className="text-red-300 text-sm space-y-2">
-                        {validationErrors.map((error, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="text-red-500 mr-2 mt-0.5">•</span>
-                            <span className="font-alliance font-light">{error}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      className="bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-red-500/10 border border-amber-500/30 rounded-xl p-5 backdrop-blur-md shadow-xl ring-1 ring-amber-500/20"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-amber-200 text-sm font-medium mb-3 font-alliance">
+                            {t('validation.inputError')}
+                          </p>
+                          <ul className="space-y-2">
+                            {validationErrors.map((error, index) => (
+                              <motion.li 
+                                key={index} 
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="flex items-start gap-3"
+                              >
+                                <div className="w-1.5 h-1.5 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <span className="text-amber-100 text-sm font-alliance font-light leading-relaxed">{error}</span>
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </motion.div>
                   )}
                 </form>
               </CardContent>

@@ -72,7 +72,7 @@
 
   /* Light (300) */
   @font-face {
-    font-family: "Alliance";
+    font-family: "Alliance No.2";
     src: url("/fonts/AllianceNo2-Light.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
@@ -80,7 +80,7 @@
   }
   /* Regular (400) */
   @font-face {
-    font-family: "Alliance";
+    font-family: "Alliance No.2";
     src: url("/fonts/AllianceNo2-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
@@ -88,7 +88,7 @@
   }
   /* Medium (500) */
   @font-face {
-    font-family: "Alliance";
+    font-family: "Alliance No.2";
     src: url("/fonts/AllianceNo2-Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
@@ -96,7 +96,7 @@
   }
   /* SemiBold (600) */
   @font-face {
-    font-family: "Alliance";
+    font-family: "Alliance No.2";
     src: url("/fonts/AllianceNo2-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
@@ -104,7 +104,7 @@
   }
   /* Bold (700) */
   @font-face {
-    font-family: "Alliance";
+    font-family: "Alliance No.2";
     src: url("/fonts/AllianceNo2-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
@@ -112,7 +112,7 @@
   }
   /* ExtraBold (800) */
   @font-face {
-    font-family: "Alliance";
+    font-family: "Alliance No.2";
     src: url("/fonts/AllianceNo2-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-style: normal;
@@ -120,7 +120,7 @@
   }
   /* Black (900) */
   @font-face {
-    font-family: "Alliance";
+    font-family: "Alliance No.2";
     src: url("/fonts/AllianceNo2-Black.ttf") format("truetype");
     font-weight: 900;
     font-style: normal;
@@ -132,7 +132,7 @@
   }
 
   html {
-    font-family: "Alliance", Inter, 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+    font-family: "Alliance No.2", Inter, 'Noto Sans JP', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
   }
   

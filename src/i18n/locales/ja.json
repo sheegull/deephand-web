@@ -77,7 +77,16 @@
     "maxLength": "{{field}}は{{max}}文字以内で入力してください",
     "numberOnly": "{{field}}は数値で入力してください",
     "lettersOnly": "{{field}}は文字のみ使用できます",
-    "dataTypeRequired": "少なくとも1つのデータ種別を選択してください"
+    "dataTypeRequired": "少なくとも1つのデータ種別を選択してください",
+    "nameRequired": "お名前を入力してください",
+    "emailRequired": "メールアドレスを入力してください",
+    "emailInvalid": "有効なメールアドレスを入力してください",
+    "messageRequired": "メッセージを入力してください",
+    "backgroundRequired": "背景・目的を入力してください",
+    "dataVolumeRequired": "データ量を入力してください",
+    "deadlineRequired": "希望納期を入力してください",
+    "budgetRequired": "予算を入力してください",
+    "inputError": "入力に問題があります："
   },
   "ui": {
     "step1": "基本情報",

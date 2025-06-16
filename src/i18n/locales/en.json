@@ -77,7 +77,16 @@
     "maxLength": "{{field}} must be less than {{max}} characters",
     "numberOnly": "{{field}} must be a number",
     "lettersOnly": "{{field}} can only contain letters and spaces",
-    "dataTypeRequired": "Please select at least one data type"
+    "dataTypeRequired": "Please select at least one data type",
+    "nameRequired": "Please enter your name",
+    "emailRequired": "Please enter your email address",
+    "emailInvalid": "Please enter a valid email address",
+    "messageRequired": "Please enter your message",
+    "backgroundRequired": "Please enter background and purpose",
+    "dataVolumeRequired": "Please enter data volume",
+    "deadlineRequired": "Please enter deadline",
+    "budgetRequired": "Please enter budget",
+    "inputError": "There are issues with your input:"
   },
   "ui": {
     "step1": "Basic Information",

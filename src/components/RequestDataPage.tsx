@@ -25,6 +25,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
   const [step1Valid, setStep1Valid] = React.useState(false);
   const [isClient, setIsClient] = React.useState(false);
   const [validationErrors, setValidationErrors] = React.useState<string[]>([]);
+  const [fieldLengths, setFieldLengths] = React.useState({
+    backgroundPurpose: 0,
+    dataDetails: 0,
+    dataVolume: 0,
+    deadline: 0,
+    budget: 0,
+    otherRequirements: 0
+  });
   const totalSteps = 2;
 
   // Hydration-safe client detection
@@ -85,26 +93,26 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     // バリデーション
     const errors: string[] = [];
     
-    // Step 1のバリデーション
+    // Step 1のバリデーション（多言語対応）
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const backgroundPurpose = formData.get('backgroundPurpose') as string;
     
     if (!name || name.trim().length === 0) {
-      errors.push('お名前を入力してください');
+      errors.push(t('validation.nameRequired'));
     }
     if (!email || email.trim().length === 0) {
-      errors.push('メールアドレスを入力してください');
+      errors.push(t('validation.emailRequired'));
     } else if (!email.includes('@')) {
-      errors.push('有効なメールアドレスを入力してください');
+      errors.push(t('validation.emailInvalid'));
     }
     if (!backgroundPurpose || backgroundPurpose.trim().length === 0) {
-      errors.push('背景・目的を入力してください');
+      errors.push(t('validation.backgroundRequired'));
     }
     
-    // Step 2のバリデーション
+    // Step 2のバリデーション（多言語対応）
     if (selectedDataTypes.length === 0) {
-      errors.push('データタイプを選択してください');
+      errors.push(t('validation.dataTypeRequired'));
     }
     
     const dataVolume = formData.get('dataVolume') as string;
@@ -112,13 +120,13 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     const budget = formData.get('budget') as string;
     
     if (!dataVolume || dataVolume.trim().length === 0) {
-      errors.push('データ量を入力してください');
+      errors.push(t('validation.dataVolumeRequired'));
     }
     if (!deadline || deadline.trim().length === 0) {
-      errors.push('希望納期を入力してください');
+      errors.push(t('validation.deadlineRequired'));
     }
     if (!budget || budget.trim().length === 0) {
-      errors.push('予算を入力してください');
+      errors.push(t('validation.budgetRequired'));
     }
 
     if (errors.length > 0) {
@@ -442,19 +450,29 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
 
                   {/* Background and Purpose field */}
                   <div className="flex flex-col gap-2">
-                    <Label
-                      htmlFor="backgroundPurpose"
-                      className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
-                    >
-                      {t('request.backgroundPurpose')} *
-                    </Label>
+                    <div className="flex justify-between items-center">
+                      <Label
+                        htmlFor="backgroundPurpose"
+                        className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
+                      >
+                        {t('request.backgroundPurpose')} *
+                      </Label>
+                      <span className="text-xs text-gray-500 font-alliance font-light">
+                        {fieldLengths.backgroundPurpose} / 1000
+                      </span>
+                    </div>
                     <Textarea
                       id="backgroundPurpose"
                       name="backgroundPurpose"
                       placeholder={t('request.placeholder.backgroundPurpose')}
                       minLength={1}
-                      className="h-[100px] rounded-md font-sans text-sm resize-none"
+                      maxLength={1000}
+                      onChange={(e) => setFieldLengths(prev => ({...prev, backgroundPurpose: e.target.value.length}))}
+                      className="min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
+                    <p className="text-xs text-gray-500 font-alliance font-light">
+                      {t('ui.resizableField', 'サイズ調整可能です。詳細にご記入いただけます。')}
+                    </p>
                   </div>
                 </div>
               )}
@@ -501,84 +519,119 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
 
                   {/* Data details field */}
                   <div className="flex flex-col gap-2">
-                    <Label
-                      htmlFor="dataDetails"
-                      className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
-                    >
-                      {t('request.dataDetails')}
-                    </Label>
+                    <div className="flex justify-between items-center">
+                      <Label
+                        htmlFor="dataDetails"
+                        className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
+                      >
+                        {t('request.dataDetails')}
+                      </Label>
+                      <span className="text-xs text-gray-500 font-alliance font-light">
+                        {fieldLengths.dataDetails} / 1000
+                      </span>
+                    </div>
                     <Textarea
                       id="dataDetails"
                       name="dataDetails"
                       placeholder={t('request.placeholder.dataDetails')}
-                      className="h-[100px] rounded-md font-sans text-sm resize-none"
+                      maxLength={1000}
+                      onChange={(e) => setFieldLengths(prev => ({...prev, dataDetails: e.target.value.length}))}
+                      className="min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
 
                   {/* Data volume field */}
                   <div className="flex flex-col gap-2">
-                    <Label
-                      htmlFor="dataVolume"
-                      className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
-                    >
-                      {t('request.dataVolume')} *
-                    </Label>
+                    <div className="flex justify-between items-center">
+                      <Label
+                        htmlFor="dataVolume"
+                        className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
+                      >
+                        {t('request.dataVolume')} *
+                      </Label>
+                      <span className="text-xs text-gray-500 font-alliance font-light">
+                        {fieldLengths.dataVolume} / 500
+                      </span>
+                    </div>
                     <Textarea
                       id="dataVolume"
                       name="dataVolume"
                       placeholder={t('request.placeholder.dataVolume')}
                       minLength={1}
-                      className="h-[100px] rounded-md font-sans text-sm resize-none"
+                      maxLength={500}
+                      onChange={(e) => setFieldLengths(prev => ({...prev, dataVolume: e.target.value.length}))}
+                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
 
                   {/* Deadline field */}
                   <div className="flex flex-col gap-2">
-                    <Label
-                      htmlFor="deadline"
-                      className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
-                    >
-                      {t('request.deadline')} *
-                    </Label>
+                    <div className="flex justify-between items-center">
+                      <Label
+                        htmlFor="deadline"
+                        className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
+                      >
+                        {t('request.deadline')} *
+                      </Label>
+                      <span className="text-xs text-gray-500 font-alliance font-light">
+                        {fieldLengths.deadline} / 500
+                      </span>
+                    </div>
                     <Textarea
                       id="deadline"
                       name="deadline"
                       placeholder={t('request.placeholder.deadline')}
                       minLength={1}
-                      className="h-[100px] rounded-md font-sans text-sm resize-none"
+                      maxLength={500}
+                      onChange={(e) => setFieldLengths(prev => ({...prev, deadline: e.target.value.length}))}
+                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
 
                   {/* Budget field */}
                   <div className="flex flex-col gap-2">
-                    <Label
-                      htmlFor="budget"
-                      className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
-                    >
-                      {t('request.budget')} *
-                    </Label>
+                    <div className="flex justify-between items-center">
+                      <Label
+                        htmlFor="budget"
+                        className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
+                      >
+                        {t('request.budget')} *
+                      </Label>
+                      <span className="text-xs text-gray-500 font-alliance font-light">
+                        {fieldLengths.budget} / 500
+                      </span>
+                    </div>
                     <Textarea
                       id="budget"
                       name="budget"
                       placeholder={t('request.placeholder.budget')}
                       minLength={1}
-                      className="h-[100px] rounded-md font-sans text-sm resize-none"
+                      maxLength={500}
+                      onChange={(e) => setFieldLengths(prev => ({...prev, budget: e.target.value.length}))}
+                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
 
                   {/* Other requirements field */}
                   <div className="flex flex-col gap-2">
-                    <Label
-                      htmlFor="otherRequirements"
-                      className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
-                    >
-                      {t('request.otherRequirements')}
-                    </Label>
+                    <div className="flex justify-between items-center">
+                      <Label
+                        htmlFor="otherRequirements"
+                        className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
+                      >
+                        {t('request.otherRequirements')}
+                      </Label>
+                      <span className="text-xs text-gray-500 font-alliance font-light">
+                        {fieldLengths.otherRequirements} / 1000
+                      </span>
+                    </div>
                     <Textarea
                       id="otherRequirements"
                       name="otherRequirements"
                       placeholder={t('request.placeholder.otherRequirements')}
-                      className="h-[100px] rounded-md font-sans text-sm resize-none"
+                      maxLength={1000}
+                      onChange={(e) => setFieldLengths(prev => ({...prev, otherRequirements: e.target.value.length}))}
+                      className="min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
                 </div>
@@ -653,13 +706,13 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   </p>
                 )}
                 {validationErrors.length > 0 && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <p className="text-red-800 text-sm font-medium mb-2">入力に問題があります：</p>
-                    <ul className="text-red-700 text-sm space-y-1">
+                  <div className="bg-red-50 border-l-4 border-l-red-500 border border-red-200 rounded-lg p-4 shadow-sm">
+                    <p className="text-red-800 text-sm font-medium mb-3 font-alliance">{t('validation.inputError')}</p>
+                    <ul className="text-red-700 text-sm space-y-2">
                       {validationErrors.map((error, index) => (
                         <li key={index} className="flex items-start">
-                          <span className="text-red-500 mr-2">•</span>
-                          {error}
+                          <span className="text-red-500 mr-2 mt-0.5">•</span>
+                          <span className="font-alliance font-light">{error}</span>
                         </li>
                       ))}
                     </ul>

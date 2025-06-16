@@ -28,6 +28,7 @@ export const HeroSection = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClient, setIsClient] = React.useState(false);
   const [validationErrors, setValidationErrors] = React.useState<string[]>([]);
+  const [messageLength, setMessageLength] = React.useState(0);
   
   // Hydration-safe client detection
   React.useEffect(() => {
@@ -67,18 +68,18 @@ export const HeroSection = ({
       message: formData.get('message'),
     };
     
-    // 最低限のバリデーション
+    // 最低限のバリデーション（多言語対応）
     const errors: string[] = [];
     if (!data.name || (data.name as string).trim().length === 0) {
-      errors.push('お名前を入力してください');
+      errors.push(t('validation.nameRequired'));
     }
     if (!data.email || (data.email as string).trim().length === 0) {
-      errors.push('メールアドレスを入力してください');
+      errors.push(t('validation.emailRequired'));
     } else if (!(data.email as string).includes('@')) {
-      errors.push('有効なメールアドレスを入力してください');
+      errors.push(t('validation.emailInvalid'));
     }
     if (!data.message || (data.message as string).trim().length === 0) {
-      errors.push('メッセージを入力してください');
+      errors.push(t('validation.messageRequired'));
     }
     
     if (errors.length > 0) {
@@ -386,7 +387,7 @@ export const HeroSection = ({
             animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
-            <Card className="w-full md:w-[460px] !bg-[#2A2A2A] rounded-2xl shadow-[0px_0px_40px_#0000004d] border border-gray-700 backdrop-blur-sm">
+            <Card className="w-full md:w-[460px] !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-800/50 backdrop-blur-md ring-1 ring-gray-700/30">
             <CardHeader className="px-8 pt-8 pb-4">
               <CardTitle className="font-alliance font-normal text-white text-xl md:text-2xl leading-[28px]">
                 {t('contact.title')}
@@ -405,7 +406,7 @@ export const HeroSection = ({
                     name="name"
                     placeholder={t('contact.placeholder.name')}
                     minLength={1}
-                    className="h-12 !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
+                    className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200 shadow-inner"
                   />
                 </div>
 
@@ -416,7 +417,7 @@ export const HeroSection = ({
                   <Input
                     name="organization"
                     placeholder={t('contact.placeholder.organization')}
-                    className="h-12 !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
+                    className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200 shadow-inner"
                   />
                 </div>
 
@@ -428,21 +429,33 @@ export const HeroSection = ({
                     name="email"
                     type="email"
                     placeholder={t('contact.placeholder.email')}
-                    className="h-12 !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
+                    className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-base focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200 shadow-inner"
                   />
                 </div>
 
 
                 <div className="flex flex-col gap-2">
-                  <label className="font-alliance font-normal text-slate-200 text-sm leading-[18px]">
-                    {t('contact.message')} *
-                  </label>
+                  <div className="flex justify-between items-center">
+                    <label className="font-alliance font-normal text-slate-200 text-sm leading-[18px]">
+                      {t('contact.message')} *
+                    </label>
+                    <span className="text-xs text-gray-400 font-alliance font-light">
+                      {messageLength} / 2000
+                    </span>
+                  </div>
                   <Textarea
                     name="message"
                     placeholder={t('contact.placeholder.message')}
                     minLength={1}
-                    className="h-[80px] !bg-[#1A1A1A] !border-gray-600 rounded-lg !text-white !placeholder:text-gray-400 font-sans font-light text-base resize-none focus:!border-[#234ad9] focus:!ring-1 focus:!ring-[#234ad9]/20"
+                    maxLength={2000}
+                    onChange={(e) => setMessageLength(e.target.value.length)}
+                    className="min-h-[150px] h-[150px] max-h-[300px] !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-base resize-y focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200 shadow-inner"
                   />
+                  <p className="text-xs text-gray-500 font-alliance font-light">
+                    {getCurrentLanguage() === 'ja' 
+                      ? 'サイズ調整可能です。詳細にご記入いただけます。' 
+                      : 'Resizable field. Please feel free to write in detail.'}
+                  </p>
                 </div>
 
                 <Button
@@ -465,13 +478,13 @@ export const HeroSection = ({
                   </p>
                 )}
                 {validationErrors.length > 0 && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                    <p className="text-red-800 text-sm font-medium mb-2">入力に問題があります：</p>
-                    <ul className="text-red-700 text-sm space-y-1">
+                  <div className="bg-red-950/20 border border-red-800/50 rounded-lg p-4 backdrop-blur-sm">
+                    <p className="text-red-400 text-sm font-medium mb-3 font-alliance">{t('validation.inputError')}</p>
+                    <ul className="text-red-300 text-sm space-y-2">
                       {validationErrors.map((error, index) => (
                         <li key={index} className="flex items-start">
-                          <span className="text-red-500 mr-2">•</span>
-                          {error}
+                          <span className="text-red-500 mr-2 mt-0.5">•</span>
+                          <span className="font-alliance font-light">{error}</span>
                         </li>
                       ))}
                     </ul>

@@ -7,7 +7,7 @@ import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Checkbox } from './ui/checkbox';
 import MetaBalls from './ui/MetaBalls';
-import { t } from '../lib/i18n';
+import { t, getCurrentLanguage } from '../lib/i18n';
 import { logError } from '../lib/error-handling';
 
 interface RequestDataPageProps {
@@ -25,6 +25,8 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
   const [step1Valid, setStep1Valid] = React.useState(false);
   const [isClient, setIsClient] = React.useState(false);
   const [validationErrors, setValidationErrors] = React.useState<string[]>([]);
+  const [fieldErrors, setFieldErrors] = React.useState<Record<string, string>>({});
+  const [touchedFields, setTouchedFields] = React.useState<Record<string, boolean>>({});
   const [fieldLengths, setFieldLengths] = React.useState({
     backgroundPurpose: 0,
     dataDetails: 0,
@@ -47,6 +49,61 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     }
   };
 
+  // Real-time field validation
+  const validateField = (fieldName: string, value: string): string => {
+    switch (fieldName) {
+      case 'name':
+        if (!value || value.trim().length === 0) {
+          return t('validation.nameRequired');
+        }
+        break;
+      case 'email':
+        if (!value || value.trim().length === 0) {
+          return t('validation.emailRequired');
+        }
+        if (!value.includes('@') || !value.includes('.')) {
+          return t('validation.emailInvalid');
+        }
+        break;
+      case 'backgroundPurpose':
+        if (!value || value.trim().length === 0) {
+          return t('validation.backgroundRequired');
+        }
+        break;
+      case 'dataVolume':
+        if (!value || value.trim().length === 0) {
+          return t('validation.dataVolumeRequired');
+        }
+        break;
+      case 'deadline':
+        if (!value || value.trim().length === 0) {
+          return t('validation.deadlineRequired');
+        }
+        break;
+      case 'budget':
+        if (!value || value.trim().length === 0) {
+          return t('validation.budgetRequired');
+        }
+        break;
+    }
+    return '';
+  };
+
+  // Handle field blur for validation
+  const handleFieldBlur = (fieldName: string, value: string) => {
+    setTouchedFields(prev => ({ ...prev, [fieldName]: true }));
+    const error = validateField(fieldName, value);
+    setFieldErrors(prev => ({ ...prev, [fieldName]: error }));
+  };
+
+  // Handle field change for validation
+  const handleFieldChange = (fieldName: string, value: string) => {
+    if (touchedFields[fieldName]) {
+      const error = validateField(fieldName, value);
+      setFieldErrors(prev => ({ ...prev, [fieldName]: error }));
+    }
+  };
+
   // Validation for step 1 - 最低限のバリデーション
   const validateStep1 = () => {
     const form = document.querySelector('form') as HTMLFormElement;
@@ -57,15 +114,24 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     const background = (form.querySelector('[name="backgroundPurpose"]') as HTMLTextAreaElement)
       ?.value;
 
-    const isValid = Boolean(
-      name &&
-        name.length >= 1 &&
-        email &&
-        email.includes('@') &&
-        background &&
-        background.length >= 1
-    );
+    // Validate all fields
+    const nameError = validateField('name', name || '');
+    const emailError = validateField('email', email || '');
+    const backgroundError = validateField('backgroundPurpose', background || '');
 
+    setFieldErrors({
+      name: nameError,
+      email: emailError,
+      backgroundPurpose: backgroundError
+    });
+
+    setTouchedFields({
+      name: true,
+      email: true,
+      backgroundPurpose: true
+    });
+
+    const isValid = !nameError && !emailError && !backgroundError;
     setStep1Valid(isValid);
     return isValid;
   };
@@ -108,6 +174,8 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     }
     if (!backgroundPurpose || backgroundPurpose.trim().length === 0) {
       errors.push(t('validation.backgroundRequired'));
+    } else if (backgroundPurpose.trim().length < 5) {
+      errors.push(t('validation.backgroundTooShort'));
     }
     
     // Step 2のバリデーション（多言語対応）
@@ -148,6 +216,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       deadline: formData.get('deadline'),
       budget: formData.get('budget'),
       otherRequirements: formData.get('otherRequirements'),
+      language: getCurrentLanguage(),
     };
 
     try {
@@ -220,6 +289,16 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         setSelectedDataTypes([]);
         setOtherDataType('');
         setCurrentStep(1); // Reset to first step
+        setFieldErrors({});
+        setTouchedFields({});
+        setFieldLengths({
+          backgroundPurpose: 0,
+          dataDetails: 0,
+          dataVolume: 0,
+          deadline: 0,
+          budget: 0,
+          otherRequirements: 0
+        });
         
         // 成功ログ
         logError('Data request submitted successfully', {
@@ -443,8 +522,19 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                         name={field.id}
                         placeholder={field.placeholder}
                         minLength={field.id === 'email' ? 0 : 1}
-                        className="h-12 rounded-md font-sans text-sm"
+                        onChange={(e) => handleFieldChange(field.id, e.target.value)}
+                        onBlur={(e) => handleFieldBlur(field.id, e.target.value)}
+                        className={`h-12 rounded-md font-sans text-sm ${
+                          touchedFields[field.id] && fieldErrors[field.id]
+                            ? 'border-red-500 focus:ring-red-500'
+                            : ''
+                        }`}
                       />
+                      {touchedFields[field.id] && fieldErrors[field.id] && (
+                        <span className="text-red-500 text-xs font-alliance font-light mt-1">
+                          {fieldErrors[field.id]}
+                        </span>
+                      )}
                     </div>
                   ))}
 
@@ -467,12 +557,22 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.backgroundPurpose')}
                       minLength={1}
                       maxLength={1000}
-                      onChange={(e) => setFieldLengths(prev => ({...prev, backgroundPurpose: e.target.value.length}))}
-                      className="min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200"
+                      onChange={(e) => {
+                        setFieldLengths(prev => ({...prev, backgroundPurpose: e.target.value.length}));
+                        handleFieldChange('backgroundPurpose', e.target.value);
+                      }}
+                      onBlur={(e) => handleFieldBlur('backgroundPurpose', e.target.value)}
+                      className={`min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
+                        touchedFields.backgroundPurpose && fieldErrors.backgroundPurpose
+                          ? 'border-red-500 focus:ring-red-500'
+                          : ''
+                      }`}
                     />
-                    <p className="text-xs text-gray-500 font-alliance font-light">
-                      {t('ui.resizableField', 'サイズ調整可能です。詳細にご記入いただけます。')}
-                    </p>
+                    {touchedFields.backgroundPurpose && fieldErrors.backgroundPurpose && (
+                      <span className="text-red-500 text-xs font-alliance font-light mt-1">
+                        {fieldErrors.backgroundPurpose}
+                      </span>
+                    )}
                   </div>
                 </div>
               )}
@@ -559,9 +659,22 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.dataVolume')}
                       minLength={1}
                       maxLength={500}
-                      onChange={(e) => setFieldLengths(prev => ({...prev, dataVolume: e.target.value.length}))}
-                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
+                      onChange={(e) => {
+                        setFieldLengths(prev => ({...prev, dataVolume: e.target.value.length}));
+                        handleFieldChange('dataVolume', e.target.value);
+                      }}
+                      onBlur={(e) => handleFieldBlur('dataVolume', e.target.value)}
+                      className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
+                        touchedFields.dataVolume && fieldErrors.dataVolume
+                          ? 'border-red-500 focus:ring-red-500'
+                          : ''
+                      }`}
                     />
+                    {touchedFields.dataVolume && fieldErrors.dataVolume && (
+                      <span className="text-red-500 text-xs font-alliance font-light mt-1">
+                        {fieldErrors.dataVolume}
+                      </span>
+                    )}
                   </div>
 
                   {/* Deadline field */}
@@ -583,9 +696,22 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.deadline')}
                       minLength={1}
                       maxLength={500}
-                      onChange={(e) => setFieldLengths(prev => ({...prev, deadline: e.target.value.length}))}
-                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
+                      onChange={(e) => {
+                        setFieldLengths(prev => ({...prev, deadline: e.target.value.length}));
+                        handleFieldChange('deadline', e.target.value);
+                      }}
+                      onBlur={(e) => handleFieldBlur('deadline', e.target.value)}
+                      className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
+                        touchedFields.deadline && fieldErrors.deadline
+                          ? 'border-red-500 focus:ring-red-500'
+                          : ''
+                      }`}
                     />
+                    {touchedFields.deadline && fieldErrors.deadline && (
+                      <span className="text-red-500 text-xs font-alliance font-light mt-1">
+                        {fieldErrors.deadline}
+                      </span>
+                    )}
                   </div>
 
                   {/* Budget field */}
@@ -607,9 +733,22 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.budget')}
                       minLength={1}
                       maxLength={500}
-                      onChange={(e) => setFieldLengths(prev => ({...prev, budget: e.target.value.length}))}
-                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
+                      onChange={(e) => {
+                        setFieldLengths(prev => ({...prev, budget: e.target.value.length}));
+                        handleFieldChange('budget', e.target.value);
+                      }}
+                      onBlur={(e) => handleFieldBlur('budget', e.target.value)}
+                      className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
+                        touchedFields.budget && fieldErrors.budget
+                          ? 'border-red-500 focus:ring-red-500'
+                          : ''
+                      }`}
                     />
+                    {touchedFields.budget && fieldErrors.budget && (
+                      <span className="text-red-500 text-xs font-alliance font-light mt-1">
+                        {fieldErrors.budget}
+                      </span>
+                    )}
                   </div>
 
                   {/* Other requirements field */}

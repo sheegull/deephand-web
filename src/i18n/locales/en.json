@@ -27,7 +27,7 @@
       "name": "Taro Fuji",
       "organization": "Robotics Co.",
       "email": "taro@example.com",
-      "message": "What's up?"
+      "message": "Message"
     }
   },
   "request": {
@@ -86,7 +86,12 @@
     "dataVolumeRequired": "Please enter data volume",
     "deadlineRequired": "Please enter deadline",
     "budgetRequired": "Please enter budget",
-    "inputError": "There are issues with your input:"
+    "inputError": "There are issues with your input:",
+    "messageTooShort": "Message must be at least 10 characters",
+    "messageTooLong": "Message must be less than 1000 characters",
+    "nameTooLong": "Name must be less than 50 characters",
+    "backgroundTooShort": "Background must be at least 5 characters",
+    "organizationTooLong": "Organization must be less than 100 characters"
   },
   "ui": {
     "step1": "Basic Information",

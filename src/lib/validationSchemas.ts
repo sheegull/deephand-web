@@ -5,6 +5,7 @@ export const contactFormSchema = z.object({
   email: z.string().min(1, 'この項目は必須です').email('有効なメールアドレスを入力してください'),
   organization: z.string().optional(),
   message: z.string().min(1, 'この項目は必須です').min(10, '10文字以上で入力してください'),
+  language: z.enum(['ja', 'en']).optional().default('ja'), // 言語設定を追加
 });
 
 export const dataRequestStep1Schema = z.object({
@@ -37,13 +38,14 @@ export const currentDataRequestFormSchema = z.object({
   name: z.string().min(1, 'この項目は必須です').min(2, '2文字以上で入力してください'),
   organization: z.string().optional(),
   email: z.string().min(1, 'この項目は必須です').email('有効なメールアドレスを入力してください'),
-  backgroundPurpose: z.string().min(1, 'この項目は必須です').min(10, '10文字以上で入力してください'),
+  backgroundPurpose: z.string().min(1, 'この項目は必須です').min(5, '5文字以上で入力してください'),
   dataType: z.array(z.string()).min(1, '少なくとも1つのデータ種別を選択してください'),
   dataDetails: z.string().optional(),
   dataVolume: z.string().min(1, 'この項目は必須です'),
   deadline: z.string().min(1, 'この項目は必須です'),
   budget: z.string().min(1, 'この項目は必須です'),
   otherRequirements: z.string().optional(),
+  language: z.enum(['ja', 'en']).optional().default('ja'), // 言語設定を追加
 });
 
 export const dataRequestFormSchema = dataRequestStep1Schema

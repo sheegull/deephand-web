@@ -86,7 +86,12 @@
     "dataVolumeRequired": "データ量を入力してください",
     "deadlineRequired": "希望納期を入力してください",
     "budgetRequired": "予算を入力してください",
-    "inputError": "入力に問題があります："
+    "inputError": "入力に問題があります：",
+    "messageTooShort": "メッセージは10文字以上で入力してください",
+    "messageTooLong": "メッセージは1000文字以内で入力してください",
+    "nameTooLong": "お名前は50文字以内で入力してください",
+    "backgroundTooShort": "背景・目的は5文字以上で入力してください",
+    "organizationTooLong": "組織名は100文字以内で入力してください"
   },
   "ui": {
     "step1": "基本情報",

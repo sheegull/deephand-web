@@ -17,6 +17,13 @@ import {
   generateDataRequestConfirmationEmailHtml,
   generateDataRequestConfirmationEmailText
 } from './templates';
+import { 
+  getContactAdminEmail,
+  getContactUserEmail,
+  getDataRequestAdminEmail,
+  getDataRequestUserEmail,
+  type Language
+} from './templates-multilingual';
 import { logError, logWarn } from '../error-handling';
 
 export interface EmailResult {
@@ -37,13 +44,17 @@ const getResendClient = () => {
 export async function sendContactEmail(data: ContactFormData): Promise<EmailResult> {
   try {
     const resend = getResendClient();
+    
+    // Get language from data or default to 'ja'
+    const language = (data as any).language || 'ja';
+    const isJapanese = language === 'ja';
 
     // Send notification email to admin
     const adminEmailResult = await resend.emails.send({
       from: ENV.FROM_EMAIL,
       to: [ENV.TEST_EMAIL_RECIPIENT || ENV.ADMIN_EMAIL],
       replyTo: data.email,
-      subject: 'お問い合わせ - DeepHand',
+      subject: isJapanese ? 'お問い合わせ - DeepHand' : 'Contact Inquiry - DeepHand',
       html: generateContactAdminEmailHtml(data),
       text: generateContactAdminEmailText(data),
     });
@@ -59,7 +70,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<EmailResu
     const userEmailResult = await resend.emails.send({
       from: ENV.NOREPLY_EMAIL,
       to: data.email,
-      subject: 'お問い合わせありがとうございます - DeepHand',
+      subject: isJapanese ? 'お問い合わせありがとうございます - DeepHand' : 'Thank you for your inquiry - DeepHand',
       html: generateContactConfirmationEmailHtml(data),
       text: generateContactConfirmationEmailText(data),
     });
@@ -92,13 +103,17 @@ export async function sendContactEmail(data: ContactFormData): Promise<EmailResu
 export async function sendDataRequestEmail(data: CurrentDataRequestFormData): Promise<EmailResult> {
   try {
     const resend = getResendClient();
+    
+    // Get language from data or default to 'ja'
+    const language = (data as any).language || 'ja';
+    const isJapanese = language === 'ja';
 
     // Send detailed request email to sales team
     const salesEmailResult = await resend.emails.send({
       from: ENV.REQUESTS_EMAIL,
       to: [ENV.TEST_EMAIL_RECIPIENT || ENV.ADMIN_EMAIL],
       replyTo: data.email,
-      subject: 'データリクエスト - DeepHand',
+      subject: isJapanese ? 'データリクエスト - DeepHand' : 'Data Request - DeepHand',
       html: generateDataRequestAdminEmailHtml(data),
       text: generateDataRequestAdminEmailText(data),
     });
@@ -114,7 +129,7 @@ export async function sendDataRequestEmail(data: CurrentDataRequestFormData): Pr
     const userEmailResult = await resend.emails.send({
       from: ENV.NOREPLY_EMAIL,
       to: data.email,
-      subject: 'データリクエストを受け付けました - DeepHand',
+      subject: isJapanese ? 'データリクエストを受け付けました - DeepHand' : 'Your data request has been received - DeepHand',
       html: generateDataRequestConfirmationEmailHtml(data),
       text: generateDataRequestConfirmationEmailText(data),
     });

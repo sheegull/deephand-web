@@ -149,16 +149,16 @@ export const HeroSection = ({
     <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen relative">
       {/* Dither Background Animation */}
       <DitherBackground 
-        waveSpeed={0.015}
-        waveFrequency={1.8}
-        waveAmplitude={0.35}
-        waveColor={[0.22, 0.23, 0.24]} // Strong white presence
-        colorNum={3}
-        pixelSize={5}
+        waveSpeed={0.05}
+        waveFrequency={6.0}
+        waveAmplitude={0.05}
+        waveColor={[0.35, 0.36, 0.37]} // High brightness
+        colorNum={8}
+        pixelSize={1}
         disableAnimation={false}
-        enableMouseInteraction={true}
-        mouseRadius={2.5}
-        className="absolute inset-0 z-0 opacity-40"
+        enableMouseInteraction={false}
+        mouseRadius={0.1}
+        className="absolute inset-0 z-0 opacity-60"
       />
       
       {/* Navigation Bar */}

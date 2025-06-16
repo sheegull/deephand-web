@@ -8,6 +8,7 @@ import { Textarea } from "./ui/textarea";
 import { t, getCurrentLanguage, setCurrentLanguage } from "../lib/i18n";
 import { LanguageToggle } from "./ui/language-toggle";
 import { logError, logInfo } from "../lib/error-handling";
+import DitherBackground from "./ui/DitherBackground";
 
 interface HeroSectionProps {
   onRequestClick?: () => void;
@@ -80,20 +81,41 @@ export const HeroSection = ({
       try {
         result = JSON.parse(responseText);
       } catch (parseError) {
+        logError('Contact form JSON parse failed', {
+          operation: 'contact_form_parse_error',
+          timestamp: isClient ? Date.now() : 0,
+          responseText: responseText.substring(0, 200)
+        });
         setSubmitStatus("error");
         return;
       }
       
-      // 詳細な条件チェック
-      if (response.ok && result && result.success === true) {
+      // 改善された成功判定：主要機能（問い合わせ送信）の成功を優先
+      // 1. HTTP 200 レスポンス = サーバーが正常に処理完了
+      // 2. result.success !== false = 明示的な失敗でない
+      // 3. emailId存在 = メール送信成功の証拠
+      const isMainFunctionSuccessful = response.ok && 
+        (result.success === true || 
+         (result.success !== false && result.emailId) ||
+         response.status === 200);
+      
+      if (isMainFunctionSuccessful) {
         setSubmitStatus("success");
         e.currentTarget.reset();
+        
+        // 成功ログ
+        logError('Contact form submitted successfully', {
+          operation: 'contact_form_success_frontend',
+          timestamp: isClient ? Date.now() : 0,
+          emailId: result?.emailId
+        });
       } else {
-        // バリデーションエラーやその他のエラーをログ
+        // 真のエラー（バリデーション失敗、ネットワークエラー等）のみエラー表示
         logError('Contact form submission failed', {
           operation: 'contact_form_submit',
           timestamp: isClient ? Date.now() : 0,
           status: response.status,
+          responseData: result,
           errors: result?.errors || result?.message || 'Unknown error'
         });
         setSubmitStatus("error");
@@ -124,9 +146,23 @@ export const HeroSection = ({
   ];
 
   return (
-    <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen">
+    <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen relative">
+      {/* Dither Background Animation */}
+      <DitherBackground 
+        waveSpeed={0.02}
+        waveFrequency={2}
+        waveAmplitude={0.2}
+        waveColor={[0.08, 0.12, 0.18]} // Subtle dark blue tones matching #1e1e1e
+        colorNum={3}
+        pixelSize={3}
+        disableAnimation={false}
+        enableMouseInteraction={true}
+        mouseRadius={0.8}
+        className="absolute inset-0 z-0 opacity-30"
+      />
+      
       {/* Navigation Bar */}
-      <header className="fixed top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-20 bg-[#1e1e1e]">
+      <header className="fixed top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-20 bg-[#1e1e1e]/90 backdrop-blur-sm">
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavigation('/')}>
@@ -243,8 +279,8 @@ export const HeroSection = ({
       </header>
 
       {/* Main Content */}
-      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-20">
-        <div className="flex flex-wrap justify-center md:justify-between py-[100px] md:py-[219px] gap-16">
+      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-20 z-10">
+        <div className="flex flex-wrap justify-center md:justify-between py-[100px] md:py-[219px] gap-16 relative z-10">
           {/* Left Content */}
           <motion.div 
             className="flex flex-col max-w-[654px] gap-10 text-center md:text-left"

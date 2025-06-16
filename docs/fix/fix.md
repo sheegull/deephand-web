@@ -1,0 +1,2 @@
+- AllianceNo.2が適応できていない
+- formのmessage欄が狭すぎる、書きにくい

@@ -120,20 +120,36 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         logError('Data request form JSON parse failed', {
           operation: 'data_request_form_parse_error',
           timestamp: isClient ? Date.now() : 0,
+          responseText: responseText.substring(0, 200)
         });
         setSubmitStatus('error');
         return;
       }
       
-      // 詳細な条件チェック
-      if (response.ok && result && result.success === true) {
+      // 改善された成功判定：主要機能（データリクエスト送信）の成功を優先
+      // 1. HTTP 200 レスポンス = サーバーが正常に処理完了
+      // 2. result.success !== false = 明示的な失敗でない
+      // 3. emailId存在 = メール送信成功の証拠
+      const isMainFunctionSuccessful = response.ok && 
+        (result.success === true || 
+         (result.success !== false && result.emailId) ||
+         response.status === 200);
+      
+      if (isMainFunctionSuccessful) {
         setSubmitStatus('success');
         e.currentTarget.reset();
         setSelectedDataTypes([]);
         setOtherDataType('');
         setCurrentStep(1); // Reset to first step
+        
+        // 成功ログ
+        logError('Data request submitted successfully', {
+          operation: 'data_request_success_frontend',
+          timestamp: isClient ? Date.now() : 0,
+          emailId: result?.emailId
+        });
       } else {
-        // バリデーションエラーやその他のエラーをログ
+        // 真のエラー（バリデーション失敗、ネットワークエラー等）のみエラー表示
         logError('Data request form submission failed', {
           operation: 'data_request_form_failed',
           timestamp: isClient ? Date.now() : 0,

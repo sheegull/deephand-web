@@ -309,15 +309,15 @@ interface DitherBackgroundProps {
 }
 
 export default function DitherBackground({
-  waveSpeed = 0.05,
-  waveFrequency = 3,
-  waveAmplitude = 0.3,
-  waveColor = [0.1, 0.15, 0.25], // Deep blue tones to match #1e1e1e background
-  colorNum = 4,
-  pixelSize = 2,
+  waveSpeed = 0.005,
+  waveFrequency = 1.5,
+  waveAmplitude = 0.15,
+  waveColor = [0.12, 0.13, 0.14], // Pure white and dark gray (#202123)
+  colorNum = 2,
+  pixelSize = 4,
   disableAnimation = false,
   enableMouseInteraction = true,
-  mouseRadius = 1,
+  mouseRadius = 1.2,
   className = "w-full h-full absolute inset-0 z-0",
 }: DitherBackgroundProps) {
   return (

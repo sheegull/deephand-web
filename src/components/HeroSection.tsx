@@ -56,10 +56,17 @@ export const HeroSection = ({
   };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // レポート推奨：送信関数の先頭で必ずlog
+    console.log('🚨 SUBMIT HANDLER START - before preventDefault');
+    
     e.preventDefault();
+    console.log('🚨 SUBMIT HANDLER - after preventDefault');
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setValidationErrors([]);
+    
+    console.log('🚨 SUBMIT HANDLER - state set complete');
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -70,132 +77,40 @@ export const HeroSection = ({
       language: getCurrentLanguage(), // 現在の言語設定を追加
     };
 
-    // 🔍 DEBUG: フォームデータの詳細ログ
-    console.log('🔍 [FORM DEBUG] Form submission started');
-    console.log('🔍 [FORM DEBUG] getCurrentLanguage():', getCurrentLanguage());
-    console.log('🔍 [FORM DEBUG] t function test:', t('contact.title'));
-    
-    console.log('🔍 [FORM DEBUG] Raw FormData entries:');
-    for (const [key, value] of formData.entries()) {
-      console.log(`  ${key}: "${value}" (type: ${typeof value}, length: ${value ? value.toString().length : 0})`);
-    }
-    console.log('🔍 [FORM DEBUG] Processed data object:', {
-      name: data.name,
-      nameType: typeof data.name,
-      nameLength: data.name ? data.name.toString().length : 0,
-      organization: data.organization,
-      email: data.email,
-      emailType: typeof data.email,
-      message: data.message,
-      messageType: typeof data.message,
-      messageLength: data.message ? data.message.toString().length : 0,
-      language: data.language
-    });
+    // 基本的なログ出力
+    console.log('フォーム送信開始:', { name: data.name, email: data.email });
 
-    // 簡略化されたバリデーション（エラー回避）
+    // バリデーション処理
     const errors: string[] = [];
-    console.log('🔍 [VALIDATION DEBUG] Starting validation process');
-
-    try {
-      // 名前のバリデーション
-      const nameStr = String(data.name || '');
-      console.log('🔍 [VALIDATION DEBUG] Checking name field:', nameStr);
-      
-      if (!nameStr || nameStr.trim().length === 0) {
-        console.log('❌ [VALIDATION DEBUG] Name validation failed');
-        errors.push('お名前を入力してください');
-      } else if (nameStr.length > 50) {
-        console.log('❌ [VALIDATION DEBUG] Name too long');
-        errors.push('お名前は50文字以内で入力してください');
-      } else {
-        console.log('✅ [VALIDATION DEBUG] Name validation passed');
-      }
-    } catch (error) {
-      console.log('🚨 [VALIDATION DEBUG] Name validation error:', error);
-      errors.push('お名前の入力に問題があります');
+    
+    // 基本的なバリデーション
+    if (!data.name || String(data.name).trim().length === 0) {
+      errors.push(t('validation.nameRequired') || 'お名前を入力してください');
     }
-
-    try {
-      // 組織名のバリデーション（オプション）
-      const orgStr = String(data.organization || '');
-      console.log('🔍 [VALIDATION DEBUG] Checking organization field:', orgStr);
-      
-      if (orgStr && orgStr.length > 100) {
-        console.log('❌ [VALIDATION DEBUG] Organization too long');
-        errors.push('組織名は100文字以内で入力してください');
-      } else {
-        console.log('✅ [VALIDATION DEBUG] Organization validation passed');
+    if (!data.email || String(data.email).trim().length === 0) {
+      errors.push(t('validation.emailRequired') || 'メールアドレスを入力してください');
+    } else {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(String(data.email))) {
+        errors.push(t('validation.emailInvalid') || '有効なメールアドレスを入力してください');
       }
-    } catch (error) {
-      console.log('🚨 [VALIDATION DEBUG] Organization validation error:', error);
     }
-
-    try {
-      // メールアドレスのバリデーション
-      const emailStr = String(data.email || '');
-      console.log('🔍 [VALIDATION DEBUG] Checking email field:', emailStr);
-      
-      if (!emailStr || emailStr.trim().length === 0) {
-        console.log('❌ [VALIDATION DEBUG] Email validation failed - empty');
-        errors.push('メールアドレスを入力してください');
-      } else {
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const isValidEmail = emailRegex.test(emailStr);
-        console.log('🔍 [VALIDATION DEBUG] Email regex test result:', isValidEmail);
-        
-        if (!isValidEmail) {
-          console.log('❌ [VALIDATION DEBUG] Email validation failed - invalid format');
-          errors.push('有効なメールアドレスを入力してください');
-        } else {
-          console.log('✅ [VALIDATION DEBUG] Email validation passed');
-        }
-      }
-    } catch (error) {
-      console.log('🚨 [VALIDATION DEBUG] Email validation error:', error);
-      errors.push('メールアドレスの入力に問題があります');
+    if (!data.message || String(data.message).trim().length === 0) {
+      errors.push(t('validation.messageRequired') || 'メッセージを入力してください');
+    } else if (String(data.message).trim().length < 10) {
+      errors.push(t('validation.messageTooShort') || 'メッセージは10文字以上で入力してください');
     }
-
-    try {
-      // メッセージのバリデーション
-      const messageStr = String(data.message || '');
-      console.log('🔍 [VALIDATION DEBUG] Checking message field:', messageStr);
-      
-      if (!messageStr || messageStr.trim().length === 0) {
-        console.log('❌ [VALIDATION DEBUG] Message validation failed - empty');
-        errors.push('メッセージを入力してください');
-      } else if (messageStr.trim().length < 10) {
-        console.log('❌ [VALIDATION DEBUG] Message validation failed - too short');
-        errors.push('メッセージは10文字以上で入力してください');
-      } else if (messageStr.length > 1000) {
-        console.log('❌ [VALIDATION DEBUG] Message validation failed - too long');
-        errors.push('メッセージは1000文字以内で入力してください');
-      } else {
-        console.log('✅ [VALIDATION DEBUG] Message validation passed');
-      }
-    } catch (error) {
-      console.log('🚨 [VALIDATION DEBUG] Message validation error:', error);
-      errors.push('メッセージの入力に問題があります');
-    }
-
-    console.log('🔍 [VALIDATION DEBUG] Validation summary:', {
-      totalErrors: errors.length,
-      errors: errors
-    });
 
     if (errors.length > 0) {
-      console.log('❌ [VALIDATION DEBUG] Early return due to validation errors');
       setValidationErrors(errors);
       setIsSubmitting(false);
       return;
     }
 
-    console.log('✅ [VALIDATION DEBUG] All validations passed, proceeding to API call');
-
+    // APIリクエスト開始
+    console.log('フォーム送信 - APIリクエスト開始');
+    
     try {
-      console.log('🔍 [FETCH DEBUG] Starting API request with data:', data);
-      console.log('🔍 [FETCH DEBUG] Request URL:', '/api/contact');
-      console.log('🔍 [FETCH DEBUG] Request body:', JSON.stringify(data));
-      
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -204,123 +119,55 @@ export const HeroSection = ({
         body: JSON.stringify(data),
       });
       
-      console.log('🔍 [FETCH DEBUG] Response received successfully');
-      console.log('🔍 [FETCH DEBUG] Response details:', {
-        status: response.status,
-        statusText: response.statusText,
-        ok: response.ok,
-        url: response.url,
-        type: response.type,
-        headers: Object.fromEntries(response.headers.entries())
-      });
-
-      // レスポンステキストを先に取得して確認
-      console.log('🔍 [FETCH DEBUG] Getting response text...');
+      console.log('APIレスポンス受信:', response.status, response.ok);
+      
       const responseText = await response.text();
-      console.log('🔍 [FETCH DEBUG] Response text received:', {
-        length: responseText.length,
-        preview: responseText.substring(0, 100),
-        fullText: responseText
-      });
+      console.log('レスポンステキスト:', responseText);
 
       let result;
       try {
-        console.log('🔍 [FETCH DEBUG] Parsing JSON...');
         result = JSON.parse(responseText);
-        console.log('🔍 [FETCH DEBUG] JSON parsed successfully:', result);
+        console.log('パース成功:', result);
       } catch (parseError) {
-        console.log('🚨 [FETCH DEBUG] JSON parse failed:', parseError);
-        console.log('🚨 [FETCH DEBUG] Raw response text that failed to parse:', responseText);
-        logError('Contact form JSON parse failed', {
-          operation: 'contact_form_parse_error',
-          timestamp: isClient ? Date.now() : 0,
-          responseText: responseText.substring(0, 200),
-          parseError: parseError.message
-        });
+        console.log('JSON解析エラー:', parseError);
         setSubmitStatus('error');
         setIsSubmitting(false);
         return;
       }
 
-      // 🔍 DEBUG: レスポンス詳細ログ
-      console.log('🔍 [CONTACT FORM DEBUG] Response details:', {
+      // 成功判定
+
+      // 🔧 Enhanced debugging for success logic
+      console.log('🔍 [DETAILED DEBUG] Raw response:', {
         status: response.status,
         statusText: response.statusText,
         ok: response.ok,
-        headers: Object.fromEntries(response.headers.entries()),
-        url: response.url,
+        headers: Object.fromEntries(response.headers.entries())
       });
-
-      console.log('🔍 [CONTACT FORM DEBUG] Parsed result:', {
-        result,
+      
+      console.log('🔍 [DETAILED DEBUG] Parsed result object:', {
+        result: result,
         resultType: typeof result,
+        resultKeys: result ? Object.keys(result) : 'null',
         resultSuccess: result?.success,
         resultSuccessType: typeof result?.success,
         resultEmailId: result?.emailId,
+        resultEmailIdType: typeof result?.emailId,
         resultMessage: result?.message,
-        resultErrors: result?.errors,
+        resultMessageType: typeof result?.message
       });
 
-      // 🔍 SUCCESS LOGIC DEBUG: 成功判定前の詳細確認
-      console.log('🔍 [SUCCESS DEBUG] Evaluating success conditions...');
-      console.log('🔍 [SUCCESS DEBUG] Response status check:', {
-        'response.status': response.status,
-        'response.status === 200': response.status === 200,
-        'response.ok': response.ok
-      });
-      console.log('🔍 [SUCCESS DEBUG] Result data check:', {
-        'result': result,
-        'result.success': result.success,
-        'result.success === true': result.success === true,
-        'result.success === "true"': result.success === "true",
-        'result.emailId': result.emailId,
-        'result.emailId exists': !!result.emailId,
-        'result.emailId.length': result.emailId ? result.emailId.length : 0
-      });
-
-      // 柔軟かつ確実な成功判定ロジック
-      const httpOk = response.status === 200 && response.ok;
-      const hasSuccessFlag = result.success === true || result.success === "true";
-      const hasEmailId = result.emailId && result.emailId.length > 0;
+      // 🔧 SIMPLIFIED SUCCESS LOGIC (レポート推奨)
+      // レスポンスOKなら成功とする（シンプルで確実）
+      const isMainFunctionSuccessful = response.ok;
       
-      console.log('🔍 [SUCCESS DEBUG] Condition breakdown:', {
-        'httpOk': httpOk,
-        'hasSuccessFlag': hasSuccessFlag,
-        'hasEmailId': hasEmailId,
-        'combined': httpOk && (hasSuccessFlag || hasEmailId)
-      });
-
-      // 🔧 TEMPORARY FIX: 強制的に成功パスに入れてテスト
-      const isMainFunctionSuccessful = httpOk; // 一時的にHTTP 200 OKのみで成功判定
-
-      // 🔍 DEBUG: 成功判定の詳細ログ
-      console.log('🔍 [CONTACT FORM DEBUG] Success logic evaluation:', {
-        'response.ok': response.ok,
-        'response.status': response.status,
-        'result.success': result.success,
-        'result.success === true': result.success === true,
-        'result.success === "true"': result.success === "true",
-        'result.emailId': result.emailId,
-        'result.emailId exists': !!result.emailId,
-        'result.emailId.length': result.emailId ? result.emailId.length : 0,
-        'Final isMainFunctionSuccessful': isMainFunctionSuccessful,
+      console.log('🔍 [SIMPLIFIED] Success determination:', {
+        responseStatus: response.status,
+        responseOk: response.ok,
+        isSuccess: isMainFunctionSuccessful
       });
       
-      // 🔍 DEBUG: 条件詳細チェック
-      console.log('🔍 [CONTACT FORM DEBUG] Condition breakdown:', {
-        'Condition 1 (response.status === 200)': response.status === 200,
-        'Condition 2 (response.ok)': response.ok,
-        'Condition 3a (result.success === true)': result.success === true,
-        'Condition 3b (result.success === "true")': result.success === "true",
-        'Condition 3c (emailId exists and has length)': (result.emailId && result.emailId.length > 0),
-        'Overall condition 3': (
-          result.success === true || 
-          result.success === "true" || 
-          (result.emailId && result.emailId.length > 0)
-        ),
-      });
-
-      console.log('🔍 [SUCCESS DEBUG] Final success decision:', isMainFunctionSuccessful);
+      console.log('🔍 [FINAL DECISION] isMainFunctionSuccessful:', isMainFunctionSuccessful);
       
       if (isMainFunctionSuccessful) {
         console.log('✅ [SUCCESS DEBUG] SUCCESS PATH - Setting status to success');
@@ -341,13 +188,11 @@ export const HeroSection = ({
       } else {
         console.log('❌ [SUCCESS DEBUG] ERROR PATH - Setting status to error');
         console.log('❌ [SUCCESS DEBUG] Why error was chosen:', {
-          httpOk: httpOk,
-          hasSuccessFlag: hasSuccessFlag,
-          hasEmailId: hasEmailId,
           responseStatus: response.status,
           responseOk: response.ok,
           resultSuccess: result?.success,
-          resultEmailId: result?.emailId
+          resultEmailId: result?.emailId,
+          resultMessage: result?.message
         });
         
         logError('Contact form submission failed', {
@@ -355,9 +200,7 @@ export const HeroSection = ({
           timestamp: isClient ? Date.now() : 0,
           status: response.status,
           responseData: result,
-          httpOk: httpOk,
-          hasSuccessFlag: hasSuccessFlag,
-          hasEmailId: hasEmailId,
+          responseOk: response.ok,
           errors: result?.errors || result?.message || 'Unknown error',
         });
         setSubmitStatus('error');
@@ -600,7 +443,7 @@ export const HeroSection = ({
                 </CardDescription>
               </CardHeader>
               <CardContent className="px-2 pb-2">
-                <form className="flex flex-col gap-5" onSubmit={onSubmit}>
+                <form className="flex flex-col gap-5" onSubmit={onSubmit} action="">
                   <div className="flex flex-col gap-2">
                     <label className="font-alliance font-normal text-slate-200 text-sm leading-[18px]">
                       {t('contact.name')} *
@@ -715,7 +558,18 @@ export const HeroSection = ({
                   </div>
 
                   <Button
-                    type="submit"
+                    type="button"
+                    onClick={(e) => {
+                      const form = e.currentTarget.closest('form');
+                      if (form) {
+                        const fakeEvent = {
+                          preventDefault: () => {},
+                          currentTarget: form,
+                          target: form
+                        } as React.FormEvent<HTMLFormElement>;
+                        onSubmit(fakeEvent);
+                      }
+                    }}
                     disabled={isSubmitting}
                     className="h-12 font-alliance font-medium text-white text-base bg-[#234ad9] hover:bg-[#1e3eb8] active:bg-[#183099] transition-colors disabled:bg-[#234ad9]/70 flex items-center justify-center gap-2 rounded-lg mt-2"
                   >
@@ -730,12 +584,13 @@ export const HeroSection = ({
                       className="bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full flex items-center justify-center shadow-lg">
+                        <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center shadow-lg border border-emerald-400/30">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3"/>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4"/>
                           </svg>
                         </div>
-                        <p className="text-emerald-300 text-sm font-alliance font-normal">
+                        <p className="text-emerald-100 text-sm font-alliance font-normal">
                           {t('contact.success')}
                         </p>
                       </div>
@@ -745,15 +600,16 @@ export const HeroSection = ({
                     <motion.div 
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      className="bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
+                      className="bg-gradient-to-r from-red-500/10 to-rose-500/10 border border-red-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                        <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center shadow-lg border border-red-400/30">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.4"/>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01"/>
                           </svg>
                         </div>
-                        <p className="text-red-300 text-sm font-alliance font-normal">
+                        <p className="text-red-100 text-sm font-alliance font-normal">
                           {t('contact.error')}
                         </p>
                       </div>
@@ -763,16 +619,17 @@ export const HeroSection = ({
                     <motion.div 
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      className="bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-red-500/10 border border-amber-500/30 rounded-xl p-5 backdrop-blur-md shadow-xl ring-1 ring-amber-500/20"
+                      className="bg-gradient-to-br from-amber-500/10 via-yellow-500/10 to-orange-500/10 border border-amber-500/30 rounded-xl p-5 backdrop-blur-md shadow-xl ring-1 ring-amber-500/20"
                     >
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
+                        <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg flex-shrink-0 border border-amber-400/30">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3"/>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 16h.01M12 8v4"/>
                           </svg>
                         </div>
                         <div className="flex-1">
-                          <p className="text-amber-200 text-sm font-medium mb-3 font-alliance">
+                          <p className="text-amber-100 text-sm font-medium mb-3 font-alliance">
                             {t('validation.inputError')}
                           </p>
                           <ul className="space-y-2">
@@ -785,7 +642,7 @@ export const HeroSection = ({
                                 className="flex items-start gap-3"
                               >
                                 <div className="w-1.5 h-1.5 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-amber-100 text-sm font-alliance font-light leading-relaxed">{error}</span>
+                                <span className="text-amber-50 text-sm font-alliance font-light leading-relaxed">{error}</span>
                               </motion.li>
                             ))}
                           </ul>

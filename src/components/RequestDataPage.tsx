@@ -847,25 +847,26 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-xl p-4 shadow-lg"
+                    className="bg-gradient-to-r from-slate-50 to-gray-100 border border-slate-300 rounded-xl p-4 shadow-lg"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center shadow-md">
+                      <div className="w-8 h-8 bg-gradient-to-br from-slate-400 to-gray-500 rounded-full flex items-center justify-center shadow-md border border-gray-400/30">
                         <svg
                           className="w-5 h-5 text-white"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
+                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3"/>
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M5 13l4 4L19 7"
+                            d="M9 12l2 2 4-4"
                           />
                         </svg>
                       </div>
-                      <p className="text-emerald-700 text-sm font-alliance font-medium">
+                      <p className="text-gray-700 text-sm font-alliance font-medium">
                         {t('request.success')}
                       </p>
                     </div>
@@ -875,25 +876,26 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 rounded-xl p-4 shadow-lg"
+                    className="bg-gradient-to-r from-slate-50 to-gray-100 border border-gray-300 rounded-xl p-4 shadow-lg"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center shadow-md">
+                      <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-gray-600 rounded-full flex items-center justify-center shadow-md border border-gray-400/30">
                         <svg
                           className="w-5 h-5 text-white"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
+                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.4"/>
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
+                            d="M12 8v4m0 4h.01"
                           />
                         </svg>
                       </div>
-                      <p className="text-red-700 text-sm font-alliance font-medium">
+                      <p className="text-gray-700 text-sm font-alliance font-medium">
                         {t('request.error')}
                       </p>
                     </div>
@@ -903,26 +905,27 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 border border-amber-200 rounded-xl p-5 shadow-xl"
+                    className="bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 border border-slate-300 rounded-xl p-5 shadow-xl"
                   >
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-gray-600 rounded-full flex items-center justify-center shadow-md flex-shrink-0 border border-gray-500/30">
                         <svg
                           className="w-5 h-5 text-white"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
+                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3"/>
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                            d="M12 16h.01M12 8v4"
                           />
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <p className="text-amber-800 text-sm font-medium mb-3 font-alliance">
+                        <p className="text-gray-800 text-sm font-medium mb-3 font-alliance">
                           {t('validation.inputError')}
                         </p>
                         <ul className="space-y-2">
@@ -934,8 +937,8 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                               transition={{ delay: index * 0.1 }}
                               className="flex items-start gap-3"
                             >
-                              <div className="w-1.5 h-1.5 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-amber-700 text-sm font-alliance font-light leading-relaxed">
+                              <div className="w-1.5 h-1.5 bg-slate-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-gray-700 text-sm font-alliance font-light leading-relaxed">
                                 {error}
                               </span>
                             </motion.li>

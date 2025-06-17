@@ -1,0 +1,187 @@
+
+> deephand-web@0.0.1 dev
+> dotenv -e .env.local -- astro dev
+
+05:22:21 [@astrojs/node] Enabling sessions with filesystem storage
+05:22:21 [types] Generated 0ms
+05:22:21 [content] Syncing content
+05:22:21 [content] Synced content
+05:22:21 [vite] Re-optimizing dependencies because vite config has changed
+
+ astro  v5.9.3 ready in 257 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+05:22:21 watching for file changes...
+05:22:34 [200] / 137ms
+05:22:41 [200] / 3ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[warn_1750105388573_jeeyji8g7] User confirmation email failed: Invalid `to` field. Please use our testing email address instead of domains like `example.com`. See our documentation for more information. {
+  operation: 'contact_email_user_confirmation',
+  timestamp: 1750105388572,
+  userEmail: 'fixed-test@example.com',
+  errorType: 'validation_error'
+}
+[info_1750105388576_2dg216xmc] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750105388576,
+  url: '/api/contact'
+}
+05:23:08 [200] POST /api/contact 2666ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[warn_1750105423568_3pstf7l0j] User confirmation email failed: Invalid `to` field. Please use our testing email address instead of domains like `example.com`. See our documentation for more information. {
+  operation: 'contact_email_user_confirmation',
+  timestamp: 1750105423568,
+  userEmail: 'debug@example.com',
+  errorType: 'validation_error'
+}
+[info_1750105423568_7dpe37s50] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750105423568,
+  url: '/api/contact'
+}
+05:23:43 [200] POST /api/contact 3232ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750105455022_ppzbkeajg] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750105455022,
+  url: '/api/contact'
+}
+05:24:15 [200] POST /api/contact 4975ms
+05:24:45 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+05:24:45 [watch] src/components/HeroSection.tsx
+05:24:59 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+05:24:59 [watch] src/components/HeroSection.tsx
+05:25:15 [200] / 39ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750105552431_m4548sg5n] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750105552431,
+  url: '/api/contact'
+}
+05:25:52 [200] POST /api/contact 4847ms
+05:27:40 [200] / 4ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750105725653_6kbndvnmp] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750105725653,
+  url: '/api/contact'
+}
+05:28:45 [200] POST /api/contact 3408ms
+05:30:34 [200] / 3ms
+12:30:30 [200] / 2ms
+12:30:31 [404] /favicon-32x32.png 1ms
+12:30:31 [404] /favicon-16x16.png 0ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750131069436_6fmgi3xmi] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750131069436,
+  url: '/api/contact'
+}
+12:31:09 [200] POST /api/contact 4825ms
+12:33:03 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+12:33:03 [watch] src/components/HeroSection.tsx
+12:33:11 [200] / 24ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750131231784_wxnhb7v1g] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750131231783,
+  url: '/api/contact'
+}
+12:33:51 [200] POST /api/contact 3387ms
+12:34:21 [200] / 3ms
+12:34:56 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+12:34:56 [watch] src/components/HeroSection.tsx
+12:35:12 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+12:35:12 [watch] src/components/HeroSection.tsx
+12:35:29 [200] / 36ms
+12:44:46 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+12:44:46 [watch] src/components/HeroSection.tsx
+12:44:53 [200] / 33ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750131924621_wjtrvekji] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750131924621,
+  url: '/api/contact'
+}
+12:45:24 [200] POST /api/contact 3352ms
+12:52:46 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+12:52:46 [watch] src/components/HeroSection.tsx
+12:53:00 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+12:53:00 [watch] src/components/HeroSection.tsx
+12:53:28 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+12:53:28 [watch] src/components/HeroSection.tsx

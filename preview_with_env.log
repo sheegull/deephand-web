@@ -1,0 +1,73 @@
+04:59:17 [@astrojs/node] Enabling sessions with filesystem storage
+04:59:17 [@astrojs/node] Server listening on http://localhost:4321
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750103985809_9gf2x0e7g] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750103985809,
+  url: '/api/contact'
+}
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750104038547_bvtvfdvuu] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750104038547,
+  url: '/api/contact'
+}
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[info_1750104154636_irwfhx1df] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750104154636,
+  url: '/api/contact'
+}
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[warn_1750104181911_niatcqdj4] User confirmation email failed: Invalid `to` field. Please use our testing email address instead of domains like `test.com`. See our documentation for more information. {
+  operation: 'contact_email_user_confirmation',
+  timestamp: 1750104181911,
+  userEmail: 'debug@test.com',
+  errorType: 'validation_error'
+}
+[info_1750104181911_nu0qpa7mo] Contact form submitted successfully {
+  operation: 'contact_form_success',
+  timestamp: 1750104181911,
+  url: '/api/contact'
+}

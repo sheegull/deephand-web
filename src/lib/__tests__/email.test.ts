@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { sendContactEmail, sendDataRequestEmail, validateEmailConfig } from '../email';
-import type { ContactFormData, DataRequestFormData } from '../validationSchemas';
+import type { ContactFormData, CurrentDataRequestFormData } from '../validationSchemas';
 
 // Mock Resend
 vi.mock('resend', () => ({
@@ -50,6 +50,7 @@ describe('Email Service', () => {
     const mockContactData: ContactFormData = {
       name: '山田太郎',
       email: 'yamada@example.com',
+      organization: '株式会社サンプル',
       company: '株式会社サンプル',
       subject: 'お問い合わせ',
       message: 'データアノテーションサービスについて詳しく知りたいです。',
@@ -156,23 +157,17 @@ describe('Email Service', () => {
   });
 
   describe('sendDataRequestEmail', () => {
-    const mockDataRequestData: DataRequestFormData = {
-      companyName: '株式会社AI研究所',
-      contactPerson: '佐藤花子',
+    const mockDataRequestData: CurrentDataRequestFormData = {
+      name: '佐藤花子',
+      organization: '株式会社AI研究所',
       email: 'sato@ai-research.com',
-      phone: '+81-90-1234-5678',
-      projectTitle: 'AIビジョンプロジェクト',
-      dataType: 'image',
-      dataDescription:
-        '自動運転向けの物体検出用画像データセット。様々な天候・時間帯での撮影画像が必要。',
-      annotationRequirements:
-        'バウンディングボックスによる車両・歩行者・信号機の検出。アノテーション精度は95%以上を要求。',
+      backgroundPurpose: '自動運転向けの物体検出用画像データセット。様々な天候・時間帯での撮影画像が必要。',
+      dataType: ['image'],
+      dataDetails: 'バウンディングボックスによる車両・歩行者・信号機の検出。アノテーション精度は95%以上を要求。',
       dataVolume: '10,000枚の画像',
-      timeline: '4週間',
+      deadline: '4週間',
       budget: '¥500,000',
-      additionalNotes: '品質を重視したアノテーションをお願いします。',
-      privacyConsent: true,
-      communicationPreference: 'email',
+      otherRequirements: '品質を重視したアノテーションをお願いします。',
     };
 
     it('should send data request email successfully', async () => {
@@ -199,7 +194,7 @@ describe('Email Service', () => {
         from: 'requests@deephand.ai',
         to: ['sales@deephand.ai'],
         replyTo: 'sato@ai-research.com',
-        subject: 'データリクエスト: AIビジョンプロジェクト',
+        subject: 'データリクエスト: 佐藤花子',
         html: expect.stringContaining('株式会社AI研究所'),
         text: expect.stringContaining('佐藤花子'),
       });
@@ -225,7 +220,7 @@ describe('Email Service', () => {
 
       // Check that all important data is included
       expect(emailCall.html).toContain('株式会社AI研究所');
-      expect(emailCall.html).toContain('AIビジョンプロジェクト');
+      expect(emailCall.html).toContain('佐藤花子');
       expect(emailCall.html).toContain('image');
       expect(emailCall.html).toContain('10,000枚の画像');
       expect(emailCall.html).toContain('4週間');
@@ -233,11 +228,11 @@ describe('Email Service', () => {
     });
 
     it('should handle missing optional fields gracefully', async () => {
-      const dataWithoutOptionals: DataRequestFormData = {
+      const dataWithoutOptionals: CurrentDataRequestFormData = {
         ...mockDataRequestData,
-        phone: undefined,
-        budget: undefined,
-        additionalNotes: undefined,
+        organization: undefined,
+        dataDetails: undefined,
+        otherRequirements: undefined,
       };
 
       const mockSend = vi.fn().mockResolvedValue({

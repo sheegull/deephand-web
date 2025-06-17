@@ -1,6 +1,6 @@
 // TDD Green Step: Error handling and resilience tests
 
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   createErrorLogger,
   handleApiError,

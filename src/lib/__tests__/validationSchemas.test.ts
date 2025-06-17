@@ -15,6 +15,7 @@ describe('Validation Schemas', () => {
       const validData = {
         name: 'John Doe',
         email: 'john@example.com',
+        organization: 'Test Organization',
         company: 'Test Company',
         subject: 'Test Subject',
         message: 'This is a test message with enough characters',
@@ -36,6 +37,8 @@ describe('Validation Schemas', () => {
       const invalidData = {
         name: 'John Doe',
         email: 'invalid-email',
+        organization: 'Test Organization',
+        company: 'Test Company',
         subject: 'Test Subject',
         message: 'This is a test message with enough characters',
         privacyConsent: true,
@@ -60,6 +63,8 @@ describe('Validation Schemas', () => {
       const invalidData = {
         name: 'John Doe',
         email: 'john@example.com',
+        organization: 'Test Organization',
+        company: 'Test Company',
         subject: 'Test Subject',
         message: 'This is a test message with enough characters',
         privacyConsent: false,
@@ -84,6 +89,8 @@ describe('Validation Schemas', () => {
       const invalidData = {
         name: 'John Doe',
         email: 'john@example.com',
+        organization: 'Test Organization',
+        company: 'Test Company',
         subject: 'Test Subject',
         message: 'Short',
         privacyConsent: true,
@@ -183,6 +190,7 @@ describe('Validation Schemas', () => {
       const data: ContactFormData = {
         name: 'Test',
         email: 'test@example.com',
+        organization: 'Test Organization',
         company: 'Test Company',
         subject: 'Test Subject',
         message: 'Test message with enough characters',

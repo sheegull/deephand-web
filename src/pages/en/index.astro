@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { HeroSection } from '@/components/HeroSection';
+import { setCurrentLanguage } from '@/lib/i18n';
+import '@/styles/app.css';
+
+// サーバーサイドで英語に設定
+setCurrentLanguage('en');
+---
+
+<BaseLayout 
+  title="DeepHand - AI & Robotics Data Annotation Service"
+  description="Professional data annotation service specialized in AI and robotics projects. High-quality labeling by expert annotators."
+>
+  <HeroSection 
+    client:load 
+    onRequestClick={() => window.location.href = '/en/request'}
+    onNavClick={(element) => {
+      if (element === 'get-started') {
+        window.location.href = '/en/request';
+      } else if (element === 'login') {
+        console.log('Login clicked');
+      } else {
+        const elementId = element.replace(/\s+/g, '-');
+        const targetElement = document.getElementById(elementId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }}
+    onLogoClick={() => window.location.href = '/en'}
+  />
+</BaseLayout>

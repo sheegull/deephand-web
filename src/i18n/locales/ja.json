@@ -1,170 +1,218 @@
 {
-  "navigation": {
-    "home": "ホーム",
-    "services": "サービス",
-    "about": "会社概要",
-    "contact": "お問い合わせ",
-    "requestData": "データ依頼"
+  "nav": {
+    "solutions": "ソリューション",
+    "resources": "リソース",
+    "pricing": "料金",
+    "aboutUs": "会社概要",
+    "getStarted": "始める",
+    "login": "ログイン"
   },
   "hero": {
-    "title": "AI・ロボティクス向け",
-    "subtitle": "高精度データアノテーション",
-    "description": "専門知識を持つアノテーターが、あなたのAI・ロボティクスプロジェクトに最適なデータアノテーションを提供します。",
-    "cta": {
-      "primary": "データを依頼する",
-      "secondary": "サービス詳細"
+    "title": "ロボティクスに\n豊富な人間データを。",
+    "subtitle": "DeepHandはロボティクスに特化したアノテーション専門チームです。高品質なアノテーションデータを提供します。",
+    "requestButton": "データリクエスト"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "ご自由にご記入ください。\n1～2 営業日以内に担当より返信いたします。",
+    "name": "お名前",
+    "organization": "ご所属 (会社名・組織名など)",
+    "email": "メールアドレス",
+    "message": "お問い合わせ内容",
+    "submit": "送信",
+    "submitting": "送信中...",
+    "success": "メッセージを送信しました！",
+    "error": "送信に失敗しました。もう一度お試しください。",
+    "placeholder": {
+      "name": "富士 太郎",
+      "organization": "ロボティクス株式会社",
+      "email": "taro@example.com",
+      "message": "お問い合わせ内容"
     }
   },
-  "services": {
-    "title": "私たちのサービス",
-    "subtitle": "AI・ロボティクス分野に特化した包括的なデータアノテーション",
-    "imageAnnotation": {
-      "title": "画像アノテーション",
-      "description": "コンピュータビジョン・ロボティクス向け高精度画像アノテーション",
-      "features": [
-        "物体検出",
-        "セマンティックセグメンテーション", 
-        "姿勢推定",
-        "OCR"
-      ]
+  "request": {
+    "title": "データアノテーションのリクエスト",
+    "subtitle": "ご要望をできる範囲でご記入ください。\n1～2 営業日以内に担当より返信いたします。",
+    "name": "お名前",
+    "organization": "ご所属 (会社名・組織名など)",
+    "email": "メールアドレス",
+    "backgroundPurpose": "ご依頼の背景や目的",
+    "dataType": "必要なデータ種別",
+    "dataDetails": "データの詳細",
+    "dataVolume": "必要なデータ量",
+    "deadline": "ご希望の納期",
+    "budget": "ご予算目安",
+    "otherRequirements": "その他、詳細やご要望",
+    "submit": "送信",
+    "submitting": "送信中...",
+    "success": "リクエストを送信しました！",
+    "error": "送信に失敗しました。もう一度お試しください。",
+    "dataTypeOptions": {
+      "text": "テキスト",
+      "image": "画像",
+      "video": "動画",
+      "audio": "音声",
+      "other": "その他"
     },
-    "videoLabeling": {
-      "title": "動画ラベリング", 
-      "description": "モーション解析・追跡向けフレームバイフレーム動画アノテーション",
-      "features": [
-        "物体追跡",
-        "行動認識",
-        "時系列セグメンテーション"
-      ]
-    },
-    "sensorData": {
-      "title": "センサーデータ処理",
-      "description": "IoT・ロボティクス向けセンサーデータ構造化アノテーション",
-      "features": [
-        "時系列解析",
-        "異常検知", 
-        "パターン認識"
-      ]
-    },
-    "textNlp": {
-      "title": "テキスト・NLP",
-      "description": "自然言語処理・テキストアノテーションサービス",
-      "features": [
-        "固有表現抽出",
-        "感情分析",
-        "テキスト分類"
-      ]
+    "placeholder": {
+      "name": "富士 太郎",
+      "organization": "ロボティクス株式会社",
+      "email": "taro@example.com",
+      "backgroundPurpose": "ロボットの学習データとして使用予定",
+      "dataDetails": "具体的なデータの詳細をご記入ください",
+      "dataVolume": "1万件程度",
+      "deadline": "2024年12月末まで",
+      "budget": "100万円程度",
+      "otherRequirements": "その他のご要望がございましたらご記入ください"
     }
-  },
-  "process": {
-    "title": "私たちのプロセス",
-    "subtitle": "シンプルで効果的な3ステップ",
-    "steps": {
-      "analysis": {
-        "title": "データ要件分析",
-        "description": "お客様のデータとアノテーション要件を分析し、最適な戦略を策定します"
-      },
-      "annotation": {
-        "title": "プロフェッショナルアノテーション",
-        "description": "AI・ロボティクス領域の専門知識を持つアノテーターが高品質なラベリングを実施"
-      },
-      "delivery": {
-        "title": "品質保証・納品",
-        "description": "多段階品質チェックで精度を確保し、セキュアに納品いたします"
-      }
-    }
-  },
-  "features": {
-    "title": "DeepHandを選ぶ理由",
-    "expertise": {
-      "title": "AI・ロボティクス専門性",
-      "description": "人工知能・ロボティクス分野における深い専門知識"
-    },
-    "quality": {
-      "title": "高品質基準",
-      "description": "多段階品質管理プロセスによる99%以上の精度"
-    },
-    "scalability": {
-      "title": "スケーラブルソリューション",
-      "description": "プロトタイプから本格運用まで対応可能なデータアノテーション"
-    },
-    "security": {
-      "title": "データセキュリティ",
-      "description": "機密データに対するエンタープライズ級セキュリティと機密保持"
-    }
-  },
-  "cta": {
-    "title": "プロジェクトを始めましょう",
-    "description": "あなたのAI・ロボティクスプロジェクトを次のレベルへ",
-    "requestData": "データを依頼する",
-    "getInTouch": "お問い合わせ"
   },
   "footer": {
-    "company": "DeepHand",
-    "description": "AI・ロボティクス特化データアノテーションサービス",
-    "links": {
-      "about": "会社概要",
-      "services": "サービス",
-      "privacy": "プライバシーポリシー",
-      "terms": "利用規約"
-    },
-    "copyright": "© 2024 DeepHand. All rights reserved."
+    "copyright": "© 2025 DeepHand. All Rights Reserved.",
+    "termsOfService": "利用規約",
+    "privacyPolicy": "プライバシーポリシー"
   },
-  "form": {
-    "labels": {
-      "companyName": "会社名",
-      "contactPerson": "担当者名",
+  "terms": {
+    "title": "利用規約",
+    "lastUpdated": "最終更新日: 2024年12月17日",
+    "article1": {
+      "title": "第1条（適用）",
+      "content": "本利用規約（以下「本規約」）は、株式会社DeepHand（以下「当社」）が提供するデータアノテーションサービス（以下「本サービス」）の利用条件を定めるものです。本サービスをご利用いただくお客様（以下「利用者」）は、本規約に同意したものとみなします。"
+    },
+    "article2": {
+      "title": "第2条（サービス内容）",
+      "content": "本サービスは、AI・ロボティクス分野に特化したデータアノテーション（データラベリング）サービスを提供します。画像、動画、音声、テキストデータに対する高品質なアノテーション作業を専門のアノテーターが実施します。"
+    },
+    "article3": {
+      "title": "第3条（利用契約の成立）",
+      "content": "利用契約は、利用者が当社所定の申込手続きを完了し、当社がこれを承諾した時点で成立します。当社は、申込内容を審査し、承諾の可否を決定する権利を有します。"
+    },
+    "article4": {
+      "title": "第4条（データの取扱い）",
+      "content": "当社は、利用者から提供されたデータを、アノテーション作業の目的のみに使用し、適切なセキュリティ対策を講じて管理します。データの機密性を保持し、第三者への開示・提供は行いません。ただし、法令に基づく場合はこの限りではありません。"
+    },
+    "article5": {
+      "title": "第5条（知的財産権）",
+      "content": "アノテーション済みデータの知的財産権は利用者に帰属します。ただし、当社が開発したアノテーション手法、ツール、プロセスに関する知的財産権は当社に帰属します。"
+    },
+    "article6": {
+      "title": "第6条（料金・支払い）",
+      "content": "利用料金は、契約時に合意した金額とし、請求書発行日から30日以内にお支払いいただきます。支払いが遅延した場合、年14.6%の遅延損害金が発生します。"
+    },
+    "article7": {
+      "title": "第7条（品質保証）",
+      "content": "当社は、業界標準の品質でアノテーション作業を実施し、品質チェック体制を整備します。ただし、データの性質上、100%の精度を保証するものではありません。"
+    },
+    "article8": {
+      "title": "第8条（責任の制限）",
+      "content": "当社の責任は、債務不履行または不法行為により利用者に生じた直接かつ通常の損害に限定され、逸失利益、特別損害、間接損害については責任を負いません。また、当社の責任の上限は、該当する契約における利用料金の総額とします。"
+    },
+    "article9": {
+      "title": "第9条（秘密保持）",
+      "content": "当社は、本サービスの提供により知り得た利用者の秘密情報を厳格に管理し、利用者の事前の書面による同意なく第三者に開示しません。この義務は、契約終了後も継続します。"
+    },
+    "article10": {
+      "title": "第10条（契約の解除）",
+      "content": "当社は、利用者が本規約に違反した場合、支払いを遅延した場合、その他当社が不適切と判断した場合、契約を解除することができます。"
+    },
+    "article11": {
+      "title": "第11条（準拠法・管轄裁判所）",
+      "content": "本規約は日本法に準拠し、本規約に関する一切の紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。"
+    },
+    "contact": "お問い合わせ: contact@deephandai.com"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー",
+    "lastUpdated": "最終更新日: 2024年12月17日",
+    "section1": {
+      "title": "1. 個人情報の収集",
+      "content": "当社は、以下の個人情報を収集する場合があります：\n• お名前、会社名・組織名\n• メールアドレス、電話番号\n• お問い合わせ内容\n• サービス利用に関する情報\n• Webサイトのアクセスログ"
+    },
+    "section2": {
+      "title": "2. 個人情報の利用目的",
+      "content": "収集した個人情報は、以下の目的で利用します：\n• サービスの提供・運営\n• お問い合わせへの対応\n• サービスの改善・開発\n• 重要なお知らせの配信\n• マーケティング活動（同意いただいた場合のみ）"
+    },
+    "section3": {
+      "title": "3. 個人情報の第三者提供",
+      "content": "当社は、法令に基づく場合を除き、事前の同意なく個人情報を第三者に提供しません。ただし、以下の場合はこの限りではありません：\n• 法令に基づく場合\n• 人の生命、身体または財産の保護のために必要がある場合\n• 公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合"
+    },
+    "section4": {
+      "title": "4. 個人情報の管理",
+      "content": "当社は、個人情報の漏洩、滅失、毀損の防止その他の安全管理のため、必要かつ適切な措置を講じます。また、個人情報を取り扱う従業員に対して、適切な監督を行います。"
+    },
+    "section5": {
+      "title": "5. クッキー（Cookie）の使用",
+      "content": "当社のWebサイトでは、サービスの利便性向上のためクッキーを使用する場合があります。クッキーの使用を希望されない場合は、ブラウザの設定により無効にすることができます。"
+    },
+    "section6": {
+      "title": "6. 個人情報の開示・訂正等",
+      "content": "ご本人から個人情報の開示、訂正、削除等の請求があった場合、当社所定の手続きに従い、合理的な範囲で対応いたします。"
+    },
+    "section7": {
+      "title": "7. お問い合わせ窓口",
+      "content": "個人情報の取扱いに関するお問い合わせは、以下の窓口までご連絡ください：\n株式会社DeepHand 個人情報保護窓口\nメール: contact@deephandai.com"
+    },
+    "section8": {
+      "title": "8. プライバシーポリシーの変更",
+      "content": "当社は、法令の変更等に伴い、本プライバシーポリシーを変更する場合があります。変更後のプライバシーポリシーは、当社Webサイトに掲載した時点で効力を生じます。"
+    }
+  },
+  "validation": {
+    "required": "{{field}}は必須です",
+    "email": "無効なメールアドレスです",
+    "maxLength": "{{field}}は{{max}}文字以内で入力してください",
+    "numberOnly": "{{field}}は数値で入力してください",
+    "lettersOnly": "{{field}}は文字のみ使用できます",
+    "dataTypeRequired": "少なくとも1つのデータ種別を選択してください",
+    "nameRequired": "お名前を入力してください",
+    "emailRequired": "メールアドレスを入力してください",
+    "emailInvalid": "有効なメールアドレスを入力してください",
+    "messageRequired": "メッセージを入力してください",
+    "backgroundRequired": "背景・目的を入力してください",
+    "dataVolumeRequired": "データ量を入力してください",
+    "deadlineRequired": "希望納期を入力してください",
+    "budgetRequired": "予算を入力してください",
+    "inputError": "入力に問題があります：",
+    "messageTooShort": "メッセージは10文字以上で入力してください",
+    "messageTooLong": "メッセージは1000文字以内で入力してください",
+    "nameTooLong": "お名前は50文字以内で入力してください",
+    "backgroundTooShort": "背景・目的は5文字以上で入力してください",
+    "backgroundMinLength": "背景・目的は5文字以上で入力してください",
+    "organizationTooLong": "組織名は100文字以内で入力してください"
+  },
+  "ui": {
+    "step1": "基本情報",
+    "step2": "プロジェクト詳細",
+    "nextButton": "次へ →",
+    "prevButton": "← 前へ",
+    "otherSpecify": "具体的な内容をご記入ください"
+  },
+  "email": {
+    "admin": {
+      "subject": "お問い合わせ - DeepHand",
+      "title": "新しいお問い合わせ",
+      "subtitle": "管理者様への通知メールです",
+      "contactDetails": "お問い合わせ詳細",
+      "name": "お名前",
       "email": "メールアドレス",
-      "phone": "電話番号",
-      "projectTitle": "プロジェクトタイトル",
-      "dataType": "データタイプ",
-      "dataDescription": "データ概要",
-      "annotationRequirements": "アノテーション要件",
-      "dataVolume": "データ量",
-      "timeline": "希望納期",
-      "budget": "予算",
-      "additionalNotes": "追加情報",
-      "privacyConsent": "プライバシーポリシーに同意する",
-      "communicationPreference": "連絡方法"
+      "organization": "ご所属",
+      "timestamp": "送信日時",
+      "messageContent": "お問い合わせ内容",
+      "actionRequired": "対応アクション",
+      "respondWithin24h": "24時間以内にご返信ください",
+      "notEntered": "未入力"
     },
-    "placeholders": {
-      "companyName": "株式会社サンプル",
-      "contactPerson": "山田太郎",
-      "email": "email@example.com",
-      "phone": "03-1234-5678",
-      "projectTitle": "自動運転システム開発プロジェクト",
-      "dataDescription": "データの概要をご記入ください",
-      "annotationRequirements": "必要なアノテーション作業の詳細",
-      "dataVolume": "10,000枚",
-      "timeline": "2ヶ月",
-      "budget": "100万円",
-      "additionalNotes": "その他ご要望があればお聞かせください"
-    },
-    "options": {
-      "dataTypes": {
-        "image": "画像データ",
-        "video": "動画データ",
-        "text": "テキストデータ",
-        "audio": "音声データ",
-        "sensor": "センサーデータ",
-        "other": "その他"
-      },
-      "communication": {
-        "email": "メール",
-        "phone": "電話",
-        "both": "両方"
-      }
-    },
-    "buttons": {
-      "next": "次へ",
-      "previous": "戻る",
-      "submit": "送信",
-      "submitting": "送信中..."
-    },
-    "validation": {
-      "required": "この項目は必須です",
-      "email": "有効なメールアドレスを入力してください",
-      "minLength": "{{min}}文字以上で入力してください"
+    "user": {
+      "subject": "お問い合わせありがとうございます - DeepHand",
+      "title": "お問い合わせありがとうございます",
+      "subtitle": "お問い合わせを受け付けました",
+      "thankYou": "この度は DeepHand にお問い合わせいただき、ありがとうございます",
+      "responseTime": "24時間以内にご返信いたします",
+      "followUp": "お急ぎの場合は、直接お電話でお問い合わせください",
+      "contactInfo": "お問い合わせ情報",
+      "nextSteps": "今後の流れ",
+      "step1": "担当者がお問い合わせ内容を確認いたします",
+      "step2": "詳細な回答を準備いたします",
+      "step3": "24時間以内にご返信いたします"
     }
   }
 }

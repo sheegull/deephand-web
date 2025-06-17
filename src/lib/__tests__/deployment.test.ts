@@ -9,7 +9,7 @@ describe('Deployment Configuration', () => {
   describe('validateDeploymentConfig', () => {
     it('should validate production deployment config', () => {
       const config = {
-        environment: 'production',
+        environment: 'production' as const,
         siteUrl: 'https://deephand.ai',
         buildCommand: 'pnpm build',
         outputDirectory: 'dist',
@@ -24,7 +24,7 @@ describe('Deployment Configuration', () => {
 
     it('should fail validation for invalid site URL', () => {
       const config = {
-        environment: 'production',
+        environment: 'production' as const,
         siteUrl: 'invalid-url',
         buildCommand: 'pnpm build',
         outputDirectory: 'dist',
@@ -39,7 +39,7 @@ describe('Deployment Configuration', () => {
 
     it('should fail validation for unsupported Node.js version', () => {
       const config = {
-        environment: 'production',
+        environment: 'production' as const,
         siteUrl: 'https://deephand.ai',
         buildCommand: 'pnpm build',
         outputDirectory: 'dist',

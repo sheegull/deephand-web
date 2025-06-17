@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '@/components/common';
+import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { MessageCircle, X } from 'lucide-react';
 

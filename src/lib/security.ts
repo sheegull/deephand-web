@@ -255,7 +255,7 @@ export function createSecurityMiddleware() {
         const token = headers['x-csrf-token'];
         const expectedToken = context.csrfToken;
 
-        if (!validateCSRFToken(token, expectedToken)) {
+        if (!validateCSRFToken(token || '', expectedToken || '')) {
           return {
             valid: false,
             reason: 'Invalid or missing CSRF token',

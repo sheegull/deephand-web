@@ -1,14 +1,8 @@
 // TDD Green Step: Animation components implementation
 
 import React, { type ReactNode } from 'react';
-import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useAnimation, useInView, type Variants } from 'framer-motion';
 import { createMotionConfig, detectReducedMotion } from './motion-config';
-
-export interface AnimationVariants {
-  initial: any;
-  animate: any;
-  exit?: any;
-}
 
 export interface TransitionConfig {
   duration?: number;
@@ -52,7 +46,7 @@ export function PageTransition({
     ...config,
   };
 
-  const variants: AnimationVariants = {
+  const variants: Variants = {
     initial: { opacity: 0, y: shouldAnimate ? 20 : 0 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: shouldAnimate ? -20 : 0 },
@@ -118,7 +112,7 @@ export function ScrollReveal({
     }
   };
 
-  const variants: AnimationVariants = {
+  const variants: Variants = {
     initial: getInitialPosition(),
     animate: { x: 0, y: 0, opacity: 1 },
   };
@@ -215,7 +209,7 @@ export function FadeIn({
   const reducedMotion = detectReducedMotion();
   const shouldAnimate = respectReducedMotion ? !reducedMotion : true;
 
-  const variants: AnimationVariants = {
+  const variants: Variants = {
     initial: { opacity: shouldAnimate ? 0 : 1 },
     animate: { opacity: 1 },
   };
@@ -276,7 +270,7 @@ export function SlideUp({
     }
   };
 
-  const variants: AnimationVariants = {
+  const variants: Variants = {
     initial: { ...getTransform(), opacity: shouldAnimate ? 0 : 1 },
     animate: { x: 0, y: 0, opacity: 1 },
   };
@@ -320,7 +314,7 @@ export function ScaleIn({
   const reducedMotion = detectReducedMotion();
   const shouldAnimate = respectReducedMotion ? !reducedMotion : true;
 
-  const variants: AnimationVariants = {
+  const variants: Variants = {
     initial: {
       scale: shouldAnimate ? initialScale : 1,
       opacity: shouldAnimate ? 0 : 1,

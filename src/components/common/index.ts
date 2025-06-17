@@ -1,3 +1,3 @@
-export { Button, buttonVariants } from './Button';
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './Card';
+export { Button, buttonVariants } from '../ui/button';
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from '../ui/card';
 export { Container } from './Container';

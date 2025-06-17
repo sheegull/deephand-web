@@ -48,7 +48,9 @@ export function initializeAnalytics(): boolean {
     if (typeof window !== 'undefined') {
       // Client-side initialization
       analyticsInitialized = true;
-      console.log('Cloudflare Web Analytics initialized');
+      if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+        console.log('Cloudflare Web Analytics initialized');
+      }
     }
 
     return true;
@@ -72,16 +74,20 @@ export function trackEvent(event: AnalyticsEvent): boolean {
     }
 
     // In a real implementation, this would send to Cloudflare Analytics
-    // For now, we'll log the event
-    console.log('Analytics Event:', {
-      name: event.name,
-      properties: event.properties,
-      timestamp: event.timestamp,
-    });
+    // For now, we'll log the event in development
+    if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.log('Analytics Event:', {
+        name: event.name,
+        properties: event.properties,
+        timestamp: event.timestamp,
+      });
+    }
 
     return true;
   } catch (error) {
-    console.error('Failed to track event:', error);
+    if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.error('Failed to track event:', error);
+    }
     return false;
   }
 }
@@ -114,15 +120,19 @@ export function trackPageView(path: string): boolean {
       return false;
     }
 
-    console.log('Analytics Event:', {
-      name: event.name,
-      properties: event.properties,
-      timestamp: event.timestamp,
-    });
+    if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.log('Analytics Event:', {
+        name: event.name,
+        properties: event.properties,
+        timestamp: event.timestamp,
+      });
+    }
 
     return true;
   } catch (error) {
-    console.error('Failed to track page view:', error);
+    if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.error('Failed to track page view:', error);
+    }
     return false;
   }
 }
@@ -138,7 +148,9 @@ export function generateAnalyticsScript(): string {
     // Generate Cloudflare Web Analytics script
     return `<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "${config.token}"}'></script>`;
   } catch (error) {
-    console.error('Failed to generate analytics script:', error);
+    if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.error('Failed to generate analytics script:', error);
+    }
     return '';
   }
 }

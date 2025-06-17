@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PrivacyPolicyPage } from '@/components/PrivacyPolicyPage';
+import { setCurrentLanguage } from '@/lib/i18n';
+import '@/styles/app.css';
+
+// サーバーサイドで日本語に設定
+setCurrentLanguage('ja');
+---
+
+<BaseLayout 
+  title="プライバシーポリシー - DeepHand"
+  description="DeepHandのプライバシーポリシー。個人情報の収集・利用・管理について詳細に説明しています。"
+>
+  <PrivacyPolicyPage 
+    client:load 
+    onLogoClick={() => window.location.href = '/'}
+  />
+</BaseLayout>

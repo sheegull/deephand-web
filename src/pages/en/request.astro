@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { RequestDataPage } from '@/components/RequestDataPage';
+import { setCurrentLanguage } from '@/lib/i18n';
+import '@/styles/app.css';
+
+// サーバーサイドで英語に設定
+setCurrentLanguage('en');
+---
+
+<BaseLayout 
+  title="Data Request - DeepHand"
+  description="Data annotation request form for AI & robotics projects. Expert annotators provide high-quality labeling services."
+>
+  <RequestDataPage 
+    client:load 
+    onLogoClick={() => window.location.href = '/en'}
+    onFooterClick={(element) => {
+      if (element === 'terms-of-service') {
+        console.log('Terms of service clicked');
+      } else if (element === 'privacy-policy') {
+        console.log('Privacy policy clicked');
+      }
+    }}
+  />
+</BaseLayout>

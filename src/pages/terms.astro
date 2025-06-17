@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { TermsOfServicePage } from '@/components/TermsOfServicePage';
+import { setCurrentLanguage } from '@/lib/i18n';
+import '@/styles/app.css';
+
+// サーバーサイドで日本語に設定
+setCurrentLanguage('ja');
+---
+
+<BaseLayout 
+  title="利用規約 - DeepHand"
+  description="DeepHandのデータアノテーションサービス利用規約。AI・ロボティクス分野に特化したサービスの利用条件について。"
+>
+  <TermsOfServicePage 
+    client:load 
+    onLogoClick={() => window.location.href = '/'}
+  />
+</BaseLayout>

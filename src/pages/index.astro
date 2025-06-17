@@ -1,26 +1,35 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Hero from '@/components/sections/Hero.astro';
-import Services from '@/components/sections/Services.astro';
-import Process from '@/components/sections/Process.astro';
-import Features from '@/components/sections/Features.astro';
-import CTA from '@/components/sections/CTA.astro';
-import Footer from '@/components/sections/Footer.astro';
+import { HeroSection } from '@/components/HeroSection';
+import { setCurrentLanguage } from '@/lib/i18n';
 import '@/styles/app.css';
+
+// サーバーサイドで日本語に設定
+setCurrentLanguage('ja');
 ---
 
 <BaseLayout 
-  title="DeepHand - AI・ロボティクス特化データアノテーションサービス"
-  description="専門知識を持つアノテーターが、あなたのAI・ロボティクスプロジェクトに最適なデータアノテーションを提供します。高精度・高品質なアノテーションサービスで、次世代のAI開発を支援。"
+  title="DeepHand - ロボティクスに豊富な人間データを"
+  description="DeepHandはロボティクスに特化したアノテーション専門チームです。高品質なアノテーションデータを提供します。"
 >
-  
-  <main>
-    <Hero />
-    <Services />
-    <Process />
-    <Features />
-    <CTA />
-  </main>
-  
-  <Footer />
+  <HeroSection 
+    client:load 
+    onRequestClick={() => window.location.href = '/request'}
+    onNavClick={(element) => {
+      if (element === 'get-started') {
+        window.location.href = '/request';
+      } else if (element === 'login') {
+        // ログイン機能は未実装
+        console.log('Login clicked');
+      } else {
+        // その他のナビゲーション
+        const elementId = element.replace(/\s+/g, '-');
+        const targetElement = document.getElementById(elementId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }}
+    onLogoClick={() => window.location.href = '/'}
+  />
 </BaseLayout>

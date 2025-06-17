@@ -886,9 +886,16 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full h-11 bg-[#234ad9] text-white hover:bg-[#1e3eb8] active:bg-[#183099] disabled:bg-gray-300 font-alliance font-medium text-base rounded-lg transition-all duration-200"
+                        className="w-full h-11 bg-[#234ad9] text-white hover:bg-[#1e3eb8] active:bg-[#183099] disabled:bg-[#234ad9] disabled:opacity-90 font-alliance font-medium text-base rounded-lg transition-all duration-200"
                       >
-                        {isSubmitting ? t('request.submitting') : t('request.submit')}
+                        {isSubmitting ? (
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            {t('request.submitting')}
+                          </div>
+                        ) : (
+                          t('request.submit')
+                        )}
                       </Button>
                     </motion.div>
                   </div>

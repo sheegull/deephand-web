@@ -257,41 +257,41 @@ export const HeroSection = ({
       />
 
       {/* Navigation Bar */}
-      <header className="fixed top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-20">
+      <header className="fixed top-0 z-[100] w-full h-16 sm:h-18 lg:h-20 flex items-center justify-between px-3 sm:px-4 lg:px-20">
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <div
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center gap-1 sm:gap-2 cursor-pointer flex-shrink-0"
             onClick={() => handleNavigation('/')}
           >
-            <img className="w-8 h-8 object-cover" alt="Icon" src="/logo.png" />
-            <div className="font-alliance font-light text-white text-xl md:text-2xl leading-[28.8px]">
+            <img className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-cover" alt="Icon" src="/logo.png" />
+            <div className="font-alliance font-light text-white text-lg sm:text-xl lg:text-2xl leading-tight whitespace-nowrap">
               DeepHand
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-white"
+            className="lg:hidden p-1 sm:p-2 text-white flex-shrink-0"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <div className="flex items-center gap-2">
-              <Menu className="w-6 h-6" />
+            <div className="flex items-center">
+              <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:block mx-auto">
-            <ul className="flex gap-4 lg:gap-8">
+          <nav className="hidden lg:block mx-auto">
+            <ul className="flex gap-3 xl:gap-6">
               {navLinks.map((link, index) => (
                 <li
                   key={index}
                   onClick={() => onNavClick?.(link.text.toLowerCase())}
                   className="cursor-pointer"
                 >
-                  <span className="font-alliance font-light text-white text-[13px] lg:text-[15px] leading-[19.2px] hover:text-gray-300 transition-colors">
+                  <span className="font-alliance font-light text-white text-[12px] xl:text-[14px] leading-tight hover:text-gray-300 transition-colors whitespace-nowrap">
                     {link.text}
                   </span>
                 </li>
@@ -300,7 +300,7 @@ export const HeroSection = ({
           </nav>
 
           {/* Action Buttons */}
-          <div className="hidden md:flex items-center gap-2 md:gap-4">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
             <LanguageToggle
               currentLanguage={getCurrentLanguage()}
               onLanguageChange={lang => {
@@ -311,25 +311,21 @@ export const HeroSection = ({
             <motion.div
               whileHover={{
                 scale: 1.05,
-                y: -2,
-                boxShadow: '0 8px 25px rgba(35, 74, 217, 0.4)',
               }}
               whileTap={{
                 scale: 0.95,
-                y: 0,
-                transition: { duration: 0.1 },
               }}
               transition={{
-                type: 'spring',
-                stiffness: 300,
-                damping: 20,
+                type: 'tween',
+                duration: 0.2,
+                ease: 'easeInOut',
               }}
             >
               <Button
                 onClick={() => {
                   handleNavigation('/request');
                 }}
-                className="w-[120px] md:w-[150px] h-9 md:h-11 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-xs md:text-sm transition-all duration-300 hover:bg-[#234ad9] hover:border-[#234ad9]"
+                className="w-[100px] xl:w-[130px] h-8 xl:h-10 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-xs xl:text-sm transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-[#234ad9] hover:to-[#1e3eb8] hover:border-transparent whitespace-nowrap"
               >
                 <span className="relative z-10">{t('nav.getStarted')}</span>
               </Button>
@@ -339,9 +335,9 @@ export const HeroSection = ({
 
         {/* Mobile Navigation Menu */}
         <div
-          className={`absolute top-20 left-0 right-0 bg-[#1e1e1e] transition-all duration-300 ease-in-out ${
+          className={`absolute top-16 sm:top-18 lg:top-20 left-0 right-0 bg-[#1e1e1e] transition-all duration-300 ease-in-out ${
             isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          } md:hidden border-t border-gray-700 shadow-lg`}
+          } lg:hidden border-t border-gray-700 shadow-lg z-[90]`}
         >
           <nav className="flex flex-col py-3">
             {navLinks.map((link, index) => (
@@ -367,7 +363,7 @@ export const HeroSection = ({
                 onClick={() => {
                   handleNavigation('/request');
                 }}
-                className="w-full h-9 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-sm transition-all duration-300 ease-out hover:bg-[#234ad9] hover:border-[#234ad9] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#234ad9]/25 hover:scale-105 active:scale-95 active:translate-y-0 active:bg-[#1e3eb8] active:border-[#1e3eb8] active:shadow-md"
+                className="w-full h-9 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-sm transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-[#234ad9] hover:to-[#1e3eb8] hover:border-transparent"
               >
                 {t('nav.getStarted')}
               </Button>
@@ -377,18 +373,18 @@ export const HeroSection = ({
       </header>
 
       {/* Main Content */}
-      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-20 z-10">
-        <div className="flex flex-wrap justify-center md:justify-between py-[100px] md:py-[219px] gap-16 relative z-10">
+      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-16 sm:mt-18 lg:mt-20 z-10">
+        <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 min-h-[calc(100vh-180px)]">
           {/* Left Content */}
           <motion.div
-            className="flex flex-col max-w-[654px] gap-10 text-center md:text-left"
+            className="flex flex-col max-w-[654px] gap-6 lg:gap-8 text-center lg:text-left flex-1 justify-center"
             style={{ y: textY }}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <motion.h1
-              className="font-alliance font-normal text-white text-4xl md:text-[64px] leading-[1.1] mt-[65px]"
+              className="font-alliance font-normal text-white text-3xl md:text-5xl lg:text-[64px] leading-[1.1]"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
@@ -408,22 +404,37 @@ export const HeroSection = ({
                 ))}
             </motion.h1>
             <motion.p
-              className="font-alliance font-light text-zinc-400 text-lg md:text-xl leading-[30px] max-w-[555px]"
+              className="font-alliance font-light text-zinc-400 text-base md:text-lg lg:text-xl leading-[1.6] max-w-[555px] mx-auto lg:mx-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
             >
               {t('hero.subtitle')}
             </motion.p>
-            <Button
-              onClick={() => {
-                handleNavigation('/request');
+            <motion.div
+              whileHover={{
+                scale: 1.05,
               }}
-              size="lg"
-              className="w-40 mx-auto md:mx-0 transition-transform hover:scale-105 hover:-translate-y-1 active:scale-95"
+              whileTap={{
+                scale: 0.95,
+              }}
+              transition={{
+                type: 'tween',
+                duration: 0.2,
+                ease: 'easeInOut',
+              }}
+              className="w-fit mx-auto lg:mx-0"
             >
-              <span className="relative z-10">{t('hero.requestButton')}</span>
-            </Button>
+              <Button
+                onClick={() => {
+                  handleNavigation('/request');
+                }}
+                size="lg"
+                className="w-40 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] transition-all duration-300 ease-out border-0"
+              >
+                <span className="relative z-10">{t('hero.requestButton')}</span>
+              </Button>
+            </motion.div>
           </motion.div>
 
           {/* Contact Form Card */}
@@ -432,10 +443,11 @@ export const HeroSection = ({
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
             animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+            className="w-full max-w-[460px] mx-auto lg:mx-0 flex-shrink-0"
           >
-            <Card className="w-full md:w-[460px] !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md ring-0.5">
-              <CardHeader className="px-2 pt-2 pb-8">
-                <CardTitle className="font-alliance font-normal text-white text-xl md:text-2xl leading-[28px] pb-2">
+            <Card className="w-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md ring-0.5 relative z-20 mt-24 lg:mt-0">
+              <CardHeader className="px-2 pt-2 pb-4">
+                <CardTitle className="font-alliance font-normal text-white text-lg md:text-xl leading-[28px] pb-2">
                   {t('contact.title')}
                 </CardTitle>
                 <CardDescription className="font-alliance font-light text-white text-sm leading-[18px] whitespace-pre-line">
@@ -443,7 +455,7 @@ export const HeroSection = ({
                 </CardDescription>
               </CardHeader>
               <CardContent className="px-2 pb-2">
-                <form className="flex flex-col gap-5" onSubmit={onSubmit} action="">
+                <form className="flex flex-col gap-4" onSubmit={onSubmit} action="">
                   <div className="flex flex-col gap-2">
                     <label className="font-alliance font-normal text-slate-200 text-sm leading-[18px]">
                       {t('contact.name')} *
@@ -454,22 +466,11 @@ export const HeroSection = ({
                       minLength={1}
                       maxLength={50}
                       onChange={e => {
-                        if (e.target.value.length > 50) {
-                          setFieldErrors(prev => ({ ...prev, name: t('validation.nameTooLong') }));
-                        } else {
-                          setFieldErrors(prev => {
-                            const { name, ...rest } = prev;
-                            return rest;
-                          });
-                        }
+                        // リアルタイムバリデーション無効化 - 送信時のみエラー表示
                       }}
-                      className={`h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200 shadow-inner ${fieldErrors.name ? '!border-red-500' : ''}`}
+                      className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
                     />
-                    {fieldErrors.name && (
-                      <p className="text-xs text-red-500 font-alliance font-light">
-                        {fieldErrors.name}
-                      </p>
-                    )}
+                    {/* リアルタイムエラー表示を無効化 */}
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -479,7 +480,7 @@ export const HeroSection = ({
                     <Input
                       name="organization"
                       placeholder={t('contact.placeholder.organization')}
-                      className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200 shadow-inner"
+                      className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
                     />
                   </div>
 
@@ -492,26 +493,11 @@ export const HeroSection = ({
                       type="email"
                       placeholder={t('contact.placeholder.email')}
                       onChange={e => {
-                        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                        if (e.target.value && !emailRegex.test(e.target.value)) {
-                          setFieldErrors(prev => ({
-                            ...prev,
-                            email: t('validation.emailInvalid'),
-                          }));
-                        } else {
-                          setFieldErrors(prev => {
-                            const { email, ...rest } = prev;
-                            return rest;
-                          });
-                        }
+                        // リアルタイムバリデーション無効化 - 送信時のみエラー表示
                       }}
-                      className={`h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200 shadow-inner ${fieldErrors.email ? '!border-red-500' : ''}`}
+                      className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
                     />
-                    {fieldErrors.email && (
-                      <p className="text-xs text-red-500 font-alliance font-light">
-                        {fieldErrors.email}
-                      </p>
-                    )}
+                    {/* リアルタイムエラー表示を無効化 */}
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -530,31 +516,10 @@ export const HeroSection = ({
                       maxLength={1000}
                       onChange={e => {
                         setMessageLength(e.target.value.length);
-                        // リアルタイムバリデーション
-                        if (e.target.value.trim().length > 0 && e.target.value.trim().length < 10) {
-                          setFieldErrors(prev => ({
-                            ...prev,
-                            message: t('validation.messageTooShort'),
-                          }));
-                        } else if (e.target.value.length > 1000) {
-                          setFieldErrors(prev => ({
-                            ...prev,
-                            message: t('validation.messageTooLong'),
-                          }));
-                        } else {
-                          setFieldErrors(prev => {
-                            const { message, ...rest } = prev;
-                            return rest;
-                          });
-                        }
+                        // 入力時のリアルタイムバリデーションを無効化（送信時のみ表示）
                       }}
-                      className={`min-h-[150px] h-[150px] max-h-[300px] !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm resize-y focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200 shadow-inner ${fieldErrors.message ? '!border-red-500' : ''}`}
+                      className="min-h-[120px] h-[120px] max-h-[200px] !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm resize-y focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
                     />
-                    {fieldErrors.message && (
-                      <p className="text-xs text-red-500 font-alliance font-light mt-1">
-                        {fieldErrors.message}
-                      </p>
-                    )}
                   </div>
 
                   <Button
@@ -571,7 +536,7 @@ export const HeroSection = ({
                       }
                     }}
                     disabled={isSubmitting}
-                    className="h-12 font-alliance font-medium text-white text-base bg-[#234ad9] hover:bg-[#1e3eb8] active:bg-[#183099] transition-colors disabled:bg-[#234ad9]/70 flex items-center justify-center gap-2 rounded-lg mt-2"
+                    className="h-12 font-alliance font-medium text-white text-base bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] transition-all duration-300 ease-out disabled:bg-[#234ad9]/70 flex items-center justify-center gap-2 rounded-lg mt-2 transform hover:scale-[1.05] active:scale-[0.95]"
                   >
                     {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
                     {isSubmitting ? t('contact.submitting') : t('contact.submit')}
@@ -590,7 +555,7 @@ export const HeroSection = ({
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4"/>
                           </svg>
                         </div>
-                        <p className="text-emerald-100 text-sm font-alliance font-normal">
+                        <p className="text-gray-300 text-sm font-alliance font-normal">
                           {t('contact.success')}
                         </p>
                       </div>
@@ -609,7 +574,7 @@ export const HeroSection = ({
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01"/>
                           </svg>
                         </div>
-                        <p className="text-red-100 text-sm font-alliance font-normal">
+                        <p className="text-gray-300 text-sm font-alliance font-normal">
                           {t('contact.error')}
                         </p>
                       </div>
@@ -629,7 +594,7 @@ export const HeroSection = ({
                           </svg>
                         </div>
                         <div className="flex-1">
-                          <p className="text-amber-100 text-sm font-medium mb-3 font-alliance">
+                          <p className="text-gray-300 text-sm font-medium mb-3 font-alliance">
                             {t('validation.inputError')}
                           </p>
                           <ul className="space-y-2">
@@ -642,7 +607,7 @@ export const HeroSection = ({
                                 className="flex items-start gap-3"
                               >
                                 <div className="w-1.5 h-1.5 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-amber-50 text-sm font-alliance font-light leading-relaxed">{error}</span>
+                                <span className="text-gray-400 text-sm font-alliance font-light leading-relaxed">{error}</span>
                               </motion.li>
                             ))}
                           </ul>
@@ -657,7 +622,7 @@ export const HeroSection = ({
         </div>
 
         {/* Footer */}
-        <footer className="flex flex-col md:flex-row items-center justify-between w-full mt-20 gap-4 md:gap-0 pb-8">
+        <footer className="flex flex-col md:flex-row items-center justify-between w-full mt-12 gap-4 md:gap-0 pb-16">
           <div className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px]">
             {t('footer.copyright')}
           </div>

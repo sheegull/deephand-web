@@ -185,3 +185,1132 @@ NODE_ENV: development
 12:53:00 [watch] src/components/HeroSection.tsx
 12:53:28 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
 12:53:28 [watch] src/components/HeroSection.tsx
+13:02:45 [watch] src/components/RequestDataPage.tsx
+13:02:45 [watch] src/components/RequestDataPage.tsx
+13:03:11 [watch] src/components/RequestDataPage.tsx
+13:03:11 [watch] src/components/RequestDataPage.tsx
+13:03:22 [watch] src/components/RequestDataPage.tsx
+13:03:22 [watch] src/components/RequestDataPage.tsx
+13:03:49 [watch] src/components/RequestDataPage.tsx
+13:03:49 [watch] src/components/RequestDataPage.tsx
+13:04:00 [watch] src/components/RequestDataPage.tsx
+13:04:00 [watch] src/components/RequestDataPage.tsx
+13:04:08 [watch] src/components/RequestDataPage.tsx
+13:04:08 [watch] src/components/RequestDataPage.tsx
+13:04:17 [watch] src/components/RequestDataPage.tsx
+13:04:17 [watch] src/components/RequestDataPage.tsx
+13:04:18 [watch] src/components/RequestDataPage.tsx
+13:04:18 [watch] src/components/RequestDataPage.tsx
+13:04:40 [watch] src/components/RequestDataPage.tsx
+13:04:40 [watch] src/components/RequestDataPage.tsx
+13:04:48 [watch] src/components/RequestDataPage.tsx
+13:04:48 [watch] src/components/RequestDataPage.tsx
+13:04:48 [watch] src/components/RequestDataPage.tsx
+13:04:48 [watch] src/components/RequestDataPage.tsx
+13:04:59 [watch] src/components/RequestDataPage.tsx
+13:04:59 [watch] src/components/RequestDataPage.tsx
+13:05:06 [watch] src/components/RequestDataPage.tsx
+13:05:06 [watch] src/components/RequestDataPage.tsx
+13:05:15 [watch] src/components/RequestDataPage.tsx
+13:05:15 [watch] src/components/RequestDataPage.tsx
+13:06:31 [200] HEAD /request 35ms
+13:09:45 [200] /request 2ms
+13:10:04 [watch] src/components/RequestDataPage.tsx
+13:10:04 [watch] src/components/RequestDataPage.tsx
+13:10:12 [watch] src/components/RequestDataPage.tsx
+13:10:12 [watch] src/components/RequestDataPage.tsx
+13:10:21 [watch] src/components/RequestDataPage.tsx
+13:10:21 [watch] src/components/RequestDataPage.tsx
+13:11:00 [200] /request 30ms
+13:11:07 [200] /request 1ms
+13:11:23 [watch] src/components/RequestDataPage.tsx
+13:11:23 [watch] src/components/RequestDataPage.tsx
+13:11:40 [200] /request 31ms
+13:18:41 [watch] src/components/RequestDataPage.tsx
+13:18:41 [watch] src/components/RequestDataPage.tsx
+13:18:53 [watch] src/components/RequestDataPage.tsx
+13:18:53 [watch] src/components/RequestDataPage.tsx
+13:18:53 [watch] src/components/RequestDataPage.tsx
+13:18:53 [watch] src/components/RequestDataPage.tsx
+13:19:10 [watch] src/components/RequestDataPage.tsx
+13:19:10 [watch] src/components/RequestDataPage.tsx
+13:19:50 [watch] src/components/RequestDataPage.tsx
+13:19:50 [watch] src/components/RequestDataPage.tsx
+13:19:57 [watch] src/components/RequestDataPage.tsx
+13:19:57 [watch] src/components/RequestDataPage.tsx
+13:20:16 [watch] src/components/RequestDataPage.tsx
+13:20:16 [watch] src/components/RequestDataPage.tsx
+13:21:06 [200] /request 32ms
+13:21:11 [200] /request 1ms
+13:23:02 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:23:02 [watch] src/components/HeroSection.tsx
+13:23:22 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:23:22 [watch] src/components/HeroSection.tsx
+13:23:30 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:23:30 [watch] src/components/HeroSection.tsx
+13:23:35 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:23:35 [watch] src/components/HeroSection.tsx
+13:23:57 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:23:57 [watch] src/components/HeroSection.tsx
+13:24:29 [watch] src/components/RequestDataPage.tsx
+13:24:29 [watch] src/components/RequestDataPage.tsx
+13:24:59 [watch] src/components/RequestDataPage.tsx
+13:24:59 [watch] src/components/RequestDataPage.tsx
+13:25:20 [watch] src/components/RequestDataPage.tsx
+13:25:20 [watch] src/components/RequestDataPage.tsx
+13:25:35 [watch] src/components/RequestDataPage.tsx
+13:25:35 [watch] src/components/RequestDataPage.tsx
+13:26:05 [watch] src/components/RequestDataPage.tsx
+13:26:05 [watch] src/components/RequestDataPage.tsx
+13:26:15 [watch] src/components/RequestDataPage.tsx
+13:26:15 [watch] src/components/RequestDataPage.tsx
+13:26:21 [watch] src/components/RequestDataPage.tsx
+13:26:21 [watch] src/components/RequestDataPage.tsx
+13:26:28 [watch] src/components/RequestDataPage.tsx
+13:26:28 [watch] src/components/RequestDataPage.tsx
+13:26:33 [watch] src/components/RequestDataPage.tsx
+13:26:33 [watch] src/components/RequestDataPage.tsx
+13:26:48 [200] / 42ms
+13:26:49 [404] /favicon-32x32.png 0ms
+13:26:49 [404] /favicon-16x16.png 0ms
+13:27:19 [200] /request 2ms
+13:28:55 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:28:55 [watch] src/components/HeroSection.tsx
+13:31:18 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:31:18 [watch] src/components/HeroSection.tsx
+13:31:25 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:31:25 [watch] src/components/HeroSection.tsx
+13:31:32 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:31:32 [watch] src/components/HeroSection.tsx
+13:33:06 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:33:06 [watch] src/components/HeroSection.tsx
+13:33:13 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:33:13 [watch] src/components/HeroSection.tsx
+13:33:22 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:33:22 [watch] src/components/HeroSection.tsx
+13:33:29 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:33:29 [watch] src/components/HeroSection.tsx
+13:33:35 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:33:35 [watch] src/components/HeroSection.tsx
+13:33:48 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:33:48 [watch] src/components/HeroSection.tsx
+13:34:01 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:34:01 [watch] src/components/HeroSection.tsx
+13:34:14 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:34:14 [watch] src/components/HeroSection.tsx
+13:34:23 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:34:23 [watch] src/components/HeroSection.tsx
+13:35:49 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:35:49 [watch] src/components/HeroSection.tsx
+13:35:58 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:35:58 [watch] src/components/HeroSection.tsx
+13:36:07 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:36:07 [watch] src/components/HeroSection.tsx
+13:36:15 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:36:15 [watch] src/components/HeroSection.tsx
+13:40:24 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:40:24 [watch] src/components/RequestDataPage.tsx
+13:40:36 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:40:36 [watch] src/components/RequestDataPage.tsx
+13:40:49 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:40:49 [watch] src/components/HeroSection.tsx
+13:40:57 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:40:57 [watch] src/components/HeroSection.tsx
+13:41:06 [200] /request 26ms
+13:41:09 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:41:09 [watch] src/components/HeroSection.tsx
+13:41:21 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:41:21 [watch] src/components/HeroSection.tsx
+13:41:28 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:41:28 [watch] src/components/HeroSection.tsx
+13:41:47 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:41:47 [watch] src/components/HeroSection.tsx
+13:42:32 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:42:32 [watch] src/components/RequestDataPage.tsx
+13:42:41 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:42:41 [watch] src/components/RequestDataPage.tsx
+13:43:00 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:43:00 [watch] src/components/RequestDataPage.tsx
+13:43:06 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:43:06 [watch] src/components/RequestDataPage.tsx
+13:43:20 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:43:20 [watch] src/components/RequestDataPage.tsx
+13:43:20 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:43:20 [watch] src/components/RequestDataPage.tsx
+13:47:27 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:47:27 [watch] src/components/RequestDataPage.tsx
+13:47:27 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:48:19 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:48:19 [watch] src/components/RequestDataPage.tsx
+13:48:19 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:48:25 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:48:25 [watch] src/components/RequestDataPage.tsx
+13:48:25 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:48:30 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:48:30 [watch] src/components/RequestDataPage.tsx
+13:48:30 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:48:36 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:48:36 [watch] src/components/RequestDataPage.tsx
+13:48:36 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:48:48 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:48:48 [watch] src/components/RequestDataPage.tsx
+13:48:48 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:49:00 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:49:00 [watch] src/components/RequestDataPage.tsx
+13:49:00 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:49:07 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:49:07 [watch] src/components/RequestDataPage.tsx
+13:49:07 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:49:30 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:49:30 [watch] src/components/RequestDataPage.tsx
+13:49:30 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:49:43 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:49:43 [watch] src/components/RequestDataPage.tsx
+13:49:43 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:49:53 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:49:53 [watch] src/components/RequestDataPage.tsx
+13:49:53 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:49:59 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:49:59 [watch] src/components/RequestDataPage.tsx
+13:49:59 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:50:15 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:50:15 [watch] src/components/RequestDataPage.tsx
+13:50:15 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:50:28 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:50:28 [watch] src/components/RequestDataPage.tsx
+13:50:28 [ERROR] [vite] Internal server error: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx: Unexpected token (419:10)
+
+  417 |         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418 |         <div className="hidden xl:flex flex-1 relative"
+> 419 |           <div className="absolute inset-0 z-0">
+      |           ^
+  420 |             <MetaBalls
+  421 |               color="#ffffff"
+  422 |               cursorBallColor="#ffffff"
+  Plugin: vite:react-babel
+  File: /Users/shee/dev/yogo/deephand/deephand-web/src/components/RequestDataPage.tsx:419:10
+  417|          {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
+  418|          <div className="hidden xl:flex flex-1 relative"
+  419|            <div className="absolute inset-0 z-0">
+     |            ^
+  420|              <MetaBalls
+  421|                color="#ffffff"
+      at constructor (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:363:19)
+      at TypeScriptParserMixin.raise (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6609:19)
+      at TypeScriptParserMixin.unexpected (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6629:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10004:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:39
+      at TypeScriptParserMixin.tryParse (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:6918:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9732:18)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12361:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10734:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11608:28)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11262:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:11012:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10997:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10977:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9794:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10830:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10835:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10812:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10765:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9743:20)
+      at TypeScriptParserMixin.parseExpressionBase (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10718:23)
+      at /Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12356:16)
+      at TypeScriptParserMixin.parseExpression (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:10714:17)
+      at TypeScriptParserMixin.parseReturnStatement (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13061:28)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12716:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:9469:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12685:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:12665:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shee/dev/yogo/deephand/deephand-web/node_modules/.pnpm/@babel+parser@7.27.5/node_modules/@babel/parser/lib/index.js:13235:61)
+13:53:03 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+13:53:03 [watch] src/components/RequestDataPage.tsx
+13:53:07 [200] /request 35ms
+13:56:11 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:56:11 [watch] src/components/HeroSection.tsx
+13:56:39 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+13:56:39 [watch] src/components/HeroSection.tsx
+14:01:03 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:01:03 [watch] src/components/RequestDataPage.tsx
+14:01:07 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:01:07 [watch] src/components/RequestDataPage.tsx

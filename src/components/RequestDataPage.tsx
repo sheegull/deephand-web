@@ -35,6 +35,20 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     budget: 0,
     otherRequirements: 0,
   });
+  
+  // フォームデータの永続化
+  const [formData, setFormData] = React.useState({
+    name: '',
+    organization: '',
+    email: '',
+    backgroundPurpose: '',
+    dataDetails: '',
+    dataVolume: '',
+    deadline: '',
+    budget: '',
+    otherRequirements: '',
+  });
+  
   const totalSteps = 2;
 
   // Hydration-safe client detection
@@ -89,35 +103,34 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     return '';
   };
 
-  // Handle field blur for validation
+  // Handle field blur for validation - バリデーションをボタン押下時のみに変更
   const handleFieldBlur = (fieldName: string, value: string) => {
-    setTouchedFields(prev => ({ ...prev, [fieldName]: true }));
-    const error = validateField(fieldName, value);
-    setFieldErrors(prev => ({ ...prev, [fieldName]: error }));
+    // リアルタイムバリデーションを無効化
+    // setTouchedFields(prev => ({ ...prev, [fieldName]: true }));
+    // const error = validateField(fieldName, value);
+    // setFieldErrors(prev => ({ ...prev, [fieldName]: error }));
   };
 
-  // Handle field change for validation
+  // Handle field change for validation - バリデーションをボタン押下時のみに変更
   const handleFieldChange = (fieldName: string, value: string) => {
-    if (touchedFields[fieldName]) {
-      const error = validateField(fieldName, value);
-      setFieldErrors(prev => ({ ...prev, [fieldName]: error }));
-    }
+    // リアルタイムバリデーションを無効化
+    // if (touchedFields[fieldName]) {
+    //   const error = validateField(fieldName, value);
+    //   setFieldErrors(prev => ({ ...prev, [fieldName]: error });
+    // }
+  };
+
+  // フォームデータ更新ハンドラー
+  const updateFormData = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   // Validation for step 1 - 最低限のバリデーション
   const validateStep1 = () => {
-    const form = document.querySelector('form') as HTMLFormElement;
-    if (!form) return false;
-
-    const name = (form.querySelector('[name="name"]') as HTMLInputElement)?.value;
-    const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value;
-    const background = (form.querySelector('[name="backgroundPurpose"]') as HTMLTextAreaElement)
-      ?.value;
-
-    // Validate all fields
-    const nameError = validateField('name', name || '');
-    const emailError = validateField('email', email || '');
-    const backgroundError = validateField('backgroundPurpose', background || '');
+    // フォームデータから直接バリデーション
+    const nameError = validateField('name', formData.name);
+    const emailError = validateField('email', formData.email);
+    const backgroundError = validateField('backgroundPurpose', formData.backgroundPurpose);
 
     setFieldErrors({
       name: nameError,
@@ -138,14 +151,22 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
 
   React.useEffect(() => {
     if (currentStep === 1) {
-      const checkValidation = () => validateStep1();
-      const form = document.querySelector('form');
-      if (form) {
-        form.addEventListener('input', checkValidation);
-        return () => form.removeEventListener('input', checkValidation);
-      }
+      // FormDataの変更を監視してStep1のバリデーションを実行
+      validateStep1();
     }
-  }, [currentStep]);
+  }, [currentStep, formData.name, formData.email, formData.backgroundPurpose]);
+
+  // fieldLengthsをformDataと同期
+  React.useEffect(() => {
+    setFieldLengths({
+      backgroundPurpose: formData.backgroundPurpose?.length || 0,
+      dataDetails: formData.dataDetails?.length || 0,
+      dataVolume: formData.dataVolume?.length || 0,
+      deadline: formData.deadline?.length || 0,
+      budget: formData.budget?.length || 0,
+      otherRequirements: formData.otherRequirements?.length || 0,
+    });
+  }, [formData]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -159,10 +180,10 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     // バリデーション
     const errors: string[] = [];
 
-    // Step 1のバリデーション（多言語対応）
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const backgroundPurpose = formData.get('backgroundPurpose') as string;
+    // Step 1のバリデーション（Reactステートから直接取得）
+    const name = formData.name || '';
+    const email = formData.email || '';
+    const backgroundPurpose = formData.backgroundPurpose || '';
 
     if (!name || name.trim().length === 0) {
       errors.push(t('validation.nameRequired'));
@@ -183,9 +204,9 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       errors.push(t('validation.dataTypeRequired'));
     }
 
-    const dataVolume = formData.get('dataVolume') as string;
-    const deadline = formData.get('deadline') as string;
-    const budget = formData.get('budget') as string;
+    const dataVolume = formData.dataVolume || '';
+    const deadline = formData.deadline || '';
+    const budget = formData.budget || '';
 
     if (!dataVolume || dataVolume.trim().length === 0) {
       errors.push(t('validation.dataVolumeRequired'));
@@ -204,18 +225,18 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     }
 
     const data = {
-      name: formData.get('name'),
-      organization: formData.get('organization'),
-      email: formData.get('email'),
-      backgroundPurpose: formData.get('backgroundPurpose'),
+      name: formData.name,
+      organization: formData.organization,
+      email: formData.email,
+      backgroundPurpose: formData.backgroundPurpose,
       dataType: selectedDataTypes.includes('other')
         ? [...selectedDataTypes.filter(t => t !== 'other'), `other: ${otherDataType}`]
         : selectedDataTypes,
-      dataDetails: formData.get('dataDetails'),
-      dataVolume: formData.get('dataVolume'),
-      deadline: formData.get('deadline'),
-      budget: formData.get('budget'),
-      otherRequirements: formData.get('otherRequirements'),
+      dataDetails: formData.dataDetails,
+      dataVolume: formData.dataVolume,
+      deadline: formData.deadline,
+      budget: formData.budget,
+      otherRequirements: formData.otherRequirements,
       language: getCurrentLanguage(),
     };
 
@@ -284,7 +305,18 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       if (isMainFunctionSuccessful) {
         console.log('✅ [DATA REQUEST DEBUG] Setting status to SUCCESS');
         setSubmitStatus('success');
-        e.currentTarget.reset();
+        // Reset all form data
+        setFormData({
+          name: '',
+          organization: '',
+          email: '',
+          backgroundPurpose: '',
+          dataDetails: '',
+          dataVolume: '',
+          deadline: '',
+          budget: '',
+          otherRequirements: '',
+        });
         setSelectedDataTypes([]);
         setOtherDataType('');
         setCurrentStep(1); // Reset to first step
@@ -330,19 +362,19 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
   // Form field data for mapping
   const formFields = [
     {
-      id: 'name',
+      id: 'name' as const,
       label: `${t('request.name')} *`,
       placeholder: t('request.placeholder.name'),
       required: true,
     },
     {
-      id: 'organization',
+      id: 'organization' as const,
       label: t('request.organization'),
       placeholder: t('request.placeholder.organization'),
       required: false,
     },
     {
-      id: 'email',
+      id: 'email' as const,
       label: `${t('request.email')} *`,
       placeholder: t('request.placeholder.email'),
       required: true,
@@ -369,11 +401,11 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full bg-[#1e1e1e] min-h-screen">
+    <div className="flex flex-col xl:flex-row w-full bg-[#1e1e1e] min-h-screen">
       {/* Left side with logo */}
-      <div className="hidden md:flex w-full md:w-1/2 min-h-screen relative flex-col">
+      <div className="hidden xl:flex w-full xl:w-2/5 min-h-screen relative flex-col">
         <div
-          className="flex items-center mt-12 ml-4 md:ml-14 cursor-pointer"
+          className="flex items-center mt-12 ml-4 xl:ml-14 cursor-pointer"
           onClick={() => handleNavigation('/')}
         >
           <img className="w-[40px] h-[40px] object-cover" alt="Icon" src="/logo.png" />
@@ -383,7 +415,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         </div>
 
         {/* Meta Balls Animation - Hidden on mobile, shown on desktop */}
-        <div className="hidden md:flex flex-1 relative">
+        <div className="hidden xl:flex flex-1 relative">
           <div className="absolute inset-0 z-0">
             <MetaBalls
               color="#ffffff"
@@ -401,7 +433,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         </div>
 
         {/* Footer for desktop */}
-        <footer className="mb-8 ml-4 md:ml-14 flex flex-col gap-4">
+        <footer className="mb-8 ml-4 xl:ml-14 flex flex-col gap-4">
           <div className="flex gap-6">
             <a
               onClick={() => onFooterClick?.('terms-of-service')}
@@ -424,7 +456,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
 
       {/* Mobile header */}
       <div
-        className="flex justify-center items-center md:hidden mt-6 mb-6 cursor-pointer"
+        className="flex justify-center items-center xl:hidden mt-6 mb-6 cursor-pointer"
         onClick={() => handleNavigation('/')}
       >
         <img className="w-[24px] h-[24px] object-cover" src="/logo.png" alt="Icon" />
@@ -434,7 +466,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       </div>
 
       {/* Right side with form */}
-      <div className="w-full md:w-1/2 bg-white flex-1 relative">
+      <div className="w-full xl:w-3/5 bg-white flex-1 relative">
         {/* Background MetaBalls for form area */}
         <div className="absolute inset-0 z-0 opacity-5">
           <MetaBalls
@@ -449,20 +481,20 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         </div>
 
         <Card className="border-0 shadow-none h-full rounded-none bg-transparent relative z-10">
-          <CardContent className="flex flex-col gap-8 p-6 md:p-20">
+          <CardContent className="flex flex-col gap-4 p-4 sm:p-6 xl:p-12">
             {/* Header */}
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-col gap-2">
-                <h2 className="font-alliance font-semibold text-gray-900 text-xl md:text-2xl leading-[28.8px]">
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
+                <h2 className="font-alliance font-semibold text-gray-900 text-lg sm:text-xl leading-tight">
                   {t('request.title')}
                 </h2>
-                <p className="font-alliance font-normal text-gray-500 text-base leading-[19.2px] whitespace-pre-line">
+                <p className="font-alliance font-normal text-gray-500 text-sm leading-relaxed whitespace-pre-line">
                   {t('request.subtitle')}
                 </p>
               </div>
 
               {/* Step Progress Indicator */}
-              <div className="flex items-center justify-center gap-4 py-4">
+              <div className="flex items-center justify-center gap-4 py-2">
                 <div className="flex items-center gap-2">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-alliance font-medium ${
@@ -503,7 +535,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
               </div>
             </div>
 
-            <form onSubmit={onSubmit} className="flex flex-col gap-8">
+            <form onSubmit={onSubmit} className="flex flex-col gap-4">
               {/* Step 1: Basic Information */}
               {currentStep === 1 && (
                 <div className="flex flex-col gap-6">
@@ -521,28 +553,27 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                         name={field.id}
                         placeholder={field.placeholder}
                         minLength={field.id === 'email' ? 0 : 1}
-                        onChange={e => handleFieldChange(field.id, e.target.value)}
+                        value={
+                          field.id === 'name' ? formData.name :
+                          field.id === 'organization' ? formData.organization :
+                          field.id === 'email' ? formData.email : ''
+                        }
+                        onChange={e => {
+                          updateFormData(field.id, e.target.value);
+                          handleFieldChange(field.id, e.target.value);
+                        }}
                         onBlur={e => handleFieldBlur(field.id, e.target.value)}
-                        className={`h-12 rounded-md font-sans text-sm ${
-                          touchedFields[field.id] && fieldErrors[field.id]
-                            ? 'border-red-500 focus:ring-red-500'
-                            : ''
-                        }`}
+                        className="h-8 sm:h-10 lg:h-12 rounded-md font-sans text-xs sm:text-sm"
                       />
-                      {touchedFields[field.id] && fieldErrors[field.id] && (
-                        <span className="text-red-500 text-xs font-alliance font-light mt-1">
-                          {fieldErrors[field.id]}
-                        </span>
-                      )}
                     </div>
                   ))}
 
                   {/* Background and Purpose field */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5 sm:gap-2">
                     <div className="flex justify-between items-center">
                       <Label
                         htmlFor="backgroundPurpose"
-                        className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]"
+                        className="font-alliance font-normal text-gray-700 text-xs sm:text-sm leading-[16.8px]"
                       >
                         {t('request.backgroundPurpose')} *
                       </Label>
@@ -556,25 +587,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.backgroundPurpose')}
                       minLength={1}
                       maxLength={1000}
+                      value={formData.backgroundPurpose}
                       onChange={e => {
-                        setFieldLengths(prev => ({
-                          ...prev,
-                          backgroundPurpose: e.target.value.length,
-                        }));
+                        updateFormData('backgroundPurpose', e.target.value);
                         handleFieldChange('backgroundPurpose', e.target.value);
                       }}
                       onBlur={e => handleFieldBlur('backgroundPurpose', e.target.value)}
-                      className={`min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
-                        touchedFields.backgroundPurpose && fieldErrors.backgroundPurpose
-                          ? 'border-red-500 focus:ring-red-500'
-                          : ''
-                      }`}
+                      className="min-h-[90px] h-[90px] max-h-[180px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
-                    {touchedFields.backgroundPurpose && fieldErrors.backgroundPurpose && (
-                      <span className="text-red-500 text-xs font-alliance font-light mt-1">
-                        {fieldErrors.backgroundPurpose}
-                      </span>
-                    )}
                   </div>
                 </div>
               )}
@@ -587,7 +607,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                     <Label className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]">
                       {t('request.dataType')} *
                     </Label>
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-2">
                       {dataTypeOptions.map(option => (
                         <div key={option.id} className="flex items-center space-x-2">
                           <Checkbox
@@ -604,12 +624,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                         </div>
                       ))}
                       {selectedDataTypes.includes('other') && (
-                        <Input
-                          placeholder={t('ui.otherSpecify')}
-                          value={otherDataType}
-                          onChange={e => setOtherDataType(e.target.value)}
-                          className="ml-6 h-10 rounded-md font-sans text-sm"
-                        />
+                        <div className="ml-6">
+                          <Input
+                            placeholder={t('ui.otherSpecify')}
+                            value={otherDataType}
+                            onChange={e => setOtherDataType(e.target.value)}
+                            className="h-10 rounded-md font-sans text-sm w-full"
+                          />
+                        </div>
                       )}
                     </div>
                     {selectedDataTypes.length === 0 && showValidation && (
@@ -620,7 +642,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   </div>
 
                   {/* Data details field */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     <div className="flex justify-between items-center">
                       <Label
                         htmlFor="dataDetails"
@@ -637,10 +659,11 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       name="dataDetails"
                       placeholder={t('request.placeholder.dataDetails')}
                       maxLength={1000}
-                      onChange={e =>
-                        setFieldLengths(prev => ({ ...prev, dataDetails: e.target.value.length }))
-                      }
-                      className="min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200"
+                      value={formData.dataDetails}
+                      onChange={e => {
+                        updateFormData('dataDetails', e.target.value);
+                      }}
+                      className="min-h-[80px] h-[80px] max-h-[160px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
 
@@ -663,22 +686,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.dataVolume')}
                       minLength={1}
                       maxLength={500}
+                      value={formData.dataVolume}
                       onChange={e => {
-                        setFieldLengths(prev => ({ ...prev, dataVolume: e.target.value.length }));
+                        updateFormData('dataVolume', e.target.value);
                         handleFieldChange('dataVolume', e.target.value);
                       }}
                       onBlur={e => handleFieldBlur('dataVolume', e.target.value)}
-                      className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
-                        touchedFields.dataVolume && fieldErrors.dataVolume
-                          ? 'border-red-500 focus:ring-red-500'
-                          : ''
-                      }`}
+                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
-                    {touchedFields.dataVolume && fieldErrors.dataVolume && (
-                      <span className="text-red-500 text-xs font-alliance font-light mt-1">
-                        {fieldErrors.dataVolume}
-                      </span>
-                    )}
                   </div>
 
                   {/* Deadline field */}
@@ -700,22 +715,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.deadline')}
                       minLength={1}
                       maxLength={500}
+                      value={formData.deadline}
                       onChange={e => {
-                        setFieldLengths(prev => ({ ...prev, deadline: e.target.value.length }));
+                        updateFormData('deadline', e.target.value);
                         handleFieldChange('deadline', e.target.value);
                       }}
                       onBlur={e => handleFieldBlur('deadline', e.target.value)}
-                      className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
-                        touchedFields.deadline && fieldErrors.deadline
-                          ? 'border-red-500 focus:ring-red-500'
-                          : ''
-                      }`}
+                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
-                    {touchedFields.deadline && fieldErrors.deadline && (
-                      <span className="text-red-500 text-xs font-alliance font-light mt-1">
-                        {fieldErrors.deadline}
-                      </span>
-                    )}
                   </div>
 
                   {/* Budget field */}
@@ -737,22 +744,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       placeholder={t('request.placeholder.budget')}
                       minLength={1}
                       maxLength={500}
+                      value={formData.budget}
                       onChange={e => {
-                        setFieldLengths(prev => ({ ...prev, budget: e.target.value.length }));
+                        updateFormData('budget', e.target.value);
                         handleFieldChange('budget', e.target.value);
                       }}
                       onBlur={e => handleFieldBlur('budget', e.target.value)}
-                      className={`min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200 ${
-                        touchedFields.budget && fieldErrors.budget
-                          ? 'border-red-500 focus:ring-red-500'
-                          : ''
-                      }`}
+                      className="min-h-[100px] h-[100px] max-h-[200px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
-                    {touchedFields.budget && fieldErrors.budget && (
-                      <span className="text-red-500 text-xs font-alliance font-light mt-1">
-                        {fieldErrors.budget}
-                      </span>
-                    )}
                   </div>
 
                   {/* Other requirements field */}
@@ -773,26 +772,24 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                       name="otherRequirements"
                       placeholder={t('request.placeholder.otherRequirements')}
                       maxLength={1000}
-                      onChange={e =>
-                        setFieldLengths(prev => ({
-                          ...prev,
-                          otherRequirements: e.target.value.length,
-                        }))
-                      }
-                      className="min-h-[120px] h-[120px] max-h-[250px] rounded-md font-sans text-sm resize-y transition-all duration-200"
+                      value={formData.otherRequirements}
+                      onChange={e => {
+                        updateFormData('otherRequirements', e.target.value);
+                      }}
+                      className="min-h-[80px] h-[80px] max-h-[160px] rounded-md font-sans text-sm resize-y transition-all duration-200"
                     />
                   </div>
                 </div>
               )}
 
               {/* Navigation buttons */}
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3">
                 {currentStep === 1 && (
                   <div className="flex justify-center">
                     <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: 'tween', duration: 0.2, ease: 'easeInOut' }}
                     >
                       <Button
                         type="button"
@@ -802,7 +799,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                           }
                         }}
                         disabled={!step1Valid}
-                        className="px-12 py-3 h-11 bg-[#234ad9] text-white hover:bg-[#1e3eb8] active:bg-[#183099] disabled:bg-gray-300 disabled:text-gray-500 font-alliance font-medium text-sm rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
+                        className="px-6 sm:px-8 lg:px-12 py-2 sm:py-3 h-9 sm:h-10 lg:h-11 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] text-white hover:from-[#1e3eb8] hover:to-[#183099] disabled:bg-gray-300 disabled:text-gray-500 font-alliance font-medium text-xs sm:text-sm rounded-lg transition-all duration-300 ease-out"
                       >
                         {t('ui.nextButton')}
                       </Button>
@@ -813,29 +810,29 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                 {currentStep === 2 && (
                   <div className="flex gap-4">
                     <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: 'tween', duration: 0.2, ease: 'easeInOut' }}
                       className="flex-1"
                     >
                       <Button
                         type="button"
                         onClick={() => setCurrentStep(1)}
-                        className="w-full h-11 bg-gray-400 text-white hover:bg-gray-500 active:bg-gray-600 font-alliance font-medium text-sm rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                        className="w-full h-11 bg-gray-400 text-white hover:bg-gray-500 active:bg-gray-600 font-alliance font-medium text-sm rounded-lg transition-all duration-200"
                       >
                         {t('ui.prevButton')}
                       </Button>
                     </motion.div>
                     <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: 'tween', duration: 0.2, ease: 'easeInOut' }}
                       className="flex-1"
                     >
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full h-11 bg-[#234ad9] text-white hover:bg-[#1e3eb8] active:bg-[#183099] disabled:bg-gray-300 font-alliance font-medium text-base rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
+                        className="w-full h-11 bg-[#234ad9] text-white hover:bg-[#1e3eb8] active:bg-[#183099] disabled:bg-gray-300 font-alliance font-medium text-base rounded-lg transition-all duration-200"
                       >
                         {isSubmitting ? t('request.submitting') : t('request.submit')}
                       </Button>
@@ -847,10 +844,10 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="bg-gradient-to-r from-slate-50 to-gray-100 border border-slate-300 rounded-xl p-4 shadow-lg"
+                    className="bg-gradient-to-r from-emerald-50 to-green-100 border border-emerald-300 rounded-xl p-4 shadow-lg"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-slate-400 to-gray-500 rounded-full flex items-center justify-center shadow-md border border-gray-400/30">
+                      <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center shadow-md border border-emerald-400/30">
                         <svg
                           className="w-5 h-5 text-white"
                           fill="none"
@@ -866,7 +863,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                           />
                         </svg>
                       </div>
-                      <p className="text-gray-700 text-sm font-alliance font-medium">
+                      <p className="text-gray-400 text-sm font-alliance font-medium">
                         {t('request.success')}
                       </p>
                     </div>
@@ -876,10 +873,10 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="bg-gradient-to-r from-slate-50 to-gray-100 border border-gray-300 rounded-xl p-4 shadow-lg"
+                    className="bg-gradient-to-r from-red-50 to-rose-100 border border-red-300 rounded-xl p-4 shadow-lg"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-gray-600 rounded-full flex items-center justify-center shadow-md border border-gray-400/30">
+                      <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center shadow-md border border-red-400/30">
                         <svg
                           className="w-5 h-5 text-white"
                           fill="none"
@@ -895,7 +892,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                           />
                         </svg>
                       </div>
-                      <p className="text-gray-700 text-sm font-alliance font-medium">
+                      <p className="text-gray-400 text-sm font-alliance font-medium">
                         {t('request.error')}
                       </p>
                     </div>
@@ -905,10 +902,10 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 border border-slate-300 rounded-xl p-5 shadow-xl"
+                    className="bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 border border-amber-300 rounded-xl p-5 shadow-xl"
                   >
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-gray-600 rounded-full flex items-center justify-center shadow-md flex-shrink-0 border border-gray-500/30">
+                      <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center shadow-md flex-shrink-0 border border-amber-400/30">
                         <svg
                           className="w-5 h-5 text-white"
                           fill="none"
@@ -925,7 +922,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <p className="text-gray-800 text-sm font-medium mb-3 font-alliance">
+                        <p className="text-gray-400 text-sm font-medium mb-3 font-alliance">
                           {t('validation.inputError')}
                         </p>
                         <ul className="space-y-2">
@@ -937,8 +934,8 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                               transition={{ delay: index * 0.1 }}
                               className="flex items-start gap-3"
                             >
-                              <div className="w-1.5 h-1.5 bg-slate-600 rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-gray-700 text-sm font-alliance font-light leading-relaxed">
+                              <div className="w-1.5 h-1.5 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-gray-400 text-sm font-alliance font-light leading-relaxed">
                                 {error}
                               </span>
                             </motion.li>

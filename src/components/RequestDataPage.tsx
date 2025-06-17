@@ -85,6 +85,10 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         if (!value || value.trim().length === 0) {
           return t('validation.backgroundRequired');
         }
+        // 🔧 TDD FIX: Minimum 5 characters validation
+        if (value.trim().length < 5) {
+          return t('validation.backgroundMinLength');
+        }
         break;
       case 'dataVolume':
         if (!value || value.trim().length === 0) {
@@ -134,6 +138,12 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     const emailError = validateField('email', formData.email);
     const backgroundError = validateField('backgroundPurpose', formData.backgroundPurpose);
 
+    // 🔧 TDD FIX: Set validation errors for display
+    const errors = [];
+    if (nameError) errors.push(nameError);
+    if (emailError) errors.push(emailError);
+    if (backgroundError) errors.push(backgroundError);
+
     setFieldErrors({
       name: nameError,
       email: emailError,
@@ -146,17 +156,17 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       backgroundPurpose: true,
     });
 
+    // 🔧 TDD FIX: Display validation errors immediately when Next is clicked
+    setValidationErrors(errors);
+    setShowValidation(true);
+
     const isValid = !nameError && !emailError && !backgroundError;
     setStep1Valid(isValid);
     return isValid;
   };
 
-  React.useEffect(() => {
-    if (currentStep === 1) {
-      // FormDataの変更を監視してStep1のバリデーションを実行
-      validateStep1();
-    }
-  }, [currentStep, formData.name, formData.email, formData.backgroundPurpose]);
+  // 🔧 FIX: Removed automatic validation on form data change
+  // Validation will only occur when Next button is clicked
 
   // fieldLengthsをformDataと同期
   React.useEffect(() => {
@@ -836,10 +846,13 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                         type="button"
                         onClick={() => {
                           if (validateStep1()) {
+                            // 🔧 TDD FIX: Clear validation errors when successfully moving to Step 2
+                            setValidationErrors([]);
+                            setShowValidation(false);
                             setCurrentStep(2);
                           }
                         }}
-                        disabled={!step1Valid}
+                        disabled={false}
                         className="px-6 sm:px-8 lg:px-12 py-2 sm:py-3 h-9 sm:h-10 lg:h-11 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] text-white hover:from-[#1e3eb8] hover:to-[#183099] disabled:bg-gray-300 disabled:text-gray-500 font-alliance font-medium text-xs sm:text-sm rounded-lg transition-all duration-300 ease-out"
                       >
                         {t('ui.nextButton')}

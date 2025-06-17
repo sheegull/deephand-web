@@ -176,6 +176,7 @@
     "messageTooLong": "Message must be less than 1000 characters",
     "nameTooLong": "Name must be less than 50 characters",
     "backgroundTooShort": "Background must be at least 5 characters",
+    "backgroundMinLength": "Background must be at least 5 characters",
     "organizationTooLong": "Organization must be less than 100 characters"
   },
   "ui": {

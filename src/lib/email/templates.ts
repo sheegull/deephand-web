@@ -7,31 +7,95 @@
  */
 
 import type { ContactFormData, CurrentDataRequestFormData } from '../validationSchemas';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 import { ENV } from '../env';
 
-// Email template translation function
+// 🔧 TDD FIX: Embedded translations for Astro compatibility
+const EMAIL_TRANSLATIONS = {
+  ja: {
+    'email.admin.subject': 'お問い合わせ - DeepHand',
+    'email.admin.title': '新しいお問い合わせ',
+    'email.admin.subtitle': '管理者様への通知メールです',
+    'email.admin.contactDetails': 'お問い合わせ詳細',
+    'email.admin.name': 'お名前',
+    'email.admin.email': 'メールアドレス',
+    'email.admin.organization': 'ご所属',
+    'email.admin.timestamp': '送信日時',
+    'email.admin.messageContent': 'お問い合わせ内容',
+    'email.admin.actionRequired': '対応アクション',
+    'email.admin.respondWithin24h': '24時間以内にご返信ください',
+    'email.admin.notEntered': '未入力',
+    'email.user.subject': 'お問い合わせありがとうございます - DeepHand',
+    'email.user.title': 'お問い合わせありがとうございます',
+    'email.user.subtitle': 'お問い合わせを受け付けました',
+    'email.user.thankYou': 'この度は DeepHand にお問い合わせいただき、ありがとうございます',
+    'email.user.responseTime': '24時間以内にご返信いたします',
+    'email.user.followUp': 'お急ぎの場合は、直接お電話でお問い合わせください',
+    'email.user.contactInfo': 'お問い合わせ情報',
+    'email.user.nextSteps': '今後の流れ',
+    'email.user.step1': '担当者がお問い合わせ内容を確認いたします',
+    'email.user.step2': '詳細な回答を準備いたします',
+    'email.user.step3': '24時間以内にご返信いたします',
+    // Data Request specific translations
+    'request.title': 'データリクエスト',
+    'request.name': 'お名前',
+    'request.email': 'メールアドレス',
+    'request.organization': 'ご所属',
+    'request.backgroundPurpose': '背景・目的',
+    'request.dataType': 'データタイプ',
+    'request.dataDetails': 'データ詳細',
+    'request.dataVolume': 'データ量',
+    'request.deadline': '締切',
+    'request.budget': '予算',
+    'request.otherRequirements': 'その他要件',
+    'request.confirmation.title': 'データリクエストを受け付けました',
+    'request.confirmation.message': 'データアノテーション依頼を受け付けました。24時間以内に詳細なご提案をお送りいたします。'
+  },
+  en: {
+    'email.admin.subject': 'Contact Inquiry - DeepHand',
+    'email.admin.title': 'New Contact Inquiry',
+    'email.admin.subtitle': 'Administrator notification email',
+    'email.admin.contactDetails': 'Contact Details',
+    'email.admin.name': 'Name',
+    'email.admin.email': 'Email',
+    'email.admin.organization': 'Organization',
+    'email.admin.timestamp': 'Submitted At',
+    'email.admin.messageContent': 'Message Content',
+    'email.admin.actionRequired': 'Action Required',
+    'email.admin.respondWithin24h': 'Respond within 24 hours',
+    'email.admin.notEntered': 'Not provided',
+    'email.user.subject': 'Thank you for your inquiry - DeepHand',
+    'email.user.title': 'Thank You for Your Inquiry',
+    'email.user.subtitle': 'We have received your inquiry',
+    'email.user.thankYou': 'Thank you for contacting DeepHand',
+    'email.user.responseTime': 'We will respond within 24 hours',
+    'email.user.followUp': 'If you have any urgent matters, please contact us directly',
+    'email.user.contactInfo': 'Contact Information',
+    'email.user.nextSteps': 'Next Steps',
+    'email.user.step1': 'Our team will review your inquiry',
+    'email.user.step2': 'We will prepare a detailed response',
+    'email.user.step3': 'You will receive our reply within 24 hours',
+    // Data Request specific translations
+    'request.title': 'Data Request',
+    'request.name': 'Name',
+    'request.email': 'Email',
+    'request.organization': 'Organization',
+    'request.backgroundPurpose': 'Background & Purpose',
+    'request.dataType': 'Data Type',
+    'request.dataDetails': 'Data Details',
+    'request.dataVolume': 'Data Volume',
+    'request.deadline': 'Deadline',
+    'request.budget': 'Budget',
+    'request.otherRequirements': 'Other Requirements',
+    'request.confirmation.title': 'Your data request has been received',
+    'request.confirmation.message': 'Your data annotation request has been received. We will send you a detailed proposal within 24 hours.'
+  }
+};
+
+// Email template translation function - Fixed for Astro environment
 function getEmailTranslation(key: string, language: string): string {
   try {
-    // Load translations dynamically
-    const translationPath = join(process.cwd(), 'src', 'i18n', 'locales', `${language}.json`);
-    const translationContent = readFileSync(translationPath, 'utf8');
-    const translations = JSON.parse(translationContent);
-    
-    // Navigate through nested object using dot notation
-    const keys = key.split('.');
-    let result: any = translations;
-    
-    for (const k of keys) {
-      if (result && typeof result === 'object' && k in result) {
-        result = result[k];
-      } else {
-        return key; // fallback to key if translation not found
-      }
-    }
-    
-    return typeof result === 'string' ? result : key;
+    const translations = EMAIL_TRANSLATIONS[language as keyof typeof EMAIL_TRANSLATIONS] || EMAIL_TRANSLATIONS.ja;
+    return translations[key as keyof typeof translations] || key;
   } catch (error) {
     return key; // fallback to key if translation fails
   }

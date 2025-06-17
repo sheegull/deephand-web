@@ -1,15 +1,9 @@
 # Cloudflare Pages Configuration for DeepHand
 name = "deephand-web"
-compatibility_date = "2025-06-15"
+compatibility_date = "2025-01-15"
 
 # Pages build output directory
 pages_build_output_dir = "dist"
-
-
-# Secrets (encrypted variables) - configured via Cloudflare dashboard
-# RESEND_API_KEY (configured as secret in Cloudflare)
-RESEND_API_KEY=re_hgnJrhkJ_6ZFZYbP96LKF7ywdLTzUWHP9
-
 
 # Environment variables binding
 # These variables will be available in the runtime as process.env
@@ -20,3 +14,6 @@ FROM_EMAIL = "contact@deephandai.com"
 NOREPLY_EMAIL = "noreply@deephandai.com"
 REQUESTS_EMAIL = "requests@deephandai.com"
 NODE_ENV = "production"
+
+# Secrets (encrypted variables) - configured via Cloudflare dashboard
+# RESEND_API_KEY (configured as secret in Cloudflare)

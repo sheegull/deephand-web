@@ -1,11 +1,11 @@
 # Cloudflare Pages Configuration for DeepHand
 name = "deephand-web"
-compatibility_date = "2024-12-15"
+compatibility_date = "2025-01-15"
 
 # Pages Configuration
 [env.production]
 name = "deephand-web-production"
-route = "deephand.ai/*"
+route = "deephandai.com/*"
 
 [env.production.vars]
 NODE_ENV = "production"

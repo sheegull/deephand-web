@@ -23,7 +23,7 @@
     "security:check": "pnpm audit --audit-level=moderate"
   },
   "dependencies": {
-    "@astrojs/node": "^9.2.0",
+    "@astrojs/cloudflare": "^12.5.5",
     "@astrojs/react": "^4.3.0",
     "@hookform/resolvers": "^5.1.1",
     "@radix-ui/react-slot": "^1.2.3",

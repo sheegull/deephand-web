@@ -13,14 +13,96 @@ yarn-error.log*
 pnpm-debug.log*
 
 
-# environment variables
+# Environment Variables - 絶対にコミットしない
 .env
+.env.*
 .env.local
+.env.development
 .env.production
+.env.staging
+.env.test
 .dev.vars
+.vars
+.secrets
+
+# API Keys & Secrets - 絶対にコミットしない
+**/secrets.json
+**/config/secrets.json
+**/config/production.json
+**/.secrets
+**/api-keys.json
+**/credentials.json
+**/.credentials
+**/tokens.json
+**/.tokens
+
+# Cloudflare
+.wrangler/
+wrangler.toml.local
 
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# IDE設定
 .idea/
+.vscode/settings.json
+.vscode/launch.json
+*.swp
+*.swo
+*~
+
+# OS Generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+*.cache
+*.pid
+*.seed
+*.pid.lock
+
+# Debug Files
+debug.log
+debug_*.log
+preview.log
+preview_*.log
+server.log
+server_*.log
+
+# Build & Coverage
+coverage/
+.nyc_output/
+build/
+out/
+
+# Lock Files (コメントアウト - 一般的にはコミットする)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Security & Sensitive Data
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+.htpasswd
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+
+# Backups
+*.backup
+*.bak
+*.old

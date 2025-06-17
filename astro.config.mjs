@@ -2,6 +2,10 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import cloudflare from '@astrojs/cloudflare';
+import { messageChannelPolyfillPlugin } from './vite-polyfill-plugin.js';
+
+// SSRポリフィルを事前に読み込み（React 19 + Cloudflare Workers互換性）
+import './src/utils/ssr-polyfills.js';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +20,9 @@ export default defineConfig({
     format: 'directory',
   },
   vite: {
+    // plugins: [
+    //   messageChannelPolyfillPlugin(),
+    // ],
     css: {
       postcss: './postcss.config.js',
     },

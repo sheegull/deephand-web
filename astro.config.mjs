@@ -20,12 +20,30 @@ export default defineConfig({
       postcss: './postcss.config.js',
     },
     build: {
+      chunkSizeWarningLimit: 600, // Three.jsチャンクを考慮して警告制限を調整
       rollupOptions: {
         output: {
           manualChunks: {
+            // Core React libraries (small, essential)
             vendor: ['react', 'react-dom'],
+            
+            // Form handling libraries (medium size)
             forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
+            
+            // UI components (lightweight)
             ui: ['lucide-react', '@radix-ui/react-slot', 'class-variance-authority'],
+            
+            // Three.js and heavy 3D dependencies (large, lazy-loaded)
+            three: ['three', 'ogl', '@react-three/fiber', '@react-three/postprocessing', 'postprocessing'],
+            
+            // Animation libraries (medium size, conditionally loaded)
+            animation: ['framer-motion'],
+            
+            // Internationalization (medium size)
+            i18n: ['i18next', 'react-i18next'],
+            
+            // Communication and utilities (small)
+            utils: ['resend', 'clsx']
           },
         },
       },

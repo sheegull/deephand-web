@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, Loader2 } from 'lucide-react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { MotionDiv, useInView, useScroll, useTransform, optimizedTransition, optimizedHoverAnimation, optimizedTapAnimation } from './ui/motion-optimized';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
@@ -9,7 +9,7 @@ import { t } from '../lib/i18n';
 import { useLanguage } from '../hooks/useLanguage';
 import { LanguageToggle } from './ui/language-toggle';
 import { logError, logInfo } from '../lib/error-handling';
-import DitherBackground from './ui/DitherBackground';
+import DitherBackgroundLazy from './ui/DitherBackgroundLazy';
 
 interface HeroSectionProps {
   onRequestClick?: () => void;
@@ -239,8 +239,8 @@ export const HeroSection = ({
 
   return (
     <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen relative">
-      {/* Dither Background Animation */}
-      <DitherBackground
+      {/* Dither Background Animation - Lazy Loaded */}
+      <DitherBackgroundLazy
         waveSpeed={0.05}
         waveFrequency={6.0}
         waveAmplitude={0.05}
@@ -309,18 +309,10 @@ export const HeroSection = ({
               currentLanguage={currentLanguage}
               onLanguageChange={switchLanguage}
             />
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-              transition={{
-                type: 'tween',
-                duration: 0.2,
-                ease: 'easeInOut',
-              }}
+            <MotionDiv
+              whileHover={optimizedHoverAnimation}
+              whileTap={optimizedTapAnimation}
+              transition={optimizedTransition}
             >
               <Button
                 onClick={() => {
@@ -331,7 +323,7 @@ export const HeroSection = ({
               >
                 <span className="relative z-10">{t('nav.getStarted')}</span>
               </Button>
-            </motion.div>
+            </MotionDiv>
           </div>
         </div>
 
@@ -376,14 +368,14 @@ export const HeroSection = ({
       <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-16 sm:mt-18 lg:mt-20 z-10">
         <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 min-h-[calc(100vh-180px)]">
           {/* Left Content */}
-          <motion.div
+          <MotionDiv
             className="flex flex-col max-w-[654px] gap-6 lg:gap-8 text-center lg:text-left flex-1 justify-center"
             style={{ y: textY }}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <motion.h1
+            <MotionDiv
               className="font-alliance font-normal text-white text-3xl md:text-5xl lg:text-[64px] leading-[1.1]"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -392,7 +384,7 @@ export const HeroSection = ({
               {t('hero.title')
                 .split('\n')
                 .map((line: string, index: number) => (
-                  <motion.span
+                  <MotionDiv
                     key={index}
                     className="block"
                     initial={{ opacity: 0, x: -20 }}
@@ -400,29 +392,21 @@ export const HeroSection = ({
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
                   >
                     {line}
-                  </motion.span>
+                  </MotionDiv>
                 ))}
-            </motion.h1>
-            <motion.p
+            </MotionDiv>
+            <MotionDiv
               className="font-alliance font-light text-zinc-400 text-base md:text-lg lg:text-xl leading-[1.6] max-w-[555px] mx-auto lg:mx-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
             >
               {t('hero.subtitle')}
-            </motion.p>
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-              transition={{
-                type: 'tween',
-                duration: 0.2,
-                ease: 'easeInOut',
-              }}
+            </MotionDiv>
+            <MotionDiv
+              whileHover={optimizedHoverAnimation}
+              whileTap={optimizedTapAnimation}
+              transition={optimizedTransition}
               className="w-fit mx-auto lg:mx-0"
             >
               <Button
@@ -435,11 +419,11 @@ export const HeroSection = ({
               >
                 <span className="relative z-10">{t('hero.requestButton')}</span>
               </Button>
-            </motion.div>
-          </motion.div>
+            </MotionDiv>
+          </MotionDiv>
 
           {/* Contact Form Card */}
-          <motion.div
+          <MotionDiv
             ref={ref}
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
             animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
@@ -544,7 +528,7 @@ export const HeroSection = ({
                   </Button>
 
                   {submitStatus === 'success' && (
-                    <motion.div 
+                    <MotionDiv 
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
@@ -560,10 +544,10 @@ export const HeroSection = ({
                           {t('contact.success')}
                         </p>
                       </div>
-                    </motion.div>
+                    </MotionDiv>
                   )}
                   {submitStatus === 'error' && (
-                    <motion.div 
+                    <MotionDiv 
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-r from-red-500/10 to-rose-500/10 border border-red-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
@@ -579,10 +563,10 @@ export const HeroSection = ({
                           {t('contact.error')}
                         </p>
                       </div>
-                    </motion.div>
+                    </MotionDiv>
                   )}
                   {validationErrors.length > 0 && (
-                    <motion.div 
+                    <MotionDiv 
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-br from-amber-500/10 via-yellow-500/10 to-orange-500/10 border border-amber-500/30 rounded-xl p-5 backdrop-blur-md shadow-xl ring-1 ring-amber-500/20"
@@ -600,7 +584,7 @@ export const HeroSection = ({
                           </p>
                           <ul className="space-y-2">
                             {validationErrors.map((error, index) => (
-                              <motion.li 
+                              <MotionDiv 
                                 key={index} 
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -609,17 +593,17 @@ export const HeroSection = ({
                               >
                                 <div className="w-1.5 h-1.5 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span className="text-gray-400 text-sm font-alliance font-light leading-relaxed">{error}</span>
-                              </motion.li>
+                              </MotionDiv>
                             ))}
                           </ul>
                         </div>
                       </div>
-                    </motion.div>
+                    </MotionDiv>
                   )}
                 </form>
               </CardContent>
             </Card>
-          </motion.div>
+          </MotionDiv>
         </div>
 
         {/* Footer */}

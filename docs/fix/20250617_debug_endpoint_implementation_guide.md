@@ -1,23 +1,52 @@
-import type { APIRoute } from 'astro';
+# デバッグ版エンドポイント実装ガイド
 
-// Enable server-side rendering for this endpoint
-export const prerender = false;
+**目的**: Cloudflare Workers Logsでエラー詳細を可視化  
+**方法**: 既存のcontact APIを一時的にデバッグ版に置き換え  
+**所要時間**: 5-10分  
 
-export const POST: APIRoute = async ({ request, locals }) => {
+## 🔧 実装手順
+
+### **ステップ1: 既存ファイルの確認**
+
+#### **1.1 現在のcontact APIファイルを特定**
+```bash
+# プロジェクトルートで実行
+find . -name "*contact*" -type f | grep -E "\.(astro|ts|js)$"
+```
+
+**予想されるファイル場所:**
+- `src/pages/api/contact.astro`
+- `src/pages/api/contact.ts`
+- `pages/api/contact.astro`
+
+### **ステップ2: デバッグ版APIの実装**
+
+#### **2.1 既存ファイルのバックアップ**
+```bash
+# 既存ファイルをバックアップ
+cp src/pages/api/contact.astro src/pages/api/contact.astro.backup
+# または
+cp src/pages/api/contact.ts src/pages/api/contact.ts.backup
+```
+
+#### **2.2 デバッグ版コードで置き換え**
+
+**src/pages/api/contact.astro (または .ts) の内容を以下に置き換え:**
+
+```javascript
+---
+// デバッグ版 Contact API Handler
+export async function POST({ request, locals }) {
+  console.log('🚀 === CONTACT FORM DEBUG START ===');
+  console.log('⏰ Timestamp:', new Date().toISOString());
+  
   const debugInfo = {
     timestamp: new Date().toISOString(),
     step: 'initialization',
     error: null,
     environment: {},
     request: {},
-    processing: [],
-    cloudflare: {
-      localsStructure: typeof locals,
-      localsKeys: locals ? Object.keys(locals) : [],
-      runtimeExists: !!locals?.runtime,
-      envExists: !!locals?.runtime?.env,
-      envKeys: locals?.runtime?.env ? Object.keys(locals.runtime.env) : []
-    }
+    processing: []
   };
 
   try {
@@ -67,12 +96,9 @@ export const POST: APIRoute = async ({ request, locals }) => {
     let requestBody = null;
     try {
       if (contentType?.includes('application/json')) {
-        const text = await request.text();
-        console.log('📄 Raw text body:', text);
-        requestBody = JSON.parse(text);
+        requestBody = await request.json();
         console.log('📄 JSON Body parsed successfully:', JSON.stringify(requestBody, null, 2));
       } else {
-        console.log('📋 Parsing as form data...');
         const formData = await request.formData();
         requestBody = Object.fromEntries(formData.entries());
         console.log('📋 Form Data parsed successfully:', JSON.stringify(requestBody, null, 2));
@@ -80,7 +106,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
       debugInfo.processing.push('body-parsing-completed');
     } catch (bodyError) {
       console.error('❌ Body parsing failed:', bodyError.message);
-      console.error('❌ Body parsing stack:', bodyError.stack);
       debugInfo.error = {
         step: 'body-parsing',
         name: bodyError.name,
@@ -90,46 +115,23 @@ export const POST: APIRoute = async ({ request, locals }) => {
       throw bodyError;
     }
 
-    // Step 4: Basic Validation
-    console.log('✅ Step 4: Basic Validation');
-    debugInfo.step = 'basic-validation';
-    
-    if (!requestBody || typeof requestBody !== 'object') {
-      throw new Error('Invalid request body format');
-    }
-    
-    const requiredFields = ['name', 'email', 'message'];
-    const missingFields = requiredFields.filter(field => !requestBody[field]);
-    
-    if (missingFields.length > 0) {
-      throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
-    }
-    
-    console.log('✅ Basic validation passed');
-    debugInfo.processing.push('basic-validation-completed');
-
-    // Step 5: API Key Validation
-    console.log('🔐 Step 5: API Key Validation');
+    // Step 4: API Key Validation
+    console.log('🔐 Step 4: API Key Validation');
     debugInfo.step = 'api-key-validation';
     
     const apiKey = env.RESEND_API_KEY;
     if (!apiKey) {
-      const errorDetails = {
-        message: 'RESEND_API_KEY not found in environment',
-        availableEnvKeys: envKeys,
-        localsStructure: debugInfo.cloudflare,
-        recommendation: 'Set RESEND_API_KEY in Cloudflare Pages Secrets'
-      };
-      debugInfo.environment.apiKeyError = errorDetails;
-      throw new Error(`API_KEY_MISSING: ${JSON.stringify(errorDetails)}`);
+      console.error('🚨 CRITICAL: RESEND_API_KEY not found in environment');
+      console.error('🔍 Available env keys:', envKeys);
+      throw new Error('RESEND_API_KEY not configured in Cloudflare Secrets');
     }
     
     console.log('✅ API Key found, length:', apiKey.length);
     console.log('🔑 API Key prefix:', apiKey.substring(0, 8) + '...');
     debugInfo.processing.push('api-key-validation-completed');
 
-    // Step 6: Email Data Preparation
-    console.log('📧 Step 6: Email Data Preparation');
+    // Step 5: Email Data Preparation
+    console.log('📧 Step 5: Email Data Preparation');
     debugInfo.step = 'email-preparation';
     
     const emailData = {
@@ -151,11 +153,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
     console.log('📮 Email data prepared:', JSON.stringify(emailData, null, 2));
     debugInfo.processing.push('email-preparation-completed');
 
-    // Step 7: Resend API Call
-    console.log('🌐 Step 7: Resend API Call');
+    // Step 6: Resend API Call
+    console.log('🌐 Step 6: Resend API Call');
     debugInfo.step = 'resend-api-call';
     
-    console.log('🔗 Making request to Resend API...');
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -170,20 +171,17 @@ export const POST: APIRoute = async ({ request, locals }) => {
     
     if (!resendResponse.ok) {
       const errorText = await resendResponse.text();
-      console.error('❌ Resend API Error Response:', errorText);
-      console.error('❌ Resend API Status:', resendResponse.status);
-      console.error('❌ Resend API StatusText:', resendResponse.statusText);
+      console.error('❌ Resend API Error:', errorText);
       throw new Error(`Resend API error: ${resendResponse.status} - ${errorText}`);
     }
     
     const resendResult = await resendResponse.json();
-    console.log('✅ Resend API Success Response:', JSON.stringify(resendResult, null, 2));
+    console.log('✅ Resend API Success:', JSON.stringify(resendResult, null, 2));
     debugInfo.processing.push('resend-api-call-completed');
 
     // Success Response
     debugInfo.step = 'success';
     console.log('🎉 === CONTACT FORM DEBUG SUCCESS ===');
-    console.log('📊 Final Debug Info:', JSON.stringify(debugInfo, null, 2));
     
     return new Response(JSON.stringify({
       success: true,
@@ -208,9 +206,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     console.error('❌ Error Message:', error.message);
     console.error('❌ Error Stack:', error.stack);
     console.error('📍 Failed at step:', debugInfo.step);
-    console.error('🔍 Processing completed:', debugInfo.processing);
-    console.error('🌍 Environment info:', JSON.stringify(debugInfo.environment, null, 2));
-    console.error('📨 Request info:', JSON.stringify(debugInfo.request, null, 2));
+    console.error('🔍 Debug Info:', JSON.stringify(debugInfo, null, 2));
     console.error('🚨 ================================');
 
     debugInfo.error = {
@@ -236,16 +232,107 @@ export const POST: APIRoute = async ({ request, locals }) => {
       }
     });
   }
-};
+}
 
-export const OPTIONS: APIRoute = async ({ request }) => {
-  console.log('🔧 OPTIONS request received for contact API');
+export async function OPTIONS({ request }) {
   return new Response(null, {
     status: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Methods': 'POST',
       'Access-Control-Allow-Headers': 'Content-Type'
     }
   });
-};
+}
+---
+```
+
+### **ステップ3: デプロイとテスト**
+
+#### **3.1 変更のコミット・プッシュ**
+```bash
+# 変更をGitにコミット
+git add src/pages/api/contact.astro
+git commit -m "Add debug version of contact API for troubleshooting"
+
+# プッシュしてCloudflare Pagesに自動デプロイ
+git push origin main
+```
+
+#### **3.2 デプロイ完了の確認**
+```bash
+# Cloudflare Pagesのデプロイ状況確認
+# Dashboard → Pages → deephand-web → Deployments
+# 新しいデプロイが完了するまで1-2分待機
+```
+
+### **ステップ4: デバッグ実行**
+
+#### **4.1 リアルタイムログの準備**
+```bash
+# ターミナルでリアルタイムログを開始
+wrangler pages deployment tail
+```
+
+#### **4.2 フォーム送信テスト**
+**ブラウザで以下を実行:**
+1. https://deephandai.com/en にアクセス
+2. お問い合わせフォームに入力
+3. 送信ボタンクリック
+4. ターミナルのログを確認
+
+#### **4.3 直接APIテスト（代替方法）**
+```bash
+# curlでの直接テスト
+curl -X POST https://deephandai.com/api/contact \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Debug Test",
+    "email": "test@example.com", 
+    "company": "Test Company",
+    "message": "This is a debug test message"
+  }'
+```
+
+### **ステップ5: ログ分析**
+
+#### **5.1 期待されるログ出力**
+```
+🚀 === CONTACT FORM DEBUG START ===
+📋 Step 1: Environment Variables Check
+🔑 Environment Info: {"localsExists": true, "hasResendKey": false, ...}
+📨 Step 2: Request Analysis
+🌐 Request Info: {"method": "POST", "contentType": "application/json", ...}
+```
+
+#### **5.2 問題特定のポイント**
+- `hasResendKey: false` → RESEND_API_KEY未設定
+- `localsExists: false` → Astro設定問題
+- `body-parsing` エラー → リクエスト形式問題
+- `resend-api-call` エラー → API通信問題
+
+## 🎯 次のアクション
+
+### **ログでRESEND_API_KEY未設定が確認できた場合:**
+```bash
+# Secretsを設定
+wrangler secret put RESEND_API_KEY
+# プロンプトでAPIキーを入力
+```
+
+### **別の問題が特定できた場合:**
+- ログの詳細情報を元に段階的修正
+- 必要に応じてwrangler.toml設定調整
+
+### **デバッグ完了後:**
+```bash
+# 元のファイルに戻す
+cp src/pages/api/contact.astro.backup src/pages/api/contact.astro
+git add src/pages/api/contact.astro
+git commit -m "Restore original contact API after debugging"
+git push origin main
+```
+
+---
+
+**重要**: デバッグ版は本番用ではないため、問題解決後は必ず元のファイルに戻してください。

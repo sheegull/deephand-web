@@ -32,7 +32,7 @@
   },
   "request": {
     "title": "Request annotated data for your project",
-    "subtitle": "Tell us a bit about yourself.",
+    "subtitle": "Tell us as much as you can about your project.\nWe will get back to you within 1–2 business days.",
     "name": "Name",
     "organization": "Organization",
     "email": "Email",
@@ -70,6 +70,91 @@
     "copyright": "© 2025 DeepHand. All Rights Reserved.",
     "termsOfService": "Terms of service",
     "privacyPolicy": "Privacy policy"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: December 17, 2024",
+    "article1": {
+      "title": "Article 1 (Application)",
+      "content": "These Terms of Service (\"Terms\") set forth the terms and conditions for the use of data annotation services (\"Services\") provided by DeepHand Inc. (\"Company\"). Customers who use our Services (\"Users\") are deemed to have agreed to these Terms."
+    },
+    "article2": {
+      "title": "Article 2 (Service Description)",
+      "content": "Our Services provide specialized data annotation (data labeling) services for AI and robotics fields. Professional annotators perform high-quality annotation work on image, video, audio, and text data."
+    },
+    "article3": {
+      "title": "Article 3 (Contract Formation)",
+      "content": "A service contract is formed when the User completes the application procedure prescribed by the Company and the Company accepts it. The Company reserves the right to review applications and determine whether to accept them."
+    },
+    "article4": {
+      "title": "Article 4 (Data Handling)",
+      "content": "The Company uses data provided by Users solely for annotation work purposes and manages it with appropriate security measures. We maintain data confidentiality and do not disclose or provide data to third parties, except as required by law."
+    },
+    "article5": {
+      "title": "Article 5 (Intellectual Property Rights)",
+      "content": "Intellectual property rights in annotated data belong to the User. However, intellectual property rights in annotation methods, tools, and processes developed by the Company belong to the Company."
+    },
+    "article6": {
+      "title": "Article 6 (Fees and Payment)",
+      "content": "Service fees are as agreed upon at the time of contract and must be paid within 30 days of invoice issuance. Late payment will incur a penalty of 14.6% per annum."
+    },
+    "article7": {
+      "title": "Article 7 (Quality Assurance)",
+      "content": "The Company performs annotation work to industry standards and maintains quality control systems. However, due to the nature of data, we do not guarantee 100% accuracy."
+    },
+    "article8": {
+      "title": "Article 8 (Limitation of Liability)",
+      "content": "The Company's liability is limited to direct and ordinary damages caused to Users due to breach of contract or tort, and we are not liable for lost profits, special damages, or indirect damages. The Company's maximum liability is limited to the total service fees under the applicable contract."
+    },
+    "article9": {
+      "title": "Article 9 (Confidentiality)",
+      "content": "The Company strictly manages confidential information of Users obtained through service provision and will not disclose it to third parties without prior written consent from Users. This obligation continues after contract termination."
+    },
+    "article10": {
+      "title": "Article 10 (Contract Termination)",
+      "content": "The Company may terminate contracts if Users violate these Terms, delay payments, or in other cases deemed inappropriate by the Company."
+    },
+    "article11": {
+      "title": "Article 11 (Governing Law and Jurisdiction)",
+      "content": "These Terms are governed by Japanese law, and the Tokyo District Court shall have exclusive jurisdiction as the court of first instance for all disputes related to these Terms."
+    },
+    "contact": "Contact: contact@deephandai.com"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: December 17, 2024",
+    "section1": {
+      "title": "1. Collection of Personal Information",
+      "content": "We may collect the following personal information:\n• Name, company/organization name\n• Email address, phone number\n• Inquiry details\n• Service usage information\n• Website access logs"
+    },
+    "section2": {
+      "title": "2. Purpose of Use",
+      "content": "We use collected personal information for the following purposes:\n• Service provision and operation\n• Response to inquiries\n• Service improvement and development\n• Distribution of important notices\n• Marketing activities (only with consent)"
+    },
+    "section3": {
+      "title": "3. Third-Party Disclosure",
+      "content": "We do not provide personal information to third parties without prior consent, except as required by law. However, this does not apply in the following cases:\n• When required by law\n• When necessary to protect life, health, or property\n• When particularly necessary for public health improvement or sound development of children"
+    },
+    "section4": {
+      "title": "4. Information Security",
+      "content": "We implement necessary and appropriate measures to prevent leakage, loss, or damage of personal information and other security management. We also provide appropriate supervision of employees handling personal information."
+    },
+    "section5": {
+      "title": "5. Use of Cookies",
+      "content": "Our website may use cookies to improve service convenience. If you do not wish to use cookies, you can disable them through your browser settings."
+    },
+    "section6": {
+      "title": "6. Disclosure and Correction of Personal Information",
+      "content": "When requests for disclosure, correction, or deletion of personal information are made by the individual, we will respond within reasonable limits according to our prescribed procedures."
+    },
+    "section7": {
+      "title": "7. Contact Information",
+      "content": "For inquiries regarding personal information handling, please contact:\nDeepHand Inc. Personal Information Protection Office\nEmail: contact@deephandai.com"
+    },
+    "section8": {
+      "title": "8. Privacy Policy Changes",
+      "content": "We may change this Privacy Policy in accordance with legal changes. The revised Privacy Policy takes effect when posted on our website."
+    }
   },
   "validation": {
     "required": "{{field}} is required",

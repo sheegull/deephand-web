@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manual API Test</title>
+</head>
+<body>
+    <h1>Manual API Test for /api/request</h1>
+    <button onclick="testAPI()">Test API</button>
+    <div id="result" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;"></div>
+
+    <script>
+        async function testAPI() {
+            const result = document.getElementById('result');
+            result.innerHTML = '🔍 Testing API endpoint...';
+            
+            const testData = {
+                name: 'Manual Test User',
+                organization: 'Manual Test Company',
+                email: 'manual@test.com',
+                backgroundPurpose: 'Testing API endpoint manually',
+                dataType: ['image', 'video'],
+                dataDetails: 'Manual test data details',
+                dataVolume: '2000 samples',
+                deadline: 'April 2025',
+                budget: '$8000',
+                otherRequirements: 'Manual test requirements',
+                language: 'ja'
+            };
+            
+            console.log('📤 [MANUAL TEST] Sending request:', testData);
+            
+            try {
+                const response = await fetch('/api/request', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                console.log('📥 [MANUAL TEST] Response status:', response.status);
+                console.log('📥 [MANUAL TEST] Response ok:', response.ok);
+                
+                const responseText = await response.text();
+                console.log('📥 [MANUAL TEST] Raw response:', responseText);
+                
+                try {
+                    const responseData = JSON.parse(responseText);
+                    
+                    result.innerHTML = `
+                        <h3>API Test Result</h3>
+                        <p><strong>Status:</strong> ${response.status} (${response.ok ? 'OK' : 'ERROR'})</p>
+                        <p><strong>Response:</strong></p>
+                        <pre>${JSON.stringify(responseData, null, 2)}</pre>
+                    `;
+                    
+                    console.log('📥 [MANUAL TEST] Parsed response:', responseData);
+                } catch (parseError) {
+                    result.innerHTML = `
+                        <h3>API Test Result</h3>
+                        <p><strong>Status:</strong> ${response.status} (${response.ok ? 'OK' : 'ERROR'})</p>
+                        <p><strong>JSON Parse Error:</strong> ${parseError.message}</p>
+                        <p><strong>Raw Response:</strong></p>
+                        <pre>${responseText}</pre>
+                    `;
+                    console.error('❌ [MANUAL TEST] Parse error:', parseError);
+                }
+                
+            } catch (error) {
+                result.innerHTML = `
+                    <h3>API Test Error</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <pre>${JSON.stringify(error, null, 2)}</pre>
+                `;
+                console.error('❌ [MANUAL TEST] Fetch error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

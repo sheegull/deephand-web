@@ -104,6 +104,15 @@ export async function sendContactEmail(data: ContactFormData): Promise<EmailResu
 
 export async function sendDataRequestEmail(data: CurrentDataRequestFormData): Promise<EmailResult> {
   try {
+    console.log('🔍 [DATA REQUEST EMAIL DEBUG] Starting email send with config:', {
+      fromEmail: ENV.REQUESTS_EMAIL,
+      toEmail: ENV.TEST_EMAIL_RECIPIENT || ENV.ADMIN_EMAIL,
+      hasApiKey: !!ENV.RESEND_API_KEY,
+      apiKeyPrefix: ENV.RESEND_API_KEY?.substring(0, 10) + '...',
+      userEmail: data.email,
+      userName: data.name
+    });
+    
     const resend = getResendClient();
     
     // Get language from data or default to 'ja'
@@ -121,6 +130,21 @@ export async function sendDataRequestEmail(data: CurrentDataRequestFormData): Pr
     });
 
     if (salesEmailResult.error) {
+      console.error('🔍 [RESEND ERROR DEBUG] Sales email failed:', {
+        error: salesEmailResult.error,
+        errorMessage: salesEmailResult.error.message,
+        errorName: salesEmailResult.error.name,
+        fullError: JSON.stringify(salesEmailResult.error, null, 2)
+      });
+      
+      logError('Sales email failed with detailed error', {
+        operation: 'send_data_request_sales_email',
+        timestamp: Date.now(),
+        errorMessage: salesEmailResult.error.message,
+        errorName: salesEmailResult.error.name,
+        resendError: salesEmailResult.error
+      });
+      
       return {
         success: false,
         error: salesEmailResult.error.message,

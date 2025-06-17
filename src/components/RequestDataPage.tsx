@@ -460,13 +460,19 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         <footer className="mb-8 ml-4 xl:ml-14 flex flex-col gap-4">
           <div className="flex gap-6">
             <a
-              onClick={() => onFooterClick?.('terms-of-service')}
+              onClick={() => {
+                const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                handleNavigation(termsUrl);
+              }}
               className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 transition-colors cursor-pointer"
             >
               {t('footer.termsOfService')}
             </a>
             <a
-              onClick={() => onFooterClick?.('privacy-policy')}
+              onClick={() => {
+                const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                handleNavigation(privacyUrl);
+              }}
               className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 transition-colors cursor-pointer"
             >
               {t('footer.privacyPolicy')}
@@ -987,13 +993,19 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
             <footer className="flex flex-col md:hidden gap-4 mt-12 mb-8">
               <div className="flex justify-center gap-6">
                 <a
-                  onClick={() => onFooterClick?.('terms-of-service')}
+                  onClick={() => {
+                    const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                    handleNavigation(termsUrl);
+                  }}
                   className="font-alliance font-light text-gray-400 text-[10px] leading-[16.8px] hover:text-gray-600 transition-colors cursor-pointer"
                 >
                   {t('footer.termsOfService')}
                 </a>
                 <a
-                  onClick={() => onFooterClick?.('privacy-policy')}
+                  onClick={() => {
+                    const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                    handleNavigation(privacyUrl);
+                  }}
                   className="font-alliance font-light text-gray-400 text-[10px] leading-[16.8px] hover:text-gray-600 transition-colors cursor-pointer"
                 >
                   {t('footer.privacyPolicy')}

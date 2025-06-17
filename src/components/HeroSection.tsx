@@ -631,7 +631,18 @@ export const HeroSection = ({
             {footerLinks.map((link, index) => (
               <a
                 key={index}
-                onClick={() => onNavClick?.(link.text.toLowerCase().replace(/\s+/g, '-'))}
+                onClick={() => {
+                  const linkType = link.text.toLowerCase().replace(/\s+/g, '-');
+                  if (linkType.includes('terms') || linkType.includes('利用規約')) {
+                    const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                    handleNavigation(termsUrl);
+                  } else if (linkType.includes('privacy') || linkType.includes('プライバシー')) {
+                    const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                    handleNavigation(privacyUrl);
+                  } else {
+                    onNavClick?.(linkType);
+                  }
+                }}
                 className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 transition-colors cursor-pointer"
               >
                 {link.text}

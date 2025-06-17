@@ -1314,3 +1314,160 @@ NODE_ENV: development
 14:01:03 [watch] src/components/RequestDataPage.tsx
 14:01:07 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
 14:01:07 [watch] src/components/RequestDataPage.tsx
+14:05:29 [watch] /src/styles/app.css, /src/components/HeroSection.tsx, /src/components/RequestDataPage.tsx
+14:05:29 [watch] src/lib/i18n.ts
+14:05:43 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+14:05:43 [watch] src/components/HeroSection.tsx
+14:06:14 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+14:06:14 [watch] src/components/HeroSection.tsx
+14:06:18 [200] /request 35ms
+14:06:28 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+14:06:28 [watch] src/components/HeroSection.tsx
+14:06:40 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+14:06:40 [watch] src/components/HeroSection.tsx
+14:09:10 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+14:09:10 [watch] src/components/HeroSection.tsx
+14:09:15 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+14:09:15 [watch] src/components/HeroSection.tsx
+14:09:21 [watch] /src/components/HeroSection.tsx, /src/styles/app.css
+14:09:21 [watch] src/components/HeroSection.tsx
+14:10:15 [watch] src/layouts/Layout.astro
+14:10:15 [watch] src/layouts/Layout.astro
+14:10:15 [200] /request 42ms
+14:10:23 [watch] /src/styles/app.css
+14:10:23 [200] /request 117ms
+14:12:44 [200] /request 3ms
+14:15:25 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:15:25 [watch] src/components/RequestDataPage.tsx
+14:15:43 [200] /request 33ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[err_1750137475846_hj57jvm7a] Data request email sending failed { operation: 'send_data_request_email', timestamp: 1750137475846 }
+[err_1750137475846_s41jz9w54] Data request email sending failed {
+  operation: 'data_request_email_send',
+  timestamp: 1750137475846,
+  url: '/api/request'
+}
+14:17:55 [500] POST /api/request 4ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[err_1750137507763_hs2m2f2e5] Data request email sending failed { operation: 'send_data_request_email', timestamp: 1750137507763 }
+[err_1750137507763_la9c5le0f] Data request email sending failed {
+  operation: 'data_request_email_send',
+  timestamp: 1750137507763,
+  url: '/api/request'
+}
+14:18:27 [500] POST /api/request 2ms
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[err_1750137522064_j94n2xqsz] Data request email sending failed { operation: 'send_data_request_email', timestamp: 1750137522064 }
+[err_1750137522064_19hx9aaew] Data request email sending failed {
+  operation: 'data_request_email_send',
+  timestamp: 1750137522064,
+  url: '/api/request'
+}
+14:18:42 [500] POST /api/request 2ms
+14:18:45 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:18:45 [watch] src/components/RequestDataPage.tsx
+14:18:54 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:18:54 [watch] src/components/RequestDataPage.tsx
+14:19:01 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:19:01 [watch] src/components/RequestDataPage.tsx
+14:19:03 [200] /request 34ms
+14:19:04 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:19:04 [watch] src/components/RequestDataPage.tsx
+14:19:45 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:19:45 [watch] src/components/RequestDataPage.tsx
+14:19:52 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:19:52 [watch] src/components/RequestDataPage.tsx
+14:19:59 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:19:59 [watch] src/components/RequestDataPage.tsx
+14:20:03 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:20:03 [watch] src/components/RequestDataPage.tsx
+14:20:07 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:20:07 [watch] src/components/RequestDataPage.tsx
+14:20:10 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:20:10 [watch] src/components/RequestDataPage.tsx
+🔍 環境変数検証結果:
+==================================================
+RESEND_API_KEY: ✅ 設定済み
+PUBLIC_SITE_URL: http://localhost:4321
+ADMIN_EMAIL: contact@deephandai.com
+FROM_EMAIL: contact@deephandai.com
+NODE_ENV: development
+==================================================
+✅ 環境変数設定正常
+[err_1750137684464_fdilojxb3] Data request email sending failed { operation: 'send_data_request_email', timestamp: 1750137684464 }
+[err_1750137684465_crw95z52n] Data request email sending failed {
+  operation: 'data_request_email_send',
+  timestamp: 1750137684465,
+  url: '/api/request'
+}
+14:21:24 [500] POST /api/request 2ms
+14:22:19 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:22:19 [watch] src/components/RequestDataPage.tsx
+14:22:27 [200] /request 29ms
+14:25:33 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:25:33 [watch] src/components/RequestDataPage.tsx
+14:26:15 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:26:15 [watch] src/components/RequestDataPage.tsx
+14:26:15 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:26:15 [watch] src/components/RequestDataPage.tsx
+14:26:37 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:26:37 [watch] src/components/RequestDataPage.tsx
+14:26:39 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:26:39 [watch] src/components/RequestDataPage.tsx
+14:26:42 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:26:42 [watch] src/components/RequestDataPage.tsx
+14:26:45 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:26:45 [watch] src/components/RequestDataPage.tsx
+14:26:47 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:26:47 [watch] src/components/RequestDataPage.tsx
+14:26:49 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:26:49 [watch] src/components/RequestDataPage.tsx
+14:31:15 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:31:15 [watch] src/components/RequestDataPage.tsx
+14:31:21 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:31:21 [watch] src/components/RequestDataPage.tsx
+14:31:39 [watch] /src/components/RequestDataPage.tsx, /src/styles/app.css
+14:31:39 [watch] src/components/RequestDataPage.tsx
+14:32:24 [watch] /src/styles/app.css, /src/components/HeroSection.tsx, /src/components/RequestDataPage.tsx
+14:32:24 [watch] src/lib/i18n.ts
+14:32:34 [watch] src/pages/en/index.astro
+14:32:34 [200] /request 36ms
+14:32:40 [watch] src/pages/en/request.astro
+14:32:40 [watch] src/pages/en/request.astro
+14:32:41 [200] /request 19ms
+14:32:41 [watch] src/pages/en/request.astro
+14:32:41 [watch] src/pages/en/request.astro
+14:32:58 [watch] src/pages/index.astro
+14:32:58 [watch] src/pages/index.astro
+14:32:58 [200] /request 23ms
+14:33:08 [watch] src/pages/request.astro
+14:33:08 [watch] src/pages/request.astro
+14:33:08 [200] /request 22ms
+14:33:08 [watch] /src/styles/app.css, /src/components/HeroSection.tsx, /src/components/RequestDataPage.tsx
+14:33:08 [watch] src/i18n/locales/en.json
+14:33:50 [watch] /src/styles/app.css, /src/components/HeroSection.tsx, /src/components/RequestDataPage.tsx
+14:33:50 [watch] src/i18n/locales/en.json

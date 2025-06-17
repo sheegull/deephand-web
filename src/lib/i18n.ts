@@ -10,15 +10,24 @@ export const translations = {
 
 // Language state management with localStorage persistence
 let currentLanguage: 'ja' | 'en' = 'ja';
+let languageChangeCallbacks: (() => void)[] = [];
 
 // Initialize language from localStorage or URL
 if (typeof window !== 'undefined') {
-  const storedLang = localStorage.getItem('language') as 'ja' | 'en';
   const path = window.location.pathname;
   
-  if (storedLang && (storedLang === 'ja' || storedLang === 'en')) {
-    currentLanguage = storedLang;
-  } else if (path.startsWith('/en')) {
+  // URL優先で言語を判定
+  if (path.startsWith('/en')) {
+    currentLanguage = 'en';
+    localStorage.setItem('language', 'en');
+  } else {
+    // URL が /en 以外の場合は日本語
+    currentLanguage = 'ja';
+    localStorage.setItem('language', 'ja');
+  }
+} else {
+  // サーバーサイドでは、URLパスから言語を判定
+  if (typeof globalThis !== 'undefined' && globalThis.location?.pathname?.startsWith('/en')) {
     currentLanguage = 'en';
   }
 }
@@ -26,9 +35,33 @@ if (typeof window !== 'undefined') {
 export const getCurrentLanguage = () => currentLanguage;
 
 export const setCurrentLanguage = (lang: 'ja' | 'en') => {
+  const previousLanguage = currentLanguage;
   currentLanguage = lang;
   if (typeof window !== 'undefined') {
     localStorage.setItem('language', lang);
+  }
+  
+  // 言語が変更された場合のみコールバックを実行
+  if (previousLanguage !== lang) {
+    languageChangeCallbacks.forEach(callback => callback());
+  }
+};
+
+// コンポーネントの再レンダリング用コールバック登録
+export const onLanguageChange = (callback: () => void) => {
+  languageChangeCallbacks.push(callback);
+  return () => {
+    languageChangeCallbacks = languageChangeCallbacks.filter(cb => cb !== callback);
+  };
+};
+
+// 即座に言語を変更（リロードなし）
+export const switchLanguageInstantly = (lang: 'ja' | 'en') => {
+  setCurrentLanguage(lang);
+  // URLを更新（リロードなし）
+  if (typeof window !== 'undefined') {
+    const newPath = lang === 'en' ? '/en' : '/';
+    window.history.pushState({}, '', newPath);
   }
 };
 

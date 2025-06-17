@@ -132,8 +132,12 @@
   }
 
   html {
-    font-family: "Alliance No.2", Inter, 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+    font-family: "Alliance No.2", system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
     scroll-behavior: smooth;
+    /* Optimize font rendering */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   * {

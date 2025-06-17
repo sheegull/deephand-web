@@ -5,7 +5,8 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { t, getCurrentLanguage, setCurrentLanguage } from '../lib/i18n';
+import { t } from '../lib/i18n';
+import { useLanguage } from '../hooks/useLanguage';
 import { LanguageToggle } from './ui/language-toggle';
 import { logError, logInfo } from '../lib/error-handling';
 import DitherBackground from './ui/DitherBackground';
@@ -23,6 +24,7 @@ export const HeroSection = ({
   onLogoClick,
   isLoading = false,
 }: HeroSectionProps) => {
+  const { currentLanguage, switchLanguage } = useLanguage();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,11 +51,6 @@ export const HeroSection = ({
     }
   };
 
-  const handleReload = () => {
-    if (isClient && typeof window !== 'undefined') {
-      window.location.reload();
-    }
-  };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // レポート推奨：送信関数の先頭で必ずlog
@@ -74,7 +71,7 @@ export const HeroSection = ({
       organization: formData.get('organization') || '',
       email: formData.get('email') || '',
       message: formData.get('message') || '',
-      language: getCurrentLanguage(), // 現在の言語設定を追加
+      language: currentLanguage, // 現在の言語設定を追加
     };
 
     // 基本的なログ出力
@@ -262,7 +259,14 @@ export const HeroSection = ({
           {/* Logo */}
           <div
             className="flex items-center gap-1 sm:gap-2 cursor-pointer flex-shrink-0"
-            onClick={() => handleNavigation('/')}
+            onClick={() => {
+              if (onLogoClick) {
+                onLogoClick();
+              } else {
+                const homeUrl = currentLanguage === 'en' ? '/en' : '/';
+                handleNavigation(homeUrl);
+              }
+            }}
           >
             <img className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-cover" alt="Icon" src="/logo.png" />
             <div className="font-alliance font-light text-white text-lg sm:text-xl lg:text-2xl leading-tight whitespace-nowrap">
@@ -302,11 +306,8 @@ export const HeroSection = ({
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
             <LanguageToggle
-              currentLanguage={getCurrentLanguage()}
-              onLanguageChange={lang => {
-                setCurrentLanguage(lang);
-                handleReload();
-              }}
+              currentLanguage={currentLanguage}
+              onLanguageChange={switchLanguage}
             />
             <motion.div
               whileHover={{
@@ -323,7 +324,8 @@ export const HeroSection = ({
             >
               <Button
                 onClick={() => {
-                  handleNavigation('/request');
+                  const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
+                  handleNavigation(targetUrl);
                 }}
                 className="w-[100px] xl:w-[130px] h-8 xl:h-10 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-xs xl:text-sm transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-[#234ad9] hover:to-[#1e3eb8] hover:border-transparent whitespace-nowrap"
               >
@@ -352,16 +354,14 @@ export const HeroSection = ({
             <div className="flex flex-col gap-2 mt-2 p-2 border-t border-gray-700">
               <div className="mb-2">
                 <LanguageToggle
-                  currentLanguage={getCurrentLanguage()}
-                  onLanguageChange={lang => {
-                    setCurrentLanguage(lang);
-                    handleReload();
-                  }}
+                  currentLanguage={currentLanguage}
+                  onLanguageChange={switchLanguage}
                 />
               </div>
               <Button
                 onClick={() => {
-                  handleNavigation('/request');
+                  const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
+                  handleNavigation(targetUrl);
                 }}
                 className="w-full h-9 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-sm transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-[#234ad9] hover:to-[#1e3eb8] hover:border-transparent"
               >
@@ -427,7 +427,8 @@ export const HeroSection = ({
             >
               <Button
                 onClick={() => {
-                  handleNavigation('/request');
+                  const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
+                  handleNavigation(targetUrl);
                 }}
                 size="lg"
                 className="w-40 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] transition-all duration-300 ease-out border-0"

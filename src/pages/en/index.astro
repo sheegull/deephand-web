@@ -4,25 +4,23 @@ import { HeroSection } from '@/components/HeroSection';
 import { setCurrentLanguage } from '@/lib/i18n';
 import '@/styles/app.css';
 
-// サーバーサイドで日本語に設定
-setCurrentLanguage('ja');
+// サーバーサイドで英語に設定
+setCurrentLanguage('en');
 ---
 
 <BaseLayout 
-  title="DeepHand - ロボティクスに豊富な人間データを"
-  description="DeepHandはロボティクスに特化したアノテーション専門チームです。高品質なアノテーションデータを提供します。"
+  title="DeepHand - AI & Robotics Data Annotation Service"
+  description="Professional data annotation service specialized in AI and robotics projects. High-quality labeling by expert annotators."
 >
   <HeroSection 
     client:load 
-    onRequestClick={() => window.location.href = '/request'}
+    onRequestClick={() => window.location.href = '/en/request'}
     onNavClick={(element) => {
       if (element === 'get-started') {
-        window.location.href = '/request';
+        window.location.href = '/en/request';
       } else if (element === 'login') {
-        // ログイン機能は未実装
         console.log('Login clicked');
       } else {
-        // その他のナビゲーション
         const elementId = element.replace(/\s+/g, '-');
         const targetElement = document.getElementById(elementId);
         if (targetElement) {
@@ -30,6 +28,6 @@ setCurrentLanguage('ja');
         }
       }
     }}
-    onLogoClick={() => window.location.href = '/'}
+    onLogoClick={() => window.location.href = '/en'}
   />
 </BaseLayout>

@@ -7,7 +7,8 @@ import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Checkbox } from './ui/checkbox';
 import MetaBalls from './ui/MetaBalls';
-import { t, getCurrentLanguage } from '../lib/i18n';
+import { t } from '../lib/i18n';
+import { useLanguage } from '../hooks/useLanguage';
 import { logError } from '../lib/error-handling';
 
 interface RequestDataPageProps {
@@ -16,6 +17,7 @@ interface RequestDataPageProps {
 }
 
 export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageProps) => {
+  const { currentLanguage } = useLanguage();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
   const [showValidation, setShowValidation] = React.useState(false);
@@ -35,7 +37,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     budget: 0,
     otherRequirements: 0,
   });
-  
+
   // フォームデータの永続化
   const [formData, setFormData] = React.useState({
     name: '',
@@ -48,7 +50,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     budget: '',
     otherRequirements: '',
   });
-  
+
   const totalSteps = 2;
 
   // Hydration-safe client detection
@@ -175,15 +177,19 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     setShowValidation(true);
     setValidationErrors([]);
 
-    const formData = new FormData(e.currentTarget);
+    console.log('🔍 [SUBMIT DEBUG] Form submission started');
+    console.log('🔍 [SUBMIT DEBUG] Current formData:', formData);
+    console.log('🔍 [SUBMIT DEBUG] Selected data types:', selectedDataTypes);
 
-    // バリデーション
+    // バリデーション（Reactステートから直接取得）
     const errors: string[] = [];
 
     // Step 1のバリデーション（Reactステートから直接取得）
     const name = formData.name || '';
     const email = formData.email || '';
     const backgroundPurpose = formData.backgroundPurpose || '';
+
+    console.log('🔍 [SUBMIT DEBUG] Step1 data:', { name, email, backgroundPurpose });
 
     if (!name || name.trim().length === 0) {
       errors.push(t('validation.nameRequired'));
@@ -199,7 +205,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       errors.push(t('validation.backgroundTooShort'));
     }
 
-    // Step 2のバリデーション（多言語対応）
+    // Step 2のバリデーション（Reactステートから直接取得）
     if (selectedDataTypes.length === 0) {
       errors.push(t('validation.dataTypeRequired'));
     }
@@ -218,11 +224,17 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       errors.push(t('validation.budgetRequired'));
     }
 
+    console.log('🔍 [SUBMIT DEBUG] Step2 data:', { dataVolume, deadline, budget });
+    console.log('🔍 [SUBMIT DEBUG] Validation errors:', errors);
+
     if (errors.length > 0) {
+      console.log('🔍 [SUBMIT DEBUG] Setting validation errors and stopping submission');
       setValidationErrors(errors);
       setIsSubmitting(false);
       return;
     }
+
+    console.log('🔍 [SUBMIT DEBUG] No validation errors, proceeding with submission');
 
     const data = {
       name: formData.name,
@@ -237,7 +249,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       deadline: formData.deadline,
       budget: formData.budget,
       otherRequirements: formData.otherRequirements,
-      language: getCurrentLanguage(),
+      language: currentLanguage,
     };
 
     try {
@@ -305,31 +317,36 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       if (isMainFunctionSuccessful) {
         console.log('✅ [DATA REQUEST DEBUG] Setting status to SUCCESS');
         setSubmitStatus('success');
-        // Reset all form data
-        setFormData({
-          name: '',
-          organization: '',
-          email: '',
-          backgroundPurpose: '',
-          dataDetails: '',
-          dataVolume: '',
-          deadline: '',
-          budget: '',
-          otherRequirements: '',
-        });
-        setSelectedDataTypes([]);
-        setOtherDataType('');
-        setCurrentStep(1); // Reset to first step
-        setFieldErrors({});
-        setTouchedFields({});
-        setFieldLengths({
-          backgroundPurpose: 0,
-          dataDetails: 0,
-          dataVolume: 0,
-          deadline: 0,
-          budget: 0,
-          otherRequirements: 0,
-        });
+
+        // 成功メッセージを3秒間表示してからリセット
+        setTimeout(() => {
+          // Reset all form data
+          setFormData({
+            name: '',
+            organization: '',
+            email: '',
+            backgroundPurpose: '',
+            dataDetails: '',
+            dataVolume: '',
+            deadline: '',
+            budget: '',
+            otherRequirements: '',
+          });
+          setSelectedDataTypes([]);
+          setOtherDataType('');
+          setCurrentStep(1); // Reset to first step
+          setFieldErrors({});
+          setTouchedFields({});
+          setFieldLengths({
+            backgroundPurpose: 0,
+            dataDetails: 0,
+            dataVolume: 0,
+            deadline: 0,
+            budget: 0,
+            otherRequirements: 0,
+          });
+          setSubmitStatus('idle'); // 成功メッセージをクリア
+        }, 3000); // 3秒後にリセット
 
         // 成功ログ
         logError('Data request submitted successfully', {
@@ -406,7 +423,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       <div className="hidden xl:flex w-full xl:w-2/5 min-h-screen relative flex-col">
         <div
           className="flex items-center mt-12 ml-4 xl:ml-14 cursor-pointer"
-          onClick={() => handleNavigation('/')}
+          onClick={() => {
+            if (onLogoClick) {
+              onLogoClick();
+            } else {
+              const homeUrl = currentLanguage === 'en' ? '/en' : '/';
+              handleNavigation(homeUrl);
+            }
+          }}
         >
           <img className="w-[40px] h-[40px] object-cover" alt="Icon" src="/logo.png" />
           <div className="ml-1 font-alliance font-light text-white text-[32px] leading-[28.8px] whitespace-nowrap">
@@ -457,7 +481,14 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       {/* Mobile header */}
       <div
         className="flex justify-center items-center xl:hidden mt-6 mb-6 cursor-pointer"
-        onClick={() => handleNavigation('/')}
+        onClick={() => {
+          if (onLogoClick) {
+            onLogoClick();
+          } else {
+            const homeUrl = currentLanguage === 'en' ? '/en' : '/';
+            handleNavigation(homeUrl);
+          }
+        }}
       >
         <img className="w-[24px] h-[24px] object-cover" src="/logo.png" alt="Icon" />
         <div className="ml-0.5 font-alliance font-light text-white text-[24px] leading-[20px] whitespace-nowrap">
@@ -554,9 +585,13 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                         placeholder={field.placeholder}
                         minLength={field.id === 'email' ? 0 : 1}
                         value={
-                          field.id === 'name' ? formData.name :
-                          field.id === 'organization' ? formData.organization :
-                          field.id === 'email' ? formData.email : ''
+                          field.id === 'name'
+                            ? formData.name
+                            : field.id === 'organization'
+                              ? formData.organization
+                              : field.id === 'email'
+                                ? formData.email
+                                : ''
                         }
                         onChange={e => {
                           updateFormData(field.id, e.target.value);
@@ -603,11 +638,11 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
               {currentStep === 2 && (
                 <div className="flex flex-col gap-6">
                   {/* Data type checkboxes */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-4">
                     <Label className="font-alliance font-normal text-gray-700 text-sm leading-[16.8px]">
                       {t('request.dataType')} *
                     </Label>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-3">
                       {dataTypeOptions.map(option => (
                         <div key={option.id} className="flex items-center space-x-2">
                           <Checkbox
@@ -854,7 +889,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3"/>
+                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3" />
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -883,7 +918,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.4"/>
+                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.4" />
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -912,7 +947,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3"/>
+                          <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3" />
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"

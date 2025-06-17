@@ -8,10 +8,23 @@ import { logError, logInfo } from '@/lib/error-handling';
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
+  console.log('🚀 === DATA REQUEST FORM DEBUG START ===');
+  
   try {
-    // Validate Content-Type
+    console.log('📋 Step 1: Environment Variables Check');
+    console.log('RESEND_API_KEY present:', !!process.env.RESEND_API_KEY);
+    console.log('PUBLIC_SITE_URL:', process.env.PUBLIC_SITE_URL || 'NOT SET');
+    console.log('ADMIN_EMAIL:', process.env.ADMIN_EMAIL || 'NOT SET');
+    console.log('FROM_EMAIL:', process.env.FROM_EMAIL || 'NOT SET');
+    console.log('NOREPLY_EMAIL:', process.env.NOREPLY_EMAIL || 'NOT SET');
+    
+    console.log('📋 Step 2: Request Analysis');
     const contentType = request.headers.get('content-type');
+    console.log('Content-Type:', contentType);
+    
+    // Validate Content-Type
     if (!contentType?.includes('application/json')) {
+      console.log('❌ Invalid Content-Type');
       return new Response(
         JSON.stringify({
           success: false,
@@ -24,11 +37,14 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    console.log('📋 Step 3: Body Parsing');
     // Safe JSON parsing
     let body;
     try {
       const text = await request.text();
+      console.log('Request body length:', text.length);
       if (!text.trim()) {
+        console.log('❌ Empty request body');
         return new Response(
           JSON.stringify({
             success: false,
@@ -41,7 +57,9 @@ export const POST: APIRoute = async ({ request }) => {
         );
       }
       body = JSON.parse(text);
+      console.log('✅ JSON parsed successfully');
     } catch (jsonError) {
+      console.log('❌ JSON parsing failed:', jsonError);
       logError('JSON parsing error in data request form', {
         operation: 'data_request_parse',
         timestamp: Date.now(),
@@ -59,10 +77,12 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    console.log('📋 Step 4: Basic Validation');
     // Validate the data
     const result = currentDataRequestFormSchema.safeParse(body);
 
     if (!result.success) {
+      console.log('❌ Schema validation failed:', result.error.flatten().fieldErrors);
       return new Response(
         JSON.stringify({
           success: false,
@@ -76,10 +96,14 @@ export const POST: APIRoute = async ({ request }) => {
         }
       );
     }
+    console.log('✅ Schema validation passed');
 
+    console.log('📋 Step 5: API Key Validation');
     // Validate email configuration
     const emailConfig = validateEmailConfig();
+    console.log('Email config validation result:', emailConfig);
     if (!emailConfig.isValid) {
+      console.log('❌ Email config validation failed:', emailConfig.errors);
       logError('Email configuration invalid for data request', {
         operation: 'data_request_email_config',
         timestamp: Date.now(),
@@ -89,6 +113,7 @@ export const POST: APIRoute = async ({ request }) => {
         JSON.stringify({
           success: false,
           message: 'メール送信設定に問題があります。管理者にお問い合わせください。',
+          debug: emailConfig.errors, // Debug info
         }),
         {
           status: 500,
@@ -98,11 +123,18 @@ export const POST: APIRoute = async ({ request }) => {
         }
       );
     }
+    console.log('✅ Email config validation passed');
 
+    console.log('📋 Step 6: Email Data Preparation');
+    console.log('Request data:', JSON.stringify(result.data, null, 2));
+    
+    console.log('📋 Step 7: Resend API Call');
     // Send email
     const emailResult = await sendDataRequestEmail(result.data);
+    console.log('Email sending result:', emailResult);
 
     if (!emailResult.success) {
+      console.log('❌ Email sending failed:', emailResult.error);
       logError('Data request email sending failed', {
         operation: 'data_request_email_send',
         timestamp: Date.now(),
@@ -112,6 +144,7 @@ export const POST: APIRoute = async ({ request }) => {
         JSON.stringify({
           success: false,
           message: 'メール送信に失敗しました。しばらくしてから再度お試しください。',
+          debug: emailResult.error, // Debug info
         }),
         {
           status: 500,
@@ -121,6 +154,7 @@ export const POST: APIRoute = async ({ request }) => {
         }
       );
     }
+    console.log('✅ Email sent successfully');
 
     // Log successful submission (without sensitive data)
     const requestId = `DR-${Date.now()}`;
@@ -146,6 +180,12 @@ export const POST: APIRoute = async ({ request }) => {
       }
     );
   } catch (error) {
+    console.log('🔥 === UNEXPECTED ERROR ===');
+    console.log('Error type:', typeof error);
+    console.log('Error message:', error instanceof Error ? error.message : String(error));
+    console.log('Error stack:', error instanceof Error ? error.stack : 'No stack available');
+    console.log('🔥 === END ERROR ===');
+    
     logError('Unexpected error in data request', {
       operation: 'data_request_exception',
       timestamp: Date.now(),
@@ -156,6 +196,7 @@ export const POST: APIRoute = async ({ request }) => {
       JSON.stringify({
         success: false,
         message: 'サーバーエラーが発生しました。しばらくしてから再度お試しください。',
+        debug: error instanceof Error ? error.message : String(error), // Debug info
       }),
       {
         status: 500,
@@ -164,5 +205,7 @@ export const POST: APIRoute = async ({ request }) => {
         },
       }
     );
+  } finally {
+    console.log('🏁 === DATA REQUEST FORM DEBUG END ===');
   }
 };

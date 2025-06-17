@@ -2,30 +2,5 @@
 name = "deephand-web"
 compatibility_date = "2025-01-15"
 
-# Pages Configuration
-[env.production]
-name = "deephand-web-production"
-route = "deephandai.com/*"
-
-[env.production.vars]
-NODE_ENV = "production"
-PUBLIC_SITE_URL = "https://deephandai.com"
-
-# Development Environment
-[env.development]
-name = "deephand-web-development"
-
-[env.development.vars]
-NODE_ENV = "development"
-PUBLIC_SITE_URL = "http://localhost:4321"
-
-# Build Configuration
-[build]
-command = "pnpm build"
-cwd = ""
-watch_dir = "src"
-
-[build.upload]
-format = "service-worker"
-dir = "dist"
-main = "./dist/_worker.js"
+# Pages build output directory
+pages_build_output_dir = "dist"

@@ -6,7 +6,7 @@ compatibility_date = "2025-01-15"
 pages_build_output_dir = "dist"
 
 # Environment variables binding
-# These variables will be available in the runtime as process.env
+# These variables will be available in the runtime via import.meta.env
 [vars]
 PUBLIC_SITE_URL = "https://deephandai.com"
 ADMIN_EMAIL = "contact@deephandai.com"
@@ -14,6 +14,10 @@ FROM_EMAIL = "contact@deephandai.com"
 NOREPLY_EMAIL = "noreply@deephandai.com"
 REQUESTS_EMAIL = "requests@deephandai.com"
 NODE_ENV = "production"
+ENABLE_EMAIL_DEBUG = "true"
 
 # Secrets (encrypted variables) - configured via Cloudflare dashboard
 # RESEND_API_KEY (configured as secret in Cloudflare)
+
+# For local development, create .dev.vars file with:
+# RESEND_API_KEY=re_your_actual_api_key_here

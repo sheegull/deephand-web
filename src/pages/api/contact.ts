@@ -4,16 +4,20 @@ import type { APIRoute } from 'astro';
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request, locals }) => {
-  console.log('🚀 === CONTACT FORM DEBUG START ===');
-  console.log('⏰ Timestamp:', new Date().toISOString());
-  
   const debugInfo = {
     timestamp: new Date().toISOString(),
     step: 'initialization',
     error: null,
     environment: {},
     request: {},
-    processing: []
+    processing: [],
+    cloudflare: {
+      localsStructure: typeof locals,
+      localsKeys: locals ? Object.keys(locals) : [],
+      runtimeExists: !!locals?.runtime,
+      envExists: !!locals?.runtime?.env,
+      envKeys: locals?.runtime?.env ? Object.keys(locals.runtime.env) : []
+    }
   };
 
   try {
@@ -110,10 +114,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
     
     const apiKey = env.RESEND_API_KEY;
     if (!apiKey) {
-      console.error('🚨 CRITICAL: RESEND_API_KEY not found in environment');
-      console.error('🔍 Available env keys:', envKeys);
-      console.error('🔍 locals structure:', JSON.stringify(locals, null, 2));
-      throw new Error('RESEND_API_KEY not configured in Cloudflare Secrets');
+      const errorDetails = {
+        message: 'RESEND_API_KEY not found in environment',
+        availableEnvKeys: envKeys,
+        localsStructure: debugInfo.cloudflare,
+        recommendation: 'Set RESEND_API_KEY in Cloudflare Pages Secrets'
+      };
+      debugInfo.environment.apiKeyError = errorDetails;
+      throw new Error(`API_KEY_MISSING: ${JSON.stringify(errorDetails)}`);
     }
     
     console.log('✅ API Key found, length:', apiKey.length);

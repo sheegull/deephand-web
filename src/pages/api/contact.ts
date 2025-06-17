@@ -6,7 +6,7 @@ import { logError, logInfo } from '@/lib/error-handling';
 // Enable server-side rendering for this endpoint
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     // Validate Content-Type
     const contentType = request.headers.get('content-type');
@@ -76,8 +76,9 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Validate email configuration
-    const emailConfig = validateEmailConfig();
+    // Validate email configuration with Cloudflare runtime
+    const env = locals.runtime?.env;
+    const emailConfig = validateEmailConfig(env);
     if (!emailConfig.isValid) {
       logError('Email configuration invalid for contact form', {
         operation: 'contact_form_email_config',
@@ -98,8 +99,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Send email
-    const emailResult = await sendContactEmail(result.data);
+    // Send email with Cloudflare runtime environment
+    const emailResult = await sendContactEmail(result.data, env);
 
     if (!emailResult.success) {
       logError('Contact email sending failed', {

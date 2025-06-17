@@ -142,8 +142,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
     console.log('Request data:', JSON.stringify(result.data, null, 2));
     
     console.log('📋 Step 7: Resend API Call');
-    // Send email
-    const emailResult = await sendDataRequestEmail(result.data);
+    // Send email with Cloudflare runtime environment
+    const emailResult = await sendDataRequestEmail(result.data, env);
     console.log('Email sending result:', emailResult);
 
     if (!emailResult.success) {

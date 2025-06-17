@@ -5,7 +5,7 @@
  */
 
 import { Resend } from 'resend';
-import { ENV, diagnoseEnvironment } from '../env';
+import { getCloudflareEnv, diagnoseEnvironment } from '../env';
 import type { ContactFormData, CurrentDataRequestFormData } from '../validationSchemas';
 import { 
   generateContactAdminEmailHtml,
@@ -32,8 +32,9 @@ export interface EmailResult {
   error?: string;
 }
 
-// Initialize Resend client
-const getResendClient = () => {
+// Initialize Resend client with Cloudflare runtime environment
+const getResendClient = (runtimeEnv?: any) => {
+  const ENV = getCloudflareEnv(runtimeEnv);
   const apiKey = ENV.RESEND_API_KEY;
   if (!apiKey) {
     throw new Error('RESEND_API_KEY is not configured');
@@ -41,9 +42,10 @@ const getResendClient = () => {
   return new Resend(apiKey);
 };
 
-export async function sendContactEmail(data: ContactFormData): Promise<EmailResult> {
+export async function sendContactEmail(data: ContactFormData, runtimeEnv?: any): Promise<EmailResult> {
   try {
-    const resend = getResendClient();
+    const ENV = getCloudflareEnv(runtimeEnv);
+    const resend = getResendClient(runtimeEnv);
     
     // Get language from data or default to 'ja'
     const language = (data as any).language || 'ja';
@@ -102,8 +104,10 @@ export async function sendContactEmail(data: ContactFormData): Promise<EmailResu
   }
 }
 
-export async function sendDataRequestEmail(data: CurrentDataRequestFormData): Promise<EmailResult> {
+export async function sendDataRequestEmail(data: CurrentDataRequestFormData, runtimeEnv?: any): Promise<EmailResult> {
   try {
+    const ENV = getCloudflareEnv(runtimeEnv);
+    
     console.log('🔍 [DATA REQUEST EMAIL DEBUG] Starting email send with config:', {
       fromEmail: ENV.REQUESTS_EMAIL,
       toEmail: ENV.TEST_EMAIL_RECIPIENT || ENV.ADMIN_EMAIL,
@@ -113,7 +117,7 @@ export async function sendDataRequestEmail(data: CurrentDataRequestFormData): Pr
       userName: data.name
     });
     
-    const resend = getResendClient();
+    const resend = getResendClient(runtimeEnv);
     
     // Get language from data or default to 'ja'
     const language = (data as any).language || 'ja';

@@ -44,7 +44,7 @@ export const POST: APIRoute = async ({ request }) => {
       logError('JSON parsing error in contact form', {
         operation: 'contact_form_parse',
         timestamp: Date.now(),
-        url: '/api/contact'
+        url: '/api/contact',
       });
       return new Response(
         JSON.stringify({
@@ -82,7 +82,7 @@ export const POST: APIRoute = async ({ request }) => {
       logError('Email configuration invalid for contact form', {
         operation: 'contact_form_email_config',
         timestamp: Date.now(),
-        url: '/api/contact'
+        url: '/api/contact',
       });
       return new Response(
         JSON.stringify({
@@ -105,7 +105,7 @@ export const POST: APIRoute = async ({ request }) => {
       logError('Contact email sending failed', {
         operation: 'contact_form_email_send',
         timestamp: Date.now(),
-        url: '/api/contact'
+        url: '/api/contact',
       });
       return new Response(
         JSON.stringify({
@@ -125,7 +125,7 @@ export const POST: APIRoute = async ({ request }) => {
     logInfo('Contact form submitted successfully', {
       operation: 'contact_form_success',
       timestamp: Date.now(),
-      url: '/api/contact'
+      url: '/api/contact',
     });
 
     return new Response(
@@ -145,7 +145,7 @@ export const POST: APIRoute = async ({ request }) => {
     logError('Unexpected error in contact form', {
       operation: 'contact_form_exception',
       timestamp: Date.now(),
-      url: '/api/contact'
+      url: '/api/contact',
     });
 
     return new Response(

@@ -4,7 +4,7 @@
  * Contains email configuration validation functionality
  */
 
-import { ENV, diagnoseEnvironment } from '../env';
+import { getCloudflareEnv, diagnoseEnvironment } from '../env';
 
 export interface EmailValidation {
   isValid: boolean;
@@ -17,12 +17,13 @@ export interface EmailResult {
   error?: string;
 }
 
-export function validateEmailConfig(): EmailValidation {
+export function validateEmailConfig(runtimeEnv?: any): EmailValidation {
+  const ENV = getCloudflareEnv(runtimeEnv);
   const errors: string[] = [];
 
   // 環境変数診断実行
   if (ENV.ENABLE_EMAIL_DEBUG) {
-    diagnoseEnvironment();
+    diagnoseEnvironment(runtimeEnv);
   }
 
   // Check if RESEND_API_KEY exists

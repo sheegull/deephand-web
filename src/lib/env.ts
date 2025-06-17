@@ -1,54 +1,68 @@
-// 環境変数管理 - シンプル・確実な実装
+// 環境変数管理 - Cloudflare Pages SSR対応
 
-// 環境変数の直接アクセス（require不使用）
-export const ENV = {
-  // メール設定（必須）
-  RESEND_API_KEY: process.env.RESEND_API_KEY || '',
+// Cloudflare Workersランタイム環境変数を取得する関数
+export function getCloudflareEnv(runtimeEnv?: any) {
+  if (runtimeEnv) {
+    // Cloudflare Workersランタイムから取得
+    return {
+      RESEND_API_KEY: runtimeEnv.RESEND_API_KEY || '',
+      PUBLIC_SITE_URL: runtimeEnv.PUBLIC_SITE_URL || 'https://deephandai.com',
+      ADMIN_EMAIL: runtimeEnv.ADMIN_EMAIL || 'contact@deephandai.com',
+      FROM_EMAIL: runtimeEnv.FROM_EMAIL || 'contact@deephandai.com',
+      NOREPLY_EMAIL: runtimeEnv.NOREPLY_EMAIL || 'noreply@deephandai.com',
+      REQUESTS_EMAIL: runtimeEnv.REQUESTS_EMAIL || 'requests@deephandai.com',
+      TEST_EMAIL_RECIPIENT: runtimeEnv.TEST_EMAIL_RECIPIENT || '',
+      ENABLE_EMAIL_DEBUG: runtimeEnv.ENABLE_EMAIL_DEBUG === 'true',
+      NODE_ENV: runtimeEnv.NODE_ENV || 'production',
+      PORT: parseInt(runtimeEnv.PORT || '4321', 10),
+    };
+  }
+  
+  // フォールバック：ビルド時環境変数
+  return {
+    RESEND_API_KEY: import.meta.env.RESEND_API_KEY || '',
+    PUBLIC_SITE_URL: import.meta.env.PUBLIC_SITE_URL || 'https://deephandai.com',
+    ADMIN_EMAIL: import.meta.env.ADMIN_EMAIL || 'contact@deephandai.com',
+    FROM_EMAIL: import.meta.env.FROM_EMAIL || 'contact@deephandai.com',
+    NOREPLY_EMAIL: import.meta.env.NOREPLY_EMAIL || 'noreply@deephandai.com',
+    REQUESTS_EMAIL: import.meta.env.REQUESTS_EMAIL || 'requests@deephandai.com',
+    TEST_EMAIL_RECIPIENT: import.meta.env.TEST_EMAIL_RECIPIENT || '',
+    ENABLE_EMAIL_DEBUG: import.meta.env.ENABLE_EMAIL_DEBUG === 'true',
+    NODE_ENV: import.meta.env.NODE_ENV || 'production',
+    PORT: parseInt(import.meta.env.PORT || '4321', 10),
+  };
+}
 
-  // URL設定
-  PUBLIC_SITE_URL: process.env.PUBLIC_SITE_URL || 'http://localhost:4321',
+// 旧形式（互換性のため）
+export const ENV = getCloudflareEnv();
 
-  // メールアドレス設定（.env.localで変更可能）
-  ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'contact@deephandai.com',
-  FROM_EMAIL: process.env.FROM_EMAIL || 'contact@deephandai.com',
-  NOREPLY_EMAIL: process.env.NOREPLY_EMAIL || 'noreply@deephandai.com',
-  REQUESTS_EMAIL: process.env.REQUESTS_EMAIL || 'requests@deephandai.com',
-
-  // テスト・デバッグ設定
-  TEST_EMAIL_RECIPIENT: process.env.TEST_EMAIL_RECIPIENT || '',
-  ENABLE_EMAIL_DEBUG: process.env.ENABLE_EMAIL_DEBUG === 'true',
-
-  // 環境設定
-  NODE_ENV: process.env.NODE_ENV || 'development',
-  PORT: parseInt(process.env.PORT || '4321', 10),
-} as const;
-
-// 環境変数検証機能
-export function validateEnvironment() {
+// 環境変数検証機能（Cloudflare対応）
+export function validateEnvironment(runtimeEnv?: any) {
+  const env = getCloudflareEnv(runtimeEnv);
   const errors: string[] = [];
 
   // 必須環境変数チェック
-  if (!ENV.RESEND_API_KEY) {
+  if (!env.RESEND_API_KEY) {
     errors.push('RESEND_API_KEY is required');
-  } else if (!ENV.RESEND_API_KEY.startsWith('re_')) {
+  } else if (!env.RESEND_API_KEY.startsWith('re_')) {
     errors.push('RESEND_API_KEY must start with "re_"');
   }
 
   // URL形式チェック
-  if (ENV.PUBLIC_SITE_URL && !ENV.PUBLIC_SITE_URL.startsWith('http')) {
+  if (env.PUBLIC_SITE_URL && !env.PUBLIC_SITE_URL.startsWith('http')) {
     errors.push('PUBLIC_SITE_URL must start with http:// or https://');
   }
 
   const isValid = errors.length === 0;
 
-  if (ENV.ENABLE_EMAIL_DEBUG) {
+  if (env.ENABLE_EMAIL_DEBUG) {
     console.log('🔍 環境変数検証結果:');
     console.log('='.repeat(50));
-    console.log('RESEND_API_KEY:', ENV.RESEND_API_KEY ? '✅ 設定済み' : '❌ 未設定');
-    console.log('PUBLIC_SITE_URL:', ENV.PUBLIC_SITE_URL);
-    console.log('ADMIN_EMAIL:', ENV.ADMIN_EMAIL);
-    console.log('FROM_EMAIL:', ENV.FROM_EMAIL);
-    console.log('NODE_ENV:', ENV.NODE_ENV);
+    console.log('RESEND_API_KEY:', env.RESEND_API_KEY ? '✅ 設定済み' : '❌ 未設定');
+    console.log('PUBLIC_SITE_URL:', env.PUBLIC_SITE_URL);
+    console.log('ADMIN_EMAIL:', env.ADMIN_EMAIL);
+    console.log('FROM_EMAIL:', env.FROM_EMAIL);
+    console.log('NODE_ENV:', env.NODE_ENV);
     console.log('='.repeat(50));
 
     if (!isValid) {
@@ -62,17 +76,17 @@ export function validateEnvironment() {
     isValid,
     errors,
     config: {
-      apiKey: ENV.RESEND_API_KEY,
-      siteUrl: ENV.PUBLIC_SITE_URL,
-      adminEmail: ENV.ADMIN_EMAIL,
-      fromEmail: ENV.FROM_EMAIL,
+      apiKey: env.RESEND_API_KEY,
+      siteUrl: env.PUBLIC_SITE_URL,
+      adminEmail: env.ADMIN_EMAIL,
+      fromEmail: env.FROM_EMAIL,
     },
   };
 }
 
 // 安全な環境変数取得
 export function getEnvVar(key: string, fallback?: string): string {
-  const value = process.env[key] || fallback;
+  const value = import.meta.env[key] || fallback;
 
   if (!value) {
     throw new Error(`環境変数 ${key} が設定されていません`);
@@ -81,19 +95,19 @@ export function getEnvVar(key: string, fallback?: string): string {
   return value;
 }
 
-// 診断機能
-export function diagnoseEnvironment() {
-  return validateEnvironment();
+// 診断機能（Cloudflare対応）
+export function diagnoseEnvironment(runtimeEnv?: any) {
+  return validateEnvironment(runtimeEnv);
 }
 
 // 初期化時の自動検証（開発モードのみ）
 if (ENV.NODE_ENV === 'development') {
-  // 即座実行を避け、nextTickで実行
-  if (typeof process !== 'undefined' && process.nextTick) {
-    process.nextTick(() => {
+  // Cloudflare SSRではsetTimeoutを使用
+  if (typeof globalThis !== 'undefined') {
+    setTimeout(() => {
       if (ENV.ENABLE_EMAIL_DEBUG) {
         validateEnvironment();
       }
-    });
+    }, 0);
   }
 }

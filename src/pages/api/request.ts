@@ -7,16 +7,29 @@ import { logError, logInfo } from '@/lib/error-handling';
 // Enable server-side rendering for this endpoint
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   console.log('🚀 === DATA REQUEST FORM DEBUG START ===');
   
   try {
     console.log('📋 Step 1: Environment Variables Check');
-    console.log('RESEND_API_KEY present:', !!process.env.RESEND_API_KEY);
-    console.log('PUBLIC_SITE_URL:', process.env.PUBLIC_SITE_URL || 'NOT SET');
-    console.log('ADMIN_EMAIL:', process.env.ADMIN_EMAIL || 'NOT SET');
-    console.log('FROM_EMAIL:', process.env.FROM_EMAIL || 'NOT SET');
-    console.log('NOREPLY_EMAIL:', process.env.NOREPLY_EMAIL || 'NOT SET');
+    
+    // Cloudflare Workers環境変数アクセス（locals.runtime.env）
+    const env = locals.runtime?.env;
+    console.log('=== Cloudflare Runtime Environment ===');
+    console.log('locals.runtime exists:', !!locals.runtime);
+    console.log('locals.runtime.env exists:', !!env);
+    if (env) {
+      console.log('env.RESEND_API_KEY present:', !!env.RESEND_API_KEY);
+      console.log('env.PUBLIC_SITE_URL:', env.PUBLIC_SITE_URL || 'NOT SET');
+      console.log('env.ADMIN_EMAIL:', env.ADMIN_EMAIL || 'NOT SET');
+      console.log('env.FROM_EMAIL:', env.FROM_EMAIL || 'NOT SET');
+      console.log('env.NOREPLY_EMAIL:', env.NOREPLY_EMAIL || 'NOT SET');
+    }
+    
+    // 従来のimport.meta.env（比較用）
+    console.log('=== import.meta.env (build-time) ===');
+    console.log('import.meta.env.RESEND_API_KEY present:', !!import.meta.env.RESEND_API_KEY);
+    console.log('import.meta.env.PUBLIC_SITE_URL:', import.meta.env.PUBLIC_SITE_URL || 'NOT SET');
     
     console.log('📋 Step 2: Request Analysis');
     const contentType = request.headers.get('content-type');
@@ -99,8 +112,8 @@ export const POST: APIRoute = async ({ request }) => {
     console.log('✅ Schema validation passed');
 
     console.log('📋 Step 5: API Key Validation');
-    // Validate email configuration
-    const emailConfig = validateEmailConfig();
+    // Validate email configuration using Cloudflare runtime env
+    const emailConfig = validateEmailConfig(env);
     console.log('Email config validation result:', emailConfig);
     if (!emailConfig.isValid) {
       console.log('❌ Email config validation failed:', emailConfig.errors);

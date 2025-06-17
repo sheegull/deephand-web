@@ -23,6 +23,16 @@ export default defineConfig({
     // plugins: [
     //   messageChannelPolyfillPlugin(),
     // ],
+    // Cloudflare Pages SSR環境変数設定
+    define: {
+      'import.meta.env.RESEND_API_KEY': JSON.stringify(process.env.RESEND_API_KEY || ''),
+      'import.meta.env.PUBLIC_SITE_URL': JSON.stringify(process.env.PUBLIC_SITE_URL || 'https://deephandai.com'),
+      'import.meta.env.ADMIN_EMAIL': JSON.stringify(process.env.ADMIN_EMAIL || 'contact@deephandai.com'),
+      'import.meta.env.FROM_EMAIL': JSON.stringify(process.env.FROM_EMAIL || 'contact@deephandai.com'),
+      'import.meta.env.NOREPLY_EMAIL': JSON.stringify(process.env.NOREPLY_EMAIL || 'noreply@deephandai.com'),
+      'import.meta.env.REQUESTS_EMAIL': JSON.stringify(process.env.REQUESTS_EMAIL || 'requests@deephandai.com'),
+      'import.meta.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+    },
     css: {
       postcss: './postcss.config.js',
     },

@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import BaseLayoutEn from '@/layouts/BaseLayoutEn.astro';
 import { SolutionsPage } from '@/components/SolutionsPage';
 import { setCurrentLanguage } from '@/lib/i18n';
 
 setCurrentLanguage('en');
 ---
 
-<BaseLayout 
+<BaseLayoutEn 
   title="Solutions - DeepHand | Data Annotation Services for AI and Robotics"
   description="DeepHand provides high-quality data annotation services tailored for cutting-edge AI and robotics technologies. Specialized annotation for image, video, 3D, and robotics data."
 >
   <SolutionsPage client:load />
-</BaseLayout>
+</BaseLayoutEn>

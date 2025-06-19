@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import BaseLayoutEn from '@/layouts/BaseLayoutEn.astro';
 import { HeroSection } from '@/components/HeroSection';
 import { setCurrentLanguage } from '@/lib/i18n';
 import '@/styles/app.css';
@@ -8,7 +8,7 @@ import '@/styles/app.css';
 setCurrentLanguage('en');
 ---
 
-<BaseLayout
+<BaseLayoutEn
   title="DeepHand - AI & Robotics Data Annotation Service"
   description="DeepHand is a team of annotation experts centered on robotics. We deliver high-quality annotated data."
 >
@@ -30,4 +30,4 @@ setCurrentLanguage('en');
     }}
     onLogoClick={() => window.location.href = '/en'}
   />
-</BaseLayout>
+</BaseLayoutEn>

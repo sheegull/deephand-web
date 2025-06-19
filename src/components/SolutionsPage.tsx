@@ -29,7 +29,7 @@ export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
 
   return (
     <>
-      <GlobalHeader />
+      {/* <GlobalHeader /> */}
       <div
         className={`flex flex-col w-full bg-[#1e1e1e] min-h-screen pt-32 pb-20 px-4 md:px-8 lg:px-20 ${className}`}
       >
@@ -60,7 +60,9 @@ export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
             <MotionDiv
               key={service.key}
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }} // iOS テスト: useInView無効化
+              animate={
+                isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }
+              }
               transition={{
                 duration: 0.6,
                 delay: 0.2 + index * 0.1,

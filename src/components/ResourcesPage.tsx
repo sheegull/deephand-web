@@ -1,5 +1,5 @@
 import React from 'react';
-import { MotionDiv, optimizedTransition, useInView } from './ui/motion-optimized';
+import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { t, getCurrentLanguage } from '../lib/i18n';
 import { GlobalHeader } from './GlobalHeader';
@@ -9,8 +9,6 @@ interface ResourcesPageProps {
 }
 
 export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const categories = [
     {
@@ -34,10 +32,9 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
         className={`flex flex-col w-full bg-[#1e1e1e] min-h-screen pt-32 pb-20 px-4 md:px-8 lg:px-20 ${className}`}
       >
         {/* ヘッダーセクション */}
-        <MotionDiv
-          ref={ref}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-center mb-16 max-w-4xl mx-auto"
         >
@@ -52,22 +49,19 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
           <p className="font-alliance font-light text-zinc-500 text-base md:text-lg leading-relaxed">
             {t('resources.description')}
           </p>
-        </MotionDiv>
+        </motion.div>
 
         {/* リソースカテゴリグリッド */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {categories.map((category, index) => (
-            <MotionDiv
+            <motion.div
               key={category.key}
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={
-                isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }
-              }
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
                 duration: 0.6,
                 delay: 0.2 + index * 0.1,
                 ease: 'easeOut',
-                ...optimizedTransition,
               }}
               className="group"
             >
@@ -83,14 +77,14 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
                   </CardDescription>
                 </CardContent>
               </Card>
-            </MotionDiv>
+            </motion.div>
           ))}
         </div>
 
         {/* CTA セクション */}
-        <MotionDiv
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
           className="text-center mt-20 max-w-2xl mx-auto"
         >
@@ -102,10 +96,10 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
               <p className="font-alliance font-light text-zinc-400 text-base md:text-lg leading-relaxed mb-8">
                 {t('resources.cta.description')}
               </p>
-              <MotionDiv
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                transition={optimizedTransition}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
               >
                 <button
                   className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] text-white font-alliance font-medium text-base rounded-lg transition-all duration-300 ease-out shadow-lg hover:shadow-xl"
@@ -119,10 +113,10 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
                 >
                   {t('resources.cta.button')}
                 </button>
-              </MotionDiv>
+              </motion.div>
             </CardContent>
           </Card>
-        </MotionDiv>
+        </motion.div>
       </div>
     </>
   );

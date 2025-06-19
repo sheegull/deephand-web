@@ -1,5 +1,5 @@
 import React from 'react';
-import { MotionDiv, optimizedTransition, useInView } from './ui/motion-optimized';
+import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { t, getCurrentLanguage } from '../lib/i18n';
 import { GlobalHeader } from './GlobalHeader';
@@ -9,9 +9,6 @@ interface AboutPageProps {
 }
 
 export const AboutPage = ({ className = '' }: AboutPageProps) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
   const values = ['quality', 'innovation', 'partnership', 'integrity'];
 
   const valueIcons = {
@@ -28,10 +25,9 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
         className={`flex flex-col w-full bg-[#1e1e1e] min-h-screen pt-32 pb-20 px-4 md:px-8 lg:px-20 ${className}`}
       >
         {/* ヘッダーセクション */}
-        <MotionDiv
-          ref={ref}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-center mb-16 max-w-4xl mx-auto"
         >
@@ -46,14 +42,14 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
           <p className="font-alliance font-light text-zinc-500 text-base md:text-lg leading-relaxed">
             {t('about.description')}
           </p>
-        </MotionDiv>
+        </motion.div>
 
         {/* ミッション・ビジョンセクション */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
-          <MotionDiv
+          <motion.div
             initial={{ opacity: 0, x: -50, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -50, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut', ...optimizedTransition }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
           >
             <Card className="h-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md">
               <CardHeader className="px-6 pt-6 pb-4">
@@ -67,12 +63,12 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
                 </CardDescription>
               </CardContent>
             </Card>
-          </MotionDiv>
+          </motion.div>
 
-          <MotionDiv
+          <motion.div
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut', ...optimizedTransition }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
           >
             <Card className="h-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md">
               <CardHeader className="px-6 pt-6 pb-4">
@@ -86,13 +82,13 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
                 </CardDescription>
               </CardContent>
             </Card>
-          </MotionDiv>
+          </motion.div>
         </div>
 
         {/* 価値観セクション */}
-        <MotionDiv
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           className="mb-16 max-w-6xl mx-auto"
         >
@@ -101,17 +97,14 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <MotionDiv
+              <motion.div
                 key={value}
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.9 }
-                }
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{
                   duration: 0.6,
                   delay: 0.5 + index * 0.1,
                   ease: 'easeOut',
-                  ...optimizedTransition,
                 }}
                 className="text-center group"
               >
@@ -121,15 +114,15 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
                 <h3 className="font-alliance font-medium text-white text-lg md:text-xl mb-2">
                   {t(`about.values.${value}`)}
                 </h3>
-              </MotionDiv>
+              </motion.div>
             ))}
           </div>
-        </MotionDiv>
+        </motion.div>
 
         {/* チームセクション */}
-        <MotionDiv
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
           className="text-center max-w-4xl mx-auto"
         >
@@ -141,10 +134,9 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
               <p className="font-alliance font-light text-zinc-400 text-base md:text-lg leading-relaxed mb-8">
                 {t('about.team.description')}
               </p>
-              <MotionDiv
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                transition={optimizedTransition}
               >
                 <button
                   className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] text-white font-alliance font-medium text-base rounded-lg transition-all duration-300 ease-out shadow-lg hover:shadow-xl"
@@ -158,10 +150,10 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
                 >
                   {t('about.cta.button')}
                 </button>
-              </MotionDiv>
+              </motion.div>
             </CardContent>
           </Card>
-        </MotionDiv>
+        </motion.div>
       </div>
     </>
   );

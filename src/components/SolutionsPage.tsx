@@ -60,9 +60,7 @@ export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
             <MotionDiv
               key={service.key}
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={
-                isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }
-              }
+              animate={{ opacity: 1, y: 0, scale: 1 }} // iOS テスト: useInView無効化
               transition={{
                 duration: 0.6,
                 delay: 0.2 + index * 0.1,

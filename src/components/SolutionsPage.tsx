@@ -53,7 +53,7 @@ export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
           <p className="font-alliance font-light text-zinc-500 text-base md:text-lg leading-relaxed">
             {t('solutions.description')}
           </p>
-        </MotionDiv>
+        </motion.div>
 
         {/* サービスグリッド */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">

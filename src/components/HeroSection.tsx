@@ -424,7 +424,7 @@ export const HeroSection = ({
             className="flex flex-col max-w-[654px] gap-6 lg:gap-8 text-center lg:text-left flex-1 justify-center"
             style={{ y: textY }}
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 0.99, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <MotionDiv

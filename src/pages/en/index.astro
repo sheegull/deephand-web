@@ -8,12 +8,12 @@ import '@/styles/app.css';
 setCurrentLanguage('en');
 ---
 
-<BaseLayout 
+<BaseLayout
   title="DeepHand - AI & Robotics Data Annotation Service"
-  description="Professional data annotation service specialized in AI and robotics projects. High-quality labeling by expert annotators."
+  description="DeepHand is a team of annotation experts centered on robotics. We deliver high-quality annotated data."
 >
-  <HeroSection 
-    client:load 
+  <HeroSection
+    client:load
     onRequestClick={() => window.location.href = '/en/request'}
     onNavClick={(element) => {
       if (element === 'get-started') {

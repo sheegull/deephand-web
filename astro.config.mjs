@@ -15,9 +15,12 @@ export default defineConfig({
   adapter: cloudflare({
     mode: 'advanced'
   }),
-  build: {
-    inlineStylesheets: 'auto',
-    format: 'directory',
+  // Cloudflare対応画像設定 (Astro 5.x)
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/noop',
+      config: {}
+    }
   },
   vite: {
     // plugins: [
@@ -70,4 +73,14 @@ export default defineConfig({
     },
   },
   compressHTML: true,
+  // 開発環境最適化
+  server: {
+    host: true,
+    port: 4321
+  },
+  // Astro 5.x最適化設定
+  build: {
+    inlineStylesheets: 'auto',
+    format: 'directory',
+  }
 });

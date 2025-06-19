@@ -186,6 +186,127 @@
     "prevButton": "← 前へ",
     "otherSpecify": "具体的な内容をご記入ください"
   },
+  "solutions": {
+    "title": "ソリューション",
+    "subtitle": "",
+    "description": "このページは現在準備中です。近日公開予定です。",
+    "cta": {
+      "title": "プロジェクトを始めませんか？",
+      "description": "お客様のプロジェクトに最適なデータアノテーションソリューションをご提案いたします。",
+      "button": "データリクエスト"
+    },
+    "services": {
+      "imageAnnotation": {
+        "title": "画像アノテーション",
+        "description": "物体検出、セグメンテーション、キーポイント検出など、様々な画像解析タスクに対応"
+      },
+      "videoAnnotation": {
+        "title": "動画アノテーション",
+        "description": "動作認識、トラッキング、時系列解析などの動画データ処理に特化"
+      },
+      "3dAnnotation": {
+        "title": "3Dアノテーション",
+        "description": "3D点群データ、LIDAR、深度データなどの3次元データ処理"
+      },
+      "roboticsData": {
+        "title": "ロボティクスデータ",
+        "description": "ロボットの動作データ、センサーデータ、制御データの高精度アノテーション"
+      }
+    }
+  },
+  "resources": {
+    "title": "リソース",
+    "subtitle": "",
+    "description": "このページは現在準備中です。近日公開予定です。",
+    "cta": {
+      "title": "プロジェクトについてご相談ください",
+      "description": "お客様のプロジェクトに最適なリソースとサポートをご提供いたします。",
+      "button": "お問い合わせ"
+    },
+    "categories": {
+      "whitepapers": {
+        "title": "ホワイトペーパー",
+        "description": "最新の技術動向と実践的なガイドライン"
+      },
+      "caseStudies": {
+        "title": "ケーススタディ",
+        "description": "実際のプロジェクト事例と成功の秘訣"
+      },
+      "techDocs": {
+        "title": "技術資料",
+        "description": "アノテーション手法と品質管理の詳細"
+      },
+      "tools": {
+        "title": "ツール",
+        "description": "データ処理とアノテーション効率化のためのツール"
+      }
+    }
+  },
+  "pricing": {
+    "title": "料金",
+    "subtitle": "",
+    "description": "このページは現在準備中です。近日公開予定です。",
+    "contactForQuote": "お見積もりについてお問い合わせください",
+    "recommended": "おすすめ",
+    "cta": {
+      "description": "お客様のプロジェクト要件に基づいて、詳細なお見積もりをご提供いたします。",
+      "button": "データリクエスト"
+    },
+    "features": {
+      "highQuality": "高品質なアノテーション",
+      "fastDelivery": "迅速な納期対応",
+      "customSupport": "カスタムサポート",
+      "secureData": "安全なデータ管理"
+    },
+    "plans": {
+      "starter": {
+        "title": "スタータープラン",
+        "description": "小規模プロジェクト向け",
+        "features": ["基本的なアノテーション", "標準サポート", "1週間の納期"],
+        "buttonText": "お問い合わせ"
+      },
+      "professional": {
+        "title": "プロフェッショナルプラン", 
+        "description": "本格的なプロジェクト向け",
+        "features": ["高度なアノテーション", "優先サポート", "カスタム品質管理"],
+        "buttonText": "お問い合わせ"
+      },
+      "enterprise": {
+        "title": "エンタープライズプラン",
+        "description": "大規模企業向け（今後対応予定）",
+        "features": ["専用チーム", "24/7サポート", "カスタム統合"],
+        "comingSoon": true,
+        "buttonText": "今後対応予定"
+      }
+    }
+  },
+  "about": {
+    "title": "会社概要",
+    "subtitle": "",
+    "description": "このページは現在準備中です。近日公開予定です。",
+    "cta": {
+      "button": "お問い合わせ"
+    },
+    "mission": {
+      "title": "ミッション",
+      "content": "ロボティクス技術の進歩を支える高品質なデータを提供し、未来の社会基盤の構築に貢献します。"
+    },
+    "vision": {
+      "title": "ビジョン",
+      "content": "人間とロボットが共存する社会の実現に向けて、最高品質のトレーニングデータを提供するリーディングカンパニーを目指します。"
+    },
+    "values": {
+      "title": "価値観",
+      "quality": "品質第一",
+      "innovation": "革新性",
+      "partnership": "パートナーシップ",
+      "integrity": "誠実性"
+    },
+    "team": {
+      "title": "チーム",
+      "description": "AI・ロボティクス分野の経験豊富な専門家チームが、お客様のプロジェクトを成功に導きます。"
+    }
+  },
   "email": {
     "admin": {
       "subject": "お問い合わせ - DeepHand",

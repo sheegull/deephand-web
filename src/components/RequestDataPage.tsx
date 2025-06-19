@@ -16,7 +16,7 @@ interface RequestDataPageProps {
   onFooterClick?: (element: string) => void;
 }
 
-export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageProps) => {
+export const RequestDataPage = ({ onLogoClick, onFooterClick: _onFooterClick }: RequestDataPageProps) => {
   const { currentLanguage } = useLanguage();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
@@ -187,9 +187,6 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     setShowValidation(true);
     setValidationErrors([]);
 
-    console.log('🔍 [SUBMIT DEBUG] Form submission started');
-    console.log('🔍 [SUBMIT DEBUG] Current formData:', formData);
-    console.log('🔍 [SUBMIT DEBUG] Selected data types:', selectedDataTypes);
 
     // バリデーション（Reactステートから直接取得）
     const errors: string[] = [];
@@ -199,7 +196,6 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
     const email = formData.email || '';
     const backgroundPurpose = formData.backgroundPurpose || '';
 
-    console.log('🔍 [SUBMIT DEBUG] Step1 data:', { name, email, backgroundPurpose });
 
     if (!name || name.trim().length === 0) {
       errors.push(t('validation.nameRequired'));
@@ -234,17 +230,13 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
       errors.push(t('validation.budgetRequired'));
     }
 
-    console.log('🔍 [SUBMIT DEBUG] Step2 data:', { dataVolume, deadline, budget });
-    console.log('🔍 [SUBMIT DEBUG] Validation errors:', errors);
 
     if (errors.length > 0) {
-      console.log('🔍 [SUBMIT DEBUG] Setting validation errors and stopping submission');
       setValidationErrors(errors);
       setIsSubmitting(false);
       return;
     }
 
-    console.log('🔍 [SUBMIT DEBUG] No validation errors, proceeding with submission');
 
     const data = {
       name: formData.name,
@@ -287,24 +279,6 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         return;
       }
 
-      // 🔍 DEBUG: レスポンス詳細ログ
-      console.log('🔍 [DATA REQUEST DEBUG] Response details:', {
-        status: response.status,
-        statusText: response.statusText,
-        ok: response.ok,
-        headers: Object.fromEntries(response.headers.entries()),
-        url: response.url,
-      });
-
-      console.log('🔍 [DATA REQUEST DEBUG] Parsed result:', {
-        result,
-        resultType: typeof result,
-        resultSuccess: result?.success,
-        resultSuccessType: typeof result?.success,
-        resultEmailId: result?.emailId,
-        resultMessage: result?.message,
-        resultErrors: result?.errors,
-      });
 
       // 簡結かつ確実な成功判定ロジック
       // 1. HTTP 200 OK = サーバー処理成功
@@ -314,18 +288,8 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
         response.ok &&
         (result.success === true || (result.emailId && result.emailId.length > 0));
 
-      // 🔍 DEBUG: 成功判定の詳細ログ
-      console.log('🔍 [DATA REQUEST DEBUG] Success logic evaluation:', {
-        'response.ok': response.ok,
-        'result.success === true': result.success === true,
-        'result.success !== false': result.success !== false,
-        'result.emailId exists': !!result.emailId,
-        'response.status === 200': response.status === 200,
-        'Final isMainFunctionSuccessful': isMainFunctionSuccessful,
-      });
 
       if (isMainFunctionSuccessful) {
-        console.log('✅ [DATA REQUEST DEBUG] Setting status to SUCCESS');
         setSubmitStatus('success');
 
         // 成功メッセージを3秒間表示してからリセット
@@ -365,7 +329,6 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
           emailId: result?.emailId,
         });
       } else {
-        console.log('❌ [DATA REQUEST DEBUG] Setting status to ERROR');
         // 真のエラー（バリデーション失敗、ネットワークエラー等）のみエラー表示
         logError('Data request form submission failed', {
           operation: 'data_request_form_failed',

@@ -9,8 +9,7 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { useMobilePerformance } from '../lib/performance/mobile-performance-manager';
 
 // 遅延読み込みコンポーネント
-const DitherBackgroundOptimized = lazy(() => import('./DitherBackgroundOptimized'));
-const MetaBallsOptimized = lazy(() => import('./MetaBallsOptimized'));
+const DitherBackgroundUnified = lazy(() => import('./DitherBackgroundUnified'));
 
 interface AdaptiveBackgroundProps {
   type?: 'dither' | 'metaBalls' | 'auto';
@@ -144,7 +143,7 @@ export const AdaptiveBackground: React.FC<AdaptiveBackgroundProps> = ({
         const ditherSettings = getDitherSettings();
         return (
           <Suspense fallback={<LoadingFallback className="absolute inset-0" />}>
-            <DitherBackgroundOptimized
+            <DitherBackgroundUnified
               className="absolute inset-0"
               waveSpeed={ditherSettings.waveSpeed}
               waveFrequency={ditherSettings.waveFrequency}
@@ -157,15 +156,13 @@ export const AdaptiveBackground: React.FC<AdaptiveBackgroundProps> = ({
           </Suspense>
         );
       } else if (optimalType === 'metaBalls') {
-        const metaBallsSettings = getMetaBallsSettings();
+        // MetaBalls は DitherBackgroundUnified で代替
         return (
           <Suspense fallback={<LoadingFallback className="absolute inset-0" />}>
-            <MetaBallsOptimized
-              ballCount={metaBallsSettings.ballCount}
-              animationSize={metaBallsSettings.animationSize}
-              speed={metaBallsSettings.speed}
-              hoverSmoothness={metaBallsSettings.hoverSmoothness}
-              cursorBallSize={metaBallsSettings.cursorBallSize}
+            <DitherBackgroundUnified
+              className="absolute inset-0"
+              forceMode="fallback"
+              disableAnimation={!performanceSettings.enableAnimations}
               enableMouseInteraction={performanceSettings.enableMouseInteraction}
             />
           </Suspense>

@@ -1,0 +1,426 @@
+{
+  "config": {
+    "configFile": "/Users/shee/dev/yogo/deephand/deephand-web/playwright.config.ts",
+    "rootDir": "/Users/shee/dev/yogo/deephand/deephand-web/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 5
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/mobile-performance-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/shee/dev/yogo/deephand/deephand-web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/Users/shee/dev/yogo/deephand/deephand-web/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/shee/dev/yogo/deephand/deephand-web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/Users/shee/dev/yogo/deephand/deephand-web/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/shee/dev/yogo/deephand/deephand-web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "mobile-safari",
+        "name": "mobile-safari",
+        "testDir": "/Users/shee/dev/yogo/deephand/deephand-web/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/shee/dev/yogo/deephand/deephand-web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "low-end-mobile",
+        "name": "low-end-mobile",
+        "testDir": "/Users/shee/dev/yogo/deephand/deephand-web/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/shee/dev/yogo/deephand/deephand-web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "tablet",
+        "name": "tablet",
+        "testDir": "/Users/shee/dev/yogo/deephand/deephand-web/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.53.1",
+    "workers": 7,
+    "webServer": {
+      "command": "pnpm dev",
+      "url": "http://localhost:4322",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "e2e/performance-comparison.test.ts",
+      "file": "e2e/performance-comparison.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Performance Comparison - Before vs After Refactoring",
+          "file": "e2e/performance-comparison.test.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should measure page load performance improvements",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chrome",
+                  "projectName": "desktop-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1706,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m4000\u001b[39m\nReceived:   \u001b[31mNaN\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m4000\u001b[39m\nReceived:   \u001b[31mNaN\u001b[39m\n    at /Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts:48:38",
+                        "location": {
+                          "file": "/Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts",
+                          "column": 38,
+                          "line": 48
+                        },
+                        "snippet": "  46 |     expect(loadTime).toBeLessThan(5000); // 5秒以内\n  47 |     expect(metrics.firstContentfulPaint).toBeLessThan(3000); // FCP 3秒以内\n> 48 |     expect(metrics.domContentLoaded).toBeLessThan(4000); // DOM読み込み 4秒以内\n     |                                      ^\n  49 |   });\n  50 |\n  51 |   test('should verify bundle size reduction', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts",
+                            "column": 38,
+                            "line": 48
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m4000\u001b[39m\nReceived:   \u001b[31mNaN\u001b[39m\n\n  46 |     expect(loadTime).toBeLessThan(5000); // 5秒以内\n  47 |     expect(metrics.firstContentfulPaint).toBeLessThan(3000); // FCP 3秒以内\n> 48 |     expect(metrics.domContentLoaded).toBeLessThan(4000); // DOM読み込み 4秒以内\n     |                                      ^\n  49 |   });\n  50 |\n  51 |   test('should verify bundle size reduction', async ({ page }) => {\n    at /Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts:48:38"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "📊 Performance Metrics: {\n  loadTime: \u001b[32m'1286ms'\u001b[39m,\n  domContentLoaded: \u001b[32m'NaNms'\u001b[39m,\n  loadComplete: \u001b[32m'NaNms'\u001b[39m,\n  firstPaint: \u001b[32m'292ms'\u001b[39m,\n  firstContentfulPaint: \u001b[32m'292ms'\u001b[39m,\n  transferSize: \u001b[32m'86KB'\u001b[39m,\n  encodedBodySize: \u001b[32m'86KB'\u001b[39m\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-19T11:45:19.476Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/shee/dev/yogo/deephand/deephand-web/test-results/e2e-performance-comparison-28b80-ad-performance-improvements-desktop-chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/shee/dev/yogo/deephand/deephand-web/test-results/e2e-performance-comparison-28b80-ad-performance-improvements-desktop-chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/shee/dev/yogo/deephand/deephand-web/test-results/e2e-performance-comparison-28b80-ad-performance-improvements-desktop-chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts",
+                        "column": 38,
+                        "line": 48
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "7992a624d88a6c32ae39-2dc1bcf6098f6f6308d3",
+              "file": "e2e/performance-comparison.test.ts",
+              "line": 9,
+              "column": 3
+            },
+            {
+              "title": "should verify bundle size reduction",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chrome",
+                  "projectName": "desktop-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 215,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "📦 Bundle Analysis: {\n  totalJSSize: \u001b[32m'0KB'\u001b[39m,\n  totalCSSSize: \u001b[32m'0KB'\u001b[39m,\n  totalSize: \u001b[32m'0KB'\u001b[39m,\n  largestFiles: []\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-19T11:45:19.476Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7992a624d88a6c32ae39-6f88a407db041c631099",
+              "file": "e2e/performance-comparison.test.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "should measure memory usage optimization",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chrome",
+                  "projectName": "desktop-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1796,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "💾 Memory Usage: {\n  usedHeap: \u001b[32m'33MB'\u001b[39m,\n  totalHeap: \u001b[32m'40MB'\u001b[39m,\n  heapLimit: \u001b[32m'3586MB'\u001b[39m,\n  efficiency: \u001b[32m'83%'\u001b[39m\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-19T11:45:19.477Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7992a624d88a6c32ae39-23911725299385e6e67d",
+              "file": "e2e/performance-comparison.test.ts",
+              "line": 89,
+              "column": 3
+            },
+            {
+              "title": "should verify component loading efficiency",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chrome",
+                  "projectName": "desktop-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 1794,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m50\u001b[39m\nReceived:   \u001b[31m91\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m50\u001b[39m\nReceived:   \u001b[31m91\u001b[39m\n    at /Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts:154:29",
+                        "location": {
+                          "file": "/Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts",
+                          "column": 29,
+                          "line": 154
+                        },
+                        "snippet": "  152 |     expect(backgroundLoadTime).toBeLessThan(3000); // DitherBackground 3秒以内\n  153 |     expect(heroLoadTime).toBeLessThan(2000); // HeroSection 2秒以内\n> 154 |     expect(networkRequests).toBeLessThan(50); // リクエスト数制限\n      |                             ^\n  155 |   });\n  156 |\n  157 |   test('should validate lazy loading effectiveness', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts",
+                            "column": 29,
+                            "line": 154
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m50\u001b[39m\nReceived:   \u001b[31m91\u001b[39m\n\n  152 |     expect(backgroundLoadTime).toBeLessThan(3000); // DitherBackground 3秒以内\n  153 |     expect(heroLoadTime).toBeLessThan(2000); // HeroSection 2秒以内\n> 154 |     expect(networkRequests).toBeLessThan(50); // リクエスト数制限\n      |                             ^\n  155 |   });\n  156 |\n  157 |   test('should validate lazy loading effectiveness', async ({ page }) => {\n    at /Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts:154:29"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "⚡ Component Loading: {\n  components: [\n    { component: \u001b[32m'DitherBackground'\u001b[39m, time: \u001b[33m377\u001b[39m },\n    { component: \u001b[32m'HeroSection'\u001b[39m, time: \u001b[33m383\u001b[39m }\n  ],\n  totalLoadTime: \u001b[32m'1412ms'\u001b[39m,\n  networkRequests: \u001b[33m91\u001b[39m,\n  efficiency: \u001b[32m'14 components/sec'\u001b[39m\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-19T11:45:19.476Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/shee/dev/yogo/deephand/deephand-web/test-results/e2e-performance-comparison-8ecd8-omponent-loading-efficiency-desktop-chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/shee/dev/yogo/deephand/deephand-web/test-results/e2e-performance-comparison-8ecd8-omponent-loading-efficiency-desktop-chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/shee/dev/yogo/deephand/deephand-web/test-results/e2e-performance-comparison-8ecd8-omponent-loading-efficiency-desktop-chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/shee/dev/yogo/deephand/deephand-web/tests/e2e/performance-comparison.test.ts",
+                        "column": 29,
+                        "line": 154
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "7992a624d88a6c32ae39-a38bab77240a74d14b2a",
+              "file": "e2e/performance-comparison.test.ts",
+              "line": 119,
+              "column": 3
+            },
+            {
+              "title": "should validate lazy loading effectiveness",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chrome",
+                  "projectName": "desktop-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1847,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🔄 Lazy Loading Analysis: { renderMode: \u001b[32m'optimized'\u001b[39m, lazyComponents: \u001b[33m0\u001b[39m, isOptimized: \u001b[33mtrue\u001b[39m }\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-19T11:45:19.477Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7992a624d88a6c32ae39-0c641f00de87258cb6fc",
+              "file": "e2e/performance-comparison.test.ts",
+              "line": 157,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-06-19T11:45:19.054Z",
+    "duration": 2475.26,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

@@ -1,21 +1,12 @@
-/**
- * HeroSection - リファクタリング済み統合エクスポート
- * 
- * リファクタリング内容:
- * - 725行から約100行に削減
- * - 5つのコンポーネントに分離（HeroHeader, HeroMainContent, HeroContactForm, HeroFooter, HeroBackground）
- * - DitherBackgroundUnified統合版を使用
- * - パフォーマンス最適化とメモリ管理
- */
-
 import React, { useState, useEffect } from 'react';
-import { HeroHeader } from './sections/HeroHeader';
-import { HeroMainContent } from './sections/HeroMainContent';
-import { HeroContactForm } from './sections/HeroContactForm';
-import { HeroFooter } from './sections/HeroFooter';
-import { HeroBackground } from './sections/HeroBackground';
+import { HeroHeader } from './HeroHeader';
+import { HeroMainContent } from './HeroMainContent';
+import { HeroContactForm } from './HeroContactForm';
+import { HeroFooter } from './HeroFooter';
+import { HeroBackground } from './HeroBackground';
+import { useMemoryTracking } from '@/lib/performance/memory-optimizer';
 
-interface HeroSectionProps {
+interface HeroSectionRefactoredProps {
   onRequestClick?: () => void;
   onNavClick?: (element: string) => void;
   onLogoClick?: () => void;
@@ -23,20 +14,22 @@ interface HeroSectionProps {
 }
 
 /**
- * HeroSection - メインコンポーネント（リファクタリング済み）
- * 
- * TDD実装:
- * - 5つのサブコンポーネントに分割
- * - 遅延読み込みとパフォーマンス最適化
- * - 既存の機能とデザインを完全に保持
+ * Refactored HeroSection - Split into 5 focused components
+ * Reduced from 725 lines to ~50 lines with lazy loading
+ * Implements TDD approach with clear separation of concerns
  */
-export const HeroSection: React.FC<HeroSectionProps> = ({
+export const HeroSectionRefactored: React.FC<HeroSectionRefactoredProps> = ({
   onRequestClick,
   onNavClick,
   onLogoClick,
-  isLoading: _isLoading = false,
+  isLoading = false,
 }) => {
   const [isClient, setIsClient] = useState(false);
+  
+  // メモリ使用量追跡 - Performance optimization Phase 4
+  useMemoryTracking('HeroSectionRefactored', [
+    () => console.debug('[Memory] HeroSectionRefactored cleanup completed')
+  ]);
 
   // Client-side hydration detection
   useEffect(() => {
@@ -60,14 +53,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         onNavClick={onNavClick}
         onLogoClick={onLogoClick}
         isClient={isClient}
-        data-testid="hero-header"
       />
 
       {/* Main Content Area */}
-      <main 
-        className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-16 sm:mt-18 lg:mt-20 z-10"
-        data-testid="hero-main-content"
-      >
+      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-16 sm:mt-18 lg:mt-20 z-10">
         <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 min-h-[calc(100vh-180px)]">
           
           {/* Main Content */}
@@ -79,7 +68,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Contact Form */}
           <HeroContactForm
             isClient={isClient}
-            data-testid="hero-contact-form"
           />
         </div>
 
@@ -87,12 +75,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <HeroFooter
           onNavClick={onNavClick}
           isClient={isClient}
-          data-testid="hero-footer"
         />
       </main>
     </div>
   );
 };
 
-// Export compatibility
-export default HeroSection;
+export default HeroSectionRefactored;

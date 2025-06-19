@@ -50,8 +50,9 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
             initial={{ opacity: 0, x: -50, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+            className="group"
           >
-            <Card className="h-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md">
+            <Card className="h-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md hover:border-gray-600/50 transition-all duration-300 hover:shadow-[0px_0px_80px_#0000009d] hover:scale-[1.02] cursor-pointer">
               <CardHeader className="px-6 pt-6 pb-4">
                 <CardTitle className="font-alliance font-normal text-white text-2xl md:text-3xl leading-tight mb-4">
                   {t('about.mission.title')}
@@ -69,8 +70,9 @@ export const AboutPage = ({ className = '' }: AboutPageProps) => {
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+            className="group"
           >
-            <Card className="h-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md">
+            <Card className="h-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md hover:border-gray-600/50 transition-all duration-300 hover:shadow-[0px_0px_80px_#0000009d] hover:scale-[1.02] cursor-pointer">
               <CardHeader className="px-6 pt-6 pb-4">
                 <CardTitle className="font-alliance font-normal text-white text-2xl md:text-3xl leading-tight mb-4">
                   {t('about.vision.title')}

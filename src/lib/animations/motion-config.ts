@@ -53,7 +53,7 @@ export function getDeviceCapabilities(): DeviceCapabilities | Promise<DeviceCapa
 
   const capabilities: DeviceCapabilities = {
     isMobile,
-    supportsAdvancedAnimations: !isMobile,
+    supportsAdvancedAnimations: true, // iOS でもアニメーション有効化
     particleCount: isMobile ? 50 : 200,
     lowPowerMode: false,
     preferredFrameRate: isMobile ? 30 : 60,
@@ -126,7 +126,7 @@ export function createMotionConfig(): MotionConfig {
       isMobile: /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(
         typeof navigator !== 'undefined' ? navigator.userAgent : ''
       ),
-      supportsAdvancedAnimations: true,
+      supportsAdvancedAnimations: true, // iOS でもアニメーション有効化
       particleCount: 150,
       lowPowerMode: false,
       preferredFrameRate: 60,

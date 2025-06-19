@@ -195,7 +195,55 @@
   }
 }
 
-/* Keyframes */
+/* iOS Safari 緊急修正：CSS アニメーション強制適用 */
+@supports (-webkit-touch-callout: none) {
+  /* すべてのFramer Motion要素を強制表示 */
+  main *, 
+  section *,
+  form *,
+  .hero-section *,
+  .contact-form *,
+  [data-framer-component-type] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* iOS Safari 用 CSS アニメーション */
+@keyframes iosFadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes iosFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes iosFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 既存のキーフレーム */
 @keyframes fadeInUp {
   from {
     opacity: 0;

@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { AboutPage } from '@/components/AboutPage';
+import { setCurrentLanguage } from '@/lib/i18n';
+
+setCurrentLanguage('en');
+---
+
+<BaseLayout 
+  title="About Us - DeepHand | Data Annotation Specialists for AI and Robotics"
+  description="DeepHand provides high-quality data annotation services that contribute to the advancement of AI and robotics technology. Learn about our mission, vision, and values."
+>
+  <AboutPage client:load />
+</BaseLayout>

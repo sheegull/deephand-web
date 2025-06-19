@@ -186,6 +186,127 @@
     "prevButton": "← Back",
     "otherSpecify": "Please specify"
   },
+  "solutions": {
+    "title": "Solutions",
+    "subtitle": "",
+    "description": "This page is currently under construction. Coming soon.",
+    "cta": {
+      "title": "Ready to Start Your Project?",
+      "description": "We propose optimal data annotation solutions tailored to your project requirements.",
+      "button": "Request Data"
+    },
+    "services": {
+      "imageAnnotation": {
+        "title": "Image Annotation",
+        "description": "Comprehensive support for object detection, segmentation, keypoint detection, and various image analysis tasks"
+      },
+      "videoAnnotation": {
+        "title": "Video Annotation",
+        "description": "Specialized in video data processing including action recognition, tracking, and time-series analysis"
+      },
+      "3dAnnotation": {
+        "title": "3D Annotation",
+        "description": "Processing of 3D point cloud data, LIDAR, depth data, and other three-dimensional datasets"
+      },
+      "roboticsData": {
+        "title": "Robotics Data",
+        "description": "High-precision annotation of robot motion data, sensor data, and control data"
+      }
+    }
+  },
+  "resources": {
+    "title": "Resources",
+    "subtitle": "",
+    "description": "This page is currently under construction. Coming soon.",
+    "cta": {
+      "title": "Discuss Your Project",
+      "description": "We provide optimal resources and support tailored to your project needs.",
+      "button": "Contact Us"
+    },
+    "categories": {
+      "whitepapers": {
+        "title": "Whitepapers",
+        "description": "Latest technology trends and practical guidelines"
+      },
+      "caseStudies": {
+        "title": "Case Studies",
+        "description": "Real project examples and success stories"
+      },
+      "techDocs": {
+        "title": "Technical Documentation",
+        "description": "Detailed annotation methods and quality management"
+      },
+      "tools": {
+        "title": "Tools",
+        "description": "Tools for data processing and annotation efficiency"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "",
+    "description": "This page is currently under construction. Coming soon.",
+    "contactForQuote": "Contact us for a detailed quote",
+    "recommended": "Recommended",
+    "cta": {
+      "description": "We provide detailed quotes based on your project requirements.",
+      "button": "Request Data"
+    },
+    "features": {
+      "highQuality": "High-quality annotation",
+      "fastDelivery": "Fast delivery",
+      "customSupport": "Custom support",
+      "secureData": "Secure data management"
+    },
+    "plans": {
+      "starter": {
+        "title": "Starter Plan",
+        "description": "For small-scale projects",
+        "features": ["Basic annotation", "Standard support", "1-week delivery"],
+        "buttonText": "Contact Us"
+      },
+      "professional": {
+        "title": "Professional Plan",
+        "description": "For full-scale projects",
+        "features": ["Advanced annotation", "Priority support", "Custom quality management"],
+        "buttonText": "Contact Us"
+      },
+      "enterprise": {
+        "title": "Enterprise Plan",
+        "description": "For large-scale enterprises",
+        "features": ["Dedicated team", "24/7 support", "Custom integration"],
+        "comingSoon": true,
+        "buttonText": "Coming Soon"
+      }
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "",
+    "description": "This page is currently under construction. Coming soon.",
+    "cta": {
+      "button": "Contact Us"
+    },
+    "mission": {
+      "title": "Mission",
+      "content": "To provide high-quality data that supports the advancement of robotics technology and contributes to building the social infrastructure of the future."
+    },
+    "vision": {
+      "title": "Vision",
+      "content": "To become a leading company providing the highest quality training data for the realization of a society where humans and robots coexist."
+    },
+    "values": {
+      "title": "Values",
+      "quality": "Quality First",
+      "innovation": "Innovation",
+      "partnership": "Partnership",
+      "integrity": "Integrity"
+    },
+    "team": {
+      "title": "Team",
+      "description": "Our team of experienced professionals in AI and robotics will guide your project to success."
+    }
+  },
   "email": {
     "admin": {
       "subject": "Contact Inquiry - DeepHand",

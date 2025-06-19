@@ -55,13 +55,33 @@ export const onLanguageChange = (callback: () => void) => {
   };
 };
 
-// 即座に言語を変更（リロードなし）
+// ページパスを言語に対応したパスに変換
+export const getLocalizedPath = (lang: 'ja' | 'en', currentPath?: string) => {
+  if (typeof window === 'undefined' && !currentPath) return lang === 'en' ? '/en' : '/';
+  
+  const path = currentPath || window.location.pathname;
+  
+  // 現在のパスから言語プレフィックスを除去
+  const cleanPath = path.startsWith('/en') ? path.slice(3) : path;
+  
+  // 🚀 空文字列とルートパスの正規化
+  const normalizedPath = cleanPath === '' ? '/' : cleanPath;
+  
+  // 新しい言語でのパスを構築
+  if (lang === 'en') {
+    return normalizedPath === '/' ? '/en' : `/en${normalizedPath}`;
+  } else {
+    return normalizedPath === '/' ? '/' : normalizedPath;
+  }
+};
+
+// 即座に言語を変更（現在のページに対応する言語ページに遷移）
 export const switchLanguageInstantly = (lang: 'ja' | 'en') => {
   setCurrentLanguage(lang);
-  // URLを更新（リロードなし）
+  // URLを更新（適切な言語ページに遷移）
   if (typeof window !== 'undefined') {
-    const newPath = lang === 'en' ? '/en' : '/';
-    window.history.pushState({}, '', newPath);
+    const newPath = getLocalizedPath(lang);
+    window.location.href = newPath; // pushStateではなくhrefで完全な遷移
   }
 };
 
@@ -73,7 +93,7 @@ export const t = (key: string, interpolations?: Record<string, any>) => {
     value = value?.[k];
   }
   
-  let result = value || key;
+  let result = value !== undefined ? value : key;
   
   // Handle interpolations like {{field}}
   if (interpolations && typeof result === 'string') {

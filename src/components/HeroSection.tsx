@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Menu, Loader2 } from 'lucide-react';
 import {
   MotionDiv,
@@ -33,28 +33,33 @@ export const HeroSection = ({
   isLoading = false,
 }: HeroSectionProps) => {
   const { currentLanguage, switchLanguage } = useLanguage();
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isClient, setIsClient] = React.useState(false);
-  const [validationErrors, setValidationErrors] = React.useState<string[]>([]);
-  const [messageLength, setMessageLength] = React.useState(0);
-  const [fieldErrors, setFieldErrors] = React.useState<{ [key: string]: string }>({});
+  // 🚀 統一状態管理でReact Fiber競合を完全解消
+  const [uiState, setUiState] = React.useState({
+    isSubmitting: false,
+    submitStatus: 'idle' as 'idle' | 'success' | 'error',
+    isMenuOpen: false,
+    isClient: false,
+    validationErrors: [] as string[],
+    messageLength: 0,
+    fieldErrors: {} as { [key: string]: string },
+  });
 
-  // Hydration-safe client detection
+  // 🚀 統一状態更新でre-render最小化
   React.useEffect(() => {
-    setIsClient(true);
+    setUiState(prev => ({ ...prev, isClient: true }));
   }, []);
 
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  // 🚀 scroll transform最適化：Hooks Rule準拠版
   const { scrollYProgress } = useScroll();
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
 
   // Client-safe navigation functions
   const handleNavigation = (url: string) => {
-    if (isClient && typeof window !== 'undefined') {
+    if (uiState.isClient && typeof window !== 'undefined') {
       window.location.href = url;
     }
   };
@@ -66,9 +71,13 @@ export const HeroSection = ({
     e.preventDefault();
     console.log('🚨 SUBMIT HANDLER - after preventDefault');
 
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    setValidationErrors([]);
+    // 🚀 単一状態更新でre-render最小化
+    setUiState(prev => ({
+      ...prev,
+      isSubmitting: true,
+      submitStatus: 'idle',
+      validationErrors: [],
+    }));
 
     console.log('🚨 SUBMIT HANDLER - state set complete');
 
@@ -106,8 +115,11 @@ export const HeroSection = ({
     }
 
     if (errors.length > 0) {
-      setValidationErrors(errors);
-      setIsSubmitting(false);
+      setUiState(prev => ({
+        ...prev,
+        validationErrors: errors,
+        isSubmitting: false,
+      }));
       return;
     }
 
@@ -134,8 +146,11 @@ export const HeroSection = ({
         console.log('パース成功:', result);
       } catch (parseError) {
         console.log('JSON解析エラー:', parseError);
-        setSubmitStatus('error');
-        setIsSubmitting(false);
+        setUiState(prev => ({
+          ...prev,
+          submitStatus: 'error',
+          isSubmitting: false,
+        }));
         return;
       }
 
@@ -177,16 +192,20 @@ export const HeroSection = ({
         console.log('✅ [SUCCESS DEBUG] SUCCESS PATH - Setting status to success');
         console.log('🎉 [SUCCESS DEBUG] SUCCESS confirmed - emailId:', result?.emailId);
 
-        setSubmitStatus('success');
-        setValidationErrors([]); // エラーをクリア
+        // 🚀 単一状態更新で成功処理
+        setUiState(prev => ({
+          ...prev,
+          submitStatus: 'success',
+          validationErrors: [],
+          messageLength: 0,
+          fieldErrors: {},
+        }));
         e.currentTarget.reset();
-        setMessageLength(0); // 文字数リセット
-        setFieldErrors({}); // フィールドエラーリセット
 
         // 成功ログ
         logInfo('Contact form submitted successfully', {
           operation: 'contact_form_success_frontend',
-          timestamp: isClient ? Date.now() : 0,
+          timestamp: uiState.isClient ? Date.now() : 0,
           emailId: result?.emailId,
         });
       } else {
@@ -201,13 +220,13 @@ export const HeroSection = ({
 
         logError('Contact form submission failed', {
           operation: 'contact_form_submit',
-          timestamp: isClient ? Date.now() : 0,
+          timestamp: uiState.isClient ? Date.now() : 0,
           status: response.status,
           responseData: result,
           responseOk: response.ok,
           errors: result?.errors || result?.message || 'Unknown error',
         });
-        setSubmitStatus('error');
+        setUiState(prev => ({ ...prev, submitStatus: 'error' }));
       }
     } catch (error) {
       console.log('🚨 [FETCH DEBUG] Exception caught in try block:', error);
@@ -219,23 +238,35 @@ export const HeroSection = ({
 
       logError('Contact form submission exception', {
         operation: 'contact_form_exception',
-        timestamp: isClient ? Date.now() : 0,
+        timestamp: uiState.isClient ? Date.now() : 0,
         error: error instanceof Error ? error.message : String(error),
         stack: error instanceof Error ? error.stack : undefined,
       });
-      setSubmitStatus('error');
+      setUiState(prev => ({ ...prev, submitStatus: 'error' }));
     } finally {
       console.log('🔍 [FETCH DEBUG] Finally block - setting isSubmitting to false');
-      setIsSubmitting(false);
+      setUiState(prev => ({ ...prev, isSubmitting: false }));
     }
   };
 
   // Navigation links data
   const navLinks = [
-    { text: t('nav.solutions'), href: '#solutions' },
-    { text: t('nav.resources'), href: '#resources' },
-    { text: t('nav.pricing'), href: '#pricing' },
-    { text: t('nav.aboutUs'), href: '#about' },
+    {
+      text: t('nav.solutions'),
+      href: currentLanguage === 'en' ? '/en/solutions' : '/solutions',
+    },
+    {
+      text: t('nav.resources'),
+      href: currentLanguage === 'en' ? '/en/resources' : '/resources',
+    },
+    {
+      text: t('nav.pricing'),
+      href: currentLanguage === 'en' ? '/en/pricing' : '/pricing',
+    },
+    {
+      text: t('nav.aboutUs'),
+      href: currentLanguage === 'en' ? '/en/about' : '/about',
+    },
   ];
 
   // Footer links data
@@ -246,12 +277,12 @@ export const HeroSection = ({
 
   return (
     <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen relative">
-      {/* Dither Background Animation - Optimized for Zero Lag */}
+      {/* Dither Background - Hooks Rule Fixed */}
       <DitherBackgroundOptimized
         waveSpeed={0.05}
         waveFrequency={6.0}
         waveAmplitude={0.05}
-        waveColor={[0.35, 0.36, 0.37]} // High brightness
+        waveColor={[0.35, 0.36, 0.37]}
         colorNum={8}
         pixelSize={1}
         disableAnimation={false}
@@ -289,8 +320,8 @@ export const HeroSection = ({
           <button
             className="lg:hidden p-1 sm:p-2 text-white flex-shrink-0"
             aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={uiState.isMenuOpen}
+            onClick={() => setUiState(prev => ({ ...prev, isMenuOpen: !prev.isMenuOpen }))}
           >
             <div className="flex items-center">
               <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -303,7 +334,13 @@ export const HeroSection = ({
               {navLinks.map((link, index) => (
                 <li
                   key={index}
-                  onClick={() => onNavClick?.(link.text.toLowerCase())}
+                  onClick={() => {
+                    if (onNavClick) {
+                      onNavClick(link.text.toLowerCase());
+                    } else {
+                      handleNavigation(link.href);
+                    }
+                  }}
                   className="cursor-pointer"
                 >
                   <span className="font-alliance font-light text-white text-[12px] xl:text-[14px] leading-tight hover:text-gray-300 transition-colors whitespace-nowrap">
@@ -338,14 +375,21 @@ export const HeroSection = ({
         {/* Mobile Navigation Menu */}
         <div
           className={`absolute top-16 sm:top-18 lg:top-20 left-0 right-0 bg-[#1e1e1e] transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+            uiState.isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           } lg:hidden border-t border-gray-700 shadow-lg z-[90]`}
         >
           <nav className="flex flex-col py-3">
             {navLinks.map((link, index) => (
               <a
                 key={index}
-                onClick={() => onNavClick?.(link.text.toLowerCase())}
+                onClick={() => {
+                  if (onNavClick) {
+                    onNavClick(link.text.toLowerCase());
+                  } else {
+                    handleNavigation(link.href);
+                  }
+                  setUiState(prev => ({ ...prev, isMenuOpen: false })); // モバイルメニューを閉じる
+                }}
                 className="py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer"
               >
                 {link.text}
@@ -458,7 +502,7 @@ export const HeroSection = ({
                       placeholder={t('contact.placeholder.name')}
                       minLength={1}
                       maxLength={50}
-                      onChange={e => {
+                      onChange={_e => {
                         // リアルタイムバリデーション無効化 - 送信時のみエラー表示
                       }}
                       className="h-12 !bg-[#0F0F0F] !border-gray-500/30 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
@@ -485,7 +529,7 @@ export const HeroSection = ({
                       name="email"
                       type="email"
                       placeholder={t('contact.placeholder.email')}
-                      onChange={e => {
+                      onChange={_e => {
                         // リアルタイムバリデーション無効化 - 送信時のみエラー表示
                       }}
                       className="h-12 !bg-[#0F0F0F] !border-gray-500/30 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
@@ -499,7 +543,7 @@ export const HeroSection = ({
                         {t('contact.message')} *
                       </label>
                       <span className="text-xs text-gray-400 font-alliance font-light">
-                        {messageLength} / 1000
+                        {uiState.messageLength} / 1000
                       </span>
                     </div>
                     <Textarea
@@ -508,7 +552,7 @@ export const HeroSection = ({
                       minLength={1}
                       maxLength={1000}
                       onChange={e => {
-                        setMessageLength(e.target.value.length);
+                        setUiState(prev => ({ ...prev, messageLength: e.target.value.length }));
                         // 入力時のリアルタイムバリデーションを無効化（送信時のみ表示）
                       }}
                       className="min-h-[120px] h-[120px] max-h-[200px] !bg-[#0F0F0F] !border-gray-500/30 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm resize-y focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
@@ -528,14 +572,14 @@ export const HeroSection = ({
                         onSubmit(fakeEvent);
                       }
                     }}
-                    disabled={isSubmitting}
+                    disabled={uiState.isSubmitting}
                     className="h-12 font-alliance font-medium text-white text-base bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] transition-all duration-300 ease-out disabled:bg-[#234ad9]/70 flex items-center justify-center gap-2 rounded-lg mt-2 transform hover:scale-[1.05] active:scale-[0.95]"
                   >
-                    {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
-                    {isSubmitting ? t('contact.submitting') : t('contact.submit')}
+                    {uiState.isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
+                    {uiState.isSubmitting ? t('contact.submitting') : t('contact.submit')}
                   </Button>
 
-                  {submitStatus === 'success' && (
+                  {uiState.submitStatus === 'success' && (
                     <MotionDiv
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -564,7 +608,7 @@ export const HeroSection = ({
                       </div>
                     </MotionDiv>
                   )}
-                  {submitStatus === 'error' && (
+                  {uiState.submitStatus === 'error' && (
                     <MotionDiv
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -593,7 +637,7 @@ export const HeroSection = ({
                       </div>
                     </MotionDiv>
                   )}
-                  {validationErrors.length > 0 && (
+                  {uiState.validationErrors.length > 0 && (
                     <MotionDiv
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -621,7 +665,7 @@ export const HeroSection = ({
                             {t('validation.inputError')}
                           </p>
                           <ul className="space-y-2">
-                            {validationErrors.map((error, index) => (
+                            {uiState.validationErrors.map((error, index) => (
                               <MotionDiv
                                 key={index}
                                 initial={{ opacity: 0, x: -10 }}

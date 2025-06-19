@@ -18,13 +18,18 @@ mockIntersectionObserver.mockReturnValue({
 });
 window.IntersectionObserver = mockIntersectionObserver;
 
-// Mock for performance monitoring
+// Mock for performance monitoring with now() method
 const mockPerformance = {
   mark: vi.fn(),
   measure: vi.fn(),
-  getEntriesByType: vi.fn(() => [])
+  getEntriesByType: vi.fn(() => []),
+  now: vi.fn(() => Date.now()) // performance.now() を追加
 };
 Object.defineProperty(window, 'performance', {
+  value: mockPerformance,
+  writable: true
+});
+Object.defineProperty(global, 'performance', {
   value: mockPerformance,
   writable: true
 });

@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { EffectComposer, wrapEffect } from "@react-three/postprocessing";
 import { Effect } from "postprocessing";
@@ -232,15 +232,17 @@ function DitheredWaves({
     mouseRadius: new THREE.Uniform(mouseRadius),
   });
 
+  // ⚡ 最適化: pixelRatio計算を1回のみ実行
+  const pixelRatio = useMemo(() => gl.getPixelRatio(), [gl]);
+  
   useEffect(() => {
-    const dpr = gl.getPixelRatio();
-    const newWidth = Math.floor(size.width * dpr);
-    const newHeight = Math.floor(size.height * dpr);
+    const newWidth = Math.floor(size.width * pixelRatio);
+    const newHeight = Math.floor(size.height * pixelRatio);
     const currentRes = waveUniformsRef.current.resolution.value;
     if (currentRes.x !== newWidth || currentRes.y !== newHeight) {
       currentRes.set(newWidth, newHeight);
     }
-  }, [size, gl]);
+  }, [size, pixelRatio]);
 
   useFrame(({ clock }) => {
     if (!disableAnimation) {
@@ -258,14 +260,35 @@ function DitheredWaves({
     }
   });
 
-  const handlePointerMove = (e: PointerEvent) => {
+  // ⚡ 最適化: getBoundingClientRectをキャッシュ
+  const cachedRectRef = useRef<DOMRect | null>(null);
+  const lastUpdateRef = useRef(0);
+
+  const handlePointerMove = useCallback((e: PointerEvent) => {
     if (!enableMouseInteraction) return;
-    const rect = gl.domElement.getBoundingClientRect();
-    const dpr = gl.getPixelRatio();
-    const x = (e.clientX - rect.left) * dpr;
-    const y = (e.clientY - rect.top) * dpr;
-    setMousePos({ x, y });
-  };
+    
+    // 🚀 120FPS対応 + requestAnimationFrame最適化
+    const now = performance.now();
+    if (now - lastUpdateRef.current < 8.33) return; // 120FPS = 8.33ms
+    lastUpdateRef.current = now;
+
+    // 🚀 rectキャッシュを5秒に延長＋resize対応
+    if (!cachedRectRef.current) {
+      cachedRectRef.current = gl.domElement.getBoundingClientRect();
+      // 長期キャッシュでgetBoundingClientRect呼び出し最小化
+      setTimeout(() => { cachedRectRef.current = null; }, 5000);
+    }
+
+    const rect = cachedRectRef.current;
+    // 🚀 計算の最適化
+    const x = ((e.clientX - rect.left) * pixelRatio) | 0; // 整数化でGPU効率UP
+    const y = ((e.clientY - rect.top) * pixelRatio) | 0;
+    
+    // 🚀 RAF内で状態更新（mainスレッド負荷軽減）
+    requestAnimationFrame(() => {
+      setMousePos({ x, y });
+    });
+  }, [enableMouseInteraction, pixelRatio, gl.domElement]);
 
   return (
     <>
@@ -308,11 +331,14 @@ interface DitherBackgroundProps {
   className?: string;
 }
 
+// ⚡ 最適化: devicePixelRatioをキャッシュ
+const devicePixelRatio = typeof window !== 'undefined' ? window.devicePixelRatio : 1;
+
 export default function DitherBackground({
   waveSpeed = 0.005,
   waveFrequency = 1.5,
   waveAmplitude = 0.15,
-  waveColor = [0.12, 0.13, 0.14], // Pure white and dark gray (#202123)
+  waveColor = [0.12, 0.13, 0.14],
   colorNum = 2,
   pixelSize = 4,
   disableAnimation = false,
@@ -320,25 +346,38 @@ export default function DitherBackground({
   mouseRadius = 1.2,
   className = "w-full h-full absolute inset-0 z-0",
 }: DitherBackgroundProps) {
+  // Canvas設定をメモ化
+  const canvasConfig = useMemo(() => ({
+    camera: { position: [0, 0, 6] as [number, number, number] },
+    dpr: devicePixelRatio,
+    gl: { 
+      antialias: true, 
+      preserveDrawingBuffer: true, 
+      alpha: true,
+      powerPreference: 'high-performance' as const  // GPU最適化
+    }
+  }), []);
+
+  // props をメモ化
+  const wavesProps = useMemo(() => ({
+    waveSpeed,
+    waveFrequency,
+    waveAmplitude,
+    waveColor,
+    colorNum,
+    pixelSize,
+    disableAnimation,
+    enableMouseInteraction,
+    mouseRadius,
+  }), [waveSpeed, waveFrequency, waveAmplitude, waveColor, colorNum, pixelSize, disableAnimation, enableMouseInteraction, mouseRadius]);
+
   return (
     <div className={className}>
       <Canvas
         className="w-full h-full"
-        camera={{ position: [0, 0, 6] }}
-        dpr={typeof window !== 'undefined' ? window.devicePixelRatio : 1}
-        gl={{ antialias: true, preserveDrawingBuffer: true, alpha: true }}
+        {...canvasConfig}
       >
-        <DitheredWaves
-          waveSpeed={waveSpeed}
-          waveFrequency={waveFrequency}
-          waveAmplitude={waveAmplitude}
-          waveColor={waveColor}
-          colorNum={colorNum}
-          pixelSize={pixelSize}
-          disableAnimation={disableAnimation}
-          enableMouseInteraction={enableMouseInteraction}
-          mouseRadius={mouseRadius}
-        />
+        <DitheredWaves {...wavesProps} />
       </Canvas>
     </div>
   );

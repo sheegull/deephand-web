@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { AboutPage } from '@/components/AboutPage';
+import { setCurrentLanguage } from '@/lib/i18n';
+
+setCurrentLanguage('ja');
+---
+
+<BaseLayout 
+  title="会社概要 - DeepHand | AI・ロボティクス分野のデータアノテーション専門企業"
+  description="DeepHandは、AI・ロボティクス技術の発展に貢献する高品質なデータアノテーションサービスを提供しています。私たちのミッション、ビジョン、価値観をご紹介。"
+>
+  <AboutPage client:load />
+</BaseLayout>

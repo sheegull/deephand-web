@@ -5,7 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
  * モバイル性能テスト用の包括的な設定
  */
 export default defineConfig({
-  testDir: './tests/mobile-performance',
+  testDir: './tests',
   
   // 並列実行設定
   fullyParallel: true,
@@ -21,7 +21,7 @@ export default defineConfig({
   
   // 基本設定
   use: {
-    baseURL: 'http://localhost:4324',
+    baseURL: 'http://localhost:4322',
     trace: 'on-first-retry',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
@@ -85,7 +85,7 @@ export default defineConfig({
   // 開発サーバー設定
   webServer: {
     command: 'pnpm dev',
-    url: 'http://localhost:4324',
+    url: 'http://localhost:4322',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },

@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { Menu, Loader2 } from 'lucide-react';
-import { MotionDiv, useInView, useScroll, useTransform, optimizedTransition, optimizedHoverAnimation, optimizedTapAnimation } from './ui/motion-optimized';
+import {
+  MotionDiv,
+  useInView,
+  useScroll,
+  useTransform,
+  optimizedTransition,
+  optimizedHoverAnimation,
+  optimizedTapAnimation,
+} from './ui/motion-optimized';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
@@ -9,7 +17,7 @@ import { t } from '../lib/i18n';
 import { useLanguage } from '../hooks/useLanguage';
 import { LanguageToggle } from './ui/language-toggle';
 import { logError, logInfo } from '../lib/error-handling';
-import DitherBackgroundLazy from './ui/DitherBackgroundLazy';
+import DitherBackgroundOptimized from './ui/DitherBackgroundOptimized';
 
 interface HeroSectionProps {
   onRequestClick?: () => void;
@@ -51,18 +59,17 @@ export const HeroSection = ({
     }
   };
 
-
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // レポート推奨：送信関数の先頭で必ずlog
     console.log('🚨 SUBMIT HANDLER START - before preventDefault');
-    
+
     e.preventDefault();
     console.log('🚨 SUBMIT HANDLER - after preventDefault');
-    
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setValidationErrors([]);
-    
+
     console.log('🚨 SUBMIT HANDLER - state set complete');
 
     const formData = new FormData(e.currentTarget);
@@ -79,7 +86,7 @@ export const HeroSection = ({
 
     // バリデーション処理
     const errors: string[] = [];
-    
+
     // 基本的なバリデーション
     if (!data.name || String(data.name).trim().length === 0) {
       errors.push(t('validation.nameRequired') || 'お名前を入力してください');
@@ -106,7 +113,7 @@ export const HeroSection = ({
 
     // APIリクエスト開始
     console.log('フォーム送信 - APIリクエスト開始');
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -115,9 +122,9 @@ export const HeroSection = ({
         },
         body: JSON.stringify(data),
       });
-      
+
       console.log('APIレスポンス受信:', response.status, response.ok);
-      
+
       const responseText = await response.text();
       console.log('レスポンステキスト:', responseText);
 
@@ -139,9 +146,9 @@ export const HeroSection = ({
         status: response.status,
         statusText: response.statusText,
         ok: response.ok,
-        headers: Object.fromEntries(response.headers.entries())
+        headers: Object.fromEntries(response.headers.entries()),
       });
-      
+
       console.log('🔍 [DETAILED DEBUG] Parsed result object:', {
         result: result,
         resultType: typeof result,
@@ -151,25 +158,25 @@ export const HeroSection = ({
         resultEmailId: result?.emailId,
         resultEmailIdType: typeof result?.emailId,
         resultMessage: result?.message,
-        resultMessageType: typeof result?.message
+        resultMessageType: typeof result?.message,
       });
 
       // 🔧 SIMPLIFIED SUCCESS LOGIC (レポート推奨)
       // レスポンスOKなら成功とする（シンプルで確実）
       const isMainFunctionSuccessful = response.ok;
-      
+
       console.log('🔍 [SIMPLIFIED] Success determination:', {
         responseStatus: response.status,
         responseOk: response.ok,
-        isSuccess: isMainFunctionSuccessful
+        isSuccess: isMainFunctionSuccessful,
       });
-      
+
       console.log('🔍 [FINAL DECISION] isMainFunctionSuccessful:', isMainFunctionSuccessful);
-      
+
       if (isMainFunctionSuccessful) {
         console.log('✅ [SUCCESS DEBUG] SUCCESS PATH - Setting status to success');
         console.log('🎉 [SUCCESS DEBUG] SUCCESS confirmed - emailId:', result?.emailId);
-        
+
         setSubmitStatus('success');
         setValidationErrors([]); // エラーをクリア
         e.currentTarget.reset();
@@ -189,9 +196,9 @@ export const HeroSection = ({
           responseOk: response.ok,
           resultSuccess: result?.success,
           resultEmailId: result?.emailId,
-          resultMessage: result?.message
+          resultMessage: result?.message,
         });
-        
+
         logError('Contact form submission failed', {
           operation: 'contact_form_submit',
           timestamp: isClient ? Date.now() : 0,
@@ -207,14 +214,14 @@ export const HeroSection = ({
       console.log('🚨 [FETCH DEBUG] Error details:', {
         name: error instanceof Error ? error.name : 'Unknown',
         message: error instanceof Error ? error.message : String(error),
-        stack: error instanceof Error ? error.stack : 'No stack trace'
+        stack: error instanceof Error ? error.stack : 'No stack trace',
       });
-      
+
       logError('Contact form submission exception', {
         operation: 'contact_form_exception',
         timestamp: isClient ? Date.now() : 0,
         error: error instanceof Error ? error.message : String(error),
-        stack: error instanceof Error ? error.stack : undefined
+        stack: error instanceof Error ? error.stack : undefined,
       });
       setSubmitStatus('error');
     } finally {
@@ -239,8 +246,8 @@ export const HeroSection = ({
 
   return (
     <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen relative">
-      {/* Dither Background Animation - Lazy Loaded */}
-      <DitherBackgroundLazy
+      {/* Dither Background Animation - Optimized for Zero Lag */}
+      <DitherBackgroundOptimized
         waveSpeed={0.05}
         waveFrequency={6.0}
         waveAmplitude={0.05}
@@ -268,7 +275,11 @@ export const HeroSection = ({
               }
             }}
           >
-            <img className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-cover" alt="Icon" src="/logo.png" />
+            <img
+              className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-cover"
+              alt="Icon"
+              src="/logo.png"
+            />
             <div className="font-alliance font-light text-white text-lg sm:text-xl lg:text-2xl leading-tight whitespace-nowrap">
               DeepHand
             </div>
@@ -305,10 +316,7 @@ export const HeroSection = ({
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
-            <LanguageToggle
-              currentLanguage={currentLanguage}
-              onLanguageChange={switchLanguage}
-            />
+            <LanguageToggle currentLanguage={currentLanguage} onLanguageChange={switchLanguage} />
             <MotionDiv
               whileHover={optimizedHoverAnimation}
               whileTap={optimizedTapAnimation}
@@ -453,7 +461,7 @@ export const HeroSection = ({
                       onChange={e => {
                         // リアルタイムバリデーション無効化 - 送信時のみエラー表示
                       }}
-                      className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
+                      className="h-12 !bg-[#0F0F0F] !border-gray-500/30 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
                     />
                     {/* リアルタイムエラー表示を無効化 */}
                   </div>
@@ -465,7 +473,7 @@ export const HeroSection = ({
                     <Input
                       name="organization"
                       placeholder={t('contact.placeholder.organization')}
-                      className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
+                      className="h-12 !bg-[#0F0F0F] !border-gray-500/30 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
                     />
                   </div>
 
@@ -480,7 +488,7 @@ export const HeroSection = ({
                       onChange={e => {
                         // リアルタイムバリデーション無効化 - 送信時のみエラー表示
                       }}
-                      className="h-12 !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
+                      className="h-12 !bg-[#0F0F0F] !border-gray-500/30 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
                     />
                     {/* リアルタイムエラー表示を無効化 */}
                   </div>
@@ -503,19 +511,19 @@ export const HeroSection = ({
                         setMessageLength(e.target.value.length);
                         // 入力時のリアルタイムバリデーションを無効化（送信時のみ表示）
                       }}
-                      className="min-h-[120px] h-[120px] max-h-[200px] !bg-[#0F0F0F] !border-gray-700/70 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm resize-y focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
+                      className="min-h-[120px] h-[120px] max-h-[200px] !bg-[#0F0F0F] !border-gray-500/30 rounded-lg !text-white !placeholder:text-gray-500 font-sans font-light text-sm resize-y focus:!border-[#234ad9] focus:!ring-2 focus:!ring-[#234ad9]/30 transition-all duration-200"
                     />
                   </div>
 
                   <Button
                     type="button"
-                    onClick={(e) => {
+                    onClick={e => {
                       const form = e.currentTarget.closest('form');
                       if (form) {
                         const fakeEvent = {
                           preventDefault: () => {},
                           currentTarget: form,
-                          target: form
+                          target: form,
                         } as React.FormEvent<HTMLFormElement>;
                         onSubmit(fakeEvent);
                       }
@@ -528,16 +536,26 @@ export const HeroSection = ({
                   </Button>
 
                   {submitStatus === 'success' && (
-                    <MotionDiv 
+                    <MotionDiv
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
                     >
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center shadow-lg border border-emerald-400/30">
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3"/>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4"/>
+                          <svg
+                            className="w-5 h-5 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 12l2 2 4-4"
+                            />
                           </svg>
                         </div>
                         <p className="text-gray-300 text-sm font-alliance font-normal">
@@ -547,16 +565,26 @@ export const HeroSection = ({
                     </MotionDiv>
                   )}
                   {submitStatus === 'error' && (
-                    <MotionDiv 
+                    <MotionDiv
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-r from-red-500/10 to-rose-500/10 border border-red-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
                     >
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center shadow-lg border border-red-400/30">
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.4"/>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01"/>
+                          <svg
+                            className="w-5 h-5 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.4" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 8v4m0 4h.01"
+                            />
                           </svg>
                         </div>
                         <p className="text-gray-300 text-sm font-alliance font-normal">
@@ -566,16 +594,26 @@ export const HeroSection = ({
                     </MotionDiv>
                   )}
                   {validationErrors.length > 0 && (
-                    <MotionDiv 
+                    <MotionDiv
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-br from-amber-500/10 via-yellow-500/10 to-orange-500/10 border border-amber-500/30 rounded-xl p-5 backdrop-blur-md shadow-xl ring-1 ring-amber-500/20"
                     >
                       <div className="flex items-start gap-3">
                         <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg flex-shrink-0 border border-amber-400/30">
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3"/>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 16h.01M12 8v4"/>
+                          <svg
+                            className="w-5 h-5 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle cx="12" cy="12" r="10" strokeWidth="1.5" opacity="0.3" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 16h.01M12 8v4"
+                            />
                           </svg>
                         </div>
                         <div className="flex-1">
@@ -584,15 +622,17 @@ export const HeroSection = ({
                           </p>
                           <ul className="space-y-2">
                             {validationErrors.map((error, index) => (
-                              <MotionDiv 
-                                key={index} 
+                              <MotionDiv
+                                key={index}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 className="flex items-start gap-3"
                               >
                                 <div className="w-1.5 h-1.5 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-gray-400 text-sm font-alliance font-light leading-relaxed">{error}</span>
+                                <span className="text-gray-400 text-sm font-alliance font-light leading-relaxed">
+                                  {error}
+                                </span>
                               </MotionDiv>
                             ))}
                           </ul>

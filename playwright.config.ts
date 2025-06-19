@@ -21,7 +21,7 @@ export default defineConfig({
   
   // 基本設定
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL: 'http://localhost:4324',
     trace: 'on-first-retry',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
@@ -85,7 +85,7 @@ export default defineConfig({
   // 開発サーバー設定
   webServer: {
     command: 'pnpm dev',
-    url: 'http://localhost:4321',
+    url: 'http://localhost:4324',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },

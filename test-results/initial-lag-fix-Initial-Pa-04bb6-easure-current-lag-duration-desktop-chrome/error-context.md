@@ -4,7 +4,14 @@
 - banner:
   - img "Icon"
   - text: DeepHand
-  - button "Toggle menu"
+  - navigation:
+    - list:
+      - listitem: ソリューション
+      - listitem: リソース
+      - listitem: 料金
+      - listitem: 会社概要
+  - button "Switch to English": EN
+  - button "始める"
 - main:
   - text: ロボティクスに 豊富な人間データを。 DeepHandはロボティクスに特化したアノテーション専門チームです。高品質なアノテーションデータを提供します。
   - button "データリクエスト"

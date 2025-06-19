@@ -52,10 +52,10 @@ export const HeroSection = ({
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  // 🚀 scroll transform最適化：Hooks Rule準拠版
-  const { scrollYProgress } = useScroll();
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  // 🚀 scroll transform最適化：Hooks Rule準拠版 - iOS テスト用に無効化
+  // const { scrollYProgress } = useScroll();
+  // const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  // const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
 
   // Client-safe navigation functions
   const handleNavigation = (url: string) => {
@@ -277,8 +277,8 @@ export const HeroSection = ({
 
   return (
     <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen relative">
-      {/* Dither Background - iOS競合テスト用に一時無効化 */}
-      {/* <DitherBackgroundOptimized
+      {/* Dither Background */}
+      <DitherBackgroundOptimized
         waveSpeed={0.05}
         waveFrequency={6.0}
         waveAmplitude={0.05}
@@ -289,10 +289,7 @@ export const HeroSection = ({
         enableMouseInteraction={false}
         mouseRadius={0.1}
         className="absolute inset-0 z-0 opacity-60"
-      /> */}
-      
-      {/* iOS競合テスト: シンプル背景 */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1e1e1e] via-[#1a1a1a] to-[#0f0f0f] opacity-90" />
+      />
 
       {/* Navigation Bar */}
       <header className="fixed top-0 z-[100] w-full h-16 sm:h-18 lg:h-20 flex items-center justify-between px-3 sm:px-4 lg:px-20">
@@ -425,7 +422,7 @@ export const HeroSection = ({
           {/* Left Content */}
           <MotionDiv
             className="flex flex-col max-w-[654px] gap-6 lg:gap-8 text-center lg:text-left flex-1 justify-center"
-            style={{ y: textY }}
+            // style={{ y: textY }} // iOS テスト用に無効化
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}

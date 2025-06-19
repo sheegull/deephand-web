@@ -1,5 +1,6 @@
 import React from 'react';
-import { MotionDiv, optimizedTransition, useInView } from './ui/motion-optimized';
+import { motion } from 'framer-motion'; // iOS テスト: 生のFramer Motion
+// import { MotionDiv, optimizedTransition, useInView } from './ui/motion-optimized';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { t, getCurrentLanguage } from '../lib/i18n';
 import { GlobalHeader } from './GlobalHeader';
@@ -9,8 +10,9 @@ interface SolutionsPageProps {
 }
 
 export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  // iOS テスト用に一時無効化
+  // const ref = React.useRef(null);
+  // const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const services = [
     {
@@ -29,15 +31,14 @@ export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
 
   return (
     <>
-      {/* <GlobalHeader /> */}
+      <GlobalHeader />
       <div
         className={`flex flex-col w-full bg-[#1e1e1e] min-h-screen pt-32 pb-20 px-4 md:px-8 lg:px-20 ${className}`}
       >
         {/* ヘッダーセクション */}
-        <MotionDiv
-          ref={ref}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-center mb-16 max-w-4xl mx-auto"
         >

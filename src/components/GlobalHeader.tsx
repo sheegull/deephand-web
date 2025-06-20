@@ -14,9 +14,17 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
   const { currentLanguage, switchLanguage } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   React.useEffect(() => {
     setIsClient(true);
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Client-safe navigation functions
@@ -48,7 +56,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
 
   return (
     <header
-      className={`fixed top-0 z-[100] w-full h-16 sm:h-18 lg:h-20 flex items-center justify-between px-3 sm:px-4 lg:px-20 ${className}`}
+      className={`fixed top-0 z-[100] w-full h-16 sm:h-18 lg:h-20 flex items-center justify-between px-3 sm:px-4 lg:px-20 transition-all duration-300 ${
+        isScrolled ? 'backdrop-blur-md bg-black/10' : ''
+      } ${className}`}
     >
       <div className="flex items-center justify-between w-full">
         {/* Logo */}
@@ -146,9 +156,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
             className="py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer flex items-center gap-2"
           >
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-              <path d="M2 12h20"/>
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
             </svg>
             {currentLanguage === 'ja' ? 'EN' : 'JA'}
           </a>

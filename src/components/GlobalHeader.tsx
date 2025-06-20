@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
-import {
-  MotionDiv,
-  optimizedTransition,
-  optimizedHoverAnimation,
-  optimizedTapAnimation,
-} from './ui/motion-optimized';
+import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { t } from '../lib/i18n';
 import { useLanguage } from '../hooks/useLanguage';
@@ -104,10 +99,10 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
         {/* Action Buttons */}
         <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
           <LanguageToggle currentLanguage={currentLanguage} onLanguageChange={switchLanguage} />
-          <MotionDiv
-            whileHover={optimizedHoverAnimation}
-            whileTap={optimizedTapAnimation}
-            transition={optimizedTransition}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
             <Button
               onClick={() => {
@@ -118,7 +113,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
             >
               <span className="relative z-10">{t('nav.getStarted')}</span>
             </Button>
-          </MotionDiv>
+          </motion.div>
         </div>
       </div>
 

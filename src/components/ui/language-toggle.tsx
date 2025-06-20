@@ -5,11 +5,13 @@ import { Button } from './button';
 interface LanguageToggleProps {
   currentLanguage?: 'ja' | 'en';
   onLanguageChange?: (language: 'ja' | 'en') => void;
+  fullWidth?: boolean;
 }
 
 export const LanguageToggle = ({ 
   currentLanguage = 'ja', 
-  onLanguageChange 
+  onLanguageChange,
+  fullWidth = false
 }: LanguageToggleProps) => {
   const handleToggle = () => {
     const newLanguage = currentLanguage === 'ja' ? 'en' : 'ja';
@@ -23,7 +25,7 @@ export const LanguageToggle = ({
       onClick={handleToggle}
       variant="ghost"
       size="sm"
-      className="h-8 w-16 p-0 font-alliance font-normal text-xs text-white hover:bg-white/20 transition-colors flex items-center gap-1"
+      className={`h-8 ${fullWidth ? 'w-full justify-start px-4' : 'w-16 justify-center'} p-0 font-alliance font-normal text-xs text-white hover:bg-white/20 transition-colors flex items-center gap-1`}
       aria-label={`Switch to ${currentLanguage === 'ja' ? 'English' : 'Japanese'}`}
       title={`Switch to ${currentLanguage === 'ja' ? 'English' : 'Japanese'}`}
     >

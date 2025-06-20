@@ -260,7 +260,7 @@ export const HeroSection = ({
   ];
 
   return (
-    <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen relative">
+    <div className="flex flex-col w-full h-full min-h-screen items-start bg-[#1e1e1e] fixed inset-0 overflow-auto">
       {/* Dither Background */}
       <DitherBackgroundOptimized
         waveSpeed={0.05}
@@ -272,7 +272,7 @@ export const HeroSection = ({
         disableAnimation={false}
         enableMouseInteraction={false}
         mouseRadius={0.1}
-        className="absolute inset-0 z-0 opacity-60"
+        className="fixed inset-0 w-full h-full z-0 opacity-60"
       />
 
       {/* Navigation Bar */}
@@ -401,8 +401,8 @@ export const HeroSection = ({
       </header>
 
       {/* Main Content */}
-      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-16 sm:mt-18 lg:mt-20 z-10">
-        <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 min-h-[calc(100vh-180px)]">
+      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-24 sm:mt-28 lg:mt-40 z-10">
+        <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 flex-1">
           {/* Left Content */}
           <motion.div
             className="flex flex-col max-w-[654px] gap-6 lg:gap-8 text-center lg:text-left flex-1 justify-center"
@@ -675,7 +675,7 @@ export const HeroSection = ({
         </div>
 
         {/* Footer */}
-        <footer className="flex flex-col md:flex-row items-center justify-between w-full mt-12 gap-4 md:gap-0 pb-16">
+        <footer className="flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-0 absolute bottom-10 left-0 right-0 px-4 md:px-[92px]">
           <div className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px]">
             {t('footer.copyright')}
           </div>

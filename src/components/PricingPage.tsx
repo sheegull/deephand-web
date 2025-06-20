@@ -31,7 +31,7 @@ export const PricingPage = ({ className = '' }: PricingPageProps) => {
     <>
       <GlobalHeader />
       <div
-        className={`flex flex-col w-full bg-[#1e1e1e] min-h-screen pt-32 pb-20 px-4 md:px-8 lg:px-20 ${className}`}
+        className={`flex flex-col w-full bg-[#1e1e1e] min-h-screen pt-32 px-4 md:px-8 lg:px-20 ${className}`}
       >
         {/* ヘッダーセクション */}
         <motion.div
@@ -192,6 +192,39 @@ export const PricingPage = ({ className = '' }: PricingPageProps) => {
             </CardContent>
           </Card>
         </motion.div>
+
+        {/* Footer */}
+        <footer className="flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-0 mt-auto pt-16 pb-8">
+          <div className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px]">
+            {t('footer.copyright')}
+          </div>
+          <div className="flex items-center gap-6">
+            <a
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  const currentLanguage = getCurrentLanguage();
+                  const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                  window.location.href = termsUrl;
+                }
+              }}
+              className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 transition-colors cursor-pointer"
+            >
+              {t('footer.termsOfService')}
+            </a>
+            <a
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  const currentLanguage = getCurrentLanguage();
+                  const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                  window.location.href = privacyUrl;
+                }
+              }}
+              className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 transition-colors cursor-pointer"
+            >
+              {t('footer.privacyPolicy')}
+            </a>
+          </div>
+        </footer>
       </div>
     </>
   );

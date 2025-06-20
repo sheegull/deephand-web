@@ -379,13 +379,21 @@ export const HeroSection = ({
                 {link.text}
               </a>
             ))}
+            <a
+              onClick={() => {
+                const newLanguage = currentLanguage === 'ja' ? 'en' : 'ja';
+                switchLanguage(newLanguage);
+              }}
+              className="py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer flex items-center gap-2"
+            >
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                <path d="M2 12h20"/>
+              </svg>
+              {currentLanguage === 'ja' ? 'EN' : 'JA'}
+            </a>
             <div className="flex flex-col gap-2 mt-2 p-2 border-t border-gray-700">
-              <div className="mb-2">
-                <LanguageToggle
-                  currentLanguage={currentLanguage}
-                  onLanguageChange={switchLanguage}
-                />
-              </div>
               <Button
                 onClick={() => {
                   const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';

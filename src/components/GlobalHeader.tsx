@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
-import {
-  MotionDiv,
-  optimizedTransition,
-  optimizedHoverAnimation,
-  optimizedTapAnimation,
-} from './ui/motion-optimized';
+import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { t } from '../lib/i18n';
 import { useLanguage } from '../hooks/useLanguage';
@@ -19,9 +14,17 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
   const { currentLanguage, switchLanguage } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   React.useEffect(() => {
     setIsClient(true);
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Client-safe navigation functions
@@ -52,7 +55,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
   ];
 
   return (
-    <header className={`fixed top-0 z-[100] w-full h-16 sm:h-18 lg:h-20 flex items-center justify-between px-3 sm:px-4 lg:px-20 ${className}`}>
+    <header
+      className={`fixed top-0 z-[100] w-full h-16 sm:h-18 lg:h-20 flex items-center justify-between px-3 sm:px-4 lg:px-20 transition-all duration-300 ${
+        isScrolled ? 'backdrop-blur-md bg-black/10' : ''
+      } ${className}`}
+    >
       <div className="flex items-center justify-between w-full">
         {/* Logo */}
         <div
@@ -104,10 +111,10 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
         {/* Action Buttons */}
         <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
           <LanguageToggle currentLanguage={currentLanguage} onLanguageChange={switchLanguage} />
-          <MotionDiv
-            whileHover={optimizedHoverAnimation}
-            whileTap={optimizedTapAnimation}
-            transition={optimizedTransition}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
             <Button
               onClick={() => {
@@ -118,7 +125,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
             >
               <span className="relative z-10">{t('nav.getStarted')}</span>
             </Button>
-          </MotionDiv>
+          </motion.div>
         </div>
       </div>
 
@@ -141,13 +148,21 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
               {link.text}
             </a>
           ))}
+          <a
+            onClick={() => {
+              const newLanguage = currentLanguage === 'ja' ? 'en' : 'ja';
+              switchLanguage(newLanguage);
+            }}
+            className="py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer flex items-center gap-2"
+          >
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+            {currentLanguage === 'ja' ? 'EN' : 'JA'}
+          </a>
           <div className="flex flex-col gap-2 mt-2 p-2 border-t border-gray-700">
-            <div className="mb-2">
-              <LanguageToggle
-                currentLanguage={currentLanguage}
-                onLanguageChange={switchLanguage}
-              />
-            </div>
             <Button
               onClick={() => {
                 const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';

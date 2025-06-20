@@ -273,7 +273,7 @@ export const DitherBackgroundOptimized: React.FC<DitherBackgroundOptimizedProps>
   // 🚀 DOM階層最適化：条件分岐をコンポーネント内で処理
   return (
     <div ref={containerRef} className={className}>
-      {(!isClient || !shouldShowThreeJS || hasError || !isThreeJSReady) ? (
+      {!isClient ? (
         <InstantFallback className="absolute inset-0" />
       ) : (
         <Suspense fallback={<InstantFallback className="absolute inset-0" />}>

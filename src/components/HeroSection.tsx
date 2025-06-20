@@ -1,14 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import { Menu, Loader2 } from 'lucide-react';
-import {
-  MotionDiv,
-  useInView,
-  useScroll,
-  useTransform,
-  optimizedTransition,
-  optimizedHoverAnimation,
-  optimizedTapAnimation,
-} from './ui/motion-optimized';
+import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
@@ -20,17 +12,17 @@ import { logError, logInfo } from '../lib/error-handling';
 import DitherBackgroundOptimized from './ui/DitherBackgroundOptimized';
 
 interface HeroSectionProps {
-  onRequestClick?: () => void;
+  _onRequestClick?: () => void;
   onNavClick?: (element: string) => void;
   onLogoClick?: () => void;
-  isLoading?: boolean;
+  _isLoading?: boolean;
 }
 
 export const HeroSection = ({
-  onRequestClick,
+  _onRequestClick,
   onNavClick,
   onLogoClick,
-  isLoading = false,
+  _isLoading = false,
 }: HeroSectionProps) => {
   const { currentLanguage, switchLanguage } = useLanguage();
   // 🚀 統一状態管理でReact Fiber競合を完全解消
@@ -48,14 +40,6 @@ export const HeroSection = ({
   React.useEffect(() => {
     setUiState(prev => ({ ...prev, isClient: true }));
   }, []);
-
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  // 🚀 scroll transform最適化：Hooks Rule準拠版
-  const { scrollYProgress } = useScroll();
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
 
   // Client-safe navigation functions
   const handleNavigation = (url: string) => {
@@ -276,8 +260,8 @@ export const HeroSection = ({
   ];
 
   return (
-    <div className="flex flex-col w-full items-start bg-[#1e1e1e] min-h-screen relative">
-      {/* Dither Background - Hooks Rule Fixed */}
+    <div className="flex flex-col w-full h-full min-h-screen items-start bg-[#1e1e1e] fixed inset-0 overflow-auto">
+      {/* Dither Background */}
       <DitherBackgroundOptimized
         waveSpeed={0.05}
         waveFrequency={6.0}
@@ -288,7 +272,7 @@ export const HeroSection = ({
         disableAnimation={false}
         enableMouseInteraction={false}
         mouseRadius={0.1}
-        className="absolute inset-0 z-0 opacity-60"
+        className="fixed inset-0 w-full h-full z-0 opacity-60"
       />
 
       {/* Navigation Bar */}
@@ -354,10 +338,10 @@ export const HeroSection = ({
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
             <LanguageToggle currentLanguage={currentLanguage} onLanguageChange={switchLanguage} />
-            <MotionDiv
-              whileHover={optimizedHoverAnimation}
-              whileTap={optimizedTapAnimation}
-              transition={optimizedTransition}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
             >
               <Button
                 onClick={() => {
@@ -368,7 +352,7 @@ export const HeroSection = ({
               >
                 <span className="relative z-10">{t('nav.getStarted')}</span>
               </Button>
-            </MotionDiv>
+            </motion.div>
           </div>
         </div>
 
@@ -395,13 +379,21 @@ export const HeroSection = ({
                 {link.text}
               </a>
             ))}
+            <a
+              onClick={() => {
+                const newLanguage = currentLanguage === 'ja' ? 'en' : 'ja';
+                switchLanguage(newLanguage);
+              }}
+              className="py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer flex items-center gap-2"
+            >
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                <path d="M2 12h20" />
+              </svg>
+              {currentLanguage === 'ja' ? 'EN' : 'JA'}
+            </a>
             <div className="flex flex-col gap-2 mt-2 p-2 border-t border-gray-700">
-              <div className="mb-2">
-                <LanguageToggle
-                  currentLanguage={currentLanguage}
-                  onLanguageChange={switchLanguage}
-                />
-              </div>
               <Button
                 onClick={() => {
                   const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
@@ -417,49 +409,50 @@ export const HeroSection = ({
       </header>
 
       {/* Main Content */}
-      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-16 sm:mt-18 lg:mt-20 z-10">
-        <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 min-h-[calc(100vh-180px)]">
+      <main className="relative w-full px-4 md:px-[92px] flex-1 flex flex-col shadow-[0px_4px_4px_#00000040] mt-24 sm:mt-28 lg:mt-40 z-10">
+        <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 flex-1">
           {/* Left Content */}
-          <MotionDiv
+          <motion.div
             className="flex flex-col max-w-[654px] gap-6 lg:gap-8 text-center lg:text-left flex-1 justify-center"
-            style={{ y: textY }}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <MotionDiv
+            <motion.div
               className="font-alliance font-normal text-white text-3xl md:text-5xl lg:text-[64px] leading-[1.1]"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             >
               {t('hero.title')
                 .split('\n')
                 .map((line: string, index: number) => (
-                  <MotionDiv
+                  <motion.div
                     key={index}
                     className="block"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: 'easeOut' }}
                   >
                     {line}
-                  </MotionDiv>
+                  </motion.div>
                 ))}
-            </MotionDiv>
-            <MotionDiv
+            </motion.div>
+            <motion.div
               className="font-alliance font-light text-zinc-400 text-base md:text-lg lg:text-xl leading-[1.6] max-w-[555px] mx-auto lg:mx-0"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
             >
               {t('hero.subtitle')}
-            </MotionDiv>
-            <MotionDiv
-              whileHover={optimizedHoverAnimation}
-              whileTap={optimizedTapAnimation}
-              transition={optimizedTransition}
-              className="w-fit mx-auto lg:mx-0"
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-fit mx-auto lg:mx-0 mt-4 md:mt-6 lg:mt-0"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
             >
               <Button
                 onClick={() => {
@@ -469,20 +462,21 @@ export const HeroSection = ({
                 size="lg"
                 className="w-40 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] transition-all duration-300 ease-out border-0"
               >
-                <span className="relative z-10">{t('hero.requestButton')}</span>
+                <span className="relative z-10 text-base font-medium">
+                  {t('hero.requestButton')}
+                </span>
               </Button>
-            </MotionDiv>
-          </MotionDiv>
+            </motion.div>
+          </motion.div>
 
           {/* Contact Form Card */}
-          <MotionDiv
-            ref={ref}
-            initial={{ opacity: 0, x: 50, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
             className="w-full max-w-[460px] mx-auto lg:mx-0 flex-shrink-0"
           >
-            <Card className="w-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md ring-0.5 relative z-20 mt-24 lg:mt-0">
+            <Card className="w-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md ring-0.5 relative z-20 mt-14 md:mt-16 lg:mt-0">
               <CardHeader className="px-2 pt-2 pb-4">
                 <CardTitle className="font-alliance font-normal text-white text-lg md:text-xl leading-[28px] pb-2">
                   {t('contact.title')}
@@ -580,7 +574,7 @@ export const HeroSection = ({
                   </Button>
 
                   {uiState.submitStatus === 'success' && (
-                    <MotionDiv
+                    <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
@@ -606,10 +600,10 @@ export const HeroSection = ({
                           {t('contact.success')}
                         </p>
                       </div>
-                    </MotionDiv>
+                    </motion.div>
                   )}
                   {uiState.submitStatus === 'error' && (
-                    <MotionDiv
+                    <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-r from-red-500/10 to-rose-500/10 border border-red-500/30 rounded-xl p-4 backdrop-blur-sm shadow-lg"
@@ -635,10 +629,10 @@ export const HeroSection = ({
                           {t('contact.error')}
                         </p>
                       </div>
-                    </MotionDiv>
+                    </motion.div>
                   )}
                   {uiState.validationErrors.length > 0 && (
-                    <MotionDiv
+                    <motion.div
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="bg-gradient-to-br from-amber-500/10 via-yellow-500/10 to-orange-500/10 border border-amber-500/30 rounded-xl p-5 backdrop-blur-md shadow-xl ring-1 ring-amber-500/20"
@@ -666,7 +660,7 @@ export const HeroSection = ({
                           </p>
                           <ul className="space-y-2">
                             {uiState.validationErrors.map((error, index) => (
-                              <MotionDiv
+                              <motion.div
                                 key={index}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -677,21 +671,21 @@ export const HeroSection = ({
                                 <span className="text-gray-400 text-sm font-alliance font-light leading-relaxed">
                                   {error}
                                 </span>
-                              </MotionDiv>
+                              </motion.div>
                             ))}
                           </ul>
                         </div>
                       </div>
-                    </MotionDiv>
+                    </motion.div>
                   )}
                 </form>
               </CardContent>
             </Card>
-          </MotionDiv>
+          </motion.div>
         </div>
 
         {/* Footer */}
-        <footer className="flex flex-col md:flex-row items-center justify-between w-full mt-12 gap-4 md:gap-0 pb-16">
+        <footer className="flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-0 mt-auto pt-16 pb-8">
           <div className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px]">
             {t('footer.copyright')}
           </div>

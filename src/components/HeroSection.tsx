@@ -41,7 +41,6 @@ export const HeroSection = ({
     setUiState(prev => ({ ...prev, isClient: true }));
   }, []);
 
-
   // Client-safe navigation functions
   const handleNavigation = (url: string) => {
     if (uiState.isClient && typeof window !== 'undefined') {
@@ -443,7 +442,7 @@ export const HeroSection = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="w-fit mx-auto lg:mx-0"
+              className="w-fit mx-auto lg:mx-0 mt-4 md:mt-6 lg:mt-0"
             >
               <Button
                 onClick={() => {
@@ -453,7 +452,9 @@ export const HeroSection = ({
                 size="lg"
                 className="w-40 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] transition-all duration-300 ease-out border-0"
               >
-                <span className="relative z-10">{t('hero.requestButton')}</span>
+                <span className="relative z-10 text-base font-medium">
+                  {t('hero.requestButton')}
+                </span>
               </Button>
             </motion.div>
           </motion.div>
@@ -465,7 +466,7 @@ export const HeroSection = ({
             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
             className="w-full max-w-[460px] mx-auto lg:mx-0 flex-shrink-0"
           >
-            <Card className="w-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md ring-0.5 relative z-20 mt-24 lg:mt-0">
+            <Card className="w-full !bg-[#1A1A1A]/95 rounded-2xl shadow-[0px_0px_60px_#0000007d] border border-gray-700/30 backdrop-blur-md ring-0.5 relative z-20 mt-14 md:mt-16 lg:mt-0">
               <CardHeader className="px-2 pt-2 pb-4">
                 <CardTitle className="font-alliance font-normal text-white text-lg md:text-xl leading-[28px] pb-2">
                   {t('contact.title')}

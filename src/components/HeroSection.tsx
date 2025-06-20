@@ -401,7 +401,7 @@ export const HeroSection = ({
       </header>
 
       {/* Main Content */}
-      <main className="relative w-full px-4 md:px-[92px] flex-1 shadow-[0px_4px_4px_#00000040] mt-24 sm:mt-28 lg:mt-40 z-10">
+      <main className="relative w-full px-4 md:px-[92px] flex-1 flex flex-col shadow-[0px_4px_4px_#00000040] mt-24 sm:mt-28 lg:mt-40 z-10">
         <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 flex-1">
           {/* Left Content */}
           <motion.div
@@ -675,7 +675,7 @@ export const HeroSection = ({
         </div>
 
         {/* Footer */}
-        <footer className="flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-0 absolute bottom-10 left-0 right-0 px-4 md:px-[92px]">
+        <footer className="flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-0 mt-auto pt-16 pb-8">
           <div className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px]">
             {t('footer.copyright')}
           </div>

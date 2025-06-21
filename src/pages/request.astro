@@ -1,16 +1,16 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import BaseLayoutEn from '@/layouts/BaseLayoutEn.astro';
 import { RequestDataPage } from '@/components/RequestDataPage';
 import { setCurrentLanguage } from '@/lib/i18n';
 import '@/styles/app.css';
 
-// サーバーサイドで日本語に設定
-setCurrentLanguage('ja');
+// サーバーサイドで英語に設定
+setCurrentLanguage('en');
 ---
 
-<BaseLayout 
-  title="データリクエスト - DeepHand"
-  description="AI・ロボティクスプロジェクト向けのデータアノテーション依頼フォーム。専門知識を持つアノテーターが高品質なラベリングを提供します。"
+<BaseLayoutEn 
+  title="Request Data - DeepHand"
+  description="Data annotation request form for AI and robotics projects. Our expert annotators provide high-quality labeling services."
 >
   <RequestDataPage 
     client:load 
@@ -23,4 +23,4 @@ setCurrentLanguage('ja');
       }
     }}
   />
-</BaseLayout>
+</BaseLayoutEn>

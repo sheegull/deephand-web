@@ -11,7 +11,8 @@ interface GlobalHeaderProps {
 }
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) => {
-  const { currentLanguage, switchLanguage } = useLanguage();
+  // 🚀 Step 3: リロードなし言語切り替えを使用
+  const { currentLanguage, switchLanguage, isLoading } = useLanguage({ reloadOnSwitch: false });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,23 +76,23 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
     }
   };
 
-  // Navigation links data
+  // Navigation links data (Step 1: 英語デフォルト、日本語は/jaプレフィックス)
   const navLinks = [
     {
       text: t('nav.solutions'),
-      href: currentLanguage === 'en' ? '/en/solutions' : '/solutions',
+      href: currentLanguage === 'ja' ? '/ja/solutions' : '/solutions',
     },
     {
       text: t('nav.resources'),
-      href: currentLanguage === 'en' ? '/en/resources' : '/resources',
+      href: currentLanguage === 'ja' ? '/ja/resources' : '/resources',
     },
     {
       text: t('nav.pricing'),
-      href: currentLanguage === 'en' ? '/en/pricing' : '/pricing',
+      href: currentLanguage === 'ja' ? '/ja/pricing' : '/pricing',
     },
     {
       text: t('nav.aboutUs'),
-      href: currentLanguage === 'en' ? '/en/about' : '/about',
+      href: currentLanguage === 'ja' ? '/ja/about' : '/about',
     },
   ];
 
@@ -106,7 +107,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
         <div
           className="flex items-center gap-1 sm:gap-2 cursor-pointer flex-shrink-0"
           onClick={() => {
-            const homeUrl = currentLanguage === 'en' ? '/en' : '/';
+            const homeUrl = currentLanguage === 'ja' ? '/ja' : '/';
             handleNavigation(homeUrl);
           }}
         >
@@ -151,7 +152,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
 
         {/* Action Buttons */}
         <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
-          <LanguageToggle currentLanguage={currentLanguage} onLanguageChange={switchLanguage} />
+          <LanguageToggle 
+            currentLanguage={currentLanguage} 
+            onLanguageChange={switchLanguage}
+            isLoading={isLoading}
+          />
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -159,7 +164,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
           >
             <Button
               onClick={() => {
-                const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
+                const targetUrl = currentLanguage === 'ja' ? '/ja/request' : '/request';
                 handleNavigation(targetUrl);
               }}
               className="w-[100px] xl:w-[130px] h-8 xl:h-10 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-xs xl:text-sm transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-[#234ad9] hover:to-[#1e3eb8] hover:border-transparent whitespace-nowrap"
@@ -190,11 +195,14 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
             </a>
           ))}
           <a
-            onClick={() => {
+            onClick={async () => {
               const newLanguage = currentLanguage === 'ja' ? 'en' : 'ja';
-              switchLanguage(newLanguage);
+              await switchLanguage(newLanguage);
+              setIsMenuOpen(false); // 切り替え成功後にメニューを閉じる
             }}
-            className="py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer flex items-center gap-2"
+            className={`py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer flex items-center gap-2 ${
+              isLoading ? 'opacity-50 pointer-events-none' : ''
+            }`}
           >
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" />
@@ -206,7 +214,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
           <div className="flex flex-col gap-2 mt-2 p-2 border-t border-gray-700">
             <Button
               onClick={() => {
-                const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
+                const targetUrl = currentLanguage === 'ja' ? '/ja/request' : '/request';
                 handleNavigation(targetUrl);
               }}
               className="w-full h-9 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-sm transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-[#234ad9] hover:to-[#1e3eb8] hover:border-transparent"

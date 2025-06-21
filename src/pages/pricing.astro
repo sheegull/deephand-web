@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import BaseLayoutEn from '@/layouts/BaseLayoutEn.astro';
 import { PricingPage } from '@/components/PricingPage';
 import { setCurrentLanguage } from '@/lib/i18n';
 
-setCurrentLanguage('ja');
+setCurrentLanguage('en');
 ---
 
-<BaseLayout 
-  title="料金 - DeepHand | プロジェクトの規模に応じた柔軟な料金体系"
-  description="お客様のニーズに合わせて、最適な料金プランをご提案いたします。スタータープラン、プロフェッショナルプラン、エンタープライズプランをご用意。"
+<BaseLayoutEn 
+  title="Pricing - DeepHand | Flexible Pricing Plans for Every Project Scale"
+  description="We propose optimal pricing plans tailored to your needs. Choose from Starter, Professional, and Enterprise plans."
 >
   <PricingPage client:load />
-</BaseLayout>
+</BaseLayoutEn>

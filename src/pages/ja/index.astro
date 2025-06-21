@@ -1,26 +1,29 @@
 ---
-import BaseLayoutEn from '@/layouts/BaseLayoutEn.astro';
+// 🚀 Step 1: 日本語専用ページ
+import BaseLayout from '@/layouts/BaseLayout.astro';
 import { HeroSection } from '@/components/HeroSection';
 import { setCurrentLanguage } from '@/lib/i18n';
 import '@/styles/app.css';
 
-// サーバーサイドで英語に設定
-setCurrentLanguage('en');
+// サーバーサイドで日本語に設定
+setCurrentLanguage('ja');
 ---
 
-<BaseLayoutEn
+<BaseLayout
   title="DeepHand - AI & Robotics Data Annotation Service"
-  description="DeepHand is a team of annotation experts centered on robotics. We deliver high-quality annotated data."
+  description="DeepHandはロボティクスに特化したアノテーション専門チームです。高品質なアノテーションデータを提供します。"
 >
   <HeroSection
     client:load
-    onRequestClick={() => window.location.href = '/en/request'}
+    onRequestClick={() => window.location.href = '/ja/request'}
     onNavClick={(element) => {
       if (element === 'get-started') {
-        window.location.href = '/en/request';
+        window.location.href = '/ja/request';
       } else if (element === 'login') {
+        // ログイン機能は未実装
         console.log('Login clicked');
       } else {
+        // その他のナビゲーション
         const elementId = element.replace(/\s+/g, '-');
         const targetElement = document.getElementById(elementId);
         if (targetElement) {
@@ -28,6 +31,6 @@ setCurrentLanguage('en');
         }
       }
     }}
-    onLogoClick={() => window.location.href = '/en'}
+    onLogoClick={() => window.location.href = '/ja'}
   />
-</BaseLayoutEn>
+</BaseLayout>

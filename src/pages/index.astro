@@ -1,16 +1,17 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+// 🚀 Step 1: ルートページを英語に変更
+import BaseLayoutEn from '@/layouts/BaseLayoutEn.astro';
 import { HeroSection } from '@/components/HeroSection';
 import { setCurrentLanguage } from '@/lib/i18n';
 import '@/styles/app.css';
 
-// サーバーサイドで日本語に設定
-setCurrentLanguage('ja');
+// 🚀 サーバーサイドで英語に設定
+setCurrentLanguage('en');
 ---
 
-<BaseLayout
+<BaseLayoutEn
   title="DeepHand - AI & Robotics Data Annotation Service"
-  description="DeepHandはロボティクスに特化したアノテーション専門チームです。高品質なアノテーションデータを提供します。"
+  description="DeepHand is a specialized annotation team for robotics. We provide high-quality annotation data for your AI and robotics projects."
 >
   <HeroSection
     client:load

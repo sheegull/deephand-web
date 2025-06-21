@@ -301,7 +301,7 @@ export const HeroSection = ({
             >
               <Button
                 onClick={() => {
-                  const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
+                  const targetUrl = currentLanguage === 'ja' ? '/ja/request' : '/request';
                   handleNavigation(targetUrl);
                 }}
                 size="lg"
@@ -537,10 +537,10 @@ export const HeroSection = ({
           <div className="flex items-center gap-6">
             <a
               role="link"
-              href={uiState.isClient ? (currentLanguage === 'en' ? '/en/terms' : '/terms') : '#'}
+              href={uiState.isClient ? (currentLanguage === 'ja' ? '/ja/terms' : '/terms') : '#'}
               onClick={(e) => {
                 e.preventDefault();
-                const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                const termsUrl = currentLanguage === 'ja' ? '/ja/terms' : '/terms';
                 handleNavigation(termsUrl);
               }}
               className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 focus:text-gray-300 transition-colors cursor-pointer"
@@ -549,10 +549,10 @@ export const HeroSection = ({
             </a>
             <a
               role="link"
-              href={uiState.isClient ? (currentLanguage === 'en' ? '/en/privacy' : '/privacy') : '#'}
+              href={uiState.isClient ? (currentLanguage === 'ja' ? '/ja/privacy' : '/privacy') : '#'}
               onClick={(e) => {
                 e.preventDefault();
-                const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                const privacyUrl = currentLanguage === 'ja' ? '/ja/privacy' : '/privacy';
                 handleNavigation(privacyUrl);
               }}
               className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 focus:text-gray-300 transition-colors cursor-pointer"

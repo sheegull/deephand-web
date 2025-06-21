@@ -21,6 +21,86 @@ export const detectBrowserLanguage = (): 'ja' | 'en' => {
   return 'en';
 };
 
+// 🚀 Step 2: 地域検出による自動リダイレクト機能
+const performAutoRedirect = (detectedLanguage: 'ja' | 'en', currentPath: string): void => {
+  if (typeof window === 'undefined') return;
+  
+  // リダイレクト条件チェック
+  const shouldRedirect = checkRedirectConditions(detectedLanguage, currentPath);
+  
+  if (shouldRedirect.redirect) {
+    console.log(`🌐 Auto-redirecting: ${detectedLanguage} browser detected, redirecting to ${shouldRedirect.targetUrl}`);
+    
+    // リダイレクト記録
+    try {
+      sessionStorage.setItem('deephand-last-redirect', Date.now().toString());
+    } catch (error) {
+      console.warn('Failed to record redirect timestamp:', error);
+    }
+    
+    // 少し遅延させて自然なリダイレクトを実現
+    setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        window.location.href = shouldRedirect.targetUrl;
+      }
+    }, 100);
+  }
+};
+
+// 🚀 Step 2: リダイレクト条件判定
+const checkRedirectConditions = (detectedLanguage: 'ja' | 'en', currentPath: string): { redirect: boolean; targetUrl: string } => {
+  // 0. リダイレクト抑制フラグをチェック
+  if (shouldSuppressRedirect()) {
+    return { redirect: false, targetUrl: currentPath };
+  }
+  
+  // 1. 既に適切な言語パスにいる場合はリダイレクト不要
+  if (detectedLanguage === 'ja' && currentPath.startsWith('/ja')) {
+    return { redirect: false, targetUrl: currentPath };
+  }
+  if (detectedLanguage === 'en' && !currentPath.startsWith('/ja')) {
+    return { redirect: false, targetUrl: currentPath };
+  }
+  
+  // 2. 日本語ブラウザだがルートパスにいる場合 → /ja へリダイレクト
+  if (detectedLanguage === 'ja' && !currentPath.startsWith('/ja')) {
+    const targetUrl = currentPath === '/' ? '/ja' : `/ja${currentPath}`;
+    return { redirect: true, targetUrl };
+  }
+  
+  // 3. 英語ブラウザだが /ja パスにいる場合 → ルートへリダイレクト
+  if (detectedLanguage === 'en' && currentPath.startsWith('/ja')) {
+    const cleanPath = currentPath.slice(3) || '/';
+    return { redirect: true, targetUrl: cleanPath };
+  }
+  
+  // 4. その他の場合はリダイレクト不要
+  return { redirect: false, targetUrl: currentPath };
+};
+
+// 🚀 Step 2: リダイレクト抑制条件をチェック
+const shouldSuppressRedirect = (): boolean => {
+  if (typeof window === 'undefined') return true;
+  
+  // 1. 最近リダイレクトが発生した場合は抑制（無限ループ防止）
+  const lastRedirect = sessionStorage.getItem('deephand-last-redirect');
+  if (lastRedirect) {
+    const lastTime = parseInt(lastRedirect);
+    const now = Date.now();
+    if (now - lastTime < 3000) { // 3秒以内のリダイレクトは抑制
+      return true;
+    }
+  }
+  
+  // 2. ユーザーが手動で言語切り替えを行った場合は抑制
+  const manualSwitch = sessionStorage.getItem('deephand-manual-switch');
+  if (manualSwitch === 'true') {
+    return true;
+  }
+  
+  return false;
+};
+
 // Language state management with localStorage persistence
 let currentLanguage: 'ja' | 'en' = 'en'; // 🚀 Step 1: デフォルトを英語に変更
 let languageChangeCallbacks: (() => void)[] = [];
@@ -78,6 +158,9 @@ if (typeof window !== 'undefined') {
           console.warn('Failed to save detected language:', error);
         }
       }
+      
+      // 🚀 Step 2: 地域検出による自動リダイレクト
+      performAutoRedirect(currentLanguage, path);
     }
   }
 } else {
@@ -188,6 +271,13 @@ export const switchLanguageWithoutReload = async (lang: 'ja' | 'en'): Promise<vo
   try {
     // 1. 現在の言語と同じ場合は何もしない
     if (currentLanguage === lang) return;
+    
+    // 🚀 Step 2: 手動言語切り替えフラグを設定（自動リダイレクト抑制用）
+    try {
+      sessionStorage.setItem('deephand-manual-switch', 'true');
+    } catch (error) {
+      console.warn('Failed to set manual switch flag:', error);
+    }
     
     // 2. URL更新（リロードなし）- History API存在確認
     const newPath = updatePathLanguage(window.location.pathname, lang);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { t, getCurrentLanguage } from '../lib/i18n';
+import { t, getCurrentLanguage, onLanguageChange } from '../lib/i18n';
 
 interface GlobalFooterProps {
   className?: string;
@@ -7,9 +7,18 @@ interface GlobalFooterProps {
 
 export const GlobalFooter: React.FC<GlobalFooterProps> = ({ className = '' }) => {
   const [isClient, setIsClient] = React.useState(false);
+  // 言語変更に反応するための再レンダリングstate
+  const [, forceUpdate] = React.useState({});
 
   React.useEffect(() => {
     setIsClient(true);
+    
+    // 言語変更時の再レンダリング登録
+    const unsubscribe = onLanguageChange(() => {
+      forceUpdate({}); // 強制的に再レンダリング
+    });
+    
+    return unsubscribe;
   }, []);
 
   // Client-safe navigation functions

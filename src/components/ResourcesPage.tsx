@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { t, getCurrentLanguage, onLanguageChange } from '../lib/i18n';
+import { t, getCurrentLanguage, onLanguageChange, getLocalizedPath, setManualNavigationFlag } from '../lib/i18n';
 import { GlobalHeader } from './GlobalHeader';
 
 interface ResourcesPageProps {
@@ -116,8 +116,9 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
                   className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-[#234ad9] to-[#1e3eb8] hover:from-[#1e3eb8] hover:to-[#183099] text-white font-alliance font-medium text-base rounded-lg transition-all duration-300 ease-out shadow-lg hover:shadow-xl"
                   onClick={() => {
                     if (typeof window !== 'undefined') {
+                      setManualNavigationFlag();
                       const currentLanguage = getCurrentLanguage();
-                      const contactUrl = '/#contact';
+                      const contactUrl = getLocalizedPath(currentLanguage, '/') + '#contact';
                       window.location.href = contactUrl;
                     }
                   }}

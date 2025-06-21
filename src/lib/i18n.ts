@@ -381,3 +381,14 @@ export const getFooterUrls = () => {
     privacy: getLocalizedPath(lang, '/privacy'),
   };
 };
+
+// 🚀 ページ遷移時の手動フラグ設定
+export const setManualNavigationFlag = () => {
+  if (typeof window !== 'undefined') {
+    try {
+      sessionStorage.setItem('deephand-manual-switch', 'true');
+    } catch (error) {
+      console.warn('Failed to set manual navigation flag:', error);
+    }
+  }
+};

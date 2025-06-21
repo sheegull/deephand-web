@@ -372,3 +372,12 @@ export const t = (key: string, interpolations?: Record<string, any>) => {
   
   return result;
 };
+
+// 🚀 Footer用の統一されたURL生成関数
+export const getFooterUrls = () => {
+  const lang = getCurrentLanguage();
+  return {
+    terms: getLocalizedPath(lang, '/terms'),
+    privacy: getLocalizedPath(lang, '/privacy'),
+  };
+};

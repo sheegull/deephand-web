@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion'; // iOS テスト: 生のFramer Motion
 // import { MotionDiv, optimizedTransition, useInView } from './ui/motion-optimized';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { t, getCurrentLanguage } from '../lib/i18n';
+import { t, getCurrentLanguage, onLanguageChange } from '../lib/i18n';
 import { GlobalHeader } from './GlobalHeader';
 
 interface SolutionsPageProps {
@@ -10,6 +10,18 @@ interface SolutionsPageProps {
 }
 
 export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
+  // 言語変更に反応するための再レンダリングstate
+  const [, forceUpdate] = React.useState({});
+  
+  React.useEffect(() => {
+    // 言語変更時の再レンダリング登録
+    const unsubscribe = onLanguageChange(() => {
+      forceUpdate({}); // 強制的に再レンダリング
+    });
+    
+    return unsubscribe;
+  }, []);
+
   // iOS テスト用に一時無効化
   // const ref = React.useRef(null);
   // const isInView = useInView(ref, { once: true, margin: '-100px' });

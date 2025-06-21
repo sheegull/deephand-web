@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { t, getCurrentLanguage } from '../lib/i18n';
+import { t, getCurrentLanguage, onLanguageChange } from '../lib/i18n';
 import { GlobalHeader } from './GlobalHeader';
 
 interface PricingPageProps {
@@ -9,6 +9,17 @@ interface PricingPageProps {
 }
 
 export const PricingPage = ({ className = '' }: PricingPageProps) => {
+  // 言語変更に反応するための再レンダリングstate
+  const [, forceUpdate] = React.useState({});
+  
+  React.useEffect(() => {
+    // 言語変更時の再レンダリング登録
+    const unsubscribe = onLanguageChange(() => {
+      forceUpdate({}); // 強制的に再レンダリング
+    });
+    
+    return unsubscribe;
+  }, []);
 
   const plans = [
     {

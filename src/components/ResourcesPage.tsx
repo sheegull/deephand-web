@@ -117,7 +117,7 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
                   onClick={() => {
                     if (typeof window !== 'undefined') {
                       const currentLanguage = getCurrentLanguage();
-                      const contactUrl = currentLanguage === 'en' ? '/en#contact' : '/#contact';
+                      const contactUrl = '/#contact';
                       window.location.href = contactUrl;
                     }
                   }}
@@ -139,7 +139,7 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
               onClick={() => {
                 if (typeof window !== 'undefined') {
                   const currentLanguage = getCurrentLanguage();
-                  const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                  const termsUrl = currentLanguage === 'ja' ? '/ja/terms' : '/terms';
                   window.location.href = termsUrl;
                 }
               }}
@@ -151,7 +151,7 @@ export const ResourcesPage = ({ className = '' }: ResourcesPageProps) => {
               onClick={() => {
                 if (typeof window !== 'undefined') {
                   const currentLanguage = getCurrentLanguage();
-                  const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                  const privacyUrl = currentLanguage === 'ja' ? '/ja/privacy' : '/privacy';
                   window.location.href = privacyUrl;
                 }
               }}

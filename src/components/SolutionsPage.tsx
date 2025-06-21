@@ -122,7 +122,7 @@ export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
                   onClick={() => {
                     if (typeof window !== 'undefined') {
                       const currentLanguage = getCurrentLanguage();
-                      const requestUrl = currentLanguage === 'en' ? '/en/request' : '/request';
+                      const requestUrl = '/request';
                       window.location.href = requestUrl;
                     }
                   }}
@@ -144,7 +144,7 @@ export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
               onClick={() => {
                 if (typeof window !== 'undefined') {
                   const currentLanguage = getCurrentLanguage();
-                  const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                  const termsUrl = currentLanguage === 'ja' ? '/ja/terms' : '/terms';
                   window.location.href = termsUrl;
                 }
               }}
@@ -156,7 +156,7 @@ export const SolutionsPage = ({ className = '' }: SolutionsPageProps) => {
               onClick={() => {
                 if (typeof window !== 'undefined') {
                   const currentLanguage = getCurrentLanguage();
-                  const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                  const privacyUrl = currentLanguage === 'ja' ? '/ja/privacy' : '/privacy';
                   window.location.href = privacyUrl;
                 }
               }}

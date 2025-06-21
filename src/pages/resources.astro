@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import BaseLayoutEn from '@/layouts/BaseLayoutEn.astro';
 import { ResourcesPage } from '@/components/ResourcesPage';
 import { setCurrentLanguage } from '@/lib/i18n';
 
-setCurrentLanguage('ja');
+setCurrentLanguage('en');
 ---
 
-<BaseLayout 
-  title="リソース - DeepHand | AIとロボティクスの最新情報とツール"
-  description="技術資料、ケーススタディ、ベストプラクティスなど、お客様のプロジェクト成功に役立つ情報を提供します。最新のAI・ロボティクス技術情報。"
+<BaseLayoutEn 
+  title="Resources - DeepHand | Latest AI and Robotics Information and Tools"
+  description="Technical documentation, case studies, and best practices to help ensure your project success. Latest AI and robotics technology information."
 >
   <ResourcesPage client:load />
-</BaseLayout>
+</BaseLayoutEn>

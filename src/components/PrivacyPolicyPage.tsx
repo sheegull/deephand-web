@@ -33,7 +33,7 @@ export const PrivacyPolicyPage = ({ onLogoClick }: PrivacyPolicyPageProps) => {
               if (onLogoClick) {
                 onLogoClick();
               } else {
-                const homeUrl = currentLanguage === 'en' ? '/en' : '/';
+                const homeUrl = currentLanguage === 'ja' ? '/ja' : '/';
                 handleNavigation(homeUrl);
               }
             }}
@@ -105,7 +105,7 @@ export const PrivacyPolicyPage = ({ onLogoClick }: PrivacyPolicyPageProps) => {
             <div className="flex items-center gap-6">
               <a
                 onClick={() => {
-                  const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                  const termsUrl = currentLanguage === 'ja' ? '/ja/terms' : '/terms';
                   handleNavigation(termsUrl);
                 }}
                 className="font-alliance font-light text-gray-600 text-xs hover:text-gray-900 transition-colors cursor-pointer"
@@ -114,7 +114,7 @@ export const PrivacyPolicyPage = ({ onLogoClick }: PrivacyPolicyPageProps) => {
               </a>
               <a
                 onClick={() => {
-                  const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                  const privacyUrl = currentLanguage === 'ja' ? '/ja/privacy' : '/privacy';
                   handleNavigation(privacyUrl);
                 }}
                 className="font-alliance font-light text-gray-600 text-xs hover:text-gray-900 transition-colors cursor-pointer"

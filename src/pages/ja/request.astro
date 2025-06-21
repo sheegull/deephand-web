@@ -2,19 +2,17 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { RequestDataPage } from '@/components/RequestDataPage';
 import { setCurrentLanguage } from '@/lib/i18n';
-import '@/styles/app.css';
 
-// サーバーサイドで英語に設定
-setCurrentLanguage('en');
+setCurrentLanguage('ja');
 ---
 
 <BaseLayout 
-  title="Data Request - DeepHand"
-  description="Data annotation request form for AI & robotics projects. Expert annotators provide high-quality labeling services."
+  title="データ依頼 - DeepHand | 高品質なデータアノテーションサービス"
+  description="お客様のプロジェクトに最適なデータアノテーションサービスをご依頼ください。AI・ロボティクス専門チームが高品質なアノテーションを提供します。"
 >
   <RequestDataPage 
     client:load 
-    onLogoClick={() => window.location.href = '/en'}
+    onLogoClick={() => window.location.href = '/ja'}
     onFooterClick={(element) => {
       if (element === 'terms-of-service') {
         console.log('Terms of service clicked');

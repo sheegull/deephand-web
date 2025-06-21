@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import BaseLayoutEn from '@/layouts/BaseLayoutEn.astro';
 import { SolutionsPage } from '@/components/SolutionsPage';
 import { setCurrentLanguage } from '@/lib/i18n';
 
-setCurrentLanguage('ja');
+setCurrentLanguage('en');
 ---
 
-<BaseLayout 
-  title="ソリューション - DeepHand | AIとロボティクスに特化したデータアノテーションサービス"
-  description="DeepHandは、最先端のAI・ロボティクス技術に対応した高品質なデータアノテーションを提供します。画像、動画、3D、ロボティクスデータの専門的なアノテーションサービス。"
+<BaseLayoutEn 
+  title="Solutions - DeepHand | Data Annotation Services for AI and Robotics"
+  description="DeepHand provides high-quality data annotation services tailored for cutting-edge AI and robotics technologies. Specialized annotation for image, video, 3D, and robotics data."
 >
   <SolutionsPage client:load />
-</BaseLayout>
+</BaseLayoutEn>

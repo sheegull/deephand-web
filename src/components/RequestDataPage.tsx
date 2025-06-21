@@ -437,7 +437,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
             if (onLogoClick) {
               onLogoClick();
             } else {
-              const homeUrl = currentLanguage === 'en' ? '/en' : '/';
+              const homeUrl = currentLanguage === 'ja' ? '/ja' : '/';
               handleNavigation(homeUrl);
             }
           }}
@@ -471,7 +471,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
           <div className="flex gap-6">
             <a
               onClick={() => {
-                const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                const termsUrl = currentLanguage === 'ja' ? '/ja/terms' : '/terms';
                 handleNavigation(termsUrl);
               }}
               className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 transition-colors cursor-pointer"
@@ -480,7 +480,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
             </a>
             <a
               onClick={() => {
-                const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                const privacyUrl = currentLanguage === 'ja' ? '/ja/privacy' : '/privacy';
                 handleNavigation(privacyUrl);
               }}
               className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 transition-colors cursor-pointer"
@@ -501,7 +501,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
           if (onLogoClick) {
             onLogoClick();
           } else {
-            const homeUrl = currentLanguage === 'en' ? '/en' : '/';
+            const homeUrl = currentLanguage === 'ja' ? '/ja' : '/';
             handleNavigation(homeUrl);
           }
         }}
@@ -1014,7 +1014,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
               <div className="flex justify-center gap-6">
                 <a
                   onClick={() => {
-                    const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                    const termsUrl = currentLanguage === 'ja' ? '/ja/terms' : '/terms';
                     handleNavigation(termsUrl);
                   }}
                   className="font-alliance font-light text-gray-400 text-[10px] leading-[16.8px] hover:text-gray-600 transition-colors cursor-pointer"
@@ -1023,7 +1023,7 @@ export const RequestDataPage = ({ onLogoClick, onFooterClick }: RequestDataPageP
                 </a>
                 <a
                   onClick={() => {
-                    const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                    const privacyUrl = currentLanguage === 'ja' ? '/ja/privacy' : '/privacy';
                     handleNavigation(privacyUrl);
                   }}
                   className="font-alliance font-light text-gray-400 text-[10px] leading-[16.8px] hover:text-gray-600 transition-colors cursor-pointer"

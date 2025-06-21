@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "dotenv -e .env.local -- astro dev",
+    "dev": "dotenv -e .env -- astro dev",
     "dev:cf": "wrangler pages dev dist --compatibility-date=2025-01-15",
     "build": "astro build",
     "preview": "astro preview",

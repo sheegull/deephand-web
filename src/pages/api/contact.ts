@@ -7,6 +7,14 @@ import { logError, logInfo } from '@/lib/error-handling';
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request, locals }) => {
+  console.log('🔍 [API DEBUG] Contact endpoint called');
+  console.log('🔍 [API DEBUG] Runtime env check:', !!locals.runtime?.env);
+  console.log('🔍 [API DEBUG] Import meta env check:', {
+    hasResendKey: !!import.meta.env.RESEND_API_KEY,
+    resendKeyPrefix: import.meta.env.RESEND_API_KEY?.substring(0, 10),
+    nodeEnv: import.meta.env.NODE_ENV
+  });
+  
   try {
     // Validate Content-Type
     const contentType = request.headers.get('content-type');
@@ -78,7 +86,18 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
     // Validate email configuration with Cloudflare runtime
     const env = locals.runtime?.env;
+    console.log('🔍 [API DEBUG] Before email config validation:', {
+      runtimeEnv: !!env,
+      envKeys: env ? Object.keys(env) : 'null',
+      envResendKey: env?.RESEND_API_KEY?.substring(0, 10) + '...' || 'undefined'
+    });
+    
     const emailConfig = validateEmailConfig(env);
+    console.log('🔍 [API DEBUG] Email config validation result:', {
+      isValid: emailConfig.isValid,
+      errors: emailConfig.errors
+    });
+    
     if (!emailConfig.isValid) {
       logError('Email configuration invalid for contact form', {
         operation: 'contact_form_email_config',

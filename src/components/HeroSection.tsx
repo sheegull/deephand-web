@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
@@ -7,29 +7,28 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { t } from '../lib/i18n';
 import { useLanguage } from '../hooks/useLanguage';
-import { LanguageToggle } from './ui/language-toggle';
 import { logError, logInfo } from '../lib/error-handling';
 import DitherBackgroundOptimized from './ui/DitherBackgroundOptimized';
+import { GlobalHeader } from './GlobalHeader';
 
 interface HeroSectionProps {
   _onRequestClick?: () => void;
-  onNavClick?: (element: string) => void;
-  onLogoClick?: () => void;
+  _onNavClick?: (element: string) => void;
+  _onLogoClick?: () => void;
   _isLoading?: boolean;
 }
 
 export const HeroSection = ({
   _onRequestClick,
-  onNavClick,
-  onLogoClick,
+  _onNavClick,
+  _onLogoClick,
   _isLoading = false,
 }: HeroSectionProps) => {
-  const { currentLanguage, switchLanguage } = useLanguage();
+  const { currentLanguage } = useLanguage();
   // 🚀 統一状態管理でReact Fiber競合を完全解消
   const [uiState, setUiState] = React.useState({
     isSubmitting: false,
     submitStatus: 'idle' as 'idle' | 'success' | 'error',
-    isMenuOpen: false,
     isClient: false,
     validationErrors: [] as string[],
     messageLength: 0,
@@ -233,34 +232,10 @@ export const HeroSection = ({
     }
   };
 
-  // Navigation links data
-  const navLinks = [
-    {
-      text: t('nav.solutions'),
-      href: currentLanguage === 'en' ? '/en/solutions' : '/solutions',
-    },
-    {
-      text: t('nav.resources'),
-      href: currentLanguage === 'en' ? '/en/resources' : '/resources',
-    },
-    {
-      text: t('nav.pricing'),
-      href: currentLanguage === 'en' ? '/en/pricing' : '/pricing',
-    },
-    {
-      text: t('nav.aboutUs'),
-      href: currentLanguage === 'en' ? '/en/about' : '/about',
-    },
-  ];
 
-  // Footer links data
-  const footerLinks = [
-    { text: t('footer.termsOfService'), href: '#terms' },
-    { text: t('footer.privacyPolicy'), href: '#privacy' },
-  ];
 
   return (
-    <div className="flex flex-col w-full h-full min-h-screen items-start bg-[#1e1e1e] fixed inset-0 overflow-auto">
+    <>
       {/* Dither Background */}
       <DitherBackgroundOptimized
         waveSpeed={0.05}
@@ -275,141 +250,11 @@ export const HeroSection = ({
         className="fixed inset-0 w-full h-full z-0 opacity-60"
       />
 
-      {/* Navigation Bar */}
-      <header className="fixed top-0 z-[100] w-full h-16 sm:h-18 lg:h-20 flex items-center justify-between px-3 sm:px-4 lg:px-20">
-        <div className="flex items-center justify-between w-full">
-          {/* Logo */}
-          <div
-            className="flex items-center gap-1 sm:gap-2 cursor-pointer flex-shrink-0"
-            onClick={() => {
-              if (onLogoClick) {
-                onLogoClick();
-              } else {
-                const homeUrl = currentLanguage === 'en' ? '/en' : '/';
-                handleNavigation(homeUrl);
-              }
-            }}
-          >
-            <img
-              className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-cover"
-              alt="Icon"
-              src="/logo.png"
-            />
-            <div className="font-alliance font-light text-white text-lg sm:text-xl lg:text-2xl leading-tight whitespace-nowrap">
-              DeepHand
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-1 sm:p-2 text-white flex-shrink-0"
-            aria-label="Toggle menu"
-            aria-expanded={uiState.isMenuOpen}
-            onClick={() => setUiState(prev => ({ ...prev, isMenuOpen: !prev.isMenuOpen }))}
-          >
-            <div className="flex items-center">
-              <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-            </div>
-          </button>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:block mx-auto">
-            <ul className="flex gap-3 xl:gap-6">
-              {navLinks.map((link, index) => (
-                <li
-                  key={index}
-                  onClick={() => {
-                    if (onNavClick) {
-                      onNavClick(link.text.toLowerCase());
-                    } else {
-                      handleNavigation(link.href);
-                    }
-                  }}
-                  className="cursor-pointer"
-                >
-                  <span className="font-alliance font-light text-white text-[12px] xl:text-[14px] leading-tight hover:text-gray-300 transition-colors whitespace-nowrap">
-                    {link.text}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Action Buttons */}
-          <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
-            <LanguageToggle currentLanguage={currentLanguage} onLanguageChange={switchLanguage} />
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Button
-                onClick={() => {
-                  const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
-                  handleNavigation(targetUrl);
-                }}
-                className="w-[100px] xl:w-[130px] h-8 xl:h-10 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-xs xl:text-sm transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-[#234ad9] hover:to-[#1e3eb8] hover:border-transparent whitespace-nowrap"
-              >
-                <span className="relative z-10">{t('nav.getStarted')}</span>
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation Menu */}
-        <div
-          className={`absolute top-16 sm:top-18 lg:top-20 left-0 right-0 bg-[#1e1e1e] transition-all duration-300 ease-in-out ${
-            uiState.isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          } lg:hidden border-t border-gray-700 shadow-lg z-[90]`}
-        >
-          <nav className="flex flex-col py-3">
-            {navLinks.map((link, index) => (
-              <a
-                key={index}
-                onClick={() => {
-                  if (onNavClick) {
-                    onNavClick(link.text.toLowerCase());
-                  } else {
-                    handleNavigation(link.href);
-                  }
-                  setUiState(prev => ({ ...prev, isMenuOpen: false })); // モバイルメニューを閉じる
-                }}
-                className="py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer"
-              >
-                {link.text}
-              </a>
-            ))}
-            <a
-              onClick={() => {
-                const newLanguage = currentLanguage === 'ja' ? 'en' : 'ja';
-                switchLanguage(newLanguage);
-              }}
-              className="py-2 px-4 text-white hover:bg-white/20 active:bg-white/30 transition-colors text-sm cursor-pointer flex items-center gap-2"
-            >
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                <path d="M2 12h20" />
-              </svg>
-              {currentLanguage === 'ja' ? 'EN' : 'JA'}
-            </a>
-            <div className="flex flex-col gap-2 mt-2 p-2 border-t border-gray-700">
-              <Button
-                onClick={() => {
-                  const targetUrl = currentLanguage === 'en' ? '/en/request' : '/request';
-                  handleNavigation(targetUrl);
-                }}
-                className="w-full h-9 bg-transparent text-white border-2 border-white rounded-md font-alliance font-normal text-sm transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-[#234ad9] hover:to-[#1e3eb8] hover:border-transparent"
-              >
-                {t('nav.getStarted')}
-              </Button>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="relative w-full px-4 md:px-[92px] flex-1 flex flex-col shadow-[0px_4px_4px_#00000040] mt-24 sm:mt-28 lg:mt-40 z-10">
+      {/* Global Header with Scroll Blur */}
+      <GlobalHeader />
+      
+      <div className="flex flex-col w-full bg-[#1e1e1e] min-h-screen pt-32 px-4 md:px-8 lg:px-20">
+        {/* Main Content */}
         <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center py-[60px] md:py-[100px] gap-8 lg:gap-16 relative z-10 flex-1">
           {/* Left Content */}
           <motion.div
@@ -418,7 +263,7 @@ export const HeroSection = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <motion.div
+            <motion.h1
               className="font-alliance font-normal text-white text-3xl md:text-5xl lg:text-[64px] leading-[1.1]"
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -437,7 +282,7 @@ export const HeroSection = ({
                     {line}
                   </motion.div>
                 ))}
-            </motion.div>
+            </motion.h1>
             <motion.div
               className="font-alliance font-light text-zinc-400 text-base md:text-lg lg:text-xl leading-[1.6] max-w-[555px] mx-auto lg:mx-0"
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -685,34 +530,38 @@ export const HeroSection = ({
         </div>
 
         {/* Footer */}
-        <footer className="flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-0 mt-auto pt-16 pb-8">
+        <footer className="flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-0 mt-auto pt-16 pb-8 z-[100] relative">
           <div className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px]">
             {t('footer.copyright')}
           </div>
           <div className="flex items-center gap-6">
-            {footerLinks.map((link, index) => (
-              <a
-                key={index}
-                onClick={() => {
-                  const linkType = link.text.toLowerCase().replace(/\s+/g, '-');
-                  if (linkType.includes('terms') || linkType.includes('利用規約')) {
-                    const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
-                    handleNavigation(termsUrl);
-                  } else if (linkType.includes('privacy') || linkType.includes('プライバシー')) {
-                    const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
-                    handleNavigation(privacyUrl);
-                  } else {
-                    onNavClick?.(linkType);
-                  }
-                }}
-                className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 transition-colors cursor-pointer"
-              >
-                {link.text}
-              </a>
-            ))}
+            <a
+              role="link"
+              href={uiState.isClient ? (currentLanguage === 'en' ? '/en/terms' : '/terms') : '#'}
+              onClick={(e) => {
+                e.preventDefault();
+                const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+                handleNavigation(termsUrl);
+              }}
+              className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 focus:text-gray-300 transition-colors cursor-pointer"
+            >
+              {t('footer.termsOfService')}
+            </a>
+            <a
+              role="link"
+              href={uiState.isClient ? (currentLanguage === 'en' ? '/en/privacy' : '/privacy') : '#'}
+              onClick={(e) => {
+                e.preventDefault();
+                const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+                handleNavigation(privacyUrl);
+              }}
+              className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 focus:text-gray-300 transition-colors cursor-pointer"
+            >
+              {t('footer.privacyPolicy')}
+            </a>
           </div>
         </footer>
-      </main>
-    </div>
+      </div>
+    </>
   );
 };

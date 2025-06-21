@@ -20,11 +20,52 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ className = '' }) =>
     setIsClient(true);
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // 複数のスクロール要素をチェック
+      const heroScrollElement = document.querySelector('.hero-scroll-container') as HTMLElement;
+      const bodyScrollY = window.scrollY;
+      const heroScrollY = heroScrollElement ? heroScrollElement.scrollTop : 0;
+      
+      // いずれかのスクロール量が50pxを超えていればブラー効果を適用
+      const totalScrollY = Math.max(bodyScrollY, heroScrollY);
+      const shouldShowBlur = totalScrollY > 50;
+      
+      
+      setIsScrolled(shouldShowBlur);
     };
 
+    // windowスクロールをリスン
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // HeroSection内のスクロール要素を探してリスン
+    const checkForHeroElement = () => {
+      const heroScrollElement = document.querySelector('.hero-scroll-container') as HTMLElement;
+      if (heroScrollElement) {
+        heroScrollElement.addEventListener('scroll', handleScroll);
+        return heroScrollElement;
+      }
+      return null;
+    };
+    
+    // 初期チェック
+    let heroElement = checkForHeroElement();
+    
+    // 要素が見つからない場合は少し待ってから再試行
+    const retryTimeout = setTimeout(() => {
+      if (!heroElement) {
+        heroElement = checkForHeroElement();
+      }
+    }, 100);
+
+    // 初期スクロール状態をチェック
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (heroElement) {
+        heroElement.removeEventListener('scroll', handleScroll);
+      }
+      clearTimeout(retryTimeout);
+    };
   }, []);
 
   // Client-safe navigation functions

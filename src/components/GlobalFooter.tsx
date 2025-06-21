@@ -1,0 +1,61 @@
+import React from 'react';
+import { t, getCurrentLanguage } from '../lib/i18n';
+
+interface GlobalFooterProps {
+  className?: string;
+}
+
+export const GlobalFooter: React.FC<GlobalFooterProps> = ({ className = '' }) => {
+  const [isClient, setIsClient] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Client-safe navigation functions
+  const handleNavigation = (url: string) => {
+    if (isClient && typeof window !== 'undefined') {
+      window.location.href = url;
+    }
+  };
+
+  return (
+    <footer className={`flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-0 mt-auto pt-16 pb-8 z-[100] relative ${className}`}>
+      <div className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px]">
+        {t('footer.copyright')}
+      </div>
+      <div className="flex items-center gap-6">
+        <a
+          role="link"
+          href={isClient ? (getCurrentLanguage() === 'en' ? '/en/terms' : '/terms') : '#'}
+          onClick={(e) => {
+            e.preventDefault();
+            if (isClient && typeof window !== 'undefined') {
+              const currentLanguage = getCurrentLanguage();
+              const termsUrl = currentLanguage === 'en' ? '/en/terms' : '/terms';
+              handleNavigation(termsUrl);
+            }
+          }}
+          className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 focus:text-gray-300 transition-colors cursor-pointer"
+        >
+          {t('footer.termsOfService')}
+        </a>
+        <a
+          role="link"
+          href={isClient ? (getCurrentLanguage() === 'en' ? '/en/privacy' : '/privacy') : '#'}
+          onClick={(e) => {
+            e.preventDefault();
+            if (isClient && typeof window !== 'undefined') {
+              const currentLanguage = getCurrentLanguage();
+              const privacyUrl = currentLanguage === 'en' ? '/en/privacy' : '/privacy';
+              handleNavigation(privacyUrl);
+            }
+          }}
+          className="font-alliance font-light text-zinc-400 text-[10px] leading-[16.8px] hover:text-gray-300 focus:text-gray-300 transition-colors cursor-pointer"
+        >
+          {t('footer.privacyPolicy')}
+        </a>
+      </div>
+    </footer>
+  );
+};
